@@ -90,7 +90,7 @@ class WorldView:
             ids_in = set(self._force_by_group(f.in_group))
             pool = [u for u in pool if u["id"] in ids_in]
 
-        out = []
+        matched: List[dict] = []
         for u in pool:
             kind_lower = (u.get("kind") or "").lower()
             if f.unit_kind and kind_lower != f.unit_kind.lower():
@@ -101,14 +101,35 @@ class WorldView:
             if f.hp_above is not None and not (hp > f.hp_above):
                 continue
             if f.harass_capable is True:
-                # Only fast / kite-able kinds — excludes slow heavy armour and
-                # siege artillery that can't escape after touching the economy.
                 if kind_lower not in _HARASS_CAPABLE:
                     continue
                 if kind_lower in _HARASS_BAD:
                     continue
-            out.append(u["id"])
-        return out
+            if f.combat_mobile is True:
+                if kind_lower in _NON_COMBAT or kind_lower in _BUILDING_KINDS:
+                    continue
+            matched.append(u)
+
+        # Order by `prefer` so a downstream max_force_size truncation picks
+        # the units the player would have picked, not whoever has the lowest
+        # actor id (older units first by default).
+        prefer = getattr(f, "prefer", "strongest")
+        if prefer == "strongest":
+            try:
+                from . import tactical_doctrine as _DOCTRINE
+                matched.sort(
+                    key=lambda u: _DOCTRINE.target_priority(u.get("kind", "")),
+                    reverse=True,
+                )
+            except Exception:
+                pass
+        elif prefer == "fastest":
+            # Light/fast kinds first, others after.
+            matched.sort(key=lambda u: 0 if (u.get("kind") or "").lower() in _FAST_KINDS else 1)
+        elif prefer == "healthiest":
+            matched.sort(key=lambda u: u.get("hp_pct", 1.0), reverse=True)
+        # "any" — leave actor-id order
+        return [u["id"] for u in matched]
 
     # --- Target --------------------------------------------------------
 
@@ -297,6 +318,14 @@ _NON_COMBAT_MOBILE_KINDS = frozenset({
 # rare case a unit ends up in both (e.g. someone adds 1tnk to BAD later).
 _HARASS_CAPABLE = frozenset({"jeep", "ftrk", "dog", "e3", "apc", "1tnk"})
 _HARASS_BAD = frozenset({"2tnk", "3tnk", "4tnk", "arty", "v2rl", "mcv", "harv"})
+_NON_COMBAT = frozenset({"harv", "mcv"})
+_BUILDING_KINDS = frozenset({
+    "fact", "powr", "apwr", "proc", "barr", "tent", "weap", "afld",
+    "hpad", "spen", "syrd", "stek", "atek", "dome", "fix", "silo",
+    "pbox", "hbox", "gun", "agun", "sam", "ftur", "tsla", "mslo",
+    "iron", "pdox", "gap", "sbag", "brik", "barb", "cycl", "kenn",
+})
+_FAST_KINDS = frozenset({"jeep", "dog", "e3", "e1", "ftrk", "spy", "thf"})
 
 
 def _is_building(kind: str) -> bool:
@@ -385,11 +414,19 @@ def _do_attack(intent: D.IntentAttack, wv: WorldView, transport) -> dict:
     if intent.approach != "cautious" and tpos is not None:
         try:
             engine = _get_tactical_engine(transport)
+            # If target was named (enemy_fact / nearest_enemy_*), pass the
+            # name so daemon can re-resolve when the original actor dies.
+            # Stops the army from parking at a corpse's coords or sidetracking
+            # onto whatever building is nearest after the named target falls.
+            target_named = (intent.target.name
+                            if isinstance(intent.target, D.TargetByName)
+                            else None)
             engine.register_assault(
                 force_ids=ids,
                 final_target_cell=tpos,
                 final_target_actor=tid,
                 cohesion=(intent.approach != "charge"),  # charge sacrifices cohesion
+                target_named=target_named,
             )
         except Exception:
             # Daemon registration is best-effort — never block the dispatch.
@@ -593,16 +630,21 @@ def _do_pincer(intent: D.IntentPincer, wv: WorldView, transport) -> dict:
     # is implicit (both walk toward target after waypoint).
     try:
         engine = _get_tactical_engine(transport)
+        target_named = (intent.target.name
+                        if isinstance(intent.target, D.TargetByName)
+                        else None)
         if left_ids:
             engine.register_assault(force_ids=left_ids,
                                     final_target_cell=tpos,
                                     final_target_actor=tid,
-                                    cohesion=True)
+                                    cohesion=True,
+                                    target_named=target_named)
         if right_ids:
             engine.register_assault(force_ids=right_ids,
                                     final_target_cell=tpos,
                                     final_target_actor=tid,
-                                    cohesion=True)
+                                    cohesion=True,
+                                    target_named=target_named)
     except Exception:
         pass
 

@@ -142,9 +142,19 @@ force 解析返 0 → **Pending Mission queue**, 玩家训出匹配单位后 dae
 - ✓ 玩家说"打一波他的矿 / 骚扰一下" (单次) → `dispatch_intent(harass)` (cycle=false 默认, 不吸新单位)
 - ✓ 玩家说"持续骚扰 / 切断他经济" (长效) → `set_objective("harass_economy")` —
   daemon 自动 cycle harass + 自动吸新单位 + 自动重选目标
+- ✓ 玩家说"决战 / 总动员 / 全力推过去 / 推到底" (长效, 后训自动加入) →
+  **`set_doctrine(alert_state="combat", objective="destroy_enemy")`** —
+  daemon 自动 cycle attack + 自动吸新 combat-mobile + target 死自动重选.
+  **不要**还手 dispatch attack — objective 接管了
 - ✓ 玩家说"挂目标 X" → `set_objective`
+- ✓ 派 mission 用 filter 时, **添 `prefer` 字段** 引导选拣 — `strongest` (默认,
+  按 doctrine priority 选重坦优先) / `fastest` (jeep/dog/e3 优先) / `healthiest`
+  (满血优先). 否则 daemon 按 actor_id 顺序选, 老单位 (步兵 id 小) 先入会忽视新坦
 - ✓ 复杂多步前 `pause()`, 之后 `resume()`
-- ✓ `latest_scout_report()` 报警时简短打断玩家
+- ✓ `latest_scout_report()` 报警时简短打断玩家 — **也包括 `mission_progress`
+  事件** (每 30s daemon 主动 push), 看到任务**进展异常** (force_alive 骤减 /
+  avg_hp_pct < 0.5 / distance_to_target 长期不变) 应主动告知玩家 "推进受阻,
+  要不要补援 / 撤?"
 - ✓ 回复 1-2 句. 玩家同时看着游戏
 - ✓ 派兵时如组成明显缺克制 (比如全步兵零防空敌方有空军), **简短**提一句
   作参谋建议. 不强求.

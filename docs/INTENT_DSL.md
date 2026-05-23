@@ -118,7 +118,9 @@ set_objective(
  "hp_below": 0.3,                        // 可选 0..1
  "hp_above": 0.7,                        // 可选
  "in_group": "north",                    // 可选, 限定群内
- "harass_capable": true}                 // 新 — 展开为 {jeep, ftrk, dog, e3, apc, 1tnk}
+ "harass_capable": true,                 // 展开为 {jeep, ftrk, dog, e3, apc, 1tnk}
+ "combat_mobile": true,                  // 全部战斗机动 (排 harv/mcv/buildings). destroy_enemy 用
+ "prefer": "strongest"}                  // 选拣序: strongest(默认按 priority 选重坦先) | fastest(快单位) | healthiest(满血先) | any(actor_id 序)
 ```
 
 `harass_capable=true` 是语义快捷: 选低 HP / 高机动单位, 适合骚扰/绕后.

@@ -103,7 +103,13 @@ class ForceByIds(BaseModel):
 
 
 class ForceByFilter(BaseModel):
-    """按属性 filter 选 (代码解析). 例: HP < 30% 的所有单位."""
+    """按属性 filter 选 (代码解析). 例: HP < 30% 的所有单位.
+
+    `prefer` controls ordering when max_force_size truncates: pick the
+    "best" N units according to the criterion instead of arbitrary actor-id
+    order. Defaults to `strongest` (high target_priority value = beefy /
+    high-DPS = first picked).
+    """
     kind: Literal["filter"] = "filter"
     owner: Literal["self", "enemy", "any"] = "self"
     unit_kind: Optional[str] = None           # 例: "2tnk"
@@ -114,6 +120,14 @@ class ForceByFilter(BaseModel):
                                               #        (jeep/ftrk/dog/e3/apc/1tnk)
                                               #        and explicitly exclude
                                               #        heavy/slow (tnk2-4/arty/v2)
+    combat_mobile: Optional[bool] = None      # True → all combat-mobile (excl
+                                              #        harv/mcv/buildings).
+                                              #        For destroy_enemy etc.
+    prefer: Literal["strongest", "fastest", "healthiest", "any"] = "strongest"
+    # strongest  — highest target_priority value first (tanks before infantry)
+    # fastest    — light units (jeep/dog/e3) first
+    # healthiest — highest hp_pct first (don't send wounded into harass)
+    # any        — actor-id order (legacy)
 
 
 Force = Union[ForceByGroup, ForceByIds, ForceByFilter]

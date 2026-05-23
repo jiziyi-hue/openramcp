@@ -45,6 +45,7 @@ POLL_INTERVAL_S = 0.6        # how often the daemon scans the world
 ENGAGE_RADIUS = 8            # cells — enemies within this from force centroid
 EXTENDED_ENGAGE_RADIUS = 18  # cells — extended scan for high-priority chase
 PRIORITY_CHASE_THRESHOLD = 80  # only chase targets with priority >= this
+MISSION_PROGRESS_INTERVAL_S = 30.0  # how often daemon emits mission_progress events
                              #         are engaged immediately
 COHESION_MAX_SPREAD = 9      # cells — stddev cap for force spread before
                              #         the vanguard is forced to halt
@@ -684,6 +685,7 @@ class TacticalEngine:
         self.pending_dispatches = 0
         self.after_action_emits = 0
         self.last_error: Optional[str] = None
+        self._last_mission_progress_ts: float = 0.0
 
     # --- public surface ------------------------------------------------
 
@@ -1333,14 +1335,32 @@ class TacticalEngine:
         if exclude_ids is None:
             exclude_ids = self._all_busy_ids()
 
-        ids: List[int] = []
+        # Collect dicts (not just ids) so we can sort by prefer.
+        matched_units: List[dict] = []
         for u in self_units:
             uid = u.get("id")
             if uid is None or uid in exclude_ids:
                 continue
             if not matches(u):
                 continue
-            ids.append(uid)
+            matched_units.append(u)
+
+        prefer = spec.get("prefer", "strongest")
+        if prefer == "strongest":
+            matched_units.sort(
+                key=lambda u: DOCTRINE.target_priority(u.get("kind", "")),
+                reverse=True,
+            )
+        elif prefer == "fastest":
+            fast_kinds = frozenset({"jeep", "dog", "e3", "e1", "ftrk", "spy", "thf"})
+            matched_units.sort(
+                key=lambda u: 0 if (u.get("kind") or "").lower() in fast_kinds else 1
+            )
+        elif prefer == "healthiest":
+            matched_units.sort(key=lambda u: u.get("hp_pct", 1.0), reverse=True)
+        # "any" — leave self_units order (actor id)
+
+        ids: List[int] = [u["id"] for u in matched_units]
         if limit is not None and limit > 0:
             ids = ids[:limit]
         return ids
@@ -1747,6 +1767,79 @@ class TacticalEngine:
             return (mission.raid_target_cell, 8)
         return None  # patrol/escort have no fixed kill region
 
+    def _emit_mission_progress(self, world: Optional[dict]) -> None:
+        """Periodic status snapshot of every active offensive mission, so the
+        LLM can pull it via latest_scout_report and volunteer updates instead
+        of waiting on the player to ask.
+
+        Throttle: MISSION_PROGRESS_INTERVAL_S between emits. One event per
+        active mission per cycle. Skipped silently when world is unavailable.
+        """
+        if world is None:
+            return
+        now = time.time()
+        if now - self._last_mission_progress_ts < MISSION_PROGRESS_INTERVAL_S:
+            return
+        with self._lock:
+            assaults = list(self._assaults.values())
+            harass = list(self._harass.values())
+        if not assaults and not harass:
+            self._last_mission_progress_ts = now
+            return
+
+        self_units = {u["id"]: u for u in world.get("self_units", [])}
+        enemy_units = world.get("enemy_units", [])
+
+        def force_stats(force_ids: Set[int]):
+            alive = [self_units[uid] for uid in force_ids if uid in self_units]
+            n_alive = len(alive)
+            n_total = len(force_ids)
+            avg_hp = (sum(float(u.get("hp_pct", 1.0)) for u in alive) / n_alive
+                      if n_alive else 0.0)
+            return n_alive, n_total, avg_hp, alive
+
+        for a in assaults:
+            n_alive, n_total, avg_hp, alive = force_stats(a.force_ids)
+            if n_alive == 0:
+                continue
+            # Distance from force centroid to target.
+            cx = sum(u["pos"]["x"] for u in alive) // n_alive
+            cy = sum(u["pos"]["y"] for u in alive) // n_alive
+            dist = _dist2((cx, cy), a.final_target_cell) ** 0.5
+            target_alive = any(
+                u["id"] == a.final_target_actor for u in enemy_units
+            ) if a.final_target_actor is not None else None
+            self._append_scout_event({
+                "kind": "mission_progress",
+                "severity": "info",
+                "mission_id": a.mission_id,
+                "intent": "attack",
+                "force_alive": n_alive,
+                "force_total": n_total,
+                "avg_hp_pct": round(avg_hp, 2),
+                "distance_to_target": round(dist, 1),
+                "target_alive": target_alive,
+                "target_named": a.target_named,
+                "timestamp": now,
+            })
+        for m in harass:
+            n_alive, n_total, avg_hp, _ = force_stats(m.force_ids)
+            if n_alive == 0:
+                continue
+            self._append_scout_event({
+                "kind": "mission_progress",
+                "severity": "info",
+                "mission_id": m.mission_id,
+                "intent": "harass",
+                "force_alive": n_alive,
+                "force_total": n_total,
+                "avg_hp_pct": round(avg_hp, 2),
+                "state": getattr(m, "state", "?"),
+                "cycle": getattr(m, "cycle", False),
+                "timestamp": now,
+            })
+        self._last_mission_progress_ts = now
+
     def _append_scout_event(self, event: dict) -> None:
         """Write one event to scout_events.jsonl. Best-effort — never raises.
 
@@ -2019,6 +2112,15 @@ class TacticalEngine:
         except Exception:
             pass  # never let an advisory crash the daemon loop
 
+        # Mission progress events — every ~30s push a snapshot of active
+        # offensive missions so the LLM can volunteer status updates
+        # ("attack stalled at 60% HP, want to commit reserves?") without the
+        # player having to ask.
+        try:
+            self._emit_mission_progress(s)
+        except Exception:
+            pass
+
         self.tick_count += 1
 
     # --- dynamic force re-resolution ----------------------------------
@@ -2218,11 +2320,13 @@ class TacticalEngine:
             return
 
         # 7. No contact in radius — resume march to final target.
-        # Cycle-assault retarget: if final_target_actor died AND mission has a
+        # Named-target retarget: if final_target_actor died AND mission has a
         # named target, look up a fresh target through WorldView. This stops
         # the army parking at a corpse's coords forever once the original
-        # target (e.g. enemy_fact) is destroyed.
-        if (a.force_spec is not None and a.target_named is not None
+        # target (e.g. enemy_fact) is destroyed. Enabled for both static
+        # LLM-dispatched attacks AND cycle assaults — anything with a named
+        # target benefits from re-resolution.
+        if (a.target_named is not None
                 and a.final_target_actor is not None):
             target_alive = any(u["id"] == a.final_target_actor for u in enemy_units)
             if not target_alive:
