@@ -1,0 +1,33 @@
+# openra_mcp gitignore
+
+# Session logs — research data
+logs/
+logs_test/
+
+# OpenRA build output
+OpenRA/bin/
+OpenRA/obj/
+OpenRA/Support/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated yaml (regen with scripts/gen_strategy_templates.py)
+# NOTE: we DO commit strategy_templates.yaml because OpenRA needs it at runtime.
+# To regenerate, run scripts/gen_strategy_templates.py.
+
+# Scout daemon output
+scout_events.jsonl

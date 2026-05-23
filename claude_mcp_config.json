@@ -1,0 +1,17 @@
+{
+  "_comment": "Example MCP server entry for Claude Code. Add this to your Claude Code config (e.g. ~/.claude/settings.json under 'mcpServers') so Claude Code spawns the OpenRA MCP server on demand. Adjust the python path if needed.",
+  "mcpServers": {
+    "openra-bridge": {
+      "command": "D:\\Anaconda\\python.exe",
+      "args": [
+        "-m",
+        "mcp_server.server"
+      ],
+      "cwd": "D:\\openra_mcp",
+      "env": {
+        "OPENRA_BRIDGE_HOST": "127.0.0.1",
+        "OPENRA_BRIDGE_PORT": "7777"
+      }
+    }
+  }
+}
