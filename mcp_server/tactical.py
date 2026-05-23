@@ -243,6 +243,7 @@ class AlertState(str, Enum):
 
 class Objective(str, Enum):
     DESTROY_FACT       = "destroy_fact"
+    DESTROY_ENEMY      = "destroy_enemy"     # total-war: cycle assault, dynamic recruit
     HARASS_ECONOMY     = "harass_economy"
     SURVIVE_UNTIL_TICK = "survive_until_tick"
     CONTROL_MAP_CENTER = "control_map_center"
@@ -326,6 +327,16 @@ ALERT_STATE_CONFIG: Dict[AlertState, dict] = {
 # HARASS_ECONOMY: cycle harass on enemy economy with dynamic harass_capable.
 _OBJECTIVE_MISSIONS: Dict[Objective, List[dict]] = {
     Objective.DESTROY_FACT: [],
+    Objective.DESTROY_ENEMY: [
+        # Cycle assault that recruits any combat-mobile unit and chases
+        # enemy_fact, falling back to nearest structure when none remain.
+        # max_force=None (unlimited) so the whole army rolls forward as the
+        # player produces.
+        {"kind": "attack",
+         "force": {"combat_mobile": True},
+         "target_named": "enemy_fact",
+         "max_force": None},
+    ],
     Objective.HARASS_ECONOMY: [
         {"kind": "harass",
          "force": {"harass_capable": True},
@@ -339,6 +350,7 @@ _OBJECTIVE_MISSIONS: Dict[Objective, List[dict]] = {
 
 _OBJECTIVE_TO_SUGGESTED_STATE: Dict[Objective, AlertState] = {
     Objective.DESTROY_FACT:       AlertState.COMBAT,
+    Objective.DESTROY_ENEMY:      AlertState.COMBAT,
     Objective.HARASS_ECONOMY:     AlertState.ALERT,
     Objective.SURVIVE_UNTIL_TICK: AlertState.LOCKDOWN,
     Objective.CONTROL_MAP_CENTER: AlertState.WATCH,
@@ -355,7 +367,19 @@ def objective_to_suggested_state(obj: Objective) -> AlertState:
 
 @dataclass
 class Assault:
-    """One active offensive mission shepherded by the daemon."""
+    """One active offensive mission shepherded by the daemon.
+
+    Static mode (default): force_ids fixed at registration. Mission ends when
+    all units die or target dies (retarget picks nearest enemy, falls flat
+    when none remain).
+
+    Dynamic mode: force_spec set + target_named set → daemon recruits newly-
+    trained matching units every tick (_resolve_dynamic_forces), and when
+    the current target dies, re-resolves the named target via WorldView
+    (e.g. enemy_fact → finds next enemy fact, or nearest_enemy_structure).
+    Used by destroy_enemy objective to keep the army pushing as players
+    produce more units.
+    """
     mission_id: int
     force_ids: Set[int]
     final_target_cell: Tuple[int, int]
@@ -364,6 +388,16 @@ class Assault:
     # True iff the alert-state machine dispatched this mission. Manual missions
     # (LLM-dispatched) are auto=False and survive state swaps.
     auto: bool = False
+    # Dynamic recruitment: when set, _resolve_dynamic_forces pulls matching
+    # newly-trained units into force_ids every tick. Static when None.
+    force_spec: Optional[dict] = None
+    # When set, daemon retargets via named lookup on target death (replaces
+    # 'pick nearest enemy' behavior that bleeds intent to whatever is close).
+    target_named: Optional[str] = None
+    # Throttle for dynamic force resolve (mirrors HarassMission pattern).
+    last_resolve_ts: float = 0.0
+    # Cap for dynamic recruitment (None = unlimited).
+    max_force_size: Optional[int] = None
     # runtime
     current_target_actor: Optional[int] = None
     last_seen_target_alive_at: float = 0.0
@@ -545,6 +579,10 @@ class PendingMission:
     queued_at_ts: float
     reason: str           # e.g. "no harass_capable units available"
     last_check_ts: float = 0.0
+    # Tracks which layer queued this pending so swap (alert state / objective)
+    # can clean up only what it owns. "manual" = LLM dispatch_intent direct;
+    # "alert" / "objective" = auto-dispatched but force was empty.
+    owner: str = "manual"
 
 
 @dataclass
@@ -653,6 +691,9 @@ class TacticalEngine:
         final_target_cell: Tuple[int, int],
         final_target_actor: Optional[int] = None,
         cohesion: bool = True,
+        force_spec: Optional[dict] = None,
+        target_named: Optional[str] = None,
+        max_force_size: Optional[int] = None,
     ) -> int:
         with self._lock:
             mid = self._next_id
@@ -663,6 +704,9 @@ class TacticalEngine:
                 final_target_cell=final_target_cell,
                 final_target_actor=final_target_actor,
                 cohesion=cohesion,
+                force_spec=force_spec,
+                target_named=target_named,
+                max_force_size=max_force_size,
                 current_target_actor=final_target_actor,
                 started_at_ts=time.time(),
                 initial_force_count=len(force_ids),
@@ -886,8 +930,11 @@ class TacticalEngine:
     # --- pending queue ------------------------------------------------
 
     def queue_pending(self, intent_kind: str, intent_payload: dict,
-                      reason: str) -> int:
+                      reason: str, owner: str = "manual") -> int:
         """Queue a mission that couldn't dispatch (force empty etc.).
+
+        owner labels which layer queued it ("manual" / "alert" / "objective")
+        so a doctrine swap can prune just its own waiting entries.
 
         Returns the pending_id. The daemon re-attempts force resolution
         every PENDING_RECHECK_S; once it returns a non-empty force, the
@@ -912,6 +959,7 @@ class TacticalEngine:
                 queued_at_tick=tick,
                 queued_at_ts=time.time(),
                 reason=reason,
+                owner=owner,
             )
         self._ensure_thread()
         return pid
@@ -1012,6 +1060,7 @@ class TacticalEngine:
 
         # --- 1. Cancel previous auto missions (manual ones stay). ---
         cancelled_ids: List[int] = []
+        cancelled_pending_ids: List[int] = []
         with self._lock:
             prev_auto_ids = list(self.auto_mission_ids)
             for mid in prev_auto_ids:
@@ -1021,6 +1070,14 @@ class TacticalEngine:
                         cancelled_ids.append(mid)
                         break
             self.auto_mission_ids.clear()
+
+            # Also prune pending entries owned by the alert layer — otherwise
+            # a state swap leaves stale auto_patrol / auto_harass in queue
+            # that would later trigger for the previous state's intent.
+            for pid in list(self._pending.keys()):
+                if self._pending[pid].owner == "alert":
+                    self._pending.pop(pid, None)
+                    cancelled_pending_ids.append(pid)
 
             # --- 2a. Tear down previous auto perimeters. ---
             removed_perimeters: List[int] = []
@@ -1052,7 +1109,7 @@ class TacticalEngine:
         # --- 4. Dispatch auto_missions. ---
         dispatched_ids: List[int] = []
         for spec in cfg.get("auto_missions", []):
-            mid = self._dispatch_auto_mission(spec, world)
+            mid = self._dispatch_auto_mission(spec, world, owner="alert")
             if mid is not None:
                 dispatched_ids.append(mid)
 
@@ -1097,6 +1154,7 @@ class TacticalEngine:
             "previous_state": prev_state.value,
             "new_state": state.value,
             "cancelled_mission_ids": cancelled_ids,
+            "cancelled_pending_ids": cancelled_pending_ids,
             "removed_perimeter_zone_ids": removed_perimeters,
             "installed_perimeter_zone_ids": installed_perimeters,
             "dispatched_mission_ids": dispatched_ids,
@@ -1152,6 +1210,46 @@ class TacticalEngine:
         target = candidates[0]
         return (target["pos"]["x"], target["pos"]["y"])
 
+    def _resolve_named_target_for_assault(
+        self, name: str, enemy_units: List[dict]
+    ) -> Optional[Tuple[int, Tuple[int, int]]]:
+        """Lookup a fresh enemy actor matching the named target. Used by
+        cycle-assault to repick on target death. Returns (actor_id, (x,y))
+        or None when nothing matches (mission ends).
+        """
+        def first_kind(kinds: Set[str]) -> Optional[dict]:
+            for u in enemy_units:
+                if u.get("kind", "").lower() in kinds:
+                    return u
+            return None
+
+        candidates: Optional[dict] = None
+        if name == "enemy_fact":
+            candidates = first_kind({"fact"})
+            if candidates is None:
+                # Fall back to any structure so the army doesn't park.
+                candidates = next(
+                    (u for u in enemy_units if u.get("kind", "").lower() in
+                     {"powr", "apwr", "proc", "barr", "tent", "weap",
+                      "afld", "hpad", "spen", "syrd", "stek", "atek",
+                      "dome", "fix", "silo"}),
+                    None,
+                )
+        elif name in ("nearest_enemy_structure", "enemy_base", "enemy_center"):
+            candidates = next(
+                (u for u in enemy_units if u.get("kind", "").lower() in
+                 {"fact", "powr", "apwr", "proc", "barr", "tent", "weap",
+                  "afld", "hpad", "spen", "syrd", "stek", "atek", "dome",
+                  "fix", "silo"}),
+                None,
+            )
+        elif name in ("nearest_enemy", "nearest_enemy_unit"):
+            candidates = next(iter(enemy_units), None)
+        if candidates is None:
+            return None
+        return (int(candidates["id"]),
+                (int(candidates["pos"]["x"]), int(candidates["pos"]["y"])))
+
     def _compute_map_perimeter_waypoints(
         self, world: dict
     ) -> List[Tuple[int, int]]:
@@ -1203,11 +1301,23 @@ class TacticalEngine:
         harass_ok = frozenset({"jeep", "ftrk", "dog", "e3", "apc", "1tnk"})
         harass_bad = frozenset({"2tnk", "3tnk", "4tnk", "arty", "v2rl",
                                 "mcv", "harv"})
+        # Combat-mobile excludes harvesters, MCV, and buildings (anything
+        # that can move + fight). Used by destroy_enemy cycle assault.
+        non_combat = frozenset({"harv", "mcv"})
+        building_kinds = frozenset({
+            "fact", "powr", "apwr", "proc", "barr", "tent", "weap", "afld",
+            "hpad", "spen", "syrd", "stek", "atek", "dome", "fix", "silo",
+            "pbox", "hbox", "gun", "agun", "sam", "ftur", "tsla", "mslo",
+            "iron", "pdox", "gap", "sbag", "brik", "barb", "cycl", "kenn",
+        })
 
         def matches(u: dict) -> bool:
             kind = (u.get("kind") or "").lower()
             if spec.get("harass_capable") is True:
                 if kind not in harass_ok or kind in harass_bad:
+                    return False
+            if spec.get("combat_mobile") is True:
+                if kind in non_combat or kind in building_kinds:
                     return False
             if unit_kind and kind != unit_kind.lower():
                 return False
@@ -1252,12 +1362,18 @@ class TacticalEngine:
         return busy
 
     def _dispatch_auto_mission(
-        self, spec: dict, world: Optional[dict]
+        self, spec: dict, world: Optional[dict],
+        owner: str = "alert",
     ) -> Optional[int]:
         """Resolve + dispatch one auto_mission spec. Returns the mission_id
         on success, None when the spec couldn't be resolved (no force, no
         target, etc.) — partial failures are silent so a state swap never
         explodes mid-game.
+
+        `owner` labels the pending entry so a doctrine swap can clean only
+        its own waiting work ("alert" or "objective"). Auto-mission specs
+        also embed the owner into __auto_spec__ so _tick_pending can pass
+        it back when the entry finally dispatches.
         """
         if world is None:
             return None
@@ -1271,12 +1387,13 @@ class TacticalEngine:
             # _tick_pending detects it and re-invokes _dispatch_auto_mission
             # instead of going through the interpreter (which would need a
             # fully-formed top-level intent dict).
-            payload = {"__auto_spec__": dict(spec)}
+            payload = {"__auto_spec__": dict(spec), "__owner__": owner}
             reason = f"auto_mission '{kind}' force empty; will retry"
             self.queue_pending(
                 intent_kind=f"auto_{kind}",
                 intent_payload=payload,
                 reason=reason,
+                owner=owner,
             )
             return None
 
@@ -1325,6 +1442,32 @@ class TacticalEngine:
                     if m is not None:
                         m.auto = True
                 return mid
+
+            if kind == "attack":
+                # Cycle-assault used by destroy_enemy objective. Resolves the
+                # named target now; mission persists target_named so daemon
+                # can re-resolve when it dies.
+                target_named = spec.get("target_named", "enemy_fact")
+                enemy_units = world.get("enemy_units", [])
+                resolved = self._resolve_named_target_for_assault(
+                    target_named, enemy_units)
+                if resolved is None:
+                    return None  # nothing to attack
+                tid, tpos = resolved
+                mid = self.register_assault(
+                    force_ids=ids,
+                    final_target_cell=tpos,
+                    final_target_actor=tid,
+                    cohesion=True,
+                    force_spec=dict(force_spec),
+                    target_named=target_named,
+                    max_force_size=limit,
+                )
+                with self._lock:
+                    m = self._assaults.get(mid)
+                    if m is not None:
+                        m.auto = True
+                return mid
         except Exception as e:
             self.last_error = (
                 f"auto_dispatch_failed[{kind}]: {type(e).__name__}: {e}"
@@ -1353,6 +1496,7 @@ class TacticalEngine:
         """
         prev_obj = self.current_objective
         cancelled_ids: List[int] = []
+        cancelled_pending_ids: List[int] = []
         with self._lock:
             for mid in list(self.objective_mission_ids):
                 if mid in self._assaults:
@@ -1368,6 +1512,11 @@ class TacticalEngine:
                     self._contain.pop(mid, None)
                     cancelled_ids.append(mid)
             self.objective_mission_ids.clear()
+            # Prune pending entries owned by the objective layer.
+            for pid in list(self._pending.keys()):
+                if self._pending[pid].owner == "objective":
+                    self._pending.pop(pid, None)
+                    cancelled_pending_ids.append(pid)
             self.current_objective = obj
             self.objective_params = dict(params or {})
 
@@ -1381,7 +1530,7 @@ class TacticalEngine:
                 # Reuse the alert-state dispatcher path; it already handles
                 # pending enqueue + tagging via _dispatch_auto_mission.
                 pending_before = set(self._pending.keys())
-                mid = self._dispatch_auto_mission(spec, world)
+                mid = self._dispatch_auto_mission(spec, world, owner="objective")
                 if mid is not None:
                     dispatched_ids.append(mid)
                     with self._lock:
@@ -1394,6 +1543,7 @@ class TacticalEngine:
             "new_objective": obj.value if obj else None,
             "params": dict(self.objective_params),
             "cancelled_mission_ids": cancelled_ids,
+            "cancelled_pending_ids": cancelled_pending_ids,
             "dispatched_mission_ids": dispatched_ids,
             "pending_ids": pending_ids,
         }
@@ -1887,6 +2037,7 @@ class TacticalEngine:
             harass = list(self._harass.values())
             patrol = list(self._patrol.values())
             escort = list(self._escort.values())
+            assaults = list(self._assaults.values())
 
         all_busy = self._all_busy_ids()
         for m in harass:
@@ -1894,6 +2045,11 @@ class TacticalEngine:
         for m in patrol:
             self._refresh_mission_force(m, live_ids, all_busy, now)
         for m in escort:
+            self._refresh_mission_force(m, live_ids, all_busy, now)
+        # Cycle assault (Assault with force_spec set) — recruits newly trained
+        # matching units into the push so destroy_enemy objective keeps the
+        # army moving as the player produces.
+        for m in assaults:
             self._refresh_mission_force(m, live_ids, all_busy, now)
 
     def _refresh_mission_force(
@@ -2060,6 +2216,23 @@ class TacticalEngine:
             return
 
         # 7. No contact in radius — resume march to final target.
+        # Cycle-assault retarget: if final_target_actor died AND mission has a
+        # named target, look up a fresh target through WorldView. This stops
+        # the army parking at a corpse's coords forever once the original
+        # target (e.g. enemy_fact) is destroyed.
+        if (a.force_spec is not None and a.target_named is not None
+                and a.final_target_actor is not None):
+            target_alive = any(u["id"] == a.final_target_actor for u in enemy_units)
+            if not target_alive:
+                fresh = self._resolve_named_target_for_assault(a.target_named, enemy_units)
+                if fresh is not None:
+                    a.final_target_actor = fresh[0]
+                    a.final_target_cell = fresh[1]
+                    self.retargets += 1
+                else:
+                    # No suitable enemy left — mission complete.
+                    a.finished = True
+                    return
         a.current_target_actor = a.final_target_actor
         moving = list(active_ids_set - a.halted_units)
         if not moving:

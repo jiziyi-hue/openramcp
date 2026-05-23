@@ -76,9 +76,15 @@ OpenRA 主菜单 → **Skirmish** → 选地图 → **Play**.
 你: 撑 20 分钟我就赢
 你: 我要切断他经济饿死他
 你: 控制地图中央
+你: 总动员推过去
 ```
 
-5 目标: `destroy_fact` / `destroy_enemy` / `survive_until_tick` / `harass_economy` / `control_map_center`.
+5 目标:
+- `destroy_fact` — 拆敌总部, 你自己派 attack
+- `destroy_enemy` — **总动员**: daemon 接管推进, 新训的车自动上前线, 目标死自动重选
+- `survive_until_tick` — 撑到 tick X
+- `harass_economy` — 切敌经济, daemon 自动 cycle harass
+- `control_map_center` — 占地图中央
 
 ### 3.3 战术意图 (dispatch_intent)
 

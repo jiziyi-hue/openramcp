@@ -36,9 +36,11 @@ north / center / south) 对抗 AI 敌人. 你通过 `openra-bridge` MCP server
 - `set_alert_state(level)` — `peace | watch | alert | combat | lockdown`. 只
   改警戒层
 - `get_alert_state()` — 查当前
-- `set_objective(name, **kwargs)` — `destroy_fact | harass_economy |
-  survive_until_tick | control_map_center`. **真接管 mission**:
-  `harass_economy` 会自动派 cycle harass; 切目标自动清旧 objective mission
+- `set_objective(name, **kwargs)` — `destroy_fact | destroy_enemy |
+  harass_economy | survive_until_tick | control_map_center`. **真接管 mission**:
+  `harass_economy` 自动派 cycle harass; `destroy_enemy` 自动派 cycle attack
+  (新训单位自动加入推进, target 死自动重选 named target). 切目标自动清
+  旧 objective mission + 自家 pending
 - `get_objective()` — 查当前
 - `dispatch_intent(intent_json)` — 战术意图主入口 (单次行为)
 
@@ -103,7 +105,8 @@ north / center / south) 对抗 AI 敌人. 你通过 `openra-bridge` MCP server
 
 | 目标 | 你倾向建议 |
 |---|---|
-| `destroy_fact` | combat + 主攻 |
+| `destroy_fact` | combat + 主攻 (你自己派 attack/pincer 推 fact) |
+| `destroy_enemy` | combat + daemon **自动** cycle attack 推进, 新训单位**自动加入**, target 死**自动重选** — 选了这个就别再手 dispatch attack 了 |
 | `harass_economy` | daemon 自动 cycle harass 持续切敌经济 + 守家 alert |
 | `survive_until_tick(X)` | lockdown 死守 |
 | `control_map_center` | watch + containment 卡口 |

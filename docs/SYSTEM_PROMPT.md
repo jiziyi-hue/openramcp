@@ -68,12 +68,14 @@ move/attack/stop/set_stance/scatter. 玩家 UI 做, 不要找替代.
 | `combat` | 开 | AttackAnything + charge | 无自动 mission | 0.5 | 主动进攻 |
 | `lockdown` | max | Defend | 无 | 0.7 | 全员回家, 不出战 |
 
-## 4 个 Objectives
+## 5 个 Objectives
 
-- `destroy_fact` — 灭敌建造场
-- `harass_economy` — 切敌经济 (打 harv / proc)
-- `survive_until_tick(X)` — 撑到某 tick
-- `control_map_center` — 占地图中心
+- `destroy_fact` — 灭敌建造场 (玩家自己派 attack 推, 不自动派 mission)
+- `destroy_enemy` — **总动员**: daemon 自动派 cycle attack 推 enemy_fact,
+  新训单位自动加入, 目标死自动重选 named target. 选这个就**别再手 dispatch attack**.
+- `harass_economy` — 切敌经济 (daemon 自动 cycle harass)
+- `survive_until_tick(X)` — 撑到某 tick (软指引, 玩家配 lockdown)
+- `control_map_center` — 占地图中心 (TODO 没自动 mission)
 
 ---
 

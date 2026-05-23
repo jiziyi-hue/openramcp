@@ -793,13 +793,15 @@ def set_objective(name: str, tick: Optional[int] = None) -> dict:
         "params": params,
         "suggested_alert_state": suggested.value,
         "cancelled_mission_ids": report.get("cancelled_mission_ids", []),
+        "cancelled_pending_ids": report.get("cancelled_pending_ids", []),
         "dispatched_mission_ids": report.get("dispatched_mission_ids", []),
         "pending_ids": report.get("pending_ids", []),
         "narrative": (
             f"Objective {report.get('previous_objective')} → {obj.value}. "
             f"Cancelled {len(report.get('cancelled_mission_ids', []))} prior "
-            f"objective mission(s), dispatched "
-            f"{len(report.get('dispatched_mission_ids', []))}, "
+            f"objective mission(s) + "
+            f"{len(report.get('cancelled_pending_ids', []))} pending, "
+            f"dispatched {len(report.get('dispatched_mission_ids', []))}, "
             f"{len(report.get('pending_ids', []))} pending. "
             f"Suggested alert: {suggested.value}."
         ),

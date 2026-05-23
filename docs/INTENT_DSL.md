@@ -76,7 +76,7 @@ set_alert_state(level: "green" | "yellow" | "orange" | "red" | "black")
 
 ```jsonc
 set_objective(
-  name: "destroy_fact" | "harass_economy" | "survive_until_tick" | "control_map_center",
+  name: "destroy_fact" | "destroy_enemy" | "harass_economy" | "survive_until_tick" | "control_map_center",
   tick: <int>,                  // 仅 survive_until_tick 用
   region: <Region>              // 仅 control_map_center 用 (默认地图正中)
 )
@@ -84,7 +84,8 @@ set_objective(
 
 | objective | 含义 | LLM 偏向 |
 |---|---|---|
-| `destroy_fact` | 拆敌建造场 (默认) | 推荐 attack/pincer, 目标 enemy_fact |
+| `destroy_fact` | 拆敌建造场 (默认) | 推荐 attack/pincer, 目标 enemy_fact. 不自动派 mission |
+| `destroy_enemy` | 总动员灭一切 | **daemon 自动派 cycle attack** 推 enemy_fact, 新训 combat-mobile 自动加入, target 死自动重选 (fact → 最近建筑). 选了这个就**别再手 dispatch attack** |
 | `harass_economy` | 切敌经济, 不必决战 | **daemon 自动持续 cycle harass** 敌经济区, 自动吸新 harass-capable, 自动重选目标 |
 | `survive_until_tick` | 撑到 tick X | 推荐 defend/contain + alert=orange |
 | `control_map_center` | 卡地图中场 | 推荐 contain + patrol |
