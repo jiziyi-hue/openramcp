@@ -53,28 +53,12 @@ ReportWhat = Literal[
     "threats",       # 当前威胁列表
     "minimap",       # 截图
     "resources",     # 资源 / 经济
-    "capabilities",  # 列出 5 模板 + 可用 enum + 当前 strategy
-    "strategy",      # 当前 bot strategy state
 ]
 
 
 # ============================================================================
-# Strategy enums (used by IntentSetStrategy + capabilities report)
+# Shared enums (reused by alert-state / objective engines downstream)
 # ============================================================================
-
-StrategyTemplate = Literal[
-    # P1 — core 5
-    "tank_rush",        # 重坦量产 + 早期推
-    "infantry_swarm",   # 步兵海 cheese
-    "balanced",         # 默认混编
-    "turtle",           # 龟缩高防, 后期决战
-    "raid_harass",      # 骚扰, 切敌经济
-    # P3 — 4 旗舰
-    "tesla_wall",       # 苏方 — 特斯拉墙 + 特斯拉坦克
-    "chrono_blitz",     # 盟方 — Chronosphere 闪击重坦
-    "siege_arty",       # 火炮 / V2 远程平推
-    "paratroop_rain",   # 空军主力 + 空投
-]
 
 DefenseState = Literal[
     "passive",          # 不主动反应
@@ -82,24 +66,7 @@ DefenseState = Literal[
     "full_alert",       # 全军戒备
 ]
 
-TransitionMode = Literal[
-    "soft",             # 自然换 (新令按新模板, 老兵跑完当前 order)
-    "hard",             # 清队列 + 解散 squad, 立即重排
-    "hybrid",           # 战斗中不动, 闲的立切
-]
-
-SpendRatio = Literal["all_eco", "eco_heavy", "balanced", "army_heavy", "all_army"]
 ScoutPriority = Literal["off", "low", "normal", "high", "paranoid"]
-TechFocus = Literal["none", "tier2", "tier3", "superweapon", "air"]
-RetreatThreshold = Literal["never", "low", "normal", "high", "always"]
-SupportPowersAuto = Literal["off", "defensive_only", "auto", "aggressive"]
-PrimaryObjective = Literal[
-    "destroy_enemy",
-    "destroy_fact",
-    "control_map",
-    "survive_until",
-    "harass_economy",
-]
 
 NamedTarget = Literal[
     "enemy_fact",       # 敌主基地建造场
@@ -143,6 +110,10 @@ class ForceByFilter(BaseModel):
     hp_below: Optional[float] = None          # 0..1
     hp_above: Optional[float] = None
     in_group: Optional[str] = None            # 限定群内
+    harass_capable: Optional[bool] = None     # True → only fast/kite-able kinds
+                                              #        (jeep/ftrk/dog/e3/apc/1tnk)
+                                              #        and explicitly exclude
+                                              #        heavy/slow (tnk2-4/arty/v2)
 
 
 Force = Union[ForceByGroup, ForceByIds, ForceByFilter]
@@ -235,19 +206,6 @@ class IntentScout(BaseModel):
     region: Region
 
 
-class IntentEconomy(BaseModel):
-    """调整 bot macro module 偏好 (路 D 后才真起效, 现在仅记录)."""
-    intent: Literal["economy"] = "economy"
-    focus: EconomyFocus = "balanced"
-    intensity: EconomyIntensity = "normal"
-
-
-class IntentBotFocus(BaseModel):
-    """提示 bot SquadManager 把攻击 squad 派去某点 (路 D 实现后真起效)."""
-    intent: Literal["bot_focus"] = "bot_focus"
-    target: Target
-
-
 class IntentPincer(BaseModel):
     """两路夹击. left/right 同时压向 target, 在 rendezvous_dist 距离集结再压."""
     intent: Literal["pincer"] = "pincer"
@@ -282,62 +240,87 @@ class IntentRaw(BaseModel):
     atomic_calls: list[dict]           # 形如 [{tool: "move", args: {...}}, ...]
 
 
-class IntentSetStrategy(BaseModel):
-    """Push partial strategy patch to the bot.
+# ----- daemon-mission intents (long-running, registered into tactical daemon)
 
-    All business fields are Optional — only set fields take effect.
-    Unset fields leave the bot's existing state untouched.
 
-    The C# StrategyControllerBotModule receives this patch, swaps the active
-    template condition (via GrantCondition), and applies non-template fields
-    (defense_state, attack_focus, etc) to its mutable state. Existing yaml-
-    gated bot modules (BaseBuilder/UnitBuilder/SquadManager per template)
-    pick up the new condition on next tick.
+class IntentHarass(BaseModel):
+    """骚扰: 在敌经济区做打了就跑的循环.
+
+    daemon 跑 engaging → withdrawing → regrouping 状态机. force 优先打
+    harv/proc, 任一单位血量低于 withdraw_hp_threshold 整队撤回 withdraw_to,
+    avg hp ≥ reengage_hp_threshold 再发动下一轮 (cycle=True).
     """
-    intent: Literal["set_strategy"] = "set_strategy"
+    intent: Literal["harass"] = "harass"
+    force: Force
+    region: Region
+    withdraw_hp_threshold: float = 0.6
+    reengage_hp_threshold: float = 0.85
+    withdraw_to: Optional[Union[TargetByName, TargetByPos]] = None  # 默认 self_base
+    cycle: bool = True
+    max_force_size: Optional[int] = None
 
-    # ---- macro preset / kill-switch -----------------------------------
-    template: Optional[StrategyTemplate] = None
-    macro_paused: Optional[bool] = None
 
-    # ---- combat posture -----------------------------------------------
-    defense_state: Optional[DefenseState] = None
-    attack_focus: Optional[Target] = None
-    retreat_threshold: Optional[RetreatThreshold] = None
+class IntentPatrol(BaseModel):
+    """巡逻: 沿 waypoints 循环走路提供视野.
 
-    # ---- economy / production -----------------------------------------
-    spend_ratio: Optional[SpendRatio] = None
-    tech_focus: Optional[TechFocus] = None
-    counter_pick: Optional[bool] = None
+    contact_stance 决定遇敌姿态 (默认 ReturnFire — 反击但不追). 残血单位
+    (hp < 0.4) 自动脱队回家.
+    """
+    intent: Literal["patrol"] = "patrol"
+    force: Force
+    waypoints: list[Vec2]
+    cycle: bool = True
+    contact_stance: Stance = "ReturnFire"
 
-    # ---- intel ---------------------------------------------------------
-    scout_priority: Optional[ScoutPriority] = None
 
-    # ---- harass / specialist roles ------------------------------------
-    harass_focus: Optional[Target] = None
+class IntentEscort(BaseModel):
+    """护送: force 贴着指定单位移动, 拦截威胁.
 
-    # ---- powers --------------------------------------------------------
-    support_powers_auto: Optional[SupportPowersAuto] = None
+    escortee 死 → mission 自动结束 (after-action push).
+    """
+    intent: Literal["escort"] = "escort"
+    force: Force
+    escortee_id: int
+    destination: Optional[Target] = None      # 终点 (用于偏置)
+    escort_radius: int = 4
+    engage_radius: int = 6
 
-    # ---- meta ----------------------------------------------------------
-    auto_adapt: Optional[bool] = None
-    verbose_reports: Optional[bool] = None
-    primary_objective: Optional[PrimaryObjective] = None
 
-    # ---- focus clearing (separate flags because None is "leave unset")
-    clear_attack_focus: Optional[bool] = None
-    clear_harass_focus: Optional[bool] = None
+class IntentContain(BaseModel):
+    """卡点: force 守住一个 chokepoint, 半径内打, 不追."""
+    intent: Literal["contain"] = "contain"
+    force: Force
+    chokepoint: Vec2
+    radius: int = 4
+    stance: Stance = "Defend"
 
-    # ---- transition control -------------------------------------------
-    transition_mode: TransitionMode = "soft"   # always present, default soft
+
+class IntentDiversion(BaseModel):
+    """声东击西: 两路同时出 — feint 牵制 + raid 真打.
+
+    daemon 协调时序: 两路同时出, feint 推到 8 格停线 ReturnFire,
+    raid 走 raid_approach (flank_left/flank_right) 真打. 任一路 hp < 40%
+    撤回 withdraw_to. feint_commits=True 时 raid 接火后 feint 升级到
+    AttackAnything 跟进.
+    """
+    intent: Literal["diversion"] = "diversion"
+    feint_force: Force
+    feint_target: Target
+    raid_force: Force
+    raid_target: Target
+    raid_approach: Approach = "flank_right"   # 必须 flank_left/flank_right
+    feint_commits: bool = False
 
 
 Intent = Union[
     IntentAttack, IntentDefend, IntentRetreat, IntentRegroup, IntentScout,
-    IntentEconomy, IntentBotFocus, IntentPincer, IntentFeint,
+    IntentPincer, IntentFeint,
+    IntentHarass, IntentPatrol, IntentEscort, IntentContain, IntentDiversion,
     IntentSetStance, IntentReport, IntentRaw,
-    IntentSetStrategy,
 ]
+
+# Alias — older code refers to IntentUnion; both names point to the same Union.
+IntentUnion = Intent
 
 
 def parse_intent(payload: dict) -> Intent:
@@ -349,14 +332,16 @@ def parse_intent(payload: dict) -> Intent:
         "retreat": IntentRetreat,
         "regroup": IntentRegroup,
         "scout": IntentScout,
-        "economy": IntentEconomy,
-        "bot_focus": IntentBotFocus,
         "pincer": IntentPincer,
         "feint": IntentFeint,
+        "harass": IntentHarass,
+        "patrol": IntentPatrol,
+        "escort": IntentEscort,
+        "contain": IntentContain,
+        "diversion": IntentDiversion,
         "set_stance": IntentSetStance,
         "report": IntentReport,
         "raw": IntentRaw,
-        "set_strategy": IntentSetStrategy,
     }
     if typ not in mapping:
         raise ValueError(f"unknown intent type: {typ!r}. valid: {sorted(mapping.keys())}")

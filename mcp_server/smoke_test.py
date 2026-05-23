@@ -154,16 +154,22 @@ def main() -> int:
 
     # --- Section 7: tools registered
     print("\n[7] tool surface")
+    # Post-2026-05-23 refactor: economy tools (build/train/sell/deploy/capture)
+    # and single-unit atomic tools (move/attack/stop/set_stance/scatter) removed.
+    # Player handles economy via OpenRA UI; LLM uses dispatch_intent / group tools.
     expected_tools = [
-        "get_state", "list_units", "find_unit", "build", "train", "move", "attack",
-        "set_stance", "pause", "resume", "screenshot",
-        "deploy", "stop", "sell", "scatter",
+        "get_state", "list_units", "find_unit",
+        "pause", "resume", "screenshot",
         "list_groups", "move_group", "attack_group", "stance_group",
         "assign_to_group", "rebalance_groups",
-        "dispatch_intent", "set_bot_focus",
+        "dispatch_intent",
+        "set_alert_state", "get_alert_state",
+        "set_objective", "get_objective",
         "latest_scout_report", "wait_for_event",
         "tactical_status", "enable_auto_defense", "disable_auto_defense",
-        "cancel_assaults",
+        "list_defense_perimeters", "cancel_assaults",
+        "list_pending_missions", "cancel_pending",
+        "vocab", "clarify", "end_session", "session_info",
     ]
     found = [t for t in expected_tools if callable(getattr(server, t, None))]
     missing = sorted(set(expected_tools) - set(found))

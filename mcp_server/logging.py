@@ -126,13 +126,6 @@ class SessionLogger:
                     self._counters["output_tokens"] += int(meta.get("llm_output_tokens", 0) or 0)
                 intent_type = (intent_payload or {}).get("intent", "?")
                 self._intent_hist[intent_type] = self._intent_hist.get(intent_type, 0) + 1
-                if intent_type == "set_strategy":
-                    tpl = (intent_payload or {}).get("template")
-                    if tpl:
-                        self._template_hist[tpl] = self._template_hist.get(tpl, 0) + 1
-                        if self._last_template is not None and self._last_template != tpl:
-                            self._template_switches += 1
-                        self._last_template = tpl
                 # Track fronts (any intent with an attack_focus or target)
                 af = (intent_payload or {}).get("attack_focus") \
                     or (intent_payload or {}).get("target")

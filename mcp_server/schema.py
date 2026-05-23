@@ -155,28 +155,6 @@ class CmdRebalanceGroups(BaseModel):
     axis: Literal["x", "y"] = "y"
 
 
-# ============================================================================
-# Strategy (路 D — bot template control)
-# ============================================================================
-
-class CmdSetStrategy(BaseModel):
-    """Push a partial strategy patch to the human-side StrategyControllerBot.
-
-    `patch` is a sparse dict — only fields the LLM filled are present. Bot
-    state is preserved for unset fields. Embedded Target objects must already
-    be resolved to {actor_id?, pos?} on the Python side; the C# bot does no
-    name lookup.
-    """
-    type: Literal["set_strategy"] = "set_strategy"
-    patch: dict
-    transition_mode: Literal["soft", "hard", "hybrid"] = "soft"
-
-
-class CmdGetStrategy(BaseModel):
-    """Read current strategy state from the bot. Returns the merged state dict."""
-    type: Literal["get_strategy"] = "get_strategy"
-
-
 Command = Union[
     CmdGetState, CmdListUnits, CmdFindUnit,
     CmdBuild, CmdTrain, CmdMove, CmdAttack, CmdSetStance, CmdCapture,
@@ -184,7 +162,6 @@ Command = Union[
     CmdDeploy, CmdStop, CmdSell, CmdScatter,
     CmdListGroups, CmdMoveGroup, CmdAttackGroup, CmdStanceGroup,
     CmdAssignToGroup, CmdRebalanceGroups,
-    CmdSetStrategy, CmdGetStrategy,
 ]
 
 

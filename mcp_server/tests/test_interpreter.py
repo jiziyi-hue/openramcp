@@ -128,59 +128,11 @@ class TestDispatch(unittest.TestCase):
         self.assertEqual(len(move_cmds), 1)
         self.assertTrue(move_cmds[0]["attack_move"])
 
-    def test_report_capabilities(self):
+    def test_set_strategy_intent_rejected(self):
+        """set_strategy intent removed in 2026-05-23 refactor."""
         t = MockTransport()
-        r = I.interpret({"intent": "report", "what": "capabilities"}, t)
-        self.assertTrue(r["ok"])
-        self.assertIn("capabilities", r)
-        self.assertIn("templates", r["capabilities"])
-        # P1 (5) + P3 (4) = 9 templates total once P3 wiring is in.
-        self.assertGreaterEqual(len(r["capabilities"]["templates"]), 5)
-        for tpl in ("tank_rush", "turtle", "raid_harass"):
-            self.assertIn(tpl, r["capabilities"]["templates"])
-
-
-class TestSetStrategyDispatch(unittest.TestCase):
-    def test_simple_template(self):
-        t = MockTransport()
-        r = I.interpret({
-            "intent": "set_strategy",
-            "template": "tank_rush",
-            "transition_mode": "soft",
-        }, t)
-        self.assertTrue(r["ok"])
-        ss = [c for c in t.commands if c.get("type") == "set_strategy"]
-        self.assertEqual(len(ss), 1)
-        self.assertEqual(ss[0]["patch"], {"template": "tank_rush"})
-        self.assertEqual(ss[0]["transition_mode"], "soft")
-
-    def test_attack_focus_resolved_to_pos(self):
-        t = MockTransport()
-        r = I.interpret({
-            "intent": "set_strategy",
-            "attack_focus": {"kind": "named", "name": "enemy_fact"},
-        }, t)
-        self.assertTrue(r["ok"])
-        ss = [c for c in t.commands if c.get("type") == "set_strategy"]
-        self.assertEqual(ss[0]["patch"]["attack_focus"]["pos"], {"x": 67, "y": 9})
-        self.assertEqual(ss[0]["patch"]["attack_focus"]["actor_id"], 99)
-
-    def test_clear_flags_passthrough(self):
-        t = MockTransport()
-        I.interpret({
-            "intent": "set_strategy",
-            "clear_attack_focus": True,
-            "clear_harass_focus": True,
-        }, t)
-        ss = [c for c in t.commands if c.get("type") == "set_strategy"]
-        self.assertTrue(ss[0]["patch"]["clear_attack_focus"])
-        self.assertTrue(ss[0]["patch"]["clear_harass_focus"])
-
-    def test_empty_patch_rejected(self):
-        t = MockTransport()
-        r = I.interpret({"intent": "set_strategy"}, t)
+        r = I.interpret({"intent": "set_strategy", "template": "tank_rush"}, t)
         self.assertFalse(r["ok"])
-        self.assertEqual(r["error"], "empty_patch")
 
 
 if __name__ == "__main__":

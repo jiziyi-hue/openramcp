@@ -30,80 +30,54 @@ class TestParseBasicIntents(unittest.TestCase):
         self.assertEqual(i.intent, "defend")
         self.assertEqual(i.stance, "Defend")
 
-    def test_report_capabilities(self):
-        i = D.parse_intent({"intent": "report", "what": "capabilities"})
-        self.assertEqual(i.what, "capabilities")
+    def test_set_strategy_intent_rejected(self):
+        """set_strategy intent removed in 2026-05-23 refactor."""
+        with self.assertRaises(ValueError):
+            D.parse_intent({"intent": "set_strategy", "template": "tank_rush"})
 
     def test_unknown_intent_rejected(self):
         with self.assertRaises(ValueError):
             D.parse_intent({"intent": "bogus_intent"})
 
 
-class TestSetStrategy(unittest.TestCase):
-    def test_minimal_template(self):
-        i = D.parse_intent({"intent": "set_strategy", "template": "tank_rush"})
-        self.assertEqual(i.template, "tank_rush")
-        self.assertEqual(i.transition_mode, "soft")  # default
+class TestNewIntents(unittest.TestCase):
+    """New daemon-resident missions added 2026-05-23."""
 
-    def test_full_patch(self):
+    def test_harass(self):
         i = D.parse_intent({
-            "intent": "set_strategy",
-            "template": "turtle",
-            "defense_state": "full_alert",
-            "spend_ratio": "eco_heavy",
-            "transition_mode": "hybrid",
-            "macro_paused": False,
-            "tech_focus": "tier3",
-            "primary_objective": "destroy_fact",
-            "scout_priority": "high",
-            "retreat_threshold": "normal",
+            "intent": "harass",
+            "force": {"kind": "filter", "harass_capable": True},
+            "region": {"kind": "around", "center": "enemy_base", "radius": 8},
         })
-        self.assertEqual(i.template, "turtle")
-        self.assertEqual(i.defense_state, "full_alert")
-        self.assertEqual(i.spend_ratio, "eco_heavy")
-        self.assertEqual(i.transition_mode, "hybrid")
-        self.assertFalse(i.macro_paused)
-        self.assertEqual(i.tech_focus, "tier3")
-        self.assertEqual(i.primary_objective, "destroy_fact")
+        self.assertEqual(i.intent, "harass")
 
-    def test_attack_focus_target(self):
+    def test_patrol(self):
         i = D.parse_intent({
-            "intent": "set_strategy",
-            "attack_focus": {"kind": "pos", "pos": {"x": 65, "y": 9}},
+            "intent": "patrol",
+            "force": {"kind": "group", "name": "north"},
+            "waypoints": [{"x": 40, "y": 50}, {"x": 80, "y": 50}],
         })
-        self.assertIsInstance(i.attack_focus, D.TargetByPos)
-        self.assertEqual(i.attack_focus.pos.x, 65)
+        self.assertEqual(i.intent, "patrol")
+        self.assertEqual(len(i.waypoints), 2)
 
-    def test_attack_focus_named(self):
+    def test_diversion(self):
         i = D.parse_intent({
-            "intent": "set_strategy",
-            "attack_focus": {"kind": "named", "name": "enemy_fact"},
+            "intent": "diversion",
+            "feint_force": {"kind": "group", "name": "center"},
+            "feint_target": {"kind": "named", "name": "enemy_base"},
+            "raid_force": {"kind": "filter", "harass_capable": True},
+            "raid_target": {"kind": "named", "name": "enemy_fact"},
+            "raid_approach": "flank_left",
         })
-        self.assertIsInstance(i.attack_focus, D.TargetByName)
-        self.assertEqual(i.attack_focus.name, "enemy_fact")
+        self.assertEqual(i.intent, "diversion")
 
-    def test_clear_focus_flags(self):
+    def test_filter_harass_capable(self):
         i = D.parse_intent({
-            "intent": "set_strategy",
-            "clear_attack_focus": True,
-            "clear_harass_focus": True,
+            "intent": "harass",
+            "force": {"kind": "filter", "harass_capable": True},
+            "region": {"kind": "around", "center": "enemy_base", "radius": 6},
         })
-        self.assertTrue(i.clear_attack_focus)
-        self.assertTrue(i.clear_harass_focus)
-
-    def test_unknown_template_rejected(self):
-        with self.assertRaises(Exception):
-            D.parse_intent({"intent": "set_strategy", "template": "bogus_template"})
-
-    def test_unknown_defense_state_rejected(self):
-        with self.assertRaises(Exception):
-            D.parse_intent({"intent": "set_strategy", "defense_state": "neutral"})
-
-    def test_model_dump_excludes_none(self):
-        i = D.parse_intent({"intent": "set_strategy", "template": "balanced"})
-        d = i.model_dump(exclude_none=True, exclude={"intent", "transition_mode"})
-        # Only "template" should be present.
-        self.assertEqual(d, {"template": "balanced"})
+        self.assertTrue(i.force.harass_capable)
 
 
 class TestForceFilter(unittest.TestCase):

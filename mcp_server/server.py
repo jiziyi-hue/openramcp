@@ -94,74 +94,6 @@ def find_unit(description: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Production tools
-# ---------------------------------------------------------------------------
-
-@mcp.tool()
-def build(structure: str, near_x: Optional[int] = None, near_y: Optional[int] = None, count: int = 1) -> dict:
-    """Queue a structure to be placed.
-
-    structure: OpenRA building type, e.g. 'Refinery', 'Barracks', 'WarFactory'.
-    near: optional preferred cell. Engine picks a valid placement near it.
-    """
-    near = S.Vec2(x=near_x, y=near_y) if near_x is not None and near_y is not None else None
-    return _send(S.CmdBuild(structure=structure, near=near, count=count))
-
-
-@mcp.tool()
-def train(unit: str, count: int = 1, factory_id: Optional[int] = None) -> dict:
-    """Train units at a production facility.
-
-    unit: e.g. 'Soldier', 'HeavyTank', 'Engineer'.
-    factory_id: optional specific factory actor id; else any matching factory.
-    """
-    return _send(S.CmdTrain(unit=unit, count=count, factory_id=factory_id))
-
-
-# ---------------------------------------------------------------------------
-# Combat tools
-# ---------------------------------------------------------------------------
-
-@mcp.tool()
-def move(unit_ids: list[int], target_x: int, target_y: int, attack_move: bool = False) -> dict:
-    """Move a group of units to a target cell.
-
-    attack_move: if True, units engage enemies on the way (A-move).
-    """
-    return _send(S.CmdMove(unit_ids=unit_ids, target=S.Vec2(x=target_x, y=target_y), attack_move=attack_move))
-
-
-@mcp.tool()
-def attack(unit_ids: list[int], target_id: int) -> dict:
-    """Order units to focus-fire a specific enemy actor."""
-    return _send(S.CmdAttack(unit_ids=unit_ids, target_id=target_id))
-
-
-@mcp.tool()
-def capture(unit_ids: list[int], target_id: int) -> dict:
-    """Send engineers (e6) to capture a Capturable building.
-
-    The engineer walks adjacent to the target, runs the ~8 s CaptureDelay
-    (200 ticks for default e6), then transfers ownership. Engineer is
-    consumed on success. Works on neutral oil derricks (oilb) and on
-    enemy structures that carry the Capturable trait.
-
-    Pass only Captures-capable actors (engineers) in unit_ids; other
-    units will receive the order and ignore it.
-    """
-    return _send(S.CmdCapture(unit_ids=unit_ids, target_id=target_id))
-
-
-@mcp.tool()
-def set_stance(unit_ids: list[int], stance: str) -> dict:
-    """Set engagement stance for a group.
-
-    stance: HoldFire | ReturnFire | Defend | AttackAnything
-    """
-    return _send(S.CmdSetStance(unit_ids=unit_ids, stance=stance))
-
-
-# ---------------------------------------------------------------------------
 # Game flow tools
 # ---------------------------------------------------------------------------
 
@@ -185,38 +117,6 @@ def screenshot() -> dict:
     {ok: true, screenshot_b64: '...'}.
     """
     return _send(S.CmdScreenshot())
-
-
-# ---------------------------------------------------------------------------
-# Unit actions (actor-only orders)
-# ---------------------------------------------------------------------------
-
-@mcp.tool()
-def deploy(unit_ids: list[int]) -> dict:
-    """Deploy MCV / undeploy / morph (DeployTransform order).
-
-    The first move after building usually is to deploy the MCV into a
-    Construction Yard.
-    """
-    return _send(S.CmdDeploy(unit_ids=unit_ids))
-
-
-@mcp.tool()
-def stop(unit_ids: list[int]) -> dict:
-    """Cancel current orders for the given units."""
-    return _send(S.CmdStop(unit_ids=unit_ids))
-
-
-@mcp.tool()
-def sell(unit_ids: list[int]) -> dict:
-    """Sell a building (returns ~50% cost). Pass building actor ids."""
-    return _send(S.CmdSell(unit_ids=unit_ids))
-
-
-@mcp.tool()
-def scatter(unit_ids: list[int]) -> dict:
-    """Tell units to scatter away from their current position."""
-    return _send(S.CmdScatter(unit_ids=unit_ids))
 
 
 # ---------------------------------------------------------------------------
@@ -290,8 +190,8 @@ def rebalance_groups(count: int = 3, axis: str = "y") -> dict:
 # ---------------------------------------------------------------------------
 
 def _dispatch_logged(intent: dict, meta: Optional[dict], client: str) -> dict:
-    """Shared dispatch+log helper used by dispatch_intent / set_strategy /
-    any other tool that runs the DSL interpreter and wants logging."""
+    """Shared dispatch+log helper used by dispatch_intent / any other tool
+    that runs the DSL interpreter and wants logging."""
     import time as _t
     t0 = _t.perf_counter()
     world_before = transport.send_command({"type": "get_state", "include_enemies": True})
@@ -378,156 +278,47 @@ def session_info() -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Bot focus (路 D, requires SquadManager C# patch to actually move squads)
+# Vocab (controlled enums for the LLM)
 # ---------------------------------------------------------------------------
-
-@mcp.tool()
-def set_bot_focus(target_x: Optional[int] = None,
-                  target_y: Optional[int] = None) -> dict:
-    """Hint every bot's SquadManager to send its attack squads to a target cell.
-
-    Pass both target_x and target_y to set the hint. Pass neither to clear it.
-    Requires the SquadManagerBotModule C# patch (see trait_src/).
-    """
-    if target_x is None or target_y is None:
-        return transport.send_command({"type": "set_bot_focus"})
-    return transport.send_command({
-        "type": "set_bot_focus",
-        "target": {"x": target_x, "y": target_y},
-    })
-
-
-# ---------------------------------------------------------------------------
-# Strategy / template control (路 D — HumanAssistantBot template hot-swap)
-# ---------------------------------------------------------------------------
-
-@mcp.tool()
-def set_strategy(
-    template: Optional[str] = None,
-    macro_paused: Optional[bool] = None,
-    defense_state: Optional[str] = None,
-    spend_ratio: Optional[str] = None,
-    scout_priority: Optional[str] = None,
-    tech_focus: Optional[str] = None,
-    counter_pick: Optional[bool] = None,
-    retreat_threshold: Optional[str] = None,
-    support_powers_auto: Optional[str] = None,
-    auto_adapt: Optional[bool] = None,
-    verbose_reports: Optional[bool] = None,
-    primary_objective: Optional[str] = None,
-    attack_focus_x: Optional[int] = None,
-    attack_focus_y: Optional[int] = None,
-    attack_focus_actor_id: Optional[int] = None,
-    attack_focus_named: Optional[str] = None,
-    harass_focus_x: Optional[int] = None,
-    harass_focus_y: Optional[int] = None,
-    clear_attack_focus: Optional[bool] = None,
-    clear_harass_focus: Optional[bool] = None,
-    transition_mode: str = "soft",
-    meta: Optional[dict] = None,
-) -> dict:
-    """Push a partial strategy patch to the bot — preset doctrine + posture.
-
-    Any None field leaves the bot's existing state untouched. Use `vocab()` for
-    valid enum values. For richer Target selectors (actor_id / named), use
-    `dispatch_intent` with `{"intent": "set_strategy", "attack_focus": {...}}`.
-
-    template:         tank_rush | infantry_swarm | balanced | turtle | raid_harass
-    defense_state:    passive | active | full_alert
-    spend_ratio:      all_eco | eco_heavy | balanced | army_heavy | all_army
-    scout_priority:   off | low | normal | high | paranoid
-    tech_focus:       none | tier2 | tier3 | superweapon | air
-    transition_mode:  soft | hard | hybrid     (how mid-game switch is applied)
-    meta:             same as dispatch_intent — fill nl_input + token counts
-                      for the research decision log.
-
-    Examples:
-        set_strategy(template="tank_rush", transition_mode="hybrid")
-        set_strategy(defense_state="full_alert")
-        set_strategy(template="raid_harass", harass_focus_x=64, harass_focus_y=18)
-
-    Returns: {ok, narrative, actions_taken, applied, rejected, repurposed}
-    """
-    payload: dict = {"intent": "set_strategy", "transition_mode": transition_mode}
-    for k, v in dict(
-        template=template,
-        macro_paused=macro_paused,
-        defense_state=defense_state,
-        spend_ratio=spend_ratio,
-        scout_priority=scout_priority,
-        tech_focus=tech_focus,
-        counter_pick=counter_pick,
-        retreat_threshold=retreat_threshold,
-        support_powers_auto=support_powers_auto,
-        auto_adapt=auto_adapt,
-        verbose_reports=verbose_reports,
-        primary_objective=primary_objective,
-    ).items():
-        if v is not None:
-            payload[k] = v
-
-    if attack_focus_actor_id is not None:
-        payload["attack_focus"] = {"kind": "id", "actor_id": attack_focus_actor_id}
-    elif attack_focus_named is not None:
-        payload["attack_focus"] = {"kind": "named", "name": attack_focus_named}
-    elif attack_focus_x is not None and attack_focus_y is not None:
-        payload["attack_focus"] = {"kind": "pos",
-                                   "pos": {"x": attack_focus_x, "y": attack_focus_y}}
-
-    if harass_focus_x is not None and harass_focus_y is not None:
-        payload["harass_focus"] = {"kind": "pos",
-                                   "pos": {"x": harass_focus_x, "y": harass_focus_y}}
-
-    # Clear-focus flags: passthrough as raw boolean fields so the C# ApplyPatch
-    # can hit the dedicated clear_* switch arms (audit fix C).
-    if clear_attack_focus:
-        payload["clear_attack_focus"] = True
-    if clear_harass_focus:
-        payload["clear_harass_focus"] = True
-
-    return _dispatch_logged(payload, meta, "set_strategy")
-
-
-@mcp.tool()
-def get_strategy() -> dict:
-    """Read the bot's current strategy state (template + all set fields).
-
-    Returns: {ok, strategy: {template, defense_state, attack_focus, ...}}
-    """
-    return transport.send_command({"type": "get_strategy"})
-
 
 @mcp.tool()
 def vocab() -> dict:
-    """Controlled vocabulary the player / LLM can use with set_strategy.
+    """Controlled vocabulary for the DSL the LLM emits via dispatch_intent.
 
-    Call this when the player asks 'what can I say?' or before dispatching
-    a strategy patch to verify enum values. All lists come from typing.get_args
-    of the DSL enums — single source of truth.
+    Call this when the player asks 'what can I say?' or to verify enum values
+    before dispatching. All lists come from typing.get_args of the DSL enums —
+    single source of truth.
     """
     from typing import get_args as _get_args
     from . import intent_dsl as D
     return {
         "ok": True,
         "verbs": [
-            "set_strategy", "attack", "defend", "retreat", "regroup", "scout",
-            "feint", "pincer", "set_stance", "report",
+            "attack", "defend", "retreat", "regroup", "scout",
+            "feint", "pincer",
+            "harass", "patrol", "escort", "contain", "diversion",
+            "set_stance", "report",
         ],
-        "templates": list(_get_args(D.StrategyTemplate)),
-        "transition_mode": list(_get_args(D.TransitionMode)),
         "defense_state": list(_get_args(D.DefenseState)),
-        "spend_ratio": list(_get_args(D.SpendRatio)),
         "scout_priority": list(_get_args(D.ScoutPriority)),
-        "tech_focus": list(_get_args(D.TechFocus)),
-        "retreat_threshold": list(_get_args(D.RetreatThreshold)),
-        "support_powers_auto": list(_get_args(D.SupportPowersAuto)),
-        "primary_objective": list(_get_args(D.PrimaryObjective)),
         "stances": list(_get_args(D.Stance)),
         "approaches": list(_get_args(D.Approach)),
         "named_targets": list(_get_args(D.NamedTarget)),
         "named_regions": list(_get_args(D.NamedRegion)),
         "groups": ["north", "center", "south", "all"],
         "report_what": list(_get_args(D.ReportWhat)),
+        "filter_fields": [
+            "owner", "unit_kind", "hp_below", "hp_above", "in_group",
+            "harass_capable",
+        ],
+        # Alert state engine — invoked via set_alert_state(level=...).
+        "alert_states": [s.value for s in _AlertState],
+        # Mission objective — invoked via set_objective(name=..., tick=...).
+        "objectives": [o.value for o in _Objective],
+        "objective_suggested_state": {
+            o.value: _objective_to_suggested_state(o).value
+            for o in _Objective
+        },
     }
 
 
@@ -559,9 +350,9 @@ def clarify(player_command: str,
             "vocab_hint": voc,
             "prompt_template": (
                 f"我没听清 '{player_command}'. 你想:\n"
-                f"  • 选模板? ({', '.join(voc['templates'])})\n"
+                f"  • 哪个动作? ({', '.join(voc['verbs'][:8])})\n"
                 f"  • 防御态? ({', '.join(voc['defense_state'])})\n"
-                f"  • 或别的动词? ({', '.join(voc['verbs'][:6])})"
+                f"  • 哪个目标? ({', '.join(voc['named_targets'][:6])})"
             ),
         }
     return {
@@ -750,7 +541,13 @@ def _condition_match(condition: dict) -> bool:
 # tools below let the player toggle perimeter defense and inspect status.
 # ---------------------------------------------------------------------------
 
-from .tactical import get_engine as _get_tactical_engine
+from .tactical import (
+    get_engine as _get_tactical_engine,
+    AlertState as _AlertState,
+    Objective as _Objective,
+    objective_to_suggested_state as _objective_to_suggested_state,
+    ALERT_STATE_CONFIG as _ALERT_STATE_CONFIG,
+)
 
 
 def _resolve_named_cell(name: str) -> Optional[dict]:
@@ -792,13 +589,17 @@ def enable_auto_defense(center_x: Optional[int] = None,
                         center_y: Optional[int] = None,
                         center_named: Optional[str] = "self_base",
                         radius: int = 18) -> dict:
-    """Turn on perimeter auto-defense. When an enemy mobile unit enters the
-    radius around the center, nearby idle combat units focus-fire it without
-    waiting for an LLM round-trip.
+    """ADD a perimeter auto-defense zone. Multiple zones can be active
+    concurrently — every call adds a new zone (does NOT replace existing
+    ones). When an enemy mobile unit enters the radius around the center,
+    nearby idle combat units focus-fire it without waiting for an LLM
+    round-trip.
 
     Pass `center_x` + `center_y` for an explicit cell, or `center_named`
     ("self_base" / "self_center" / "enemy_center" / "enemy_base"). Default
     center = self_base (the player's first ConstructionYard).
+
+    Returns: {ok, zone_id, center, radius, narrative}.
     """
     if center_x is None or center_y is None:
         if center_named is None:
@@ -811,18 +612,38 @@ def enable_auto_defense(center_x: Optional[int] = None,
         cx, cy = int(center_x), int(center_y)
 
     engine = _get_tactical_engine(transport)
-    engine.enable_auto_defense((cx, cy), radius=radius)
-    return {"ok": True, "center": [cx, cy], "radius": radius,
-            "narrative": f"Auto-defense armed at ({cx},{cy}) radius {radius}."}
+    zone_id = engine.enable_auto_defense((cx, cy), radius=radius)
+    return {"ok": True, "zone_id": zone_id, "center": [cx, cy], "radius": radius,
+            "narrative": f"Auto-defense zone #{zone_id} armed at ({cx},{cy}) radius {radius}."}
 
 
 @mcp.tool()
-def disable_auto_defense() -> dict:
-    """Turn off perimeter auto-defense. Garrison units return to whatever
-    stance/orders they had."""
+def disable_auto_defense(zone_id: Optional[int] = None) -> dict:
+    """Disable one perimeter (pass `zone_id`) or ALL perimeters (omit it).
+
+    Returns: {ok, removed, narrative}. `removed` is the number of zones
+    that were active and got disabled.
+    """
     engine = _get_tactical_engine(transport)
-    engine.disable_auto_defense()
-    return {"ok": True, "narrative": "Auto-defense disarmed."}
+    removed = engine.disable_auto_defense(zone_id)
+    if zone_id is None:
+        msg = f"Auto-defense disarmed ({removed} zone(s) cleared)."
+    else:
+        msg = (f"Auto-defense zone #{zone_id} disarmed."
+               if removed else f"No active zone with id {zone_id}.")
+    return {"ok": True, "removed": removed, "narrative": msg}
+
+
+@mcp.tool()
+def list_defense_perimeters() -> dict:
+    """List all active auto-defense perimeters with their zone_ids.
+
+    Returns: {ok, perimeters: [{zone_id, center: [x,y], radius}, ...]}.
+    Useful when you want to disable a specific zone (need its id) or just
+    verify how many are running.
+    """
+    engine = _get_tactical_engine(transport)
+    return {"ok": True, "perimeters": engine.list_perimeters()}
 
 
 @mcp.tool()
@@ -839,6 +660,161 @@ def cancel_assaults(mission_id: Optional[int] = None) -> dict:
     ok = engine.cancel_assault(int(mission_id))
     return {"ok": ok, "cancelled": 1 if ok else 0,
             "narrative": f"{'Cancelled' if ok else 'Not found'} assault {mission_id}."}
+
+
+@mcp.tool()
+def list_pending_missions() -> dict:
+    """List missions whose force resolution returned empty and are waiting
+    for matching units to appear (e.g. harass queued before any harass-
+    capable unit is trained).
+
+    Each entry: {pending_id, intent_kind, intent_payload, queued_at_tick,
+                 queued_at_ts, age_s, reason}. The daemon re-attempts force
+    resolution every few seconds; once it succeeds the mission is dispatched
+    and a `pending_dispatched` event is pushed to scout_events.jsonl.
+
+    Cancel an entry with `cancel_pending(pending_id)`.
+    """
+    engine = _get_tactical_engine(transport)
+    return {"ok": True, "pending": engine.list_pending()}
+
+
+@mcp.tool()
+def cancel_pending(pending_id: int) -> dict:
+    """Remove a pending mission entry by pending_id. Returns
+    {ok, removed, narrative}."""
+    engine = _get_tactical_engine(transport)
+    ok = engine.cancel_pending(int(pending_id))
+    return {"ok": ok, "removed": 1 if ok else 0,
+            "narrative": (f"Cancelled pending #{pending_id}." if ok
+                          else f"No pending mission with id {pending_id}.")}
+
+
+# ---------------------------------------------------------------------------
+# Alert state + Mission objective tools
+# ---------------------------------------------------------------------------
+#
+# Alert State is the army's global posture — packages perimeter mode +
+# daemon thresholds + default stance/approach + a set of auto-dispatched
+# missions. One player utterance ("守一下" / "全力进攻") flips the whole
+# table. Mission Objective is orthogonal: it's the declared victory
+# condition (destroy_fact / survive_until_tick / ...). Objective only
+# *suggests* a matching alert state; the player still picks.
+# ---------------------------------------------------------------------------
+
+
+@mcp.tool()
+def set_alert_state(level: str) -> dict:
+    """Set the army's global alert state.
+
+    level: peace | watch | alert | combat | lockdown
+
+    - peace    — early game / no defense loops / units free / no auto missions
+    - watch    — perimeter on / auto scout patrols / Defend by default
+    - alert    — perimeter aggressive / auto patrols + harass / 50% retreat
+    - combat   — main push / AttackAnything + charge defaults / no auto missions
+    - lockdown — all units recalled / 70% retreat / max perimeter, no sallies
+
+    Switching states cancels auto-dispatched missions from the previous
+    state and dispatches the new state's set. Manual LLM-dispatched
+    missions (attack / pincer / etc.) are NOT cancelled. Returns the full
+    transition report including dispatched mission_ids the daemon now owns.
+    """
+    try:
+        state = _AlertState(level)
+    except ValueError:
+        return {
+            "ok": False,
+            "error": f"unknown alert level: {level!r}. "
+                     f"valid: {[s.value for s in _AlertState]}",
+        }
+    engine = _get_tactical_engine(transport)
+    return engine.apply_alert_state(state)
+
+
+@mcp.tool()
+def get_alert_state() -> dict:
+    """Inspect the current alert state plus the auto-mission ids and
+    perimeters the alert table installed. Returns:
+        {state, default_stance, default_approach, auto_missions,
+         perimeters, force_recall_all}.
+    """
+    engine = _get_tactical_engine(transport)
+    cfg = _ALERT_STATE_CONFIG[engine.current_alert_state]
+    return {
+        "ok": True,
+        "state": engine.current_alert_state.value,
+        "default_stance": engine.default_stance,
+        "default_approach": engine.default_approach,
+        "auto_missions": list(engine.auto_mission_ids),
+        "perimeters": engine.list_perimeters(),
+        "force_recall_all": cfg.get("force_recall_all", False),
+        "config": {
+            "perimeter": cfg.get("perimeter"),
+            "retreat_hp_threshold": cfg.get("retreat_hp_threshold"),
+            "cohesion_max_spread": cfg.get("cohesion_max_spread"),
+        },
+    }
+
+
+@mcp.tool()
+def set_objective(name: str, tick: Optional[int] = None) -> dict:
+    """Set the player-declared victory condition.
+
+    name: destroy_fact | harass_economy | survive_until_tick | control_map_center
+    tick: only for survive_until_tick — target tick to survive to.
+
+    The objective is informational + advisory: it does NOT change unit
+    orders directly. The response includes `suggested_alert_state` — the
+    LLM should relay that to the player as a recommendation, not auto-apply.
+    """
+    try:
+        obj = _Objective(name)
+    except ValueError:
+        return {
+            "ok": False,
+            "error": f"unknown objective: {name!r}. "
+                     f"valid: {[o.value for o in _Objective]}",
+        }
+    params: dict = {}
+    if obj == _Objective.SURVIVE_UNTIL_TICK:
+        if tick is None:
+            return {"ok": False,
+                    "error": "survive_until_tick requires `tick` parameter"}
+        params["tick"] = int(tick)
+    engine = _get_tactical_engine(transport)
+    engine.set_objective(obj, params)
+    suggested = _objective_to_suggested_state(obj)
+    return {
+        "ok": True,
+        "objective": obj.value,
+        "params": params,
+        "suggested_alert_state": suggested.value,
+        "narrative": (
+            f"Objective set: {obj.value}. "
+            f"Suggested alert state: {suggested.value}."
+        ),
+    }
+
+
+@mcp.tool()
+def get_objective() -> dict:
+    """Inspect the current mission objective + its params. Returns
+    {objective, params, suggested_alert_state}. `objective` is null when
+    none has been set yet."""
+    engine = _get_tactical_engine(transport)
+    cur = engine.get_objective()
+    suggested = None
+    if cur["objective"]:
+        suggested = _objective_to_suggested_state(
+            _Objective(cur["objective"])
+        ).value
+    return {
+        "ok": True,
+        "objective": cur["objective"],
+        "params": cur["params"],
+        "suggested_alert_state": suggested,
+    }
 
 
 # ---------------------------------------------------------------------------

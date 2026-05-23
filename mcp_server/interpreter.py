@@ -92,13 +92,21 @@ class WorldView:
 
         out = []
         for u in pool:
-            if f.unit_kind and u["kind"].lower() != f.unit_kind.lower():
+            kind_lower = (u.get("kind") or "").lower()
+            if f.unit_kind and kind_lower != f.unit_kind.lower():
                 continue
             hp = u.get("hp_pct", 1.0)
             if f.hp_below is not None and not (hp < f.hp_below):
                 continue
             if f.hp_above is not None and not (hp > f.hp_above):
                 continue
+            if f.harass_capable is True:
+                # Only fast / kite-able kinds — excludes slow heavy armour and
+                # siege artillery that can't escape after touching the economy.
+                if kind_lower not in _HARASS_CAPABLE:
+                    continue
+                if kind_lower in _HARASS_BAD:
+                    continue
             out.append(u["id"])
         return out
 
@@ -217,22 +225,26 @@ def interpret(intent_payload: dict, transport) -> dict:
         return _do_regroup(intent, wv, transport)
     if intent.intent == "scout":
         return _do_scout(intent, wv, transport)
-    if intent.intent == "economy":
-        return _do_economy(intent, wv, transport)
-    if intent.intent == "bot_focus":
-        return _do_bot_focus(intent, wv, transport)
     if intent.intent == "pincer":
         return _do_pincer(intent, wv, transport)
     if intent.intent == "feint":
         return _do_feint(intent, wv, transport)
+    if intent.intent == "harass":
+        return _do_harass(intent, wv, transport)
+    if intent.intent == "patrol":
+        return _do_patrol(intent, wv, transport)
+    if intent.intent == "escort":
+        return _do_escort(intent, wv, transport)
+    if intent.intent == "contain":
+        return _do_contain(intent, wv, transport)
+    if intent.intent == "diversion":
+        return _do_diversion(intent, wv, transport)
     if intent.intent == "set_stance":
         return _do_set_stance(intent, wv, transport)
     if intent.intent == "report":
         return _do_report(intent, wv, transport)
     if intent.intent == "raw":
         return _do_raw(intent, wv, transport)
-    if intent.intent == "set_strategy":
-        return _do_set_strategy(intent, wv, transport)
     return {"ok": False, "error": f"unhandled intent: {intent.intent}",
             "actions_taken": [], "narrative": ""}
 
@@ -279,6 +291,13 @@ _NON_COMBAT_MOBILE_KINDS = frozenset({
     "harv", "mcv",
 })
 
+# Harass-capable kinds — fast and / or kite-able units that can attack the
+# enemy economy and then disengage. The whitelist matches the CONTEXT.md
+# definition (Force Filter). _HARASS_BAD is an explicit blacklist for the
+# rare case a unit ends up in both (e.g. someone adds 1tnk to BAD later).
+_HARASS_CAPABLE = frozenset({"jeep", "ftrk", "dog", "e3", "apc", "1tnk"})
+_HARASS_BAD = frozenset({"2tnk", "3tnk", "4tnk", "arty", "v2rl", "mcv", "harv"})
+
 
 def _is_building(kind: str) -> bool:
     return (kind or "").lower() in _BUILDING_KINDS
@@ -296,6 +315,25 @@ def _target_kind(wv: "WorldView", tid: int | None) -> str:
         if u.get("id") == tid:
             return u.get("kind", "")
     return ""
+
+
+def _pending_reason(mission_kind: str, force) -> str:
+    """Human-readable, LLM-friendly reason string for a pending-queue entry.
+    Tells the LLM what to suggest the player trains (so the daemon's later
+    re-dispatch actually fires)."""
+    if isinstance(force, D.ForceByFilter):
+        if force.harass_capable:
+            return ("需要骚扰单位 (jeep / ftrk / dog / e3 / apc / 1tnk) — "
+                    "训出来后 daemon 自动启动 " + mission_kind)
+        if force.unit_kind:
+            return f"需要 {force.unit_kind} — 训出来后 daemon 自动启动 {mission_kind}"
+        return f"force filter 当前匹配 0 单位 — 训出符合的后自动启动 {mission_kind}"
+    if isinstance(force, D.ForceByGroup):
+        return f"group '{force.name}' 当前空 — 等单位进组后自动启动 {mission_kind}"
+    if isinstance(force, D.ForceByIds):
+        return (f"指定的 actor id 当前都不存在 — {mission_kind} 不会自动恢复, "
+                f"考虑改用 filter")
+    return f"force resolution returned empty for {mission_kind}"
 
 
 def _do_attack(intent: D.IntentAttack, wv: WorldView, transport) -> dict:
@@ -456,15 +494,34 @@ def _do_defend(intent: D.IntentDefend, wv: WorldView, transport) -> dict:
     if not ids:
         return _err("force empty", actions, "force_resolution_empty")
 
-    center, _radius = wv.resolve_region(intent.region)
+    center, radius = wv.resolve_region(intent.region)
     _send(transport,
           {"type": "move", "unit_ids": ids,
            "target": {"x": center[0], "y": center[1]}, "attack_move": False},
           actions)
     _send(transport, {"type": "set_stance", "unit_ids": ids,
                       "stance": intent.stance}, actions)
-    return _ok(f"defend at {center} with {len(ids)} unit(s), stance={intent.stance}",
-               actions)
+
+    # Register a ContainmentMission with the daemon so the force auto-engages
+    # intruders inside the region radius without leaving (and gets pulled back
+    # if it strays). Best-effort — never block the dispatch.
+    mission_id = None
+    try:
+        engine = _get_tactical_engine(transport)
+        mission_id = engine.register_contain(
+            force_ids=ids,
+            chokepoint=center,
+            radius=max(3, radius),
+            stance=intent.stance,
+        )
+    except Exception:
+        pass
+
+    msg = (f"defend at {center} (r={radius}) with {len(ids)} unit(s), "
+           f"stance={intent.stance}")
+    if mission_id is not None:
+        msg += f" [daemon contain #{mission_id}]"
+    return _ok(msg, actions)
 
 
 def _do_retreat(intent: D.IntentRetreat, wv: WorldView, transport) -> dict:
@@ -512,23 +569,6 @@ def _do_scout(intent: D.IntentScout, wv: WorldView, transport) -> dict:
            "target": {"x": center[0], "y": center[1]}, "attack_move": True},
           actions)
     return _ok(f"scout {len(scout_ids)} unit(s) to {center}", actions)
-
-
-def _do_economy(intent: D.IntentEconomy, wv: WorldView, transport) -> dict:
-    """Placeholder until bot macro module is integrated (路 D). Records intent."""
-    return _ok(
-        f"economy intent recorded: focus={intent.focus}, intensity={intent.intensity}. "
-        "(Effective once bot macro module wiring is in.)",
-        actions=[])
-
-
-def _do_bot_focus(intent: D.IntentBotFocus, wv: WorldView, transport) -> dict:
-    """Placeholder until SquadManager external setter is added (路 D)."""
-    tid, pos = wv.resolve_target(intent.target)
-    return _ok(
-        f"bot focus intent recorded: target={tid or pos}. "
-        "(Effective once SquadManager setter is in.)",
-        actions=[])
 
 
 def _do_pincer(intent: D.IntentPincer, wv: WorldView, transport) -> dict:
@@ -620,6 +660,336 @@ def _do_feint(intent: D.IntentFeint, wv: WorldView, transport) -> dict:
                actions)
 
 
+def _do_harass(intent: D.IntentHarass, wv: WorldView, transport) -> dict:
+    """Register a HarassMission with the tactical daemon.
+
+    Resolves force + region to ids/coords, then hands the mission to the
+    daemon which runs the engaging/withdrawing/regrouping state machine
+    autonomously. LLM does not need to drive the cycle.
+
+    If the force spec resolves to zero units (e.g. player wants harass but
+    has no harass_capable units yet), enqueue as a PendingMission instead of
+    erroring out. The daemon re-attempts the dispatch every few seconds; the
+    LLM tells the player what to train.
+    """
+    actions: List[dict] = []
+    ids = wv.resolve_force(intent.force)
+    if intent.max_force_size is not None:
+        ids = ids[: intent.max_force_size]
+
+    if not ids:
+        reason = _pending_reason("harass", intent.force)
+        try:
+            engine = _get_tactical_engine(transport)
+            pid = engine.queue_pending(
+                "harass", intent.model_dump(mode="json"), reason
+            )
+        except Exception as e:
+            return _err(f"queue_pending failed: {e}", actions,
+                        "queue_pending_failed")
+        return _ok(
+            f"harass queued (no matching units yet). {reason} "
+            f"[pending #{pid}, retries automatically]",
+            actions, pending_id=pid,
+        )
+
+    center, radius = wv.resolve_region(intent.region)
+
+    # Withdraw destination — default to self_base.
+    if intent.withdraw_to is None:
+        _, wpos = wv.resolve_target(D.TargetByName(name="self_base"))
+    else:
+        _, wpos = wv.resolve_target(intent.withdraw_to)
+    if wpos is None:
+        wpos = wv.force_centroid(ids) or center
+
+    mission_id = None
+    try:
+        engine = _get_tactical_engine(transport)
+        mission_id = engine.register_harass(
+            force_ids=ids,
+            region_center=center,
+            region_radius=radius,
+            withdraw_to=wpos,
+            withdraw_hp_threshold=intent.withdraw_hp_threshold,
+            reengage_hp_threshold=intent.reengage_hp_threshold,
+            cycle=intent.cycle,
+            max_force_size=intent.max_force_size,
+            # Dynamic re-resolution: daemon absorbs newly-trained matching
+            # units mid-mission. Only meaningful for filter/group specs;
+            # ids-specs work as static (daemon never recruits more).
+            force_spec=intent.force.model_dump(mode="json"),
+        )
+    except Exception as e:
+        return _err(f"harass registration failed: {e}", actions,
+                    "daemon_register_failed")
+
+    return _ok(
+        f"harass cycle on region {center} (r={radius}) with {len(ids)} unit(s), "
+        f"withdraw_to={wpos} [mission #{mission_id}]",
+        actions, mission_id=mission_id,
+    )
+
+
+def _do_patrol(intent: D.IntentPatrol, wv: WorldView, transport) -> dict:
+    """Register a PatrolMission — daemon walks waypoints loop, engages on
+    contact per `contact_stance`, breaks off wounded units to self_base.
+
+    Empty force → queue as pending. Patrol is cycle-type so the daemon will
+    pick it up the moment the player trains a scout / matching unit.
+    """
+    actions: List[dict] = []
+    if not intent.waypoints:
+        return _err("patrol needs at least one waypoint", actions,
+                    "waypoints_empty")
+    ids = wv.resolve_force(intent.force)
+
+    if not ids:
+        reason = _pending_reason("patrol", intent.force)
+        try:
+            engine = _get_tactical_engine(transport)
+            pid = engine.queue_pending(
+                "patrol", intent.model_dump(mode="json"), reason
+            )
+        except Exception as e:
+            return _err(f"queue_pending failed: {e}", actions,
+                        "queue_pending_failed")
+        return _ok(
+            f"patrol queued (no matching units yet). {reason} [pending #{pid}]",
+            actions, pending_id=pid,
+        )
+
+    waypoints = [(wp.x, wp.y) for wp in intent.waypoints]
+
+    _, wpos = wv.resolve_target(D.TargetByName(name="self_base"))
+    if wpos is None:
+        wpos = wv.force_centroid(ids) or waypoints[0]
+
+    mission_id = None
+    try:
+        engine = _get_tactical_engine(transport)
+        mission_id = engine.register_patrol(
+            force_ids=ids,
+            waypoints=waypoints,
+            withdraw_to=wpos,
+            cycle=intent.cycle,
+            contact_stance=intent.contact_stance,
+            force_spec=intent.force.model_dump(mode="json"),
+        )
+    except Exception as e:
+        return _err(f"patrol registration failed: {e}", actions,
+                    "daemon_register_failed")
+
+    return _ok(
+        f"patrol {len(ids)} unit(s) on {len(waypoints)} waypoint(s), "
+        f"cycle={intent.cycle} [mission #{mission_id}]",
+        actions, mission_id=mission_id,
+    )
+
+
+def _do_escort(intent: D.IntentEscort, wv: WorldView, transport) -> dict:
+    """Register an EscortMission — guards stay within escort_radius of
+    escortee, engage threats within engage_radius. Ends when escortee dies.
+
+    Half-dynamic: bodyguard force re-resolves (filter recruits new
+    bodyguards), but escortee remains fixed. Empty bodyguard pool → pending.
+    Missing escortee → hard error (it's player data, not a queueable cond).
+    """
+    actions: List[dict] = []
+
+    # Escortee missing is an unconditional error; don't queue something that
+    # depends on an actor id that might never come back.
+    escortee_present = any(u["id"] == intent.escortee_id for u in wv.self_units)
+    if not escortee_present:
+        return _err(f"escortee actor {intent.escortee_id} not found among self units",
+                    actions, "escortee_not_found")
+
+    ids = wv.resolve_force(intent.force)
+    if not ids:
+        reason = _pending_reason("escort", intent.force)
+        try:
+            engine = _get_tactical_engine(transport)
+            pid = engine.queue_pending(
+                "escort", intent.model_dump(mode="json"), reason
+            )
+        except Exception as e:
+            return _err(f"queue_pending failed: {e}", actions,
+                        "queue_pending_failed")
+        return _ok(
+            f"escort queued (no bodyguards yet). {reason} [pending #{pid}]",
+            actions, pending_id=pid,
+        )
+
+    dest_pos = None
+    if intent.destination is not None:
+        _, dest_pos = wv.resolve_target(intent.destination)
+
+    mission_id = None
+    try:
+        engine = _get_tactical_engine(transport)
+        mission_id = engine.register_escort(
+            force_ids=ids,
+            escortee_id=intent.escortee_id,
+            destination=dest_pos,
+            escort_radius=intent.escort_radius,
+            engage_radius=intent.engage_radius,
+            force_spec=intent.force.model_dump(mode="json"),
+        )
+    except Exception as e:
+        return _err(f"escort registration failed: {e}", actions,
+                    "daemon_register_failed")
+
+    return _ok(
+        f"escort {len(ids)} unit(s) → actor {intent.escortee_id} "
+        f"(escort r={intent.escort_radius}, engage r={intent.engage_radius}) "
+        f"[mission #{mission_id}]",
+        actions, mission_id=mission_id,
+    )
+
+
+def _do_contain(intent: D.IntentContain, wv: WorldView, transport) -> dict:
+    """Register a ContainmentMission — force holds chokepoint, engages in
+    radius, doesn't pursue. Empty force → pending."""
+    actions: List[dict] = []
+    ids = wv.resolve_force(intent.force)
+    if not ids:
+        reason = _pending_reason("contain", intent.force)
+        try:
+            engine = _get_tactical_engine(transport)
+            pid = engine.queue_pending(
+                "contain", intent.model_dump(mode="json"), reason
+            )
+        except Exception as e:
+            return _err(f"queue_pending failed: {e}", actions,
+                        "queue_pending_failed")
+        return _ok(
+            f"contain queued (no matching units yet). {reason} [pending #{pid}]",
+            actions, pending_id=pid,
+        )
+
+    cp = (intent.chokepoint.x, intent.chokepoint.y)
+
+    # Initial deploy — move to chokepoint with stance set.
+    _send(transport, {"type": "set_stance", "unit_ids": ids,
+                      "stance": intent.stance}, actions)
+    _send(transport,
+          {"type": "move", "unit_ids": ids,
+           "target": {"x": cp[0], "y": cp[1]}, "attack_move": False},
+          actions)
+
+    mission_id = None
+    try:
+        engine = _get_tactical_engine(transport)
+        mission_id = engine.register_contain(
+            force_ids=ids,
+            chokepoint=cp,
+            radius=intent.radius,
+            stance=intent.stance,
+        )
+    except Exception:
+        pass
+
+    msg = f"contain {len(ids)} unit(s) at {cp} (r={intent.radius})"
+    if mission_id is not None:
+        msg += f" [mission #{mission_id}]"
+    return _ok(msg, actions, mission_id=mission_id)
+
+
+def _do_diversion(intent: D.IntentDiversion, wv: WorldView, transport) -> dict:
+    """Register a DiversionMission — feint + raid prongs coordinated by the
+    daemon. feint holds at stopline, raid attacks via flank waypoint.
+
+    Both prongs empty → queue as pending. If only one prong is empty we
+    proceed (the daemon's tick logic handles a missing prong as withdrew).
+    """
+    actions: List[dict] = []
+    feint_ids = wv.resolve_force(intent.feint_force)
+    raid_ids = wv.resolve_force(intent.raid_force)
+    if not feint_ids and not raid_ids:
+        reason = "no units match either feint_force or raid_force"
+        try:
+            engine = _get_tactical_engine(transport)
+            pid = engine.queue_pending(
+                "diversion", intent.model_dump(mode="json"), reason
+            )
+        except Exception as e:
+            return _err(f"queue_pending failed: {e}", actions,
+                        "queue_pending_failed")
+        return _ok(
+            f"diversion queued (no matching units yet). {reason} [pending #{pid}]",
+            actions, pending_id=pid,
+        )
+
+    _, feint_tpos = wv.resolve_target(intent.feint_target)
+    raid_tid, raid_tpos = wv.resolve_target(intent.raid_target)
+    if feint_tpos is None or raid_tpos is None:
+        return _err("diversion target unresolved", actions,
+                    "target_resolution_failed")
+
+    # Compute feint stopline (8 cells short of feint_target from feint centroid).
+    feint_center = wv.force_centroid(feint_ids) or feint_tpos
+    feint_stop = G.feint_stopline(feint_center, feint_tpos, engage_distance=8)
+
+    # Compute raid waypoint per approach (flank_left / flank_right only).
+    raid_center = wv.force_centroid(raid_ids) or raid_tpos
+    raid_wp = None
+    if intent.raid_approach in ("flank_left", "flank_right"):
+        side = "left" if intent.raid_approach == "flank_left" else "right"
+        raid_wp = G.flank_waypoint(raid_center, raid_tpos, side,
+                                   sidestep_cells=12, approach_t=0.55)
+
+    # Withdraw target — self_base.
+    _, withdraw_pos = wv.resolve_target(D.TargetByName(name="self_base"))
+    if withdraw_pos is None:
+        withdraw_pos = feint_center
+
+    # Daemon owns the timing. Best-effort registration; if it fails we fall
+    # back to one-shot orders below.
+    mission_id = None
+    try:
+        engine = _get_tactical_engine(transport)
+        mission_id = engine.register_diversion(
+            feint_force_ids=feint_ids,
+            feint_target_cell=feint_stop,
+            raid_force_ids=raid_ids,
+            raid_target_cell=raid_tpos,
+            raid_target_actor=raid_tid,
+            raid_waypoint=raid_wp,
+            withdraw_to=withdraw_pos,
+            feint_commits=intent.feint_commits,
+        )
+    except Exception:
+        pass
+
+    # Issue the opening orders so units start moving even before the daemon's
+    # next tick.
+    if feint_ids:
+        _send(transport, {"type": "set_stance", "unit_ids": feint_ids,
+                          "stance": "ReturnFire"}, actions)
+        _send(transport,
+              {"type": "move", "unit_ids": feint_ids,
+               "target": {"x": feint_stop[0], "y": feint_stop[1]},
+               "attack_move": False},
+              actions)
+    if raid_ids:
+        first_target = raid_wp or raid_tpos
+        _send(transport, {"type": "set_stance", "unit_ids": raid_ids,
+                          "stance": "AttackAnything"}, actions)
+        _send(transport,
+              {"type": "move", "unit_ids": raid_ids,
+               "target": {"x": first_target[0], "y": first_target[1]},
+               "attack_move": True},
+              actions)
+
+    msg = (f"diversion: feint {len(feint_ids)} → {feint_stop} (stopline), "
+           f"raid {len(raid_ids)} → {raid_tpos} via {intent.raid_approach}")
+    if raid_wp is not None:
+        msg += f" (wp {raid_wp})"
+    if mission_id is not None:
+        msg += f" [mission #{mission_id}]"
+    return _ok(msg, actions, mission_id=mission_id)
+
+
 def _do_set_stance(intent: D.IntentSetStance, wv: WorldView, transport) -> dict:
     actions: List[dict] = []
     ids = wv.resolve_force(intent.force)
@@ -669,18 +1039,6 @@ def _do_report(intent: D.IntentReport, wv: WorldView, transport) -> dict:
         s = wv.state.get("state", {})
         return _ok(f"cash={s.get('self_cash', 0)}, power={s.get('self_power', 0)}",
                    actions=[])
-    if intent.what == "capabilities":
-        return _ok(_narrate_capabilities(transport), actions=[],
-                   capabilities=_capabilities_dict(transport))
-    if intent.what == "strategy":
-        resp = transport.send_command({"type": "get_strategy"})
-        if not resp.get("ok"):
-            return _err("could not read strategy from bot", [],
-                        resp.get("error", "no_bot"))
-        s = resp.get("strategy", {})
-        line = ", ".join(f"{k}={v}" for k, v in s.items() if v is not None)
-        return _ok(f"current strategy: {line or '(unset)'}",
-                   actions=[], strategy=s)
     return _err(f"unknown report what: {intent.what}", [], "report_what_unknown")
 
 
@@ -771,125 +1129,3 @@ def _kind_summary(units: list) -> str:
     return ", ".join(f"{k}×{c}" for k, c in sorted(counts.items(), key=lambda kv: -kv[1]))
 
 
-# ---------------------------------------------------------------------------
-# Strategy (路 D) — set_strategy intent handler
-# ---------------------------------------------------------------------------
-
-def _do_set_strategy(intent: D.IntentSetStrategy, wv: WorldView, transport) -> dict:
-    """Push a partial strategy patch to the bot.
-
-    Resolves embedded Target objects (attack_focus, harass_focus) to coords
-    here so the C# side does no name lookup. Issues ONE atomic command.
-    """
-    actions: List[dict] = []
-
-    # Build patch dict from set fields only. transition_mode is always present
-    # and is sent as a top-level field, not part of the patch.
-    patch = intent.model_dump(exclude_none=True,
-                              exclude={"intent", "transition_mode"})
-
-    # Resolve embedded Targets to {actor_id?, pos?}.
-    for fld in ("attack_focus", "harass_focus"):
-        # The raw dict from model_dump still has the discriminated-union shape;
-        # we need the original typed object to resolve.
-        typed = getattr(intent, fld, None)
-        if typed is not None:
-            tid, tpos = wv.resolve_target(typed)
-            patch[fld] = {
-                "actor_id": tid,
-                "pos": {"x": tpos[0], "y": tpos[1]} if tpos else None,
-            }
-
-    # clear_* flags pass through as raw booleans (no Target wrapping needed).
-    for fld in ("clear_attack_focus", "clear_harass_focus"):
-        v = getattr(intent, fld, None)
-        if v is True:
-            patch[fld] = True
-
-    if not patch:
-        return _err("empty strategy patch (no fields set)", actions,
-                    "empty_patch")
-
-    resp = _send(transport, {
-        "type": "set_strategy",
-        "patch": patch,
-        "transition_mode": intent.transition_mode,
-    }, actions)
-
-    if not resp.get("ok"):
-        return _err(f"bot rejected strategy: {resp.get('error', 'unknown')}",
-                    actions, resp.get("error", "bot_rejected"))
-
-    # Bot echoes the merged-then-canonicalized state back.
-    applied = resp.get("applied", {}) or patch  # fall back to request if bot did not echo
-    repurposed = resp.get("repurposed_units", 0)
-    rejected = resp.get("rejected", {}) or {}
-
-    fragments = []
-    for k in ("template", "defense_state", "spend_ratio", "tech_focus",
-              "scout_priority", "primary_objective"):
-        if k in applied:
-            fragments.append(f"{k}={applied[k]}")
-    if intent.macro_paused is not None:
-        fragments.append(f"macro_paused={intent.macro_paused}")
-    fragments.append(f"transition={intent.transition_mode}")
-    if repurposed:
-        fragments.append(f"({repurposed} units repurposed)")
-    narrative = "strategy: " + ", ".join(fragments)
-    if rejected:
-        narrative += " | rejected: " + ", ".join(
-            f"{k}({v})" for k, v in rejected.items())
-
-    return _ok(narrative, actions,
-               applied=applied, rejected=rejected, repurposed=repurposed)
-
-
-def _capabilities_dict(transport) -> dict:
-    """Return the controlled-vocabulary capabilities dict.
-
-    Generated from typing.get_args of the DSL enums — single source of truth.
-    """
-    from typing import get_args as _get_args
-    caps: Dict[str, Any] = {
-        "templates": {
-            "tank_rush": "重坦量产 + 早期推进",
-            "infantry_swarm": "步兵海 cheese, 早期攻势",
-            "balanced": "默认混编, 兼顾经济和军队",
-            "turtle": "防守优先, 暴科技, 后期决战",
-            "raid_harass": "小队骚扰, 切敌方经济",
-            # P3 旗舰
-            "tesla_wall":      "苏方 — 特斯拉墙 + 特斯拉坦克, 极致防御",
-            "chrono_blitz":    "盟方 — Chronosphere 闪击, 重坦传送强攻",
-            "siege_arty":      "火炮/V2 远程平推, 后排炮兵流",
-            "paratroop_rain":  "空军主力 + 空投, 多线打击",
-        },
-        "defense_state": list(_get_args(D.DefenseState)),
-        "transition_mode": list(_get_args(D.TransitionMode)),
-        "spend_ratio": list(_get_args(D.SpendRatio)),
-        "scout_priority": list(_get_args(D.ScoutPriority)),
-        "tech_focus": list(_get_args(D.TechFocus)),
-        "retreat_threshold": list(_get_args(D.RetreatThreshold)),
-        "support_powers_auto": list(_get_args(D.SupportPowersAuto)),
-        "primary_objective": list(_get_args(D.PrimaryObjective)),
-        "approaches": list(_get_args(D.Approach)),
-        "stances": list(_get_args(D.Stance)),
-        "report_what": list(_get_args(D.ReportWhat)),
-    }
-    # current state from bot
-    resp = transport.send_command({"type": "get_strategy"})
-    caps["current"] = resp.get("strategy", {}) if resp.get("ok") else {}
-    return caps
-
-
-def _narrate_capabilities(transport) -> str:
-    c = _capabilities_dict(transport)
-    tmpls = c["templates"]
-    line1 = "templates: " + ", ".join(tmpls.keys())
-    line2 = f"transition: {','.join(c['transition_mode'])}"
-    line3 = f"defense: {','.join(c['defense_state'])}"
-    cur = c.get("current") or {}
-    line4 = "current: " + (
-        ", ".join(f"{k}={v}" for k, v in cur.items() if v is not None)
-        or "(unset)"
-    )
-    return " | ".join([line1, line2, line3, line4])
