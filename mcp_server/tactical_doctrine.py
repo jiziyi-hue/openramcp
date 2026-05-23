@@ -14,108 +14,130 @@ from typing import Dict
 
 # ---------------------------------------------------------------------------
 # Target priority — how valuable is it to destroy this enemy actor?
-# Higher = pick first. Range roughly 0-100.
+# Higher = pick first. Range 0-100.
 #
-# Reasoning:
-#   * harvester / mcv ≈ break enemy economy / mobility = top priority
-#   * fact / superweapon ≈ game-ending structures
-#   * heavy AFVs ≈ damage threats that scale
-#   * basic infantry / static defense ≈ cheap to ignore
+# Ordering (player intuition, RTS standard playbook):
+#   1. Mobile units first (they shoot back, run, kite). Within units:
+#      - Glass-cannon high-DPS (v2rl, arty, dtrk) at the very top — kill
+#        before they alpha-strike our army.
+#      - Anti-armor infantry (e3) next — they melt tanks if left alone.
+#      - Harvesters (always relevant, choke enemy economy).
+#      - Heavy AFVs.
+#      - Light vehicles / scouts.
+#      - Basic infantry / cheap defenders.
+#   2. Buildings after units. Within buildings:
+#      - Power (powr/apwr) — chain effect: kills radar, defenses, super-
+#        weapons. Always first.
+#      - Defenses (tsla/ftur/sam/pbox/gun/agun) — clear the way.
+#      - Production (weap/barr/tent/afld/syrd/spen/hpad/fix) — stop bleed.
+#      - Tech / economy structures (proc/dome/stek/atek).
+#      - Win-condition (fact + superweapons) last among non-game-ending
+#        choices, but still kept high because killing fact ends games.
 # ---------------------------------------------------------------------------
 TARGET_PRIORITY: Dict[str, int] = {
-    # economy
-    "harv": 100,
-    "mcv":  95,
-    "proc": 80,
-    "silo": 65,
+    # --- units: glass-cannon high-DPS (kill on sight) ---
+    "v2rl": 100,
+    "arty": 100,
+    "dtrk": 100,
+    "ttnk": 95,
+    "mssb": 90,
 
-    # superweapons / win-condition
-    "fact": 95,
-    "mslo": 92,   # nuclear silo
-    "iron": 88,   # iron curtain
-    "pdox": 88,   # chronosphere
-    "atek": 78,   # allied tech center
-    "stek": 78,   # soviet tech center
+    # --- units: anti-armor / hero infantry ---
+    "e3":   90,
+    "e3r1": 92,
+    "e7":   90,   # tanya
+    "vlkv": 90,   # volkov
+    "shok": 88,   # shock trooper
 
-    # production
-    "weap": 85,
-    "afld": 80,
-    "syrd": 75,
-    "spen": 75,
-    "barr": 60,
-    "tent": 60,
-    "hpad": 60,
-    "fix":  55,
+    # --- units: harvesters (econ choke, always) ---
+    "harv": 85,
+    "mcv":  85,
 
-    # long-range threats
-    "v2rl": 85,
-    "arty": 82,
-    "mssb": 80,
-    "ca":   75,
-    "dd":   60,
+    # --- units: heavy AFVs ---
+    "4tnk": 80,
+    "3tnk": 75,
+    "2tnk": 70,
+    "1tnk": 65,
 
-    # heavy AFVs
-    "4tnk": 75,   # mammoth
-    "ttnk": 72,   # tesla tank
-    "3tnk": 65,
-    "2tnk": 55,
-    "1tnk": 45,
+    # --- units: light vehicles ---
+    "ftrk": 70,   # flak truck, anti-air, kill before air dies
+    "apc":  60,
+    "jeep": 55,
+    "mrj":  60,
+    "mgg":  60,
+    "mnly": 50,
 
-    # support / scout
-    "shok": 65,   # shock trooper
-    "jeep": 35,
-    "apc":  45,
-    "ftrk": 50,
-    "mrj":  55,   # radar jammer
-    "mgg":  55,   # gap generator
-    "mnly": 30,
-    "dtrk": 80,   # demolition truck (suicide bomber)
+    # --- units: aircraft (high mobility, hard to catch) ---
+    "yak":  88,
+    "mig":  88,
+    "hind": 85,
+    "heli": 85,
+    "tran": 80,
+    "badr": 85,
+    "u2":   50,
 
-    # infantry
-    "e3": 40,     # rocket soldier (anti-tank, kill first)
-    "e3r1": 45,
-    "e7": 70,     # tanya
-    "vlkv": 70,   # volkov
-    "e4": 35,     # flame trooper
-    "e2": 30,
-    "e1": 25,
-    "e1r1": 28,
-    "medi": 30,
-    "spy":  60,
-    "thf":  55,
+    # --- units: basic infantry ---
+    "e4":   55,   # flame trooper
+    "e2":   45,
+    "e1":   40,
+    "e1r1": 43,
+    "medi": 45,
+    "spy":  70,
+    "thf":  65,
+    "dog":  35,
 
-    # aircraft
-    "yak":  60,
-    "mig":  65,
-    "hind": 60,
-    "heli": 60,
-    "tran": 70,
-    "u2":   30,
-    "badr": 65,
+    # --- units: naval ---
+    "ca":   85,   # cruiser, siege from sea
+    "dd":   70,
+    "ss":   75,
+    "pt":   55,
 
-    # static defense
-    "pbox": 40,
-    "hbox": 45,
-    "gun":  42,
-    "agun": 40,
-    "sam":  38,
-    "ftur": 55,
-    "tsla": 60,
+    # --- buildings: power (chain effect — top of buildings) ---
+    "powr": 75,
+    "apwr": 78,
+    "fpwr": 75,
 
-    # power / utility
-    "dome": 50,   # radar — blinding enemy is valuable
-    "powr": 35,
-    "apwr": 40,
-    "gap":  45,
-    "fpwr": 50,   # forward power plant
+    # --- buildings: defense ---
+    "tsla": 70,
+    "ftur": 65,
+    "sam":  60,
+    "agun": 60,
+    "gun":  58,
+    "pbox": 55,
+    "hbox": 58,
 
-    # walls / passive
+    # --- buildings: production ---
+    "weap": 60,
+    "afld": 58,
+    "syrd": 55,
+    "spen": 55,
+    "barr": 50,
+    "tent": 50,
+    "hpad": 50,
+    "fix":  48,
+    "kenn": 35,
+
+    # --- buildings: tech / radar / economy ---
+    "dome": 55,   # radar — blinding enemy
+    "stek": 55,
+    "atek": 55,
+    "proc": 55,
+    "silo": 30,
+    "gap":  50,
+
+    # --- buildings: win-condition / superweapon ---
+    "fact": 60,   # kill = game end; still picked first by destroy_fact mission
+    "mslo": 75,   # nuclear silo
+    "iron": 70,   # iron curtain
+    "pdox": 70,   # chronosphere
+
+    # --- passive / walls ---
+    "oilb": 25,
     "sbag": 5,
     "brik": 5,
     "barb": 5,
     "cycl": 5,
     "fenc": 5,
-    "oilb": 30,
 }
 
 DEFAULT_PRIORITY = 30

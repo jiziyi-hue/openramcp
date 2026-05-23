@@ -43,6 +43,8 @@ _DISABLED = os.environ.get("TACTICAL_DISABLED") == "1"
 
 POLL_INTERVAL_S = 0.6        # how often the daemon scans the world
 ENGAGE_RADIUS = 8            # cells — enemies within this from force centroid
+EXTENDED_ENGAGE_RADIUS = 18  # cells — extended scan for high-priority chase
+PRIORITY_CHASE_THRESHOLD = 80  # only chase targets with priority >= this
                              #         are engaged immediately
 COHESION_MAX_SPREAD = 9      # cells — stddev cap for force spread before
                              #         the vanguard is forced to halt
@@ -2325,41 +2327,64 @@ class TacticalEngine:
                               enemy_units: List[dict],
                               center: Tuple[int, int]
                               ) -> Optional[Tuple[int, Tuple[int, int]]]:
-        """Choose the highest-scoring enemy in engage range.
+        """Choose the highest-scoring enemy in engage range, with an extended
+        scan for high-priority units we should chase before they alpha-strike
+        us (v2rl/arty/dtrk/tsla tanks sit outside our engage radius but melt
+        the army if ignored).
 
         Score = base_priority × avg_counter(our force vs target) / max(5, dist).
-        Returns (actor_id, (x, y)) or None when no enemy is reachable.
-        Considers mobile threats inside ENGAGE_RADIUS first; if none, the
-        march sub-routine takes over (we don't sidetrack to far buildings).
+
+        Two-tier search:
+          1. Within ENGAGE_RADIUS — pick the best regardless of priority.
+          2. If nothing in range, widen to EXTENDED_ENGAGE_RADIUS but only
+             accept targets with priority >= PRIORITY_CHASE_THRESHOLD. This
+             stops the daemon from sidetracking to a distant powr while
+             ignoring a v2rl shelling us.
         """
         if not active or not enemy_units:
             return None
 
-        r2 = ENGAGE_RADIUS * ENGAGE_RADIUS
-        in_range = []
-        for u in enemy_units:
-            p = (u["pos"]["x"], u["pos"]["y"])
-            if _dist2(center, p) <= r2:
-                in_range.append((u, p))
-        if not in_range:
-            return None
-
-        # Average our force counter score vs each candidate enemy.
-        best = None
-        best_score = -1.0
-        for u, p in in_range:
+        def score_of(u: dict, p: Tuple[int, int]) -> float:
             kind = u.get("kind", "")
             base = DOCTRINE.target_priority(kind)
             if base <= 0:
-                continue
+                return -1.0
             cnt = 0.0
             for ou in active:
                 cnt += DOCTRINE.counter_score(ou.get("kind", ""), kind)
             cnt_avg = cnt / max(1, len(active))
             dist = max(5.0, _dist2(center, p) ** 0.5)
-            score = base * cnt_avg / dist
-            if score > best_score:
-                best_score = score
+            return base * cnt_avg / dist
+
+        r2_engage = ENGAGE_RADIUS * ENGAGE_RADIUS
+        r2_extended = EXTENDED_ENGAGE_RADIUS * EXTENDED_ENGAGE_RADIUS
+
+        best = None
+        best_score = -1.0
+        # Tier 1: in engage radius, anyone goes.
+        for u in enemy_units:
+            p = (u["pos"]["x"], u["pos"]["y"])
+            if _dist2(center, p) > r2_engage:
+                continue
+            s = score_of(u, p)
+            if s > best_score:
+                best_score = s
+                best = (u["id"], p)
+        if best is not None:
+            return best
+
+        # Tier 2: extended radius, only high-priority chase candidates.
+        for u in enemy_units:
+            p = (u["pos"]["x"], u["pos"]["y"])
+            d2 = _dist2(center, p)
+            if d2 > r2_extended:
+                continue
+            kind = u.get("kind", "")
+            if DOCTRINE.target_priority(kind) < PRIORITY_CHASE_THRESHOLD:
+                continue
+            s = score_of(u, p)
+            if s > best_score:
+                best_score = s
                 best = (u["id"], p)
         return best
 
