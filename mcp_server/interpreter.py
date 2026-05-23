@@ -319,12 +319,10 @@ _NON_COMBAT_MOBILE_KINDS = frozenset({
 _HARASS_CAPABLE = frozenset({"jeep", "ftrk", "dog", "e3", "apc", "1tnk"})
 _HARASS_BAD = frozenset({"2tnk", "3tnk", "4tnk", "arty", "v2rl", "mcv", "harv"})
 _NON_COMBAT = frozenset({"harv", "mcv"})
-_BUILDING_KINDS = frozenset({
-    "fact", "powr", "apwr", "proc", "barr", "tent", "weap", "afld",
-    "hpad", "spen", "syrd", "stek", "atek", "dome", "fix", "silo",
-    "pbox", "hbox", "gun", "agun", "sam", "ftur", "tsla", "mslo",
-    "iron", "pdox", "gap", "sbag", "brik", "barb", "cycl", "kenn",
-})
+# NOTE: _BUILDING_KINDS authoritative definition is earlier in this file
+# (line ~298). It already includes oilb / afld.ukraine / fenc which the old
+# phase-6 redefinition here was missing — that re-binding silently let
+# combat_mobile filter pick neutral oil derricks as "units". Removed.
 _FAST_KINDS = frozenset({"jeep", "dog", "e3", "e1", "ftrk", "spy", "thf"})
 
 

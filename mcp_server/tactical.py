@@ -1305,15 +1305,10 @@ class TacticalEngine:
         harass_ok = frozenset({"jeep", "ftrk", "dog", "e3", "apc", "1tnk"})
         harass_bad = frozenset({"2tnk", "3tnk", "4tnk", "arty", "v2rl",
                                 "mcv", "harv"})
-        # Combat-mobile excludes harvesters, MCV, and buildings (anything
-        # that can move + fight). Used by destroy_enemy cycle assault.
-        non_combat = frozenset({"harv", "mcv"})
-        building_kinds = frozenset({
-            "fact", "powr", "apwr", "proc", "barr", "tent", "weap", "afld",
-            "hpad", "spen", "syrd", "stek", "atek", "dome", "fix", "silo",
-            "pbox", "hbox", "gun", "agun", "sam", "ftur", "tsla", "mslo",
-            "iron", "pdox", "gap", "sbag", "brik", "barb", "cycl", "kenn",
-        })
+        # Combat-mobile excludes harvesters, MCV, and buildings. Reuse the
+        # module-level _BUILDING_KINDS / _NON_COMBAT_MOBILE_KINDS sets so
+        # we stay in sync with _is_combat_mobile (avoids the earlier bug
+        # where a local redef silently dropped oilb / afld.ukraine).
 
         def matches(u: dict) -> bool:
             kind = (u.get("kind") or "").lower()
@@ -1321,7 +1316,7 @@ class TacticalEngine:
                 if kind not in harass_ok or kind in harass_bad:
                     return False
             if spec.get("combat_mobile") is True:
-                if kind in non_combat or kind in building_kinds:
+                if kind in _NON_COMBAT_MOBILE_KINDS or kind in _BUILDING_KINDS:
                     return False
             if unit_kind and kind != unit_kind.lower():
                 return False
@@ -2339,6 +2334,22 @@ class TacticalEngine:
                     # No suitable enemy left — mission complete.
                     a.finished = True
                     return
+
+        # Cycle-assault sweep mode: when the force has reached the final
+        # target cell (≤8 cells from centroid) but the picker found nothing
+        # in radius AND nothing in extended range, pull the global highest-
+        # priority enemy from the entire map and march on it. Stops the army
+        # parking inside the enemy base while structures sit in corners.
+        # Static (LLM one-shot) missions skip this — they keep their intent.
+        if a.force_spec is not None and enemy_units:
+            dist_to_final = _dist2(center, a.final_target_cell) ** 0.5
+            if dist_to_final <= 8.0:
+                global_pick = self._pick_global_priority_target(enemy_units)
+                if global_pick is not None:
+                    a.final_target_actor = global_pick[0]
+                    a.final_target_cell = global_pick[1]
+                    self.retargets += 1
+
         a.current_target_actor = a.final_target_actor
         moving = list(active_ids_set - a.halted_units)
         if not moving:
@@ -2349,6 +2360,23 @@ class TacticalEngine:
             "target": {"x": a.final_target_cell[0], "y": a.final_target_cell[1]},
             "attack_move": True,
         })
+
+    def _pick_global_priority_target(
+        self, enemy_units: List[dict]
+    ) -> Optional[Tuple[int, Tuple[int, int]]]:
+        """Pick the single highest-priority enemy on the map, ignoring
+        distance. Used by cycle-assault sweep mode to keep the army moving
+        on stragglers in map corners after the named target is gone."""
+        best = None
+        best_pri = -1
+        for u in enemy_units:
+            kind = (u.get("kind") or "").lower()
+            pri = DOCTRINE.target_priority(kind)
+            if pri > best_pri:
+                best_pri = pri
+                best = (int(u["id"]),
+                        (int(u["pos"]["x"]), int(u["pos"]["y"])))
+        return best
 
     # ------------------------------------------------------------------
     # Helpers — retreat + target prioritization
