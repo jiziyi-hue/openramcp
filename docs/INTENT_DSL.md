@@ -11,7 +11,7 @@
 
 1. **玩家拥有信息 + 经济** — 建造 / 探路 / 收资源都是玩家手控. LLM 不下生产令.
 2. **LLM 拥有战术** — 把 NL 意图翻成 intent_json, 一句 dispatch_intent 调下去.
-3. **Daemon 拥有循环** — 持续行为 (harass/patrol/escort/contain/defend) 由 mission daemon 接管, LLM 不轮询.
+3. **Daemon 拥有循环** — 持续行为 (patrol/contain/defend + objective 派的 cycle harass) 由 mission daemon 接管, LLM 不轮询. 单次 intent (harass/escort/diversion) 打完即结束.
 4. **LLM 不做数值分析** — 不算坐标 / 距离 / HP 阈值 / 单位 id, 让解释器处理.
 
 ---
@@ -42,7 +42,7 @@
 | `feint` | 佯攻 (推到接火停) | 一次性 |
 | `set_stance` | 改交战姿态 | 一次性 |
 | `report` | 询战况 (只读) | 一次性 |
-| **`harass`** | **持续骚扰循环** | **daemon** — engage→withdraw→regroup→loop |
+| **`harass`** | **单次骚扰** (默认 cycle=false) | daemon — engage→withdraw→end. 长效走 objective harass_economy |
 | **`patrol`** | **路径点循环视野** | **daemon** — 循环走 waypoints |
 | **`escort`** | **护送指定单位** | **daemon** — 跟随 + 拦敌 |
 | **`contain`** | **卡敌出口** | **daemon** — 守 chokepoint |
@@ -85,7 +85,7 @@ set_objective(
 | objective | 含义 | LLM 偏向 |
 |---|---|---|
 | `destroy_fact` | 拆敌建造场 (默认) | 推荐 attack/pincer, 目标 enemy_fact |
-| `harass_economy` | 切敌经济, 不必决战 | 推荐 harass, 目标敌矿场/采矿车 |
+| `harass_economy` | 切敌经济, 不必决战 | **daemon 自动持续 cycle harass** 敌经济区, 自动吸新 harass-capable, 自动重选目标 |
 | `survive_until_tick` | 撑到 tick X | 推荐 defend/contain + alert=orange |
 | `control_map_center` | 卡地图中场 | 推荐 contain + patrol |
 
@@ -143,7 +143,7 @@ set_objective(
 ### `Region` — 守哪/侦哪 (3 种 kind)
 
 ```jsonc
-{"kind": "around", "center": <NamedTarget | Target>, "radius": 10}
+{"kind": "around", "center": <NamedTarget>, "radius": 10}   // center 直接是字符串, 比如 "self_base"
 {"kind": "rect", "x1": 30, "y1": 30, "x2": 50, "y2": 50}
 {"kind": "named", "name": "self_base_perimeter" | "map_center" | "enemy_approach_lanes"}
 ```
@@ -288,22 +288,25 @@ defend 现在挂 daemon: 单位会自动散开守半径, 阵亡补员从 force.f
 > LLM **不需要轮询 / 不需要管循环退出**. 玩家说停就 `cancel_mission(id)` 或
 > 通过 `set_alert_state("black")` 全清.
 
-### harass — 持续骚扰循环
+### harass — 单次骚扰 (默认一次性)
 
 ```jsonc
 {"intent": "harass",
  "force": {"kind": "filter", "harass_capable": true},
- "target_region": {"kind": "around", "center": {"kind": "named", "name": "enemy_base"}, "radius": 8},
- "withdraw_when": "hp_below_0.6",     // 或 "force_size_below_3" / "in_kill_zone"
+ "region": {"kind": "around", "center": "enemy_base", "radius": 8},
+ "withdraw_hp_threshold": 0.6,         // float 0..1, 任一单位 HP 跌破即整队撤
+ "reengage_hp_threshold": 0.85,        // float 0..1, 撤完养到此才再发动 (仅 cycle=true 时用)
  "withdraw_to": {"kind": "named", "name": "self_base"},
- "cycle": true,                        // false = 打一轮停, true = 循环
- "max_force_size": null}               // null = 无上限, daemon 自动吸新单位
+ "cycle": false,                       // false = 打一轮停 (默认), true = 循环
+ "max_force_size": null}
 ```
 
-daemon 状态机: `engaging` → `withdrawing` → `regrouping` → `engaging` ...
+daemon 状态机: `engaging` → `withdrawing` → 结束 (cycle=false).
 
-force=filter 时默认动态 (新单位自动加入). 玩家说"骚扰" → daemon 持续运行,
-不需要 LLM 每分钟下令.
+**默认行为**: 打一轮, 撤回, mission 结束, 单位归玩家. **不会自动吸收新训单位**.
+
+**长效骚扰**走 objective: `set_objective("harass_economy")`. daemon 内部派 cycle
+型 harass mission, 自动重选敌经济目标, 自动吸新 harass-capable 单位.
 
 ### patrol — 路径点循环视野
 
@@ -401,7 +404,8 @@ mission daemon 的 force 有两种解析模式:
 | "撤 / 回来 / 救" | `dispatch_intent(retreat)` |
 | "集结 / 集合" | `dispatch_intent(regroup)` |
 | "侦察 (一次) / 看看" | `dispatch_intent(scout)` |
-| **"骚扰 / 切经济"** | **`dispatch_intent(harass)`** |
+| **"打一波他的矿"** (单次) | **`dispatch_intent(harass, cycle=false)`** |
+| **"持续骚扰 / 切断经济"** (长效) | **`set_objective("harass_economy")`** |
 | **"巡逻 A B C"** | **`dispatch_intent(patrol)`** |
 | **"护送 MCV 去 X"** | **`dispatch_intent(escort)`** |
 | **"卡死敌出口 / 堵路口"** | **`dispatch_intent(contain)`** |
@@ -424,7 +428,7 @@ mission daemon 的 force 有两种解析模式:
 5. ✅ **必须**从枚举里选, 不发明 approach / stance / NamedTarget / alert level 值
 6. ✅ **不确定** force 是哪个 group → 先发 `{intent:"report", what:"groups"}` 看
 7. ✅ **不确定** target → 用 `nearest_enemy_*` 或 `enemy_fact` 这些 named
-8. ✅ 玩家说"骚扰 / 巡逻 / 护送 / 卡 / 佯攻偷家" → 用对应 daemon intent, 别拆成一次性 attack
+8. ✅ 玩家说"巡逻 / 护送 / 卡 / 佯攻偷家" → 对应 daemon intent. **"骚扰"区分**: 单次 → harass intent; **长效 → set_objective("harass_economy")** 而非反复 dispatch harass
 9. ✅ 玩家声明战略目标 → 先 `set_objective`, 再考虑 alert + mission 组合
 
 ---

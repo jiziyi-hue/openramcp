@@ -315,6 +315,28 @@ ALERT_STATE_CONFIG: Dict[AlertState, dict] = {
 }
 
 
+# Objective-owned auto-mission specs. Same shape as ALERT_STATE_CONFIG
+# auto_missions entries — _dispatch_auto_mission handles them identically.
+# When the objective owns the mission, ids land in objective_mission_ids
+# (not auto_mission_ids), so alert-state swaps don't kill objective work.
+#
+# DESTROY_FACT: no auto-mission — player drives attack/pincer manually.
+# SURVIVE_UNTIL_TICK: no auto-mission — players combine with alert lockdown.
+# CONTROL_MAP_CENTER: TODO (needs contain auto-spec + map_center resolution).
+# HARASS_ECONOMY: cycle harass on enemy economy with dynamic harass_capable.
+_OBJECTIVE_MISSIONS: Dict[Objective, List[dict]] = {
+    Objective.DESTROY_FACT: [],
+    Objective.HARASS_ECONOMY: [
+        {"kind": "harass",
+         "force": {"harass_capable": True},
+         "target_region": "enemy_economy",
+         "max_force": 4},
+    ],
+    Objective.SURVIVE_UNTIL_TICK: [],
+    Objective.CONTROL_MAP_CENTER: [],  # TODO: contain @ map_center
+}
+
+
 _OBJECTIVE_TO_SUGGESTED_STATE: Dict[Objective, AlertState] = {
     Objective.DESTROY_FACT:       AlertState.COMBAT,
     Objective.HARASS_ECONOMY:     AlertState.ALERT,
@@ -608,6 +630,10 @@ class TacticalEngine:
         # Objective storage.
         self.current_objective: Optional[Objective] = None
         self.objective_params: dict = {}
+        # Mission IDs auto-dispatched by the current objective. Cleared on
+        # objective swap. Separate from auto_mission_ids so alert-state and
+        # objective lifecycles don't tangle.
+        self.objective_mission_ids: List[int] = []
         # Auto-escalation throttle.
         self._last_escalation_alert_ts: float = 0.0
         # Diagnostic counters surfaced via status().
@@ -951,6 +977,7 @@ class TacticalEngine:
                 "default_stance": self.default_stance,
                 "default_approach": self.default_approach,
                 "auto_mission_ids": list(self.auto_mission_ids),
+                "objective_mission_ids": list(self.objective_mission_ids),
                 "objective": (self.current_objective.value
                               if self.current_objective else None),
                 "objective_params": dict(self.objective_params),
@@ -1239,7 +1266,19 @@ class TacticalEngine:
         limit = spec.get("max_force")
         ids = self._filter_force_ids_from_world(world, force_spec, limit)
         if not ids:
-            return None  # pending queue is task #6; for now silently skip
+            # Force unresolvable now — enqueue so daemon retries when player
+            # trains a matching unit. Wrap the raw spec under a sentinel key;
+            # _tick_pending detects it and re-invokes _dispatch_auto_mission
+            # instead of going through the interpreter (which would need a
+            # fully-formed top-level intent dict).
+            payload = {"__auto_spec__": dict(spec)}
+            reason = f"auto_mission '{kind}' force empty; will retry"
+            self.queue_pending(
+                intent_kind=f"auto_{kind}",
+                intent_payload=payload,
+                reason=reason,
+            )
+            return None
 
         try:
             if kind == "patrol":
@@ -1298,14 +1337,65 @@ class TacticalEngine:
 
     def set_objective(self, obj: Optional[Objective],
                       params: Optional[dict] = None) -> dict:
-        """Store the player-declared victory condition. `params` carries
-        objective-specific data (e.g. {"tick": 30000} for survive_until)."""
+        """Store the player-declared victory condition + dispatch objective-
+        owned auto-missions. `params` carries objective-specific data (e.g.
+        {"tick": 30000} for survive_until).
+
+        Behaviour:
+        1. Cancel any mission previously dispatched by the prior objective
+           (tracked in objective_mission_ids). Player-issued missions are
+           untouched.
+        2. Store new objective + params.
+        3. Dispatch new objective's auto-mission set (see _OBJECTIVE_MISSIONS).
+           force_empty entries enqueue to pending.
+
+        Returns a transition report.
+        """
+        prev_obj = self.current_objective
+        cancelled_ids: List[int] = []
         with self._lock:
+            for mid in list(self.objective_mission_ids):
+                if mid in self._assaults:
+                    self._assaults.pop(mid, None)
+                    cancelled_ids.append(mid)
+                if mid in self._harass:
+                    self._harass.pop(mid, None)
+                    cancelled_ids.append(mid)
+                if mid in self._patrol:
+                    self._patrol.pop(mid, None)
+                    cancelled_ids.append(mid)
+                if mid in self._contain:
+                    self._contain.pop(mid, None)
+                    cancelled_ids.append(mid)
+            self.objective_mission_ids.clear()
             self.current_objective = obj
             self.objective_params = dict(params or {})
+
+        # Dispatch new objective's auto-missions.
+        dispatched_ids: List[int] = []
+        pending_ids: List[int] = []
+        if obj is not None:
+            specs = _OBJECTIVE_MISSIONS.get(obj, [])
+            world = self._snapshot_world()
+            for spec in specs:
+                # Reuse the alert-state dispatcher path; it already handles
+                # pending enqueue + tagging via _dispatch_auto_mission.
+                pending_before = set(self._pending.keys())
+                mid = self._dispatch_auto_mission(spec, world)
+                if mid is not None:
+                    dispatched_ids.append(mid)
+                    with self._lock:
+                        self.objective_mission_ids.append(mid)
+                else:
+                    new_pending = set(self._pending.keys()) - pending_before
+                    pending_ids.extend(new_pending)
         return {
-            "objective": obj.value if obj else None,
+            "previous_objective": prev_obj.value if prev_obj else None,
+            "new_objective": obj.value if obj else None,
             "params": dict(self.objective_params),
+            "cancelled_mission_ids": cancelled_ids,
+            "dispatched_mission_ids": dispatched_ids,
+            "pending_ids": pending_ids,
         }
 
     def get_objective(self) -> dict:
@@ -1556,14 +1646,45 @@ class TacticalEngine:
                     continue
                 self._pending[pid].last_check_ts = now
 
+            payload = pending.intent_payload
+            auto_spec = payload.get("__auto_spec__") if isinstance(payload, dict) else None
+
+            if auto_spec is not None:
+                # Auto-mission pending — re-invoke the daemon-internal
+                # dispatcher with the original spec.
+                world = self._snapshot_world()
+                if world is None:
+                    continue
+                force_spec = auto_spec.get("force", {})
+                limit = auto_spec.get("max_force")
+                if not self._filter_force_ids_from_world(world, force_spec, limit):
+                    continue  # still empty, keep waiting
+                mid = self._dispatch_auto_mission(auto_spec, world)
+                if mid is None:
+                    continue  # dispatch failed (e.g. target unresolvable), retry
+                with self._lock:
+                    self._pending.pop(pid, None)
+                    self.pending_dispatches += 1
+                    # Track so a doctrine/alert swap can clean it up.
+                    if mid not in self.auto_mission_ids:
+                        self.auto_mission_ids.append(mid)
+                self._append_scout_event({
+                    "kind": "pending_dispatched",
+                    "severity": "info",
+                    "pending_id": pid,
+                    "intent_kind": pending.intent_kind,
+                    "narrative": f"{pending.intent_kind} 启动 (mission #{mid})",
+                    "mission_id": mid,
+                    "timestamp": time.time(),
+                })
+                continue
+
             # Probe force resolution without dispatching by building a
             # WorldView + resolving the force part of the payload. If it's
             # non-empty, hand the whole intent to the interpreter and drop
             # the pending entry.
             try:
-                resolved_count = self._probe_force_count(
-                    pending.intent_payload
-                )
+                resolved_count = self._probe_force_count(payload)
             except Exception as e:
                 self.last_error = f"pending_probe[{pid}]: {e}"
                 continue
@@ -1574,7 +1695,7 @@ class TacticalEngine:
             # Dispatch for real. Best-effort; failures stay in queue so we
             # can re-try next interval.
             try:
-                result = _I.interpret(pending.intent_payload, self.transport)
+                result = _I.interpret(payload, self.transport)
             except Exception as e:
                 self.last_error = f"pending_dispatch[{pid}]: {e}"
                 continue

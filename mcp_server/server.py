@@ -759,14 +759,16 @@ def get_alert_state() -> dict:
 
 @mcp.tool()
 def set_objective(name: str, tick: Optional[int] = None) -> dict:
-    """Set the player-declared victory condition.
+    """Set the player-declared victory condition + dispatch objective-owned
+    auto-missions (e.g. harass_economy launches a cycle harass on enemy
+    economy).
 
     name: destroy_fact | harass_economy | survive_until_tick | control_map_center
     tick: only for survive_until_tick — target tick to survive to.
 
-    The objective is informational + advisory: it does NOT change unit
-    orders directly. The response includes `suggested_alert_state` — the
-    LLM should relay that to the player as a recommendation, not auto-apply.
+    Switching the objective cancels the prior objective's auto-missions
+    (kept in objective_mission_ids). Manual LLM-dispatched missions are
+    NOT touched. Returns the transition report.
     """
     try:
         obj = _Objective(name)
@@ -783,18 +785,84 @@ def set_objective(name: str, tick: Optional[int] = None) -> dict:
                     "error": "survive_until_tick requires `tick` parameter"}
         params["tick"] = int(tick)
     engine = _get_tactical_engine(transport)
-    engine.set_objective(obj, params)
+    report = engine.set_objective(obj, params)
     suggested = _objective_to_suggested_state(obj)
     return {
         "ok": True,
         "objective": obj.value,
         "params": params,
         "suggested_alert_state": suggested.value,
+        "cancelled_mission_ids": report.get("cancelled_mission_ids", []),
+        "dispatched_mission_ids": report.get("dispatched_mission_ids", []),
+        "pending_ids": report.get("pending_ids", []),
         "narrative": (
-            f"Objective set: {obj.value}. "
-            f"Suggested alert state: {suggested.value}."
+            f"Objective {report.get('previous_objective')} → {obj.value}. "
+            f"Cancelled {len(report.get('cancelled_mission_ids', []))} prior "
+            f"objective mission(s), dispatched "
+            f"{len(report.get('dispatched_mission_ids', []))}, "
+            f"{len(report.get('pending_ids', []))} pending. "
+            f"Suggested alert: {suggested.value}."
         ),
     }
+
+
+@mcp.tool()
+def set_doctrine(
+    alert_state: Optional[str] = None,
+    objective: Optional[str] = None,
+    survive_tick: Optional[int] = None,
+) -> dict:
+    """Set the army's overall doctrine in one call — alert state + objective.
+
+    Use this for "framework first" play: declare the big posture at game
+    start (or whenever shifting strategy), then issue tactical intents
+    inside that frame. Either field may be omitted to leave it unchanged.
+
+    Args:
+        alert_state: peace | watch | alert | combat | lockdown (or null)
+        objective:   destroy_fact | harass_economy | survive_until_tick |
+                     control_map_center (or null)
+        survive_tick: required when objective == 'survive_until_tick'
+
+    Internally calls set_alert_state then set_objective, returning a
+    merged transition report. Switching either field cancels what that
+    layer previously owned; the other layer's missions survive.
+    """
+    if alert_state is None and objective is None:
+        return {"ok": False, "error": "specify at least one of alert_state / objective"}
+    engine = _get_tactical_engine(transport)
+    out: dict = {"ok": True}
+
+    if alert_state is not None:
+        try:
+            state = _AlertState(alert_state)
+        except ValueError:
+            return {
+                "ok": False,
+                "error": f"unknown alert_state: {alert_state!r}",
+            }
+        out["alert"] = engine.apply_alert_state(state)
+
+    if objective is not None:
+        try:
+            obj = _Objective(objective)
+        except ValueError:
+            return {"ok": False, "error": f"unknown objective: {objective!r}"}
+        params: dict = {}
+        if obj == _Objective.SURVIVE_UNTIL_TICK:
+            if survive_tick is None:
+                return {"ok": False,
+                        "error": "objective=survive_until_tick requires survive_tick"}
+            params["tick"] = int(survive_tick)
+        out["objective"] = engine.set_objective(obj, params)
+
+    pieces = []
+    if "alert" in out:
+        pieces.append(f"alert={alert_state}")
+    if "objective" in out:
+        pieces.append(f"objective={objective}")
+    out["narrative"] = "Doctrine set: " + ", ".join(pieces)
+    return out
 
 
 @mcp.tool()

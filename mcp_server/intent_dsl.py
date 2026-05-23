@@ -256,7 +256,7 @@ class IntentHarass(BaseModel):
     withdraw_hp_threshold: float = 0.6
     reengage_hp_threshold: float = 0.85
     withdraw_to: Optional[Union[TargetByName, TargetByPos]] = None  # 默认 self_base
-    cycle: bool = True
+    cycle: bool = False  # 一次性默认: 打一轮就完, 单位归玩家. 长效切经济用 disrupt_economy.
     max_force_size: Optional[int] = None
 
 

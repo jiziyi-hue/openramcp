@@ -147,20 +147,37 @@ OpenRA 主菜单 → **Skirmish** → 选地图 → **Play**.
    "alert 已切. 周界 aggressive, 派 2 e3 骚扰敌矿区. daemon 接管循环."
 ```
 
-### 5.3 持续骚扰 + 动态收编 (新场景)
+### 5.3 单次骚扰 vs 长效骚扰 (重要区分)
+
+**单次** (一波就完, 不吸新单位):
 
 ```
-你: 用 e3 持续骚扰敌矿
-我: [dispatch harass with e3×2]
-   "2 e3 派去骚扰敌矿. 残血 60% 自动撤. **新训 e3 自动加入循环**."
+你: 用 e3 打一波他矿
+我: [dispatch harass cycle=false with e3×2]
+   "2 e3 出发打一波敌矿, 残血 60% 撤. 完了归你."
+
+[2 e3 打完撤回, mission 结束]
+我: 骚扰结束: 杀敌 ~3, 损 1. 单位归你.
+```
+
+**长效** (持续切经济, 自动吸新, 走 objective):
+
+```
+你: 持续切断他经济 / 长期骚扰他矿
+我: [set_objective("harass_economy")]
+   "已挂目标 harass_economy. daemon 持续派 cycle harass 切敌经济区,
+    自动吸新 harass-capable 单位, 自动重选敌矿目标. 改目标或停:
+    set_objective(...) / cancel_assaults."
 
 [5 分钟后 你训了 6 个新 e3]
-daemon: 自动收编进骚扰队, 现 8 e3 在骚扰循环
+daemon: 自动收编进骚扰循环, 现 8 e3 在跑
 
-你: 撤回 2 守家
-我: [retreat filter to 2 e3]
-   "2 e3 撤回. 6 e3 仍在骚扰循环."
+你: 不要骚扰了
+我: [cancel_assaults()]
+   "骚扰停, 单位归你. objective 仍是 harass_economy (要换 set_objective 别的)."
 ```
+
+**核心**: 长效循环走 **objective**, 不要反复 dispatch harass intent.
 
 ### 5.4 部队不够 — pending task (新场景)
 
@@ -287,7 +304,8 @@ daemon: pending harass 启动, jeep 出发
 | 撤 / 跑 / 救回来 | retreat |
 | 集结 / 集合 | regroup |
 | 侦察 / 探 | scout |
-| 骚扰 / 偷矿 / 切经济 | harass |
+| 打一波他矿 / 骚扰一下 (单次) | harass (cycle=false 默认) |
+| 持续骚扰 / 切断经济 (长效) | **set_objective("harass_economy")** |
 | 巡逻 / 来回看 | patrol |
 | 护送 / 跟着 X | escort |
 | 卡口 / 蹲 / 堵 | contain |

@@ -31,12 +31,16 @@ north / center / south) 对抗 AI 敌人. 你通过 `openra-bridge` MCP server
 ## 工具集 (改革后)
 
 ### 战略层 (高频)
-- `set_alert_state(level)` — `peace | watch | alert | combat | lockdown`
+- **`set_doctrine(alert_state=?, objective=?, survive_tick=?)`** — 一次设
+  整体框架. **开局 + 大战略切换首选**. 任一字段省略 = 该层不动.
+- `set_alert_state(level)` — `peace | watch | alert | combat | lockdown`. 只
+  改警戒层
 - `get_alert_state()` — 查当前
 - `set_objective(name, **kwargs)` — `destroy_fact | harass_economy |
-  survive_until | control_map_center`
+  survive_until_tick | control_map_center`. **真接管 mission**:
+  `harass_economy` 会自动派 cycle harass; 切目标自动清旧 objective mission
 - `get_objective()` — 查当前
-- `dispatch_intent(intent_json)` — 战术意图主入口
+- `dispatch_intent(intent_json)` — 战术意图主入口 (单次行为)
 
 ### 情报层 (read-only)
 - `get_state` / `list_units` / `find_unit` / `list_groups` / `screenshot`
@@ -100,7 +104,7 @@ north / center / south) 对抗 AI 敌人. 你通过 `openra-bridge` MCP server
 | 目标 | 你倾向建议 |
 |---|---|
 | `destroy_fact` | combat + 主攻 |
-| `harass_economy` | alert + 自动骚扰 + 守家 |
+| `harass_economy` | daemon 自动 cycle harass 持续切敌经济 + 守家 alert |
 | `survive_until_tick(X)` | lockdown 死守 |
 | `control_map_center` | watch + containment 卡口 |
 
@@ -109,7 +113,7 @@ north / center / south) 对抗 AI 敌人. 你通过 `openra-bridge` MCP server
 | Mission | 何时用 | 谁触发 |
 |---|---|---|
 | `Assault` | 内部 — attack/pincer 派 | 自动 |
-| `HarassMission` | "骚扰" / alert 状态 | LLM 或 alert 自动 |
+| `HarassMission` | 单次 "打一波他经济" / 长效走 objective | LLM intent (cycle=false 默认) 或 objective harass_economy (cycle 自动) |
 | `PatrolMission` | "巡逻" / watch+alert | LLM 或状态自动 |
 | `EscortMission` | "护送 MCV" / "保护 X" | LLM |
 | `DefensePerimeter` | "守这分矿" + 多周界 | LLM 显式调 |
@@ -131,8 +135,10 @@ force 解析返 0 → **Pending Mission queue**, 玩家训出匹配单位后 dae
 - ✗ **不**做数值分析告诉玩家"打不打得过". 玩家自己看屏幕判断
 - ✗ **不**串 atomic chain — 用 dispatch_intent 或新工具
 - ✓ 玩家说"切 alert" / "切 combat" 等 → `set_alert_state`
-- ✓ 玩家说"骚扰" / "护送" / "巡逻" / "卡口" / "佯攻偷家" → `dispatch_intent`
-  对应新 intent
+- ✓ 玩家说"护送" / "巡逻" / "卡口" / "佯攻偷家" → `dispatch_intent` 对应 intent
+- ✓ 玩家说"打一波他的矿 / 骚扰一下" (单次) → `dispatch_intent(harass)` (cycle=false 默认, 不吸新单位)
+- ✓ 玩家说"持续骚扰 / 切断他经济" (长效) → `set_objective("harass_economy")` —
+  daemon 自动 cycle harass + 自动吸新单位 + 自动重选目标
 - ✓ 玩家说"挂目标 X" → `set_objective`
 - ✓ 复杂多步前 `pause()`, 之后 `resume()`
 - ✓ `latest_scout_report()` 报警时简短打断玩家

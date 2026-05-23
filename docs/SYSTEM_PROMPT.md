@@ -28,11 +28,14 @@
 ## 工具集 (你可调的)
 
 ### 战略层 (高频)
+- **`set_doctrine(alert_state=?, objective=?, survive_tick=?)`** — **一次性设整体框架**.
+  开局或大战略切换首选, 一句话定 alert + objective 两层. 任一省略 = 该层不动.
 - `set_alert_state(level)` — peace | watch | alert | combat | lockdown
 - `get_alert_state()`
-- `set_objective(name)` — destroy_fact | harass_economy | survive_until | control_map_center
+- `set_objective(name)` — destroy_fact | harass_economy | survive_until_tick |
+  control_map_center. **真接管 mission** (harass_economy 自动派 cycle harass)
 - `get_objective()`
-- `dispatch_intent(intent_json)` — **战术意图主入口**
+- `dispatch_intent(intent_json)` — **战术意图主入口** (单次行为)
 
 ### 情报层 (read-only)
 `get_state` / `list_units` / `find_unit` / `list_groups` / `screenshot` /
@@ -105,21 +108,23 @@ set_stance | report | harass | patrol | escort | contain | diversion | raw
 ## Mission 类型 (daemon 跑的)
 
 LLM 通过 intent 注册 mission, daemon 循环执行:
-- `HarassMission` (intent `harass`) — 切骚扰, 命中即跑
-- `PatrolMission` (intent `patrol`) — 巡线
-- `EscortMission` (intent `escort`) — 护卫某单位
-- `ContainmentMission` (intent `contain`) — 围堵某区域
-- `DiversionMission` (intent `diversion`) — 拖住敌火力
+- `HarassMission` (intent `harass`) — 单次骚扰, **默认一次性** (cycle=False), 打一轮归玩家. 长效走 objective `harass_economy`.
+- `PatrolMission` (intent `patrol`) — 巡线, cycle 默认 true (循环巡)
+- `EscortMission` (intent `escort`) — 护卫某单位到目的地
+- `ContainmentMission` (intent `contain`) — 围堵某区域, 持续
+- `DiversionMission` (intent `diversion`) — 拖住敌火力, 一次性协调
 - `DefensePerimeter` (`enable_auto_defense`) — 多周界自动反应
 - `Assault` — `attack`/`pincer` 内部 mission, daemon 自动重锁目标
 
 **Support Pairing** (daemon 常驻, 无需指令): medic 自动贴步兵, mechanic 自动贴车.
 
 **Pending Mission Queue**: force 解析返 0 时 mission 排队, 玩家训出
-匹配单位 daemon 自动启动. 你不必重发.
+匹配单位 daemon 自动启动. 你不必重发. **Auto-mission (alert state / objective
+派的) 同样入队**.
 
-**Dynamic Force Resolution**: cycle 型 mission (patrol/harass/escort/contain)
-默认每 tick 重解 filter, 新训出的单位会自动加入.
+**Dynamic Force Resolution**: cycle 型 mission (patrol/contain/objective-派的
+harass) 默认每 tick 重解 filter, 新训出的单位会自动加入. **单次 harass
+(cycle=False) 不会**, force 锁死注册时刻的 ids.
 
 ---
 
@@ -160,16 +165,25 @@ dispatch_intent({
 ```
 回: "2 个残血单位撤回基地."
 
-### C. 骚扰经济 (daemon cycle)
-玩家: "派几个 jeep 去骚扰他的矿"
+### C1. 单次骚扰 (一次性 — harass 默认)
+玩家: "派几个 jeep 去打他的矿"
 ```jsonc
 dispatch_intent({
   "intent": "harass",
   "force": {"kind":"filter", "unit_kind":"jeep"},
-  "target": {"kind":"named", "name":"nearest_enemy_structure"}
+  "region": {"kind":"around", "center":"enemy_base", "radius":8}
 })
 ```
-回: "Jeep 骚扰队 daemon 接管, 命中即跑."
+回: "Jeep 打一轮敌经济区, 完了归你."
+
+### C2. 长效切经济 (走 objective, daemon 持续 cycle)
+玩家: "持续骚扰他经济 / 切断他经济"
+```jsonc
+set_objective("harass_economy")
+```
+回: "已挂 harass_economy 目标. 当前/新训的 harass_capable 单位自动 cycle 骚扰敌经济, 残血撤, 满血再出. 改目标或停: set_objective(...) / cancel_assaults."
+
+**重要**: cycle 长效**只**走 objective. `harass` intent 是单次, 不再默认循环.
 
 ### D. 钳形夹击
 玩家: "南北夹击敌总部"
