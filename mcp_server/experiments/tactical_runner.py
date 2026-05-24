@@ -92,17 +92,33 @@ def _resolve_named_pos(t: OpenRATransport, name: str) -> Optional[tuple[float, f
     return None
 
 
+def _pick_unit_ids(t: OpenRATransport, kind: Optional[str], count: int) -> list[int]:
+    """Pick the first `count` self-owned actor ids matching `kind`. Sorted
+    by actor id ascending so daemon and squad runs in the same session
+    select the same set (provided no units died between runs)."""
+    state = _get_state(t)
+    units = _self_units(state)
+    pool = [u for u in units if (kind is None or u.get("kind") == kind)]
+    pool.sort(key=lambda u: u["id"])
+    return [int(u["id"]) for u in pool[:count]]
+
+
 def _resolve_intent(scenario: dict, t: OpenRATransport) -> dict:
-    """Patch the intent template with live state (e.g. escortee_id)."""
+    """Patch the intent template with live state (e.g. unit_ids, escortee)."""
     intent = json.loads(json.dumps(scenario["intent_daemon"]))  # deep copy
+
+    # Controlled-variable: scenarios with force_size populate explicit ids.
+    if scenario.get("force_size"):
+        ids = _pick_unit_ids(t, scenario.get("force_kind"), scenario["force_size"])
+        if intent.get("force", {}).get("kind") == "ids":
+            intent["force"]["unit_ids"] = ids
 
     # Escort needs a real actor id from state.
     if intent.get("intent") == "escort" and intent.get("escortee_id") == -1:
         state = _get_state(t)
-        self_units = _self_units(state.get("state", {}))
+        self_units = _self_units(state)
         mcv = next((u for u in self_units if u.get("kind") == "mcv"), None)
         if mcv is None:
-            # Fall back to first non-combat heavy unit.
             mcv = next((u for u in self_units if u.get("kind") in ("4tnk", "3tnk")), None)
         if mcv is not None:
             intent["escortee_id"] = int(mcv["id"])

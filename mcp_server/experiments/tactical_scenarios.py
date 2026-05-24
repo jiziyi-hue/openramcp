@@ -31,18 +31,23 @@ from typing import Optional
 TACTICAL_SCENARIOS = {
     "T1_massive_push": {
         "name": "Massive push",
-        "desc": "50+ unit assault toward enemy construction yard. Measures "
+        "desc": "40-unit assault toward enemy construction yard. Measures "
                 "command scalability and cohesion over distance.",
-        "expected_roster_min": 15,
-        "suggested_roster": ["2tnk×15", "3tnk×10", "e1×20", "e3×10"],
+        "expected_roster_min": 40,
+        # Controlled-variable A/B: runner selects exactly force_size units
+        # of a single kind so daemon and squad get the SAME starting roster
+        # both in count and composition. force_kind filters the candidate
+        # pool; runner picks the first force_size by actor id.
+        "force_size": 40,
+        "force_kind": "4tnk",
+        "suggested_roster": ["4tnk×40"],
         "intent_daemon": {
             "intent": "attack",
-            "force": {"kind": "group", "name": "all"},
+            # Filled by runner with explicit unit_ids before dispatch.
+            "force": {"kind": "ids", "unit_ids": []},
             "target": {"kind": "named", "name": "enemy_fact"},
             "approach": "frontal",
         },
-        # Daemon path uses generic attack mission; squad path uses Assault
-        # squad. The runner picks the right entrypoint based on backend.
         "intent_squad_type": "Assault",
         "verdict_max_duration_s": 90,
         "verdict_target_named": "enemy_fact",
