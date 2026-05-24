@@ -260,9 +260,11 @@ class IntentRaw(BaseModel):
 class IntentHarass(BaseModel):
     """骚扰: 在敌经济区做打了就跑的循环.
 
-    daemon 跑 engaging → withdrawing → regrouping 状态机. force 优先打
-    harv/proc, 任一单位血量低于 withdraw_hp_threshold 整队撤回 withdraw_to,
-    avg hp ≥ reengage_hp_threshold 再发动下一轮 (cycle=True).
+    Backends:
+      - daemon (default): Python tactical daemon loop, sends atomic move/
+        attack over TCP each tick.
+      - squad: spawn an engine-side C# Harass squad; FSM owns the loop
+        with no per-tick network traffic. Used for the paper A/B study.
     """
     intent: Literal["harass"] = "harass"
     force: Force
@@ -272,50 +274,50 @@ class IntentHarass(BaseModel):
     withdraw_to: Optional[Union[TargetByName, TargetByPos]] = None  # 默认 self_base
     cycle: bool = False  # 一次性默认: 打一轮就完, 单位归玩家. 长效切经济用 disrupt_economy.
     max_force_size: Optional[int] = None
+    backend: Literal["daemon", "squad"] = "daemon"
 
 
 class IntentPatrol(BaseModel):
-    """巡逻: 沿 waypoints 循环走路提供视野.
-
-    contact_stance 决定遇敌姿态 (默认 ReturnFire — 反击但不追). 残血单位
-    (hp < 0.4) 自动脱队回家.
-    """
+    """巡逻: 沿 waypoints 循环走路提供视野."""
     intent: Literal["patrol"] = "patrol"
     force: Force
     waypoints: list[Vec2]
     cycle: bool = True
     contact_stance: Stance = "ReturnFire"
+    backend: Literal["daemon", "squad"] = "daemon"
 
 
 class IntentEscort(BaseModel):
-    """护送: force 贴着指定单位移动, 拦截威胁.
-
-    escortee 死 → mission 自动结束 (after-action push).
-    """
+    """护送: force 贴着指定单位移动, 拦截威胁."""
     intent: Literal["escort"] = "escort"
     force: Force
     escortee_id: int
     destination: Optional[Target] = None      # 终点 (用于偏置)
     escort_radius: int = 4
     engage_radius: int = 6
+    backend: Literal["daemon", "squad"] = "daemon"
 
 
 class IntentContain(BaseModel):
-    """卡点: force 守住一个 chokepoint, 半径内打, 不追."""
+    """卡点: force 守住一个 chokepoint, 半径内打, 不追.
+
+    Squad backend maps to spawn_squad(squad_type='Protection',
+    target_pos=chokepoint) — Protection FSM defends a cell, matches the
+    'hold this spot' semantics of containment.
+    """
     intent: Literal["contain"] = "contain"
     force: Force
     chokepoint: Vec2
     radius: int = 4
     stance: Stance = "Defend"
+    backend: Literal["daemon", "squad"] = "daemon"
 
 
 class IntentDiversion(BaseModel):
     """声东击西: 两路同时出 — feint 牵制 + raid 真打.
 
-    daemon 协调时序: 两路同时出, feint 推到 8 格停线 ReturnFire,
-    raid 走 raid_approach (flank_left/flank_right) 真打. 任一路 hp < 40%
-    撤回 withdraw_to. feint_commits=True 时 raid 接火后 feint 升级到
-    AttackAnything 跟进.
+    Squad backend not implemented (Diversion requires coordinated
+    two-prong, no equivalent SquadType yet).
     """
     intent: Literal["diversion"] = "diversion"
     feint_force: Force
@@ -324,6 +326,7 @@ class IntentDiversion(BaseModel):
     raid_target: Target
     raid_approach: Approach = "flank_right"   # 必须 flank_left/flank_right
     feint_commits: bool = False
+    backend: Literal["daemon"] = "daemon"  # squad route TODO
 
 
 Intent = Union[

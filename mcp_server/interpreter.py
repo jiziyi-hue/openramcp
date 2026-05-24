@@ -651,6 +651,33 @@ def _do_feint(intent: D.IntentFeint, wv: WorldView, transport) -> dict:
                actions)
 
 
+def _dispatch_squad(transport, squad_type: str, force_ids: List[int],
+                    target_pos: Optional[Tuple[int, int]] = None,
+                    rally_point: Optional[Tuple[int, int]] = None,
+                    waypoints: Optional[List[Tuple[int, int]]] = None,
+                    escortee_actor_id: Optional[int] = None) -> dict:
+    """Shared helper: route an intent to spawn_squad over the bridge.
+
+    Used by the squad-backend branch of harass/patrol/escort/contain. The
+    payload mirrors what mcp_server.server.spawn_squad sends.
+    """
+    payload: dict = {
+        "type": "spawn_squad",
+        "squad_type": squad_type,
+    }
+    if force_ids:
+        payload["unit_ids"] = [int(i) for i in force_ids]
+    if target_pos is not None:
+        payload["target_pos"] = {"x": int(target_pos[0]), "y": int(target_pos[1])}
+    if rally_point is not None:
+        payload["rally_point"] = {"x": int(rally_point[0]), "y": int(rally_point[1])}
+    if waypoints:
+        payload["waypoints"] = [{"x": int(x), "y": int(y)} for (x, y) in waypoints]
+    if escortee_actor_id is not None:
+        payload["escortee_actor_id"] = int(escortee_actor_id)
+    return transport.send_command(payload)
+
+
 def _do_harass(intent: D.IntentHarass, wv: WorldView, transport) -> dict:
     """Register a HarassMission with the tactical daemon.
 
@@ -693,6 +720,23 @@ def _do_harass(intent: D.IntentHarass, wv: WorldView, transport) -> dict:
         _, wpos = wv.resolve_target(intent.withdraw_to)
     if wpos is None:
         wpos = wv.force_centroid(ids) or center
+
+    # Backend = squad: hand off to engine-side Harass FSM, skip daemon.
+    if intent.backend == "squad":
+        resp = _dispatch_squad(
+            transport, "Harass", ids,
+            target_pos=center, rally_point=wpos,
+        )
+        actions.append({"cmd": {"type": "spawn_squad", "squad_type": "Harass"},
+                        "resp": resp})
+        if not resp.get("ok"):
+            return _err(f"squad backend failed: {resp.get('error')}", actions,
+                        "squad_register_failed")
+        return _ok(
+            f"harass (squad backend) {resp.get('unit_count')} unit(s) at "
+            f"{center}, rally={wpos} [squad #{resp.get('squad_index')}]",
+            actions, squad_index=resp.get("squad_index"),
+        )
 
     mission_id = None
     try:
@@ -756,6 +800,21 @@ def _do_patrol(intent: D.IntentPatrol, wv: WorldView, transport) -> dict:
     if wpos is None:
         wpos = wv.force_centroid(ids) or waypoints[0]
 
+    if intent.backend == "squad":
+        resp = _dispatch_squad(
+            transport, "Patrol", ids, waypoints=waypoints,
+        )
+        actions.append({"cmd": {"type": "spawn_squad", "squad_type": "Patrol"},
+                        "resp": resp})
+        if not resp.get("ok"):
+            return _err(f"squad backend failed: {resp.get('error')}", actions,
+                        "squad_register_failed")
+        return _ok(
+            f"patrol (squad backend) {resp.get('unit_count')} unit(s) "
+            f"on {len(waypoints)} waypoint(s) [squad #{resp.get('squad_index')}]",
+            actions, squad_index=resp.get("squad_index"),
+        )
+
     mission_id = None
     try:
         engine = _get_tactical_engine(transport)
@@ -815,6 +874,23 @@ def _do_escort(intent: D.IntentEscort, wv: WorldView, transport) -> dict:
     if intent.destination is not None:
         _, dest_pos = wv.resolve_target(intent.destination)
 
+    if intent.backend == "squad":
+        resp = _dispatch_squad(
+            transport, "Escort", ids,
+            escortee_actor_id=intent.escortee_id,
+            target_pos=dest_pos,
+        )
+        actions.append({"cmd": {"type": "spawn_squad", "squad_type": "Escort"},
+                        "resp": resp})
+        if not resp.get("ok"):
+            return _err(f"squad backend failed: {resp.get('error')}", actions,
+                        "squad_register_failed")
+        return _ok(
+            f"escort (squad backend) {resp.get('unit_count')} unit(s) → "
+            f"actor {intent.escortee_id} [squad #{resp.get('squad_index')}]",
+            actions, squad_index=resp.get("squad_index"),
+        )
+
     mission_id = None
     try:
         engine = _get_tactical_engine(transport)
@@ -859,6 +935,23 @@ def _do_contain(intent: D.IntentContain, wv: WorldView, transport) -> dict:
         )
 
     cp = (intent.chokepoint.x, intent.chokepoint.y)
+
+    if intent.backend == "squad":
+        # Map contain → Protection squad (defends a cell).
+        resp = _dispatch_squad(
+            transport, "Protection", ids, target_pos=cp,
+        )
+        actions.append({"cmd": {"type": "spawn_squad",
+                                "squad_type": "Protection"},
+                        "resp": resp})
+        if not resp.get("ok"):
+            return _err(f"squad backend failed: {resp.get('error')}", actions,
+                        "squad_register_failed")
+        return _ok(
+            f"contain (squad backend / Protection) {resp.get('unit_count')} "
+            f"unit(s) at {cp} [squad #{resp.get('squad_index')}]",
+            actions, squad_index=resp.get("squad_index"),
+        )
 
     mission_id = None
     try:
