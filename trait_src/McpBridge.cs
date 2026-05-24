@@ -256,6 +256,12 @@ namespace OpenRA.Mods.Common.Traits
 		string HandleGetState(JsonElement root)
 		{
 			var includeEnemies = !root.TryGetProperty("include_enemies", out var ie) || ie.GetBoolean();
+			// respect_fog=true (default) hides enemy actors not currently
+			// visible to the local player (shroud / fog). This matches what
+			// the human sees on screen and stops the LLM from cheating with
+			// omniscient observation. Pass respect_fog=false for debugging
+			// or research scenarios that need ground truth.
+			var respectFog = !root.TryGetProperty("respect_fog", out var rf) || rf.GetBoolean();
 			var self = LocalPlayer();
 
 			using var ms = new MemoryStream();
@@ -302,8 +308,16 @@ namespace OpenRA.Mods.Common.Traits
 
 				w.WriteStartArray("enemy_units");
 				if (includeEnemies && self != null)
-					foreach (var a in EnemyActors(self))
+				{
+					var enemies = EnemyActors(self);
+					if (respectFog)
+					{
+						var shroud = self.Shroud;
+						enemies = enemies.Where(a => shroud != null && shroud.IsVisible(a.CenterPosition));
+					}
+					foreach (var a in enemies)
 						WriteUnitInfo(w, a);
+				}
 				w.WriteEndArray();
 
 				w.WriteEndObject();

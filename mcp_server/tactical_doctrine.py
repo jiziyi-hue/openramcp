@@ -82,9 +82,13 @@ TARGET_PRIORITY: Dict[str, int] = {
     "e1":   40,
     "e1r1": 43,
     "medi": 45,
+    "mech": 45,   # mechanic — repairs vehicles, soft but valuable
     "spy":  70,
     "thf":  65,
     "dog":  35,
+    "e6":   60,   # engineer — capture risk, kill on sight near our buildings
+    "chan": 90,   # Soviet hero (Kar / Chan)
+    "camr": 30,   # camera, dies fast
 
     # --- units: naval ---
     "ca":   85,   # cruiser, siege from sea
@@ -141,6 +145,92 @@ TARGET_PRIORITY: Dict[str, int] = {
 }
 
 DEFAULT_PRIORITY = 30
+
+
+# ---------------------------------------------------------------------------
+# Unit strength — how "strong" is THIS OWN unit kind for the purpose of
+# prefer:strongest filter selection. Higher = picked first when player asks
+# for the strongest available harass/attack force.
+#
+# This is DIFFERENT from TARGET_PRIORITY (which is enemy-value, used to
+# decide what WE shoot first). Reusing TARGET_PRIORITY for own-unit ranking
+# inverts intent: e3 has TARGET_PRIORITY=90 because anti-armor infantry
+# is a kill-on-sight threat TO US, but when picking OUR strongest harass
+# unit we want the heavy AFV / actual vehicle, not the rocket infantry.
+#
+# Rough ordering: heavy AFV > anti-air/light vehicle > anti-armor inf > inf.
+# ---------------------------------------------------------------------------
+UNIT_STRENGTH: Dict[str, int] = {
+    # heavy AFV — apex own-side picks
+    "4tnk": 100,
+    "3tnk": 90,
+    "2tnk": 80,
+    "1tnk": 65,
+    "ttnk": 92,
+    "mssb": 75,
+
+    # siege / heavy support
+    "v2rl": 88,
+    "arty": 85,
+    "dtrk": 95,
+
+    # light vehicles / scouts
+    "apc":  60,
+    "ftrk": 65,
+    "jeep": 55,
+    "mrj":  45,
+    "mgg":  45,
+    "mnly": 40,
+
+    # aircraft (you don't usually base-harass with these via ground harass)
+    "yak":  78,
+    "mig":  78,
+    "hind": 75,
+    "heli": 75,
+    "tran": 30,
+    "u2":   20,
+    "badr": 60,
+
+    # heroes / specialists
+    "e7":   85,    # tanya
+    "vlkv": 85,    # volkov
+    "shok": 75,
+
+    # anti-armor infantry — ranked BELOW vehicles. Useful, but if the
+    # player wanted the "strongest" available and we have vehicles, take
+    # vehicles first.
+    "e3":   45,
+    "e3r1": 50,
+
+    # basic infantry
+    "e4":   35,
+    "e2":   28,
+    "e1":   25,
+    "e1r1": 28,
+    "dog":  20,
+    "spy":  15,
+    "thf":  15,
+    "medi": 10,
+    "mech": 10,
+    "e6":   10,
+
+    # naval
+    "ca":   95,
+    "dd":   80,
+    "ss":   75,
+    "mssb": 75,
+    "pt":   55,
+    "lst":  20,
+}
+
+DEFAULT_STRENGTH = 30
+
+
+def unit_strength(own_kind: str) -> int:
+    """Score for picking own units when player wants strongest available."""
+    if not own_kind:
+        return DEFAULT_STRENGTH
+    return UNIT_STRENGTH.get(own_kind.lower(), DEFAULT_STRENGTH)
 
 
 # ---------------------------------------------------------------------------

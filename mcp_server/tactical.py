@@ -31,6 +31,7 @@ from enum import Enum
 from typing import Optional, List, Tuple, Set, Dict
 
 from . import tactical_doctrine as DOCTRINE
+from . import tactical_formation as _FORMATION
 
 # Set TACTICAL_DISABLED=1 in tests to keep register_assault / enable_auto_defense
 # from spawning the background polling thread. The engine still records state so
@@ -46,6 +47,7 @@ ENGAGE_RADIUS = 8            # cells — enemies within this from force centroid
 EXTENDED_ENGAGE_RADIUS = 18  # cells — extended scan for high-priority chase
 PRIORITY_CHASE_THRESHOLD = 80  # only chase targets with priority >= this
 MISSION_PROGRESS_INTERVAL_S = 30.0  # how often daemon emits mission_progress events
+ENEMY_COMPOSITION_INTERVAL_S = 60.0  # how often daemon emits enemy_composition events
                              #         are engaged immediately
 COHESION_MAX_SPREAD = 9      # cells — stddev cap for force spread before
                              #         the vanguard is forced to halt
@@ -61,6 +63,7 @@ SUPPORT_POLL_INTERVAL_S = 1.0         # re-evaluate every 1s (throttle on engine
 
 # Pending-mission knobs.
 PENDING_RECHECK_S = 3.0               # re-attempt resolution every 3s
+PENDING_BACKOFF_MAX_S = 30.0          # cap exponential backoff at 30s
 
 # Building / non-combat kinds — copied from interpreter to stay independent.
 _BUILDING_KINDS = frozenset({
@@ -335,10 +338,15 @@ _OBJECTIVE_MISSIONS: Dict[Objective, List[dict]] = {
         # enemy_fact, falling back to nearest structure when none remain.
         # max_force=None (unlimited) so the whole army rolls forward as the
         # player produces.
+        # wave_size=None: commit ALL combat-mobile units in one push (player
+        # explicitly requested "全派出去" 2026-05-24; was 8 with 25s interval
+        # for v2/arty resilience but felt too slow for total mobilization).
         {"kind": "attack",
          "force": {"combat_mobile": True},
          "target_named": "enemy_fact",
-         "max_force": None},
+         "max_force": None,
+         "wave_size": None,
+         "wave_interval_s": 25.0},
     ],
     Objective.HARASS_ECONOMY: [
         {"kind": "harass",
@@ -347,7 +355,18 @@ _OBJECTIVE_MISSIONS: Dict[Objective, List[dict]] = {
          "max_force": 4},
     ],
     Objective.SURVIVE_UNTIL_TICK: [],
-    Objective.CONTROL_MAP_CENTER: [],  # TODO: contain @ map_center
+    Objective.CONTROL_MAP_CENTER: [
+        # Park a combat-mobile force at the map centroid; engage anything
+        # that enters radius. Dynamic force so newly-trained mobile units
+        # naturally reinforce the hold. radius=10 covers a generous zone
+        # around centerpoint without overcommitting the army.
+        {"kind": "contain",
+         "force": {"combat_mobile": True},
+         "target_region": "map_center",
+         "radius": 10,
+         "stance": "Defend",
+         "max_force": 12},
+    ],
 }
 
 
@@ -401,11 +420,43 @@ class Assault:
     last_resolve_ts: float = 0.0
     # Cap for dynamic recruitment (None = unlimited).
     max_force_size: Optional[int] = None
+    # Wave dispatch: if set, only `wave_size` units are committed to the push
+    # at a time. Subsequent waves are released every `wave_interval_s` (or
+    # when the prior wave's avg HP drops below 0.65 → reinforcements push).
+    # None = no wave splitting (whole force pushes together, classic behavior).
+    wave_size: Optional[int] = None
+    wave_interval_s: float = 25.0
+    last_wave_promotion_ts: float = 0.0
+    committed_force_ids: Set[int] = field(default_factory=set)
     # runtime
     current_target_actor: Optional[int] = None
     last_seen_target_alive_at: float = 0.0
     halted_units: Set[int] = field(default_factory=set)  # for cohesion gate
     finished: bool = False
+    # First-tick kickoff flag: ensures daemon issues the initial set_stance +
+    # attack_move so units start advancing even before any enemy enters
+    # engage range. Interpreter doesn't send these atomics anymore.
+    dispatched_initial: bool = False
+    # Per-actor initial-dispatch tracking. dispatched_initial only covers the
+    # registration cohort. Units recruited later via _refresh_mission_force
+    # would never receive set_stance + attack_move and stand idle at base —
+    # confirmed bug 2026-05-23 (memory: units_stuck_at_base_bug). This set
+    # records every actor that has already been kicked off, so each tick the
+    # daemon can compute (alive - dispatched_actors) and send initial orders
+    # to newly-joined recruits.
+    dispatched_actors: Set[int] = field(default_factory=set)
+    # Move-command dedup: re-issuing the same march-to-cell order every tick
+    # causes the engine to interrupt the unit's pathing and restart from
+    # scratch each time, producing the visible "stop and start" stutter that
+    # looks like the army is parking. We re-send only when the target cell
+    # CHANGED (retarget, detour update), or after a cooldown to refresh
+    # paths in case units got stuck on terrain.
+    last_move_target: Optional[Tuple[int, int]] = None
+    last_move_dispatch_ts: float = 0.0
+    # Same for attack-on-actor commands — re-issuing every tick prevents
+    # the unit from actually attacking (it interprets each as a new order).
+    last_attack_target: Optional[int] = None
+    last_attack_dispatch_ts: float = 0.0
     # retreat state: unit_id → ts when it can re-engage (or 0 if still retreating)
     retreating: Dict[int, float] = field(default_factory=dict)
     # cached self_base for retreat target (lazy on first need)
@@ -554,6 +605,15 @@ class ContainmentMission:
     current_target_actor: Optional[int] = None
     last_dispatch_ts: float = 0.0
     finished: bool = False
+    dispatched_initial: bool = False        # first-tick move to chokepoint done
+    # Per-actor initial-dispatch tracking — see Assault.dispatched_actors.
+    dispatched_actors: Set[int] = field(default_factory=set)
+    # Dynamic recruitment (control_map_center objective): when set, the
+    # daemon refreshes force_ids each tick by re-resolving force_spec.
+    force_spec: Optional[dict] = None
+    max_force_size: Optional[int] = None
+    last_resolve_ts: float = 0.0
+    recruited_count: int = 0
     # After-action.
     started_at_ts: float = 0.0
     initial_force_count: int = 0
@@ -582,6 +642,11 @@ class PendingMission:
     queued_at_ts: float
     reason: str           # e.g. "no harass_capable units available"
     last_check_ts: float = 0.0
+    # Exponential backoff for retries. Each failed re-probe doubles the
+    # interval up to PENDING_BACKOFF_MAX_S so a long-stale pending entry
+    # (player never trained the requested unit kind) stops spamming filter
+    # resolution every 3s.
+    retry_count: int = 0
     # Tracks which layer queued this pending so swap (alert state / objective)
     # can clean up only what it owns. "manual" = LLM dispatch_intent direct;
     # "alert" / "objective" = auto-dispatched but force was empty.
@@ -686,6 +751,8 @@ class TacticalEngine:
         self.after_action_emits = 0
         self.last_error: Optional[str] = None
         self._last_mission_progress_ts: float = 0.0
+        self._last_enemy_composition_ts: float = 0.0
+        self._last_enemy_composition_signature: Optional[str] = None
 
     # --- public surface ------------------------------------------------
 
@@ -698,6 +765,8 @@ class TacticalEngine:
         force_spec: Optional[dict] = None,
         target_named: Optional[str] = None,
         max_force_size: Optional[int] = None,
+        wave_size: Optional[int] = None,
+        wave_interval_s: float = 25.0,
     ) -> int:
         with self._lock:
             mid = self._next_id
@@ -711,6 +780,8 @@ class TacticalEngine:
                 force_spec=force_spec,
                 target_named=target_named,
                 max_force_size=max_force_size,
+                wave_size=wave_size,
+                wave_interval_s=wave_interval_s,
                 current_target_actor=final_target_actor,
                 started_at_ts=time.time(),
                 initial_force_count=len(force_ids),
@@ -1172,9 +1243,16 @@ class TacticalEngine:
     # --- alert state helpers ------------------------------------------
 
     def _snapshot_world(self) -> Optional[dict]:
-        """One-shot get_state for use by alert-state orchestration."""
+        """One-shot get_state for use by alert-state orchestration.
+
+        respect_fog=False: the daemon is a control loop inside the
+        engine — it needs to see every enemy to drive retarget / cohesion
+        / engage decisions. Fog-of-war is enforced at the LLM-facing
+        get_state tool (server.py), not at the daemon's internal view.
+        """
         st = self.transport.send_command(
-            {"type": "get_state", "include_enemies": True}
+            {"type": "get_state", "include_enemies": True,
+             "respect_fog": False}
         )
         if not st.get("ok"):
             return None
@@ -1343,7 +1421,7 @@ class TacticalEngine:
         prefer = spec.get("prefer", "strongest")
         if prefer == "strongest":
             matched_units.sort(
-                key=lambda u: DOCTRINE.target_priority(u.get("kind", "")),
+                key=lambda u: DOCTRINE.unit_strength(u.get("kind", "")),
                 reverse=True,
             )
         elif prefer == "fastest":
@@ -1460,6 +1538,36 @@ class TacticalEngine:
                         m.auto = True
                 return mid
 
+            if kind == "contain":
+                # Used by control_map_center objective: park a force at the
+                # map centroid and engage anything that wanders into radius.
+                target_region = spec.get("target_region")
+                if target_region == "map_center":
+                    mx, my = (
+                        int(world.get("map_size", {}).get("x", 80)) // 2,
+                        int(world.get("map_size", {}).get("y", 80)) // 2,
+                    )
+                    chokepoint = (mx, my)
+                else:
+                    return None
+                radius = int(spec.get("radius", 10))
+                stance = spec.get("stance", "Defend")
+                mid = self.register_contain(
+                    force_ids=ids,
+                    chokepoint=chokepoint,
+                    radius=radius,
+                    stance=stance,
+                )
+                with self._lock:
+                    m = self._contain.get(mid)
+                    if m is not None:
+                        m.auto = True
+                        # Persist force_spec so daemon dynamic refresh
+                        # recruits newly-trained units into the hold.
+                        m.force_spec = dict(force_spec)
+                        m.max_force_size = limit
+                return mid
+
             if kind == "attack":
                 # Cycle-assault used by destroy_enemy objective. Resolves the
                 # named target now; mission persists target_named so daemon
@@ -1479,6 +1587,8 @@ class TacticalEngine:
                     force_spec=dict(force_spec),
                     target_named=target_named,
                     max_force_size=limit,
+                    wave_size=spec.get("wave_size"),
+                    wave_interval_s=spec.get("wave_interval_s", 25.0),
                 )
                 with self._lock:
                     m = self._assaults.get(mid)
@@ -1752,14 +1862,19 @@ class TacticalEngine:
     def _mission_target_for_kills(
         self, mission: Any
     ) -> Optional[Tuple[Tuple[int, int], int]]:
+        # Radii are intentionally generous — the engage region around a
+        # mission objective is usually larger than the immediate target hex,
+        # and a tight radius around enemy_fact made `units_killed_estimate`
+        # almost always 0 (the army kills enemies en route, not at the gate).
         if isinstance(mission, Assault):
-            return (mission.final_target_cell, 10)
+            return (mission.final_target_cell, 30)
         if isinstance(mission, HarassMission):
-            return (mission.region_center, mission.region_radius)
+            return (mission.region_center,
+                    max(mission.region_radius, 15))
         if isinstance(mission, ContainmentMission):
-            return (mission.chokepoint, mission.radius)
+            return (mission.chokepoint, max(mission.radius, 12))
         if isinstance(mission, DiversionMission):
-            return (mission.raid_target_cell, 8)
+            return (mission.raid_target_cell, 20)
         return None  # patrol/escort have no fixed kill region
 
     def _emit_mission_progress(self, world: Optional[dict]) -> None:
@@ -1835,6 +1950,74 @@ class TacticalEngine:
             })
         self._last_mission_progress_ts = now
 
+    def _emit_enemy_composition(self, world: Optional[dict]) -> None:
+        """Periodic enemy composition snapshot for the LLM to consume via
+        latest_scout_report. LLM uses this to decide whether to change
+        doctrine (e.g. enemy got hind / yak → suggest player builds AA).
+
+        Daemon does NOT auto-react; it only reports. Strategy / doctrine
+        decisions belong to the LLM (and ultimately the player).
+
+        Throttle: ENEMY_COMPOSITION_INTERVAL_S between emits. Skipped if
+        the composition signature hasn't changed since last emit.
+        """
+        if world is None:
+            return
+        now = time.time()
+        if now - self._last_enemy_composition_ts < ENEMY_COMPOSITION_INTERVAL_S:
+            return
+
+        enemy_units = world.get("enemy_units", [])
+        comp: Dict[str, int] = {}
+        for u in enemy_units:
+            k = (u.get("kind") or "").lower()
+            if not k:
+                continue
+            comp[k] = comp.get(k, 0) + 1
+
+        # Signature for change detection — sorted kind:count tuples.
+        sig = ",".join(f"{k}:{v}" for k, v in sorted(comp.items()))
+        if sig == self._last_enemy_composition_signature:
+            self._last_enemy_composition_ts = now
+            return
+
+        # Classify dominant threat kind for the LLM's convenience.
+        # Aircraft / air units → "air"
+        # 4tnk / 3tnk-heavy → "armor"
+        # v2rl / arty / mssb → "siege"
+        # e1/e2/e3 large counts → "infantry_swarm"
+        # Otherwise "mixed".
+        air_kinds = {"yak", "mig", "hind", "heli", "tran", "badr"}
+        armor_kinds = {"4tnk", "3tnk", "2tnk", "1tnk", "ttnk"}
+        siege_kinds = {"v2rl", "arty", "mssb", "dtrk"}
+        inf_kinds = {"e1", "e2", "e3", "e4", "e1r1", "e3r1"}
+
+        air_n = sum(comp.get(k, 0) for k in air_kinds)
+        armor_n = sum(comp.get(k, 0) for k in armor_kinds)
+        siege_n = sum(comp.get(k, 0) for k in siege_kinds)
+        inf_n = sum(comp.get(k, 0) for k in inf_kinds)
+
+        dominant = "mixed"
+        if air_n >= 3 and air_n >= max(armor_n, siege_n, inf_n) * 0.5:
+            dominant = "air"
+        elif siege_n >= 2:
+            dominant = "siege"
+        elif armor_n >= 4 and armor_n >= inf_n:
+            dominant = "armor"
+        elif inf_n >= 8 and inf_n >= armor_n * 2:
+            dominant = "infantry_swarm"
+
+        self._append_scout_event({
+            "kind": "enemy_composition",
+            "severity": "info",
+            "composition": comp,
+            "dominant_threat": dominant,
+            "total_enemy_units": sum(comp.values()),
+            "timestamp": now,
+        })
+        self._last_enemy_composition_signature = sig
+        self._last_enemy_composition_ts = now
+
     def _append_scout_event(self, event: dict) -> None:
         """Write one event to scout_events.jsonl. Best-effort — never raises.
 
@@ -1869,8 +2052,15 @@ class TacticalEngine:
         """
         now = time.time()
         with self._lock:
-            stale = [(p.pending_id, p) for p in self._pending.values()
-                     if now - p.last_check_ts >= PENDING_RECHECK_S]
+            stale: List[Tuple[int, Any]] = []
+            for p in self._pending.values():
+                # Exponential backoff: interval = base * 2^retry_count, capped.
+                interval = min(
+                    PENDING_RECHECK_S * (2 ** p.retry_count),
+                    PENDING_BACKOFF_MAX_S,
+                )
+                if now - p.last_check_ts >= interval:
+                    stale.append((p.pending_id, p))
         if not stale:
             return
 
@@ -1885,6 +2075,8 @@ class TacticalEngine:
                 if pid not in self._pending:
                     continue
                 self._pending[pid].last_check_ts = now
+                # Bump retry_count; reset on successful dispatch below.
+                self._pending[pid].retry_count += 1
 
             payload = pending.intent_payload
             auto_spec = payload.get("__auto_spec__") if isinstance(payload, dict) else None
@@ -2002,8 +2194,12 @@ class TacticalEngine:
 
     def _tick(self):
         # Snapshot world once per tick — cheap, and every sub-routine
-        # below operates on a consistent view.
-        st = self.transport.send_command({"type": "get_state", "include_enemies": True})
+        # below operates on a consistent view. respect_fog=False because the
+        # daemon needs full visibility to drive mission control.
+        st = self.transport.send_command(
+            {"type": "get_state", "include_enemies": True,
+             "respect_fog": False}
+        )
         if not st.get("ok"):
             return
         s = st["state"]
@@ -2116,6 +2312,14 @@ class TacticalEngine:
         except Exception:
             pass
 
+        # Enemy composition snapshot — every ~60s when changed. LLM uses
+        # this to recommend doctrine shifts ("enemy fielded 4 hind, build
+        # SAM / ftrk"). Daemon never auto-changes doctrine itself.
+        try:
+            self._emit_enemy_composition(s)
+        except Exception:
+            pass
+
         self.tick_count += 1
 
     # --- dynamic force re-resolution ----------------------------------
@@ -2133,22 +2337,20 @@ class TacticalEngine:
         # Re-resolve at most every PENDING_RECHECK_S to avoid thrashing on
         # spec matches that are already saturated.
         with self._lock:
-            harass = list(self._harass.values())
-            patrol = list(self._patrol.values())
-            escort = list(self._escort.values())
-            assaults = list(self._assaults.values())
-
-        all_busy = self._all_busy_ids()
-        for m in harass:
-            self._refresh_mission_force(m, live_ids, all_busy, now)
-        for m in patrol:
-            self._refresh_mission_force(m, live_ids, all_busy, now)
-        for m in escort:
-            self._refresh_mission_force(m, live_ids, all_busy, now)
-        # Cycle assault (Assault with force_spec set) — recruits newly trained
-        # matching units into the push so destroy_enemy objective keeps the
-        # army moving as the player produces.
-        for m in assaults:
+            all_missions: List[Any] = []
+            all_missions.extend(self._harass.values())
+            all_missions.extend(self._patrol.values())
+            all_missions.extend(self._escort.values())
+            all_missions.extend(self._contain.values())
+            all_missions.extend(self._assaults.values())
+        # Refresh in mission_id order so earlier missions claim contested
+        # units first. After each refresh we recompute busy from current
+        # force_ids, so later missions see the updated picture and either
+        # exclude contested units (via excl) or drop them (via contested in
+        # _refresh_mission_force).
+        all_missions.sort(key=lambda m: getattr(m, "mission_id", 0))
+        for m in all_missions:
+            all_busy = self._all_busy_ids()
             self._refresh_mission_force(m, live_ids, all_busy, now)
 
     def _refresh_mission_force(
@@ -2190,6 +2392,18 @@ class TacticalEngine:
 
         # Cap: keep current alive first, then add new up to cap.
         alive_own = {uid for uid in own if uid in live_ids}
+        # Release units we share with other missions (e.g. pincer dual-filter).
+        # busy_elsewhere is the union of ALL other missions' force_ids; if any
+        # of OUR own is also in busy_elsewhere, two missions are fighting over
+        # the same actor every tick — the army oscillates. The contested unit
+        # is dropped from THIS mission; the unit's other mission(s) keep it,
+        # and next tick we naturally exclude it via busy_elsewhere. Dropping
+        # is unconditional here because we can't determine ordering without
+        # peeking at sibling missions — that's fine: the unit ends up in
+        # exactly one mission once steady state is reached.
+        contested = alive_own & busy_elsewhere
+        if contested:
+            alive_own -= contested
         if cap is not None and cap > 0:
             need = max(0, cap - len(alive_own))
             extra = [uid for uid in candidate if uid not in alive_own][:need]
@@ -2248,6 +2462,52 @@ class TacticalEngine:
 
     # --- assault sub-routine -----------------------------------------
 
+    def _promote_waves(self, a: Assault, force_units: List[dict],
+                       now: float) -> None:
+        """Commit units in waves of `wave_size`. Called when wave_size is set.
+
+        Triggers a new wave promotion when ANY of:
+        - Mission just registered (committed_force_ids is empty).
+        - wave_interval_s elapsed since last promotion.
+        - Committed wave is bleeding (avg HP < 0.65 and committed alive count
+          fell to <50% of wave_size).
+
+        Newly committed units are picked in unit-strength order so heavies
+        lead, then mid-range, then infantry.
+        """
+        if a.wave_size is None:
+            return
+
+        committed_alive = [u for u in force_units
+                           if u["id"] in a.committed_force_ids]
+        uncommitted = [u for u in force_units
+                       if u["id"] not in a.committed_force_ids]
+
+        # Promote if we have nothing committed yet (mission start) or under
+        # the trigger conditions.
+        should_promote = False
+        if not committed_alive and uncommitted:
+            should_promote = True
+        elif uncommitted and (now - a.last_wave_promotion_ts >= a.wave_interval_s):
+            should_promote = True
+        elif uncommitted and committed_alive:
+            avg_hp = sum(u.get("hp_pct", 1.0) for u in committed_alive) / len(committed_alive)
+            if avg_hp < 0.65 and len(committed_alive) < a.wave_size * 0.5:
+                should_promote = True
+
+        if not should_promote:
+            return
+
+        # Pick next wave: strongest units first.
+        uncommitted.sort(
+            key=lambda u: DOCTRINE.unit_strength(u.get("kind", "")),
+            reverse=True,
+        )
+        wave = uncommitted[: a.wave_size]
+        for u in wave:
+            a.committed_force_ids.add(u["id"])
+        a.last_wave_promotion_ts = now
+
     def _run_assault(self, a: Assault, self_units: List[dict], enemy_units: List[dict]):
         now = time.time()
 
@@ -2256,7 +2516,44 @@ class TacticalEngine:
         if not force_units:
             a.finished = True
             return
+
+        # 1a. Wave management: if wave_size is set, the daemon commits only
+        # `wave_size` units to the push at a time. Subsequent waves are
+        # released every wave_interval_s, or sooner if the committed wave is
+        # bleeding (avg HP < 0.65). Uncommitted units stay near self_base.
+        if a.wave_size is not None:
+            self._promote_waves(a, force_units, now)
+            committed_units = [u for u in force_units
+                               if u["id"] in a.committed_force_ids]
+            if not committed_units:
+                return  # nothing committed yet — wait for next promotion
+            force_units = committed_units
+
         alive_ids = {u["id"] for u in force_units}
+
+        # 1a. Per-actor initial dispatch: set stance + attack_move to target.
+        # Daemon owns all engine commands; interpreter only registers. The
+        # old code used a single mission-level flag (dispatched_initial), so
+        # units recruited mid-mission via _refresh_mission_force never got
+        # kicked off and stood idle at base (confirmed 2026-05-23). Now we
+        # compute (alive - dispatched_actors) and kick each newcomer once.
+        new_actors = alive_ids - a.dispatched_actors
+        if new_actors:
+            new_list = list(new_actors)
+            self.transport.send_command(
+                {"type": "set_stance", "unit_ids": new_list,
+                 "stance": "AttackAnything"}
+            )
+            self.transport.send_command(
+                {"type": "move", "unit_ids": new_list,
+                 "target": {"x": a.final_target_cell[0],
+                            "y": a.final_target_cell[1]},
+                 "attack_move": True}
+            )
+            a.dispatched_actors.update(new_actors)
+            a.dispatched_initial = True
+            # Don't return — continue with retreat/cohesion/engage on this
+            # tick so the daemon is immediately in control loop.
 
         # 2. Retreat sub-routine. Any unit at low HP and not currently
         #    retreating is yanked back to self_base; units that have healed
@@ -2278,40 +2575,127 @@ class TacticalEngine:
         center = (cx, cy)
 
         # 5. Cohesion gate.
+        # Halt only VANGUARD outliers — units that are both beyond the spread
+        # threshold from centroid AND ahead of centroid along the target
+        # direction. Rear-stragglers are already trying to catch up; halting
+        # them just leaves them further behind. The vanguard halts so the
+        # army re-tightens; rear continues marching forward on attack_move.
         active_ids_set = {u["id"] for u in active}
         if a.cohesion and len(active_pts) >= 3:
-            d_max = 0
-            d_max_id = None
-            for u in active:
-                d = _dist2((u["pos"]["x"], u["pos"]["y"]), center)
-                if d > d_max:
-                    d_max = d
-                    d_max_id = u["id"]
-            spread = d_max ** 0.5
-            if spread > COHESION_MAX_SPREAD and d_max_id is not None:
-                if d_max_id not in a.halted_units:
-                    self.transport.send_command(
-                        {"type": "stop", "unit_ids": [d_max_id]}
-                    )
-                    a.halted_units.add(d_max_id)
-                    self.cohesion_halts += 1
-            else:
-                a.halted_units.clear()
+            # Forward direction from centroid → final target.
+            tx, ty = a.final_target_cell
+            dx = tx - center[0]
+            dy = ty - center[1]
+            mag = math.hypot(dx, dy)
+            outliers: List[int] = []
+            if mag > 0.5:
+                fwd_x, fwd_y = dx / mag, dy / mag
+                for u in active:
+                    ux = u["pos"]["x"] - center[0]
+                    uy = u["pos"]["y"] - center[1]
+                    spread = math.hypot(ux, uy)
+                    if spread <= COHESION_MAX_SPREAD:
+                        continue
+                    # Project unit offset onto forward axis. Positive = ahead
+                    # of centroid (vanguard); negative = behind (rear).
+                    along = ux * fwd_x + uy * fwd_y
+                    if along > 0:
+                        outliers.append(u["id"])
+            to_halt = [uid for uid in outliers if uid not in a.halted_units]
+            if to_halt:
+                self.transport.send_command(
+                    {"type": "stop", "unit_ids": to_halt}
+                )
+                a.halted_units.update(to_halt)
+                self.cohesion_halts += len(to_halt)
+            # Release previously-halted vanguards once the rear catches up
+            # and they're no longer outliers.
+            still_outlier = set(outliers)
+            released = a.halted_units - still_outlier
+            if released:
+                a.halted_units -= released
 
         # 6. Engage-on-contact: priority + counter weighted picker on active force.
-        engage_target = self._pick_priority_target(active, enemy_units, center)
+        # Multi-mission coordination: skip targets other missions are
+        # already firing on (penalty applied in the picker).
+        locked = self._other_locked_targets(a.mission_id)
+        engage_target = self._pick_priority_target(
+            active, enemy_units, center, locked_by_others=locked)
         if engage_target is not None:
             tid, tpos = engage_target
             if a.current_target_actor != tid:
                 self.retargets += 1
             a.current_target_actor = tid
             firing_ids = active_ids_set - a.halted_units
-            if firing_ids:
-                self.transport.send_command(
-                    {"type": "attack",
-                     "unit_ids": list(firing_ids),
-                     "target_id": tid}
-                )
+            if not firing_ids:
+                return
+
+            # Split into melee (short range) and kiters (mid/long range).
+            # Melee chases / focuses target. Kiters issue a tactical kite:
+            # if they're too close (inside ~4 cells), step back by 3 cells
+            # away from the target before attack-moving, so they fire from
+            # safe distance and don't get shouldered into melee range.
+            melee_ids: List[int] = []
+            kiters_close: List[Tuple[int, Tuple[int, int]]] = []  # (uid, retreat_pos)
+            kiters_far: List[int] = []
+            for u in active:
+                uid = int(u["id"])
+                if uid not in firing_ids:
+                    continue
+                tier = DOCTRINE.range_tier(u.get("kind", ""))
+                if tier == "short":
+                    melee_ids.append(uid)
+                    continue
+                # Compute distance to target.
+                upos = (int(u["pos"]["x"]), int(u["pos"]["y"]))
+                d = math.hypot(upos[0] - tpos[0], upos[1] - tpos[1])
+                desired = 7 if tier == "long" else 5
+                if d < desired - 1:
+                    # Too close — step back along target→unit vector.
+                    dx, dy = upos[0] - tpos[0], upos[1] - tpos[1]
+                    mag = math.hypot(dx, dy) or 1.0
+                    step = 3
+                    rx = int(round(upos[0] + (dx / mag) * step))
+                    ry = int(round(upos[1] + (dy / mag) * step))
+                    kiters_close.append((uid, (rx, ry)))
+                else:
+                    kiters_far.append(uid)
+
+            # Attack dedup: re-issuing the same attack-on-actor every tick
+            # makes the unit restart its targeting state and never actually
+            # fire. Only send when the target changed, or every 3s as
+            # refresh in case the previous order was lost.
+            attack_dedup = (a.last_attack_target == tid
+                            and (now - a.last_attack_dispatch_ts) < 3.0)
+            if not attack_dedup:
+                if melee_ids:
+                    self.transport.send_command(
+                        {"type": "attack",
+                         "unit_ids": melee_ids,
+                         "target_id": tid}
+                    )
+                if kiters_far:
+                    # In range — fire normally.
+                    self.transport.send_command(
+                        {"type": "attack",
+                         "unit_ids": kiters_far,
+                         "target_id": tid}
+                    )
+                a.last_attack_target = tid
+                a.last_attack_dispatch_ts = now
+            # Group close kiters by their retreat cell so we batch.
+            if kiters_close:
+                from collections import defaultdict
+                kite_buckets: Dict[Tuple[int, int], List[int]] = defaultdict(list)
+                for uid, rpos in kiters_close:
+                    kite_buckets[rpos].append(uid)
+                for rpos, ids_list in kite_buckets.items():
+                    self.transport.send_command({
+                        "type": "move",
+                        "unit_ids": ids_list,
+                        "target": {"x": rpos[0], "y": rpos[1]},
+                        "attack_move": True,
+                    })
             return
 
         # 7. No contact in radius — resume march to final target.
@@ -2354,12 +2738,83 @@ class TacticalEngine:
         moving = list(active_ids_set - a.halted_units)
         if not moving:
             return
-        self.transport.send_command({
-            "type": "move",
-            "unit_ids": moving,
-            "target": {"x": a.final_target_cell[0], "y": a.final_target_cell[1]},
-            "attack_move": True,
-        })
+
+        # Detour: if enemy static defenses (pbox / tsla / sam / gun / etc)
+        # are clustered along the direct path, compute a sidestep waypoint
+        # that nudges the army around them. Removes the "march into the
+        # turret cluster and die" failure mode.
+        push_target = _FORMATION.detour_waypoint(
+            center, a.final_target_cell, enemy_units,
+            detour_threshold_cells=10.0,
+            sidestep_cells=8,
+        )
+
+        # Formation-based dispatch: instead of sending every unit to the
+        # same final cell (which produces a uniform blob where long-range
+        # units shoulder into melee), assign each unit a slot in a layered
+        # wedge — short up front, mid at centroid, long behind. We still
+        # use attack_move so units engage anything they encounter en route.
+        # Units already at (or near) their slot get a fall-through march to
+        # the push target (which is detour-corrected) so the formation as a
+        # whole keeps pressing forward.
+        moving_units = [u for u in active if u["id"] in moving]
+        slot_map = _FORMATION.compute_formation_targets(
+            moving_units, center, push_target
+        )
+        # Move-command dedup: same push_target within last 5s → skip.
+        # Otherwise units restart pathing every tick and never make progress.
+        move_dedup = (a.last_move_target == push_target
+                      and (now - a.last_move_dispatch_ts) < 5.0)
+
+        if not slot_map:
+            if not move_dedup:
+                self.transport.send_command({
+                    "type": "move",
+                    "unit_ids": moving,
+                    "target": {"x": push_target[0],
+                               "y": push_target[1]},
+                    "attack_move": True,
+                })
+                a.last_move_target = push_target
+                a.last_move_dispatch_ts = now
+            return
+
+        # Bucket units by destination so we batch one command per cell
+        # (engine accepts a unit_ids list per move). Units near their slot
+        # (≤2 cells away) advance to final_target_cell directly to keep
+        # the army moving as a whole; only "out of position" units get
+        # routed to their slot first.
+        from collections import defaultdict
+        buckets: Dict[Tuple[int, int], List[int]] = defaultdict(list)
+        for u in moving_units:
+            uid = int(u["id"])
+            pos = (int(u["pos"]["x"]), int(u["pos"]["y"]))
+            slot = slot_map.get(uid)
+            if slot is None:
+                buckets[push_target].append(uid)
+                continue
+            if _FORMATION.displacement(pos, slot) <= 2.0:
+                # In formation — march on the push target (detour-corrected).
+                buckets[push_target].append(uid)
+            else:
+                # Out of position — reposition to slot first.
+                buckets[slot].append(uid)
+
+        if move_dedup:
+            # Same overall push_target as last dispatch — most slots also
+            # unchanged; skipping prevents unit-pathing stutter.
+            return
+        for dest, ids_list in buckets.items():
+            if not ids_list:
+                continue
+            self.transport.send_command({
+                "type": "move",
+                "unit_ids": ids_list,
+                "target": {"x": dest[0], "y": dest[1]},
+                "attack_move": True,
+            })
+        a.last_move_target = push_target
+        a.last_move_dispatch_ts = now
 
     def _pick_global_priority_target(
         self, enemy_units: List[dict]
@@ -2455,9 +2910,30 @@ class TacticalEngine:
 
         return len(new_retreats)
 
+    def _other_locked_targets(self, current_mission_id: int) -> Set[int]:
+        """Return enemy actor ids that OTHER active missions are currently
+        firing on. Used by the picker to penalize duplicates so two assaults
+        don't both burn DPS into the same v2rl while another threat sits
+        un-shot."""
+        locked: Set[int] = set()
+        with self._lock:
+            for mid, a in self._assaults.items():
+                if mid == current_mission_id:
+                    continue
+                if a.current_target_actor is not None:
+                    locked.add(a.current_target_actor)
+            for mid, h in self._harass.items():
+                if h.current_target_actor is not None:
+                    locked.add(h.current_target_actor)
+            for mid, c in self._contain.items():
+                if c.current_target_actor is not None:
+                    locked.add(c.current_target_actor)
+        return locked
+
     def _pick_priority_target(self, active: List[dict],
                               enemy_units: List[dict],
-                              center: Tuple[int, int]
+                              center: Tuple[int, int],
+                              locked_by_others: Optional[Set[int]] = None,
                               ) -> Optional[Tuple[int, Tuple[int, int]]]:
         """Choose the highest-scoring enemy in engage range, with an extended
         scan for high-priority units we should chase before they alpha-strike
@@ -2476,6 +2952,8 @@ class TacticalEngine:
         if not active or not enemy_units:
             return None
 
+        locked = locked_by_others or set()
+
         def score_of(u: dict, p: Tuple[int, int]) -> float:
             kind = u.get("kind", "")
             base = DOCTRINE.target_priority(kind)
@@ -2486,7 +2964,14 @@ class TacticalEngine:
                 cnt += DOCTRINE.counter_score(ou.get("kind", ""), kind)
             cnt_avg = cnt / max(1, len(active))
             dist = max(5.0, _dist2(center, p) ** 0.5)
-            return base * cnt_avg / dist
+            s = base * cnt_avg / dist
+            # Multi-mission coordination: penalize targets that another
+            # active mission is already firing on. Two assaults shouldn't
+            # both burn DPS into the same v2rl while a 3tnk shoots us in
+            # the back. Penalty 0.5x — still pickable if no alternative.
+            if u.get("id") in locked:
+                s *= 0.5
+            return s
 
         r2_engage = ENGAGE_RADIUS * ENGAGE_RADIUS
         r2_extended = EXTENDED_ENGAGE_RADIUS * EXTENDED_ENGAGE_RADIUS
@@ -2860,6 +3345,28 @@ class TacticalEngine:
         active_ids = [u["id"] for u in force_units]
         now = time.time()
         r2 = m.radius * m.radius
+
+        # 0. Per-actor initial dispatch: move newcomers to chokepoint + set
+        # stance. Interpreter only registers; daemon owns all engine commands.
+        # Recruited units (via dynamic force resolution) need their own kick.
+        alive_set = set(active_ids)
+        new_actors = alive_set - m.dispatched_actors
+        if new_actors:
+            new_list = list(new_actors)
+            self.transport.send_command(
+                {"type": "set_stance", "unit_ids": new_list,
+                 "stance": m.stance}
+            )
+            self.transport.send_command(
+                {"type": "move", "unit_ids": new_list,
+                 "target": {"x": m.chokepoint[0], "y": m.chokepoint[1]},
+                 "attack_move": False}
+            )
+            m.dispatched_actors.update(new_actors)
+            if not m.dispatched_initial:
+                m.dispatched_initial = True
+                m.last_dispatch_ts = now
+                return
 
         # 1. Engage targets inside radius.
         targets_in = [

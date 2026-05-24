@@ -50,8 +50,7 @@ north / center / south) 对抗 AI 敌人. 你通过 `openra-bridge` MCP server
 - `clarify` / `vocab`
 
 ### 编组层
-- `move_group` / `attack_group` / `stance_group` / `assign_to_group` /
-  `rebalance_groups`
+- `assign_to_group` / `rebalance_groups` (`list_groups` 在情报层)
 
 ### Daemon 控制层
 - `enable_auto_defense` (支持多周界) / `disable_auto_defense` /

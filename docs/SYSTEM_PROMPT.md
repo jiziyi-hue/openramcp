@@ -43,8 +43,7 @@
 `clarify` / `vocab`
 
 ### 编组层
-`move_group` / `attack_group` / `stance_group` / `assign_to_group` /
-`rebalance_groups`
+`assign_to_group` / `rebalance_groups` (`list_groups` 见情报层)
 
 ### Daemon 控制层
 `enable_auto_defense` (支持多周界) / `disable_auto_defense` / `cancel_assaults`

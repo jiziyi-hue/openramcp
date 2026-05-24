@@ -462,14 +462,15 @@ mission daemon 的 force 有两种解析模式:
 
 ---
 
-## 旧 atomic tools 仍可用 (兜底)
+## 已下线工具 (历史参考)
 
-`build / train / move / attack / move_group / list_groups / screenshot / pause`
-等 atomic tools 还在. 但**默认走 dispatch_intent**, 这些只在 dispatch_intent
-不覆盖时 fall-back 用.
+2026-05-23 以来从 MCP 隐藏的工具:
+- 经济: `build` / `train` / `sell` / `deploy` / `capture` — 玩家 UI 操作
+- 单 unit atomic: `move` / `attack` / `stop` / `set_stance` / `scatter` — 走 `dispatch_intent`
+- 编组 atomic: `move_group` / `attack_group` / `stance_group` — 走 `dispatch_intent` + group force
+  (LLM 直发 atomic 会跟 daemon cohesion/retarget 冲突, 详见 memory feedback_no_micromanagement)
 
-**注意**: 经济 / 生产 / 探路是**玩家自己的事**, 不是 LLM 的事. atomic build/train
-不是 LLM 该用的 — 让玩家手控.
+如果你看到旧文档/示例还引用上面任一工具, 是过期内容.
 
 ---
 

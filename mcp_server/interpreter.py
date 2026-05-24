@@ -54,14 +54,26 @@ class WorldView:
 
     # --- Force ---------------------------------------------------------
 
-    def resolve_force(self, force) -> List[int]:
+    def resolve_force(self, force, exclude_ids: Optional[set] = None) -> List[int]:
+        """Resolve a force spec to actor ids.
+
+        exclude_ids: optional set of actor ids to filter out. Used by multi-
+        mission dispatches (e.g. pincer) to give the second arm a disjoint
+        unit pool — otherwise both arms resolve the same `combat_mobile`
+        filter and steal units from each other every tick (confirmed
+        bug 2026-05-23 in a destroy_enemy pincer).
+        """
         if isinstance(force, D.ForceByGroup):
-            return self._force_by_group(force.name)
-        if isinstance(force, D.ForceByIds):
-            return list(force.unit_ids)
-        if isinstance(force, D.ForceByFilter):
-            return self._force_by_filter(force)
-        raise TypeError(f"unsupported force: {type(force)}")
+            ids = self._force_by_group(force.name)
+        elif isinstance(force, D.ForceByIds):
+            ids = list(force.unit_ids)
+        elif isinstance(force, D.ForceByFilter):
+            ids = self._force_by_filter(force)
+        else:
+            raise TypeError(f"unsupported force: {type(force)}")
+        if exclude_ids:
+            ids = [uid for uid in ids if uid not in exclude_ids]
+        return ids
 
     def _force_by_group(self, name: str) -> List[int]:
         # "all" and "mobile" both mean combat-mobile self units.
@@ -118,7 +130,7 @@ class WorldView:
             try:
                 from . import tactical_doctrine as _DOCTRINE
                 matched.sort(
-                    key=lambda u: _DOCTRINE.target_priority(u.get("kind", "")),
+                    key=lambda u: _DOCTRINE.unit_strength(u.get("kind", "")),
                     reverse=True,
                 )
             except Exception:
@@ -364,6 +376,14 @@ def _pending_reason(mission_kind: str, force) -> str:
 
 
 def _do_attack(intent: D.IntentAttack, wv: WorldView, transport) -> dict:
+    """Register an Assault mission with the tactical daemon.
+
+    Architecture: interpreter ONLY validates the DSL, resolves names → ids,
+    and registers the mission. The daemon owns ALL engine commands going
+    forward (move / attack / stance / stop), starting from its next tick.
+    Do not send atomic engine orders from here — that creates a race where
+    LLM-issued commands fight the daemon's per-tick formation control.
+    """
     actions: List[dict] = []
     ids = wv.resolve_force(intent.force)
     if not ids:
@@ -375,9 +395,7 @@ def _do_attack(intent: D.IntentAttack, wv: WorldView, transport) -> dict:
         "nearest_enemy", "nearest_enemy_unit", "nearest_enemy_structure"
     ):
         # Pick nearest enemy from force centroid, with a strong bias toward
-        # MOBILE threats over static structures. A solo 3tnk at distance 25
-        # matters more than an enemy powr at distance 8 — Attack-fire on the
-        # building leaves the mobile threat free to shoot us in the back.
+        # MOBILE threats over static structures.
         center = wv.force_centroid(ids)
         if center and wv.enemy_units:
             wanted_mobile = intent.target.name != "nearest_enemy_structure"
@@ -386,9 +404,6 @@ def _do_attack(intent: D.IntentAttack, wv: WorldView, transport) -> dict:
                                  if wanted_mobile and not _is_building(u["kind"])]
             struct_candidates = [u for u in wv.enemy_units
                                  if wanted_struct and _is_building(u["kind"])]
-
-            # Prefer a mobile target within ENGAGE_RADIUS (cells). If none,
-            # fall back to nearest mobile anywhere, then nearest structure.
             ENGAGE_RADIUS = 35
             near_mobile = [u for u in mobile_candidates
                            if G.distance(center, (u["pos"]["x"], u["pos"]["y"])) <= ENGAGE_RADIUS]
@@ -403,143 +418,79 @@ def _do_attack(intent: D.IntentAttack, wv: WorldView, transport) -> dict:
         return _err("target unresolved", actions, "target_resolution_failed")
 
     force_center = wv.force_centroid(ids) or tpos
+    target_named = (intent.target.name
+                    if isinstance(intent.target, D.TargetByName)
+                    else None)
 
-    # Hand the assault to the tactical daemon so it can engage on contact,
-    # re-target when the current threat dies, and hold formation. The
-    # daemon polls every ~0.6 s — fast enough that LLM lag is no longer
-    # the bottleneck. Cautious approach skips registration (distance-keeping
-    # is the player's deliberate choice; daemon would override it).
-    if intent.approach != "cautious" and tpos is not None:
-        try:
-            engine = _get_tactical_engine(transport)
-            # If target was named (enemy_fact / nearest_enemy_*), pass the
-            # name so daemon can re-resolve when the original actor dies.
-            # Stops the army from parking at a corpse's coords or sidetracking
-            # onto whatever building is nearest after the named target falls.
-            target_named = (intent.target.name
-                            if isinstance(intent.target, D.TargetByName)
-                            else None)
-            engine.register_assault(
-                force_ids=ids,
-                final_target_cell=tpos,
-                final_target_actor=tid,
-                cohesion=(intent.approach != "charge"),  # charge sacrifices cohesion
-                target_named=target_named,
-            )
-        except Exception:
-            # Daemon registration is best-effort — never block the dispatch.
-            pass
-
-    if intent.approach == "frontal":
-        target_kind = _target_kind(wv, tid)
-        # When the target is a BUILDING, prefer attack_move to its location —
-        # plain Attack-on-actor makes units ignore counter-fire from enemy mobile
-        # units, leading to suicide rushes. attack_move auto-engages on the way.
-        if tid is not None and not _is_building(target_kind):
-            _send(transport, {"type": "attack", "unit_ids": ids, "target_id": tid}, actions)
-            return _ok(f"frontal attack {len(ids)} unit(s) → actor {tid}", actions)
-        # Building target OR no actor: attack-move to coords; units will engage
-        # enemies en route and start firing at the building once in range.
-        _send(transport,
-              {"type": "set_stance", "unit_ids": ids, "stance": "AttackAnything"},
-              actions)
-        _send(transport,
-              {"type": "move", "unit_ids": ids, "target": {"x": tpos[0], "y": tpos[1]},
-               "attack_move": True},
-              actions)
-        return _ok(
-            f"frontal attack-move {len(ids)} unit(s) → {tpos}"
-            + (f" (building {target_kind})" if target_kind else ""),
-            actions)
-
-    if intent.approach in ("flank_left", "flank_right"):
+    # Approach influences mission parameters the daemon respects:
+    #   - charge      → cohesion=False, daemon doesn't gate vanguards
+    #   - flank_*     → use a waypoint instead of straight line; daemon
+    #                   marches to waypoint first via final_target_cell rewrite
+    #   - split       → register TWO assaults (front + flank)
+    #   - cautious    → keep distance at weapon range; cohesion on
+    #   - frontal     → straight line, cohesion on (default)
+    final_cell = tpos
+    second_assault = None  # for split
+    cohesion = True
+    if intent.approach == "charge":
+        cohesion = False
+    elif intent.approach in ("flank_left", "flank_right"):
         side = "left" if intent.approach == "flank_left" else "right"
         wp = G.flank_waypoint(force_center, tpos, side, sidestep_cells=12, approach_t=0.55)
-        target_kind = _target_kind(wv, tid)
-        # Move via flank waypoint first (attack-move so we engage en route).
-        _send(transport,
-              {"type": "move", "unit_ids": ids,
-               "target": {"x": wp[0], "y": wp[1]}, "attack_move": True},
-              actions)
-        # Then engage target. Building → attack_move to its pos (keeps
-        # AttackAnything responsiveness). Unit → direct Attack chases & fires.
-        if tid is not None and not _is_building(target_kind):
-            _send(transport, {"type": "attack", "unit_ids": ids, "target_id": tid}, actions)
-        else:
-            _send(transport,
-                  {"type": "move", "unit_ids": ids,
-                   "target": {"x": tpos[0], "y": tpos[1]}, "attack_move": True},
-                  actions)
-        return _ok(f"{intent.approach} via waypoint {wp} → target {tid or tpos}", actions)
-
-    if intent.approach == "split":
-        # Split ids in half: front goes frontal, rear goes flank_right.
+        final_cell = (wp[0], wp[1])
+    elif intent.approach == "split":
         n = len(ids)
-        a = ids[: n // 2]
-        b = ids[n // 2:]
-        if a:
-            _send(transport,
-                  {"type": "move", "unit_ids": a,
-                   "target": {"x": tpos[0], "y": tpos[1]}, "attack_move": True},
-                  actions)
-        if b:
-            wp = G.flank_waypoint(force_center, tpos, "right", sidestep_cells=14, approach_t=0.55)
-            _send(transport,
-                  {"type": "move", "unit_ids": b,
-                   "target": {"x": wp[0], "y": wp[1]}, "attack_move": True},
-                  actions)
-        return _ok(f"split: {len(a)} frontal + {len(b)} flank_right → {tpos}", actions)
-
-    if intent.approach == "charge":
-        target_kind = _target_kind(wv, tid)
-        _send(transport, {"type": "set_stance", "unit_ids": ids,
-                          "stance": "AttackAnything"}, actions)
-        # Building target → use attack_move so units engage enemy mobile units
-        # along the way instead of dying focused-firing the building.
-        # Mobile-unit target → safe to issue direct Attack (units pathfind to
-        # the actor and shoot while moving).
-        if tid is not None and not _is_building(target_kind):
-            _send(transport, {"type": "attack", "unit_ids": ids, "target_id": tid}, actions)
-        else:
-            _send(transport,
-                  {"type": "move", "unit_ids": ids,
-                   "target": {"x": tpos[0], "y": tpos[1]}, "attack_move": True},
-                  actions)
-        return _ok(
-            f"charge: {len(ids)} units, full aggression → {tid or tpos}"
-            + (f" (building {target_kind})" if target_kind and _is_building(target_kind) else ""),
-            actions)
-
-    if intent.approach == "cautious":
+        front_ids = ids[: n // 2]
+        flank_ids = ids[n // 2:]
+        wp = G.flank_waypoint(force_center, tpos, "right", sidestep_cells=14, approach_t=0.55)
+        ids = front_ids                  # primary registration
+        second_assault = (flank_ids, (wp[0], wp[1]))
+    elif intent.approach == "cautious":
         engage = G.cautious_engage_point(force_center, tpos, weapon_range_cells=6)
-        _send(transport, {"type": "set_stance", "unit_ids": ids,
-                          "stance": "ReturnFire"}, actions)
-        _send(transport,
-              {"type": "move", "unit_ids": ids,
-               "target": {"x": engage[0], "y": engage[1]}, "attack_move": True},
-              actions)
-        return _ok(f"cautious engage at {engage} (kept distance)", actions)
+        final_cell = (engage[0], engage[1])
 
-    return _err(f"unknown approach: {intent.approach}", actions, "approach_unknown")
+    mission_ids: List[int] = []
+    try:
+        engine = _get_tactical_engine(transport)
+        mid = engine.register_assault(
+            force_ids=ids,
+            final_target_cell=final_cell,
+            final_target_actor=tid,
+            cohesion=cohesion,
+            target_named=target_named,
+        )
+        if mid is not None:
+            mission_ids.append(mid)
+        if second_assault is not None and second_assault[0]:
+            mid2 = engine.register_assault(
+                force_ids=second_assault[0],
+                final_target_cell=second_assault[1],
+                final_target_actor=tid,
+                cohesion=True,
+                target_named=target_named,
+            )
+            if mid2 is not None:
+                mission_ids.append(mid2)
+    except Exception as e:
+        return _err(f"daemon registration failed: {e}", actions,
+                    "daemon_register_failed")
+
+    return _ok(
+        f"{intent.approach}: {len(ids)} unit(s) → {tid or tpos} [mission(s) {mission_ids}]",
+        actions, mission_ids=mission_ids)
 
 
 def _do_defend(intent: D.IntentDefend, wv: WorldView, transport) -> dict:
+    """Register a ContainmentMission with the daemon. Daemon owns all
+    engine commands — move to position, set stance, auto-engage intruders,
+    pull strays back. Interpreter does not issue atomics here.
+    """
     actions: List[dict] = []
     ids = wv.resolve_force(intent.force)
     if not ids:
         return _err("force empty", actions, "force_resolution_empty")
 
     center, radius = wv.resolve_region(intent.region)
-    _send(transport,
-          {"type": "move", "unit_ids": ids,
-           "target": {"x": center[0], "y": center[1]}, "attack_move": False},
-          actions)
-    _send(transport, {"type": "set_stance", "unit_ids": ids,
-                      "stance": intent.stance}, actions)
-
-    # Register a ContainmentMission with the daemon so the force auto-engages
-    # intruders inside the region radius without leaving (and gets pulled back
-    # if it strays). Best-effort — never block the dispatch.
     mission_id = None
     try:
         engine = _get_tactical_engine(transport)
@@ -549,14 +500,14 @@ def _do_defend(intent: D.IntentDefend, wv: WorldView, transport) -> dict:
             radius=max(3, radius),
             stance=intent.stance,
         )
-    except Exception:
-        pass
+    except Exception as e:
+        return _err(f"daemon registration failed: {e}", actions,
+                    "daemon_register_failed")
 
-    msg = (f"defend at {center} (r={radius}) with {len(ids)} unit(s), "
-           f"stance={intent.stance}")
-    if mission_id is not None:
-        msg += f" [daemon contain #{mission_id}]"
-    return _ok(msg, actions)
+    return _ok(
+        f"defend at {center} (r={radius}) with {len(ids)} unit(s), "
+        f"stance={intent.stance} [mission #{mission_id}]",
+        actions, mission_id=mission_id)
 
 
 def _do_retreat(intent: D.IntentRetreat, wv: WorldView, transport) -> dict:
@@ -607,9 +558,34 @@ def _do_scout(intent: D.IntentScout, wv: WorldView, transport) -> dict:
 
 
 def _do_pincer(intent: D.IntentPincer, wv: WorldView, transport) -> dict:
+    """Register two Assault missions (left + right arms) with the daemon.
+
+    Daemon owns per-arm cohesion + engage-on-contact + retarget. We compute
+    the waypoint pair here so each arm's daemon-driven push approaches from
+    the chosen flank, then converges on the target.
+    """
     actions: List[dict] = []
-    left_ids = wv.resolve_force(intent.left)
-    right_ids = wv.resolve_force(intent.right)
+    # Pre-resolve left/right separately so we can detect pool overlap. When
+    # both arms reference the SAME pool (e.g. both filter combat_mobile=true),
+    # naive resolution returns 100% overlap → each daemon tick the two
+    # missions fight over identical actor ids and the army oscillates. Split
+    # the overlap roughly in half: half goes to left, half to right. Disjoint
+    # specs (e.g. group=north vs group=south) are unaffected.
+    left_raw = wv.resolve_force(intent.left)
+    right_raw = wv.resolve_force(intent.right)
+    overlap = set(left_raw) & set(right_raw)
+    if overlap and (set(left_raw) == set(right_raw)):
+        # Total overlap — split in half by priority order already imposed by
+        # the resolver's `prefer` setting (strongest first by default).
+        half = (len(left_raw) + 1) // 2
+        left_ids = left_raw[:half]
+        right_ids = [uid for uid in right_raw if uid not in set(left_ids)]
+    elif overlap:
+        # Partial overlap — let left keep the overlap, strip it from right.
+        left_ids = left_raw
+        right_ids = [uid for uid in right_raw if uid not in overlap]
+    else:
+        left_ids, right_ids = left_raw, right_raw
     if not left_ids and not right_ids:
         return _err("both arms empty", actions, "force_resolution_empty")
 
@@ -622,62 +598,37 @@ def _do_pincer(intent: D.IntentPincer, wv: WorldView, transport) -> dict:
 
     lwp, rwp = G.pincer_rendezvous(tpos, intent.rendezvous_dist,
                                     left_center, right_center)
+    target_named = (intent.target.name
+                    if isinstance(intent.target, D.TargetByName)
+                    else None)
 
-    # Hand each arm to the tactical daemon as its own assault. Each arm
-    # gets engage-on-contact + cohesion within itself; the final convergence
-    # is implicit (both walk toward target after waypoint).
+    mission_ids: List[int] = []
     try:
         engine = _get_tactical_engine(transport)
-        target_named = (intent.target.name
-                        if isinstance(intent.target, D.TargetByName)
-                        else None)
         if left_ids:
-            engine.register_assault(force_ids=left_ids,
-                                    final_target_cell=tpos,
-                                    final_target_actor=tid,
-                                    cohesion=True,
-                                    target_named=target_named)
+            mid = engine.register_assault(force_ids=left_ids,
+                                          final_target_cell=lwp,
+                                          final_target_actor=tid,
+                                          cohesion=True,
+                                          target_named=target_named)
+            if mid is not None:
+                mission_ids.append(mid)
         if right_ids:
-            engine.register_assault(force_ids=right_ids,
-                                    final_target_cell=tpos,
-                                    final_target_actor=tid,
-                                    cohesion=True,
-                                    target_named=target_named)
-    except Exception:
-        pass
+            mid = engine.register_assault(force_ids=right_ids,
+                                          final_target_cell=rwp,
+                                          final_target_actor=tid,
+                                          cohesion=True,
+                                          target_named=target_named)
+            if mid is not None:
+                mission_ids.append(mid)
+    except Exception as e:
+        return _err(f"daemon registration failed: {e}", actions,
+                    "daemon_register_failed")
 
-    if left_ids:
-        _send(transport,
-              {"type": "move", "unit_ids": left_ids,
-               "target": {"x": lwp[0], "y": lwp[1]}, "attack_move": True},
-              actions)
-    if right_ids:
-        _send(transport,
-              {"type": "move", "unit_ids": right_ids,
-               "target": {"x": rwp[0], "y": rwp[1]}, "attack_move": True},
-              actions)
-    # follow-up: building → attack_move to pos (engage en route); unit → Attack actor.
-    target_kind = _target_kind(wv, tid)
-    use_attack_actor = tid is not None and not _is_building(target_kind)
-    if left_ids:
-        if use_attack_actor:
-            _send(transport, {"type": "attack", "unit_ids": left_ids, "target_id": tid}, actions)
-        else:
-            _send(transport,
-                  {"type": "move", "unit_ids": left_ids,
-                   "target": {"x": tpos[0], "y": tpos[1]}, "attack_move": True},
-                  actions)
-    if right_ids:
-        if use_attack_actor:
-            _send(transport, {"type": "attack", "unit_ids": right_ids, "target_id": tid}, actions)
-        else:
-            _send(transport,
-                  {"type": "move", "unit_ids": right_ids,
-                   "target": {"x": tpos[0], "y": tpos[1]}, "attack_move": True},
-                  actions)
     return _ok(
-        f"pincer: left {len(left_ids)} → {lwp}, right {len(right_ids)} → {rwp}, "
-        f"final target {tid or tpos}", actions)
+        f"pincer: left {len(left_ids)} via {lwp}, right {len(right_ids)} via {rwp}, "
+        f"target {tid or tpos} [mission(s) {mission_ids}]",
+        actions, mission_ids=mission_ids)
 
 
 def _do_feint(intent: D.IntentFeint, wv: WorldView, transport) -> dict:
@@ -909,14 +860,6 @@ def _do_contain(intent: D.IntentContain, wv: WorldView, transport) -> dict:
 
     cp = (intent.chokepoint.x, intent.chokepoint.y)
 
-    # Initial deploy — move to chokepoint with stance set.
-    _send(transport, {"type": "set_stance", "unit_ids": ids,
-                      "stance": intent.stance}, actions)
-    _send(transport,
-          {"type": "move", "unit_ids": ids,
-           "target": {"x": cp[0], "y": cp[1]}, "attack_move": False},
-          actions)
-
     mission_id = None
     try:
         engine = _get_tactical_engine(transport)
@@ -926,13 +869,14 @@ def _do_contain(intent: D.IntentContain, wv: WorldView, transport) -> dict:
             radius=intent.radius,
             stance=intent.stance,
         )
-    except Exception:
-        pass
+    except Exception as e:
+        return _err(f"daemon registration failed: {e}", actions,
+                    "daemon_register_failed")
 
-    msg = f"contain {len(ids)} unit(s) at {cp} (r={intent.radius})"
-    if mission_id is not None:
-        msg += f" [mission #{mission_id}]"
-    return _ok(msg, actions, mission_id=mission_id)
+    return _ok(
+        f"contain {len(ids)} unit(s) at {cp} (r={intent.radius}) "
+        f"[mission #{mission_id}]",
+        actions, mission_id=mission_id)
 
 
 def _do_diversion(intent: D.IntentDiversion, wv: WorldView, transport) -> dict:
@@ -983,8 +927,6 @@ def _do_diversion(intent: D.IntentDiversion, wv: WorldView, transport) -> dict:
     if withdraw_pos is None:
         withdraw_pos = feint_center
 
-    # Daemon owns the timing. Best-effort registration; if it fails we fall
-    # back to one-shot orders below.
     mission_id = None
     try:
         engine = _get_tactical_engine(transport)
@@ -998,28 +940,9 @@ def _do_diversion(intent: D.IntentDiversion, wv: WorldView, transport) -> dict:
             withdraw_to=withdraw_pos,
             feint_commits=intent.feint_commits,
         )
-    except Exception:
-        pass
-
-    # Issue the opening orders so units start moving even before the daemon's
-    # next tick.
-    if feint_ids:
-        _send(transport, {"type": "set_stance", "unit_ids": feint_ids,
-                          "stance": "ReturnFire"}, actions)
-        _send(transport,
-              {"type": "move", "unit_ids": feint_ids,
-               "target": {"x": feint_stop[0], "y": feint_stop[1]},
-               "attack_move": False},
-              actions)
-    if raid_ids:
-        first_target = raid_wp or raid_tpos
-        _send(transport, {"type": "set_stance", "unit_ids": raid_ids,
-                          "stance": "AttackAnything"}, actions)
-        _send(transport,
-              {"type": "move", "unit_ids": raid_ids,
-               "target": {"x": first_target[0], "y": first_target[1]},
-               "attack_move": True},
-              actions)
+    except Exception as e:
+        return _err(f"daemon registration failed: {e}", actions,
+                    "daemon_register_failed")
 
     msg = (f"diversion: feint {len(feint_ids)} → {feint_stop} (stopline), "
            f"raid {len(raid_ids)} → {raid_tpos} via {intent.raid_approach}")

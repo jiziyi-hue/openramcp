@@ -55,10 +55,10 @@ class MockTransport:
 
 
 class TestDispatch(unittest.TestCase):
-    def test_attack_frontal_building_uses_attack_move(self):
-        # Building target → attack_move (not focus-attack actor) so units
-        # engage enemy mobile units en route. Regression guard for the
-        # suicide-into-base bug fixed in interpreter._do_attack.
+    def test_attack_frontal_registers_assault_no_atomics(self):
+        # Architectural guard: _do_attack must ONLY register a daemon
+        # assault and NOT send move/attack/stance atomics. Daemon owns
+        # per-tick unit control end-to-end.
         t = MockTransport()
         r = I.interpret({
             "intent": "attack",
@@ -66,19 +66,18 @@ class TestDispatch(unittest.TestCase):
             "target": {"kind": "named", "name": "enemy_fact"},
         }, t)
         self.assertTrue(r["ok"])
-        # No focus-fire Attack on building.
-        attack_cmds = [c for c in t.commands if c.get("type") == "attack"]
-        self.assertEqual(len(attack_cmds), 0)
-        # Move with attack_move=True to building location.
-        move_cmds = [c for c in t.commands if c.get("type") == "move"]
-        self.assertEqual(len(move_cmds), 1)
-        self.assertTrue(move_cmds[0]["attack_move"])
-        self.assertEqual(move_cmds[0]["target"], {"x": 67, "y": 9})
+        # Interpreter must not have issued any engine-side tactical command.
+        engine_cmds = [c for c in t.commands
+                       if c.get("type") in ("attack", "move", "set_stance")]
+        self.assertEqual(engine_cmds, [])
+        # Mission was registered.
+        self.assertIn("mission_ids", r)
+        self.assertTrue(len(r["mission_ids"]) >= 1)
 
-    def test_attack_frontal_unit_uses_focus_attack(self):
-        # Mobile unit target → still uses direct Attack actor (correct path).
+    def test_attack_frontal_unit_target_still_registers(self):
+        # Mobile unit target still goes through register_assault — daemon
+        # picks the actor as final_target_actor and chases it.
         t = MockTransport()
-        # Add a tank target to mock world.
         t.world["state"]["enemy_units"].append({
             "id": 88, "kind": "2tnk", "owner": "bot",
             "pos": {"x": 50, "y": 50}, "hp_pct": 1.0,
@@ -89,9 +88,10 @@ class TestDispatch(unittest.TestCase):
             "target": {"kind": "id", "actor_id": 88},
         }, t)
         self.assertTrue(r["ok"])
-        attack_cmds = [c for c in t.commands if c.get("type") == "attack"]
-        self.assertEqual(len(attack_cmds), 1)
-        self.assertEqual(attack_cmds[0]["target_id"], 88)
+        engine_cmds = [c for c in t.commands
+                       if c.get("type") in ("attack", "move", "set_stance")]
+        self.assertEqual(engine_cmds, [])
+        self.assertIn("mission_ids", r)
 
     def test_retreat_filter_hp(self):
         t = MockTransport()
@@ -106,9 +106,9 @@ class TestDispatch(unittest.TestCase):
         self.assertEqual(len(move_cmds), 1)
         self.assertEqual(move_cmds[0]["unit_ids"], [2])
 
-    def test_attack_charge_building_uses_attack_move(self):
-        # Regression: previously charge focused on building actor and units
-        # ignored enemy fire. Now charge on building uses attack_move + stance.
+    def test_attack_charge_registers_with_cohesion_off(self):
+        # Charge approach should still go through register_assault but with
+        # cohesion=False so the daemon doesn't gate vanguards.
         t = MockTransport()
         r = I.interpret({
             "intent": "attack",
@@ -117,16 +117,10 @@ class TestDispatch(unittest.TestCase):
             "approach": "charge",
         }, t)
         self.assertTrue(r["ok"])
-        # AttackAnything stance set.
-        stance_cmds = [c for c in t.commands if c.get("type") == "set_stance"]
-        self.assertEqual(len(stance_cmds), 1)
-        self.assertEqual(stance_cmds[0]["stance"], "AttackAnything")
-        # Move (attack_move) issued, not Attack-actor.
-        attack_cmds = [c for c in t.commands if c.get("type") == "attack"]
-        self.assertEqual(len(attack_cmds), 0)
-        move_cmds = [c for c in t.commands if c.get("type") == "move"]
-        self.assertEqual(len(move_cmds), 1)
-        self.assertTrue(move_cmds[0]["attack_move"])
+        engine_cmds = [c for c in t.commands
+                       if c.get("type") in ("attack", "move", "set_stance")]
+        self.assertEqual(engine_cmds, [])
+        self.assertIn("mission_ids", r)
 
     def test_set_strategy_intent_rejected(self):
         """set_strategy intent removed in 2026-05-23 refactor."""

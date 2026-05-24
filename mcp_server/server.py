@@ -141,29 +141,14 @@ def list_groups() -> dict:
     return _send(S.CmdListGroups())
 
 
-@mcp.tool()
-def move_group(group: str, target_x: int, target_y: int, attack_move: bool = False) -> dict:
-    """Move a named group toward a target cell.
-
-    group: e.g. 'north', 'center', 'south'.
-    attack_move: if True, units engage enemies on the way (A-move).
-    """
-    return _send(S.CmdMoveGroup(group=group, target=S.Vec2(x=target_x, y=target_y), attack_move=attack_move))
-
-
-@mcp.tool()
-def attack_group(group: str, target_id: int) -> dict:
-    """Order an entire named group to focus-fire one enemy actor."""
-    return _send(S.CmdAttackGroup(group=group, target_id=target_id))
-
-
-@mcp.tool()
-def stance_group(group: str, stance: str) -> dict:
-    """Set engagement stance for the whole group.
-
-    stance: HoldFire | ReturnFire | Defend | AttackAnything
-    """
-    return _send(S.CmdStanceGroup(group=group, stance=stance))
+# move_group / attack_group / stance_group removed from the MCP surface
+# 2026-05-23. They issued engine atomics directly, which let the LLM
+# micromanage units in conflict with the daemon (cohesion gate, retarget
+# loop, mission control). The new architecture: LLM only sets state via
+# `dispatch_intent` (which registers a mission), and the daemon owns
+# every engine-side move/attack/stance from that point on. If you need
+# group-scope movement or attack, use `dispatch_intent` with the
+# appropriate intent (`attack` / `defend` / `pincer` / etc).
 
 
 @mcp.tool()
@@ -211,6 +196,30 @@ def _dispatch_logged(intent: dict, meta: Optional[dict], client: str) -> dict:
     except Exception:
         pass
     return result
+
+
+def _log_strategy_call(
+    tool_name: str,
+    args: dict,
+    result: dict,
+    meta: Optional[dict],
+) -> None:
+    """Log a strategy-layer tool call (set_alert_state / set_objective /
+    set_doctrine) into decisions.jsonl so nl_commands counts them and
+    token totals aren't always zero. These tools don't go through the DSL
+    interpreter so they bypass _dispatch_logged otherwise."""
+    try:
+        SessionLogger.current().log_decision(
+            intent_payload={"intent": tool_name, **args},
+            result=result,
+            meta=meta,
+            world_before=None,
+            world_after=None,
+            latency_ms=0,
+            client=tool_name,
+        )
+    except Exception:
+        pass
 
 
 @mcp.tool()
@@ -704,7 +713,7 @@ def cancel_pending(pending_id: int) -> dict:
 
 
 @mcp.tool()
-def set_alert_state(level: str) -> dict:
+def set_alert_state(level: str, meta: Optional[dict] = None) -> dict:
     """Set the army's global alert state.
 
     level: peace | watch | alert | combat | lockdown
@@ -723,13 +732,17 @@ def set_alert_state(level: str) -> dict:
     try:
         state = _AlertState(level)
     except ValueError:
-        return {
+        result = {
             "ok": False,
             "error": f"unknown alert level: {level!r}. "
                      f"valid: {[s.value for s in _AlertState]}",
         }
+        _log_strategy_call("set_alert_state", {"level": level}, result, meta)
+        return result
     engine = _get_tactical_engine(transport)
-    return engine.apply_alert_state(state)
+    result = engine.apply_alert_state(state)
+    _log_strategy_call("set_alert_state", {"level": level}, result, meta)
+    return result
 
 
 @mcp.tool()
@@ -758,7 +771,8 @@ def get_alert_state() -> dict:
 
 
 @mcp.tool()
-def set_objective(name: str, tick: Optional[int] = None) -> dict:
+def set_objective(name: str, tick: Optional[int] = None,
+                  meta: Optional[dict] = None) -> dict:
     """Set the player-declared victory condition + dispatch objective-owned
     auto-missions (e.g. harass_economy launches a cycle harass on enemy
     economy).
@@ -770,24 +784,29 @@ def set_objective(name: str, tick: Optional[int] = None) -> dict:
     (kept in objective_mission_ids). Manual LLM-dispatched missions are
     NOT touched. Returns the transition report.
     """
+    args = {"name": name, "tick": tick}
     try:
         obj = _Objective(name)
     except ValueError:
-        return {
+        result = {
             "ok": False,
             "error": f"unknown objective: {name!r}. "
                      f"valid: {[o.value for o in _Objective]}",
         }
+        _log_strategy_call("set_objective", args, result, meta)
+        return result
     params: dict = {}
     if obj == _Objective.SURVIVE_UNTIL_TICK:
         if tick is None:
-            return {"ok": False,
-                    "error": "survive_until_tick requires `tick` parameter"}
+            result = {"ok": False,
+                      "error": "survive_until_tick requires `tick` parameter"}
+            _log_strategy_call("set_objective", args, result, meta)
+            return result
         params["tick"] = int(tick)
     engine = _get_tactical_engine(transport)
     report = engine.set_objective(obj, params)
     suggested = _objective_to_suggested_state(obj)
-    return {
+    result = {
         "ok": True,
         "objective": obj.value,
         "params": params,
@@ -806,6 +825,8 @@ def set_objective(name: str, tick: Optional[int] = None) -> dict:
             f"Suggested alert: {suggested.value}."
         ),
     }
+    _log_strategy_call("set_objective", args, result, meta)
+    return result
 
 
 @mcp.tool()
@@ -813,6 +834,7 @@ def set_doctrine(
     alert_state: Optional[str] = None,
     objective: Optional[str] = None,
     survive_tick: Optional[int] = None,
+    meta: Optional[dict] = None,
 ) -> dict:
     """Set the army's overall doctrine in one call — alert state + objective.
 
@@ -830,8 +852,12 @@ def set_doctrine(
     merged transition report. Switching either field cancels what that
     layer previously owned; the other layer's missions survive.
     """
+    args = {"alert_state": alert_state, "objective": objective,
+            "survive_tick": survive_tick}
     if alert_state is None and objective is None:
-        return {"ok": False, "error": "specify at least one of alert_state / objective"}
+        result = {"ok": False, "error": "specify at least one of alert_state / objective"}
+        _log_strategy_call("set_doctrine", args, result, meta)
+        return result
     engine = _get_tactical_engine(transport)
     out: dict = {"ok": True}
 
@@ -839,22 +865,28 @@ def set_doctrine(
         try:
             state = _AlertState(alert_state)
         except ValueError:
-            return {
+            result = {
                 "ok": False,
                 "error": f"unknown alert_state: {alert_state!r}",
             }
+            _log_strategy_call("set_doctrine", args, result, meta)
+            return result
         out["alert"] = engine.apply_alert_state(state)
 
     if objective is not None:
         try:
             obj = _Objective(objective)
         except ValueError:
-            return {"ok": False, "error": f"unknown objective: {objective!r}"}
+            result = {"ok": False, "error": f"unknown objective: {objective!r}"}
+            _log_strategy_call("set_doctrine", args, result, meta)
+            return result
         params: dict = {}
         if obj == _Objective.SURVIVE_UNTIL_TICK:
             if survive_tick is None:
-                return {"ok": False,
-                        "error": "objective=survive_until_tick requires survive_tick"}
+                result = {"ok": False,
+                          "error": "objective=survive_until_tick requires survive_tick"}
+                _log_strategy_call("set_doctrine", args, result, meta)
+                return result
             params["tick"] = int(survive_tick)
         out["objective"] = engine.set_objective(obj, params)
 
@@ -864,6 +896,7 @@ def set_doctrine(
     if "objective" in out:
         pieces.append(f"objective={objective}")
     out["narrative"] = "Doctrine set: " + ", ".join(pieces)
+    _log_strategy_call("set_doctrine", args, out, meta)
     return out
 
 
