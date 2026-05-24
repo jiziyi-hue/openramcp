@@ -449,6 +449,26 @@ def _do_attack(intent: D.IntentAttack, wv: WorldView, transport) -> dict:
         engage = G.cautious_engage_point(force_center, tpos, weapon_range_cells=6)
         final_cell = (engage[0], engage[1])
 
+    # Backend = squad: hand off to engine-side Assault FSM. Approach is
+    # collapsed (squad FSM doesn't know flank/cautious/split). The squad
+    # cohesion gate (Phase D3) handles spacing; AttackAnything stance
+    # (Phase D4) handles opportunistic strikes on the way.
+    if intent.backend == "squad":
+        resp = _dispatch_squad(
+            transport, "Assault", ids,
+            target_pos=final_cell if final_cell else tpos,
+        )
+        actions.append({"cmd": {"type": "spawn_squad", "squad_type": "Assault"},
+                        "resp": resp})
+        if not resp.get("ok"):
+            return _err(f"squad backend failed: {resp.get('error')}", actions,
+                        "squad_register_failed")
+        return _ok(
+            f"attack (squad backend) {resp.get('unit_count')} unit(s) → "
+            f"{tid or final_cell} [squad #{resp.get('squad_index')}]",
+            actions, squad_index=resp.get("squad_index"),
+        )
+
     mission_ids: List[int] = []
     try:
         engine = _get_tactical_engine(transport)
@@ -491,6 +511,24 @@ def _do_defend(intent: D.IntentDefend, wv: WorldView, transport) -> dict:
         return _err("force empty", actions, "force_resolution_empty")
 
     center, radius = wv.resolve_region(intent.region)
+
+    if intent.backend == "squad":
+        # Defend → Protection squad (engages threats near a cell).
+        resp = _dispatch_squad(
+            transport, "Protection", ids, target_pos=center,
+        )
+        actions.append({"cmd": {"type": "spawn_squad",
+                                "squad_type": "Protection"},
+                        "resp": resp})
+        if not resp.get("ok"):
+            return _err(f"squad backend failed: {resp.get('error')}", actions,
+                        "squad_register_failed")
+        return _ok(
+            f"defend (squad backend / Protection) {resp.get('unit_count')} "
+            f"unit(s) at {center} [squad #{resp.get('squad_index')}]",
+            actions, squad_index=resp.get("squad_index"),
+        )
+
     mission_id = None
     try:
         engine = _get_tactical_engine(transport)

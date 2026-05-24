@@ -128,12 +128,36 @@ def _run_daemon_backend(t: OpenRATransport, scenario: dict, intent_id: str) -> d
 
 
 def _run_squad_backend(t: OpenRATransport, scenario: dict, intent_id: str) -> dict:
-    """Squad path: invoke spawn_squad directly with the squad_type from the
-    scenario, picking up target_pos / waypoints / escortee as needed."""
-    squad_type = scenario["intent_squad_type"]
-    payload = {"type": "spawn_squad", "squad_type": squad_type}
+    """Squad path: go through the SAME intent DSL as daemon, just with
+    backend='squad' so the interpreter routes to spawn_squad internally.
+    This keeps both legs of the A/B going through identical entrypoints.
 
-    # Map verdict target into target_pos when present.
+    For scenarios whose intent_daemon doesn't yet support backend=squad
+    (e.g. diversion), we fall back to a direct spawn_squad call using
+    intent_squad_type from the scenario.
+    """
+    if "intent_daemon_batch" in scenario:
+        # Compound — squad path runs each sub-intent with backend=squad.
+        ok_any = False
+        for sub in scenario["intent_daemon_batch"]:
+            sub = dict(sub)
+            sub["backend"] = "squad"
+            resp = I.interpret(sub, t)
+            ok_any = ok_any or resp.get("ok", False)
+        return {"ok": ok_any, "compound": True}
+
+    intent = _resolve_intent(scenario, t)
+    intent["backend"] = "squad"
+
+    # Try the unified DSL route first.
+    resp = I.interpret(intent, t)
+    if resp.get("ok"):
+        return resp
+
+    # Fallback for intents without backend=squad routing (e.g. diversion):
+    # bypass the DSL and spawn the squad directly.
+    squad_type = scenario.get("intent_squad_type", "Assault")
+    payload = {"type": "spawn_squad", "squad_type": squad_type}
     tname = scenario.get("verdict_target_named")
     tpos = scenario.get("verdict_target_pos")
     if tpos is not None:
@@ -142,23 +166,18 @@ def _run_squad_backend(t: OpenRATransport, scenario: dict, intent_id: str) -> di
         pos = _resolve_named_pos(t, tname)
         if pos is not None:
             payload["target_pos"] = {"x": int(pos[0]), "y": int(pos[1])}
-
-    # Harass squad wants rally_point.
     if squad_type == "Harass":
         rally = _resolve_named_pos(t, "self_base")
         if rally is not None:
             payload["rally_point"] = {"x": int(rally[0]), "y": int(rally[1])}
-
-    # Escort: escortee actor id.
     if squad_type == "Escort":
-        state = _get_state(t)
-        units = _self_units(state.get("state", {}))
+        st = _get_state(t)
+        units = _self_units(st)
         mcv = next((u for u in units if u.get("kind") == "mcv"), None)
         if mcv is None:
             mcv = next((u for u in units if u.get("kind") in ("4tnk", "3tnk")), None)
         if mcv is not None:
             payload["escortee_actor_id"] = int(mcv["id"])
-
     return t.send_command(payload)
 
 

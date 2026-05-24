@@ -191,6 +191,10 @@ class IntentAttack(BaseModel):
     target: Target
     approach: Approach = "frontal"
     urgency: Urgency = "normal"
+    # backend=daemon (default): Python tactical daemon owns the loop.
+    # backend=squad: spawn an engine-side Assault squad, FSM owns the loop.
+    # Same NL intent, two execution paths — paper A/B comparison.
+    backend: Literal["daemon", "squad"] = "daemon"
 
 
 class IntentDefend(BaseModel):
@@ -198,6 +202,8 @@ class IntentDefend(BaseModel):
     force: Force
     region: Region
     stance: Stance = "Defend"
+    # backend=squad maps to Protection squad (defends target cell).
+    backend: Literal["daemon", "squad"] = "daemon"
 
 
 class IntentRetreat(BaseModel):
