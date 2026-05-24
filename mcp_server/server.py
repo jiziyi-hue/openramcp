@@ -161,6 +161,55 @@ def assign_to_group(group: str, unit_ids: list[int]) -> dict:
 
 
 @mcp.tool()
+def command_group(group: str, command: str,
+                  target_named: Optional[str] = None,
+                  target_pos: Optional[dict] = None,
+                  target_actor_id: Optional[int] = None,
+                  approach: Optional[str] = None,
+                  stance: Optional[str] = None,
+                  meta: Optional[dict] = None) -> dict:
+    """One-call shortcut: dispatch an intent to a named group.
+
+    Equivalent to dispatch_intent({intent: command, force: {kind: "group",
+    name: group}, ...}) but shorter to type when you just want "north 群推
+    敌总部". Borrowed from OpenRA-RL's command_group pattern, adapted to
+    our intent DSL.
+
+    Args:
+        group:          group name (north / center / south / custom / all).
+        command:        one of attack | defend | retreat | regroup | scout |
+                        feint | set_stance | report.
+        target_named:   named target (enemy_fact / enemy_base / self_base / ...).
+        target_pos:     {"x": int, "y": int} fallback when no named target fits.
+        target_actor_id: specific actor id.
+        approach:       attack-only: frontal | flank_left | flank_right |
+                        split | charge | cautious.
+        stance:         set_stance-only: HoldFire | ReturnFire | Defend |
+                        AttackAnything.
+        meta:           observability dict (same as dispatch_intent).
+
+    Returns: dispatch_intent result.
+    """
+    force = {"kind": "group", "name": group}
+    intent: dict = {"intent": command, "force": force}
+
+    if target_actor_id is not None:
+        intent["target"] = {"kind": "id", "actor_id": int(target_actor_id)}
+    elif target_named is not None:
+        intent["target"] = {"kind": "named", "name": target_named}
+    elif target_pos is not None:
+        intent["target"] = {"kind": "pos", "pos": {
+            "x": int(target_pos["x"]), "y": int(target_pos["y"])}}
+
+    if approach is not None:
+        intent["approach"] = approach
+    if stance is not None:
+        intent["stance"] = stance
+
+    return _dispatch_logged(intent, meta, "command_group")
+
+
+@mcp.tool()
 def rebalance_groups(count: int = 3, axis: str = "y") -> dict:
     """Re-partition all player units into N groups along the chosen axis.
 
@@ -245,6 +294,43 @@ def dispatch_intent(intent: dict, meta: Optional[dict] = None) -> dict:
     Returns: {ok, narrative, actions_taken, error?}.
     """
     return _dispatch_logged(intent, meta, "dispatch_intent")
+
+
+@mcp.tool()
+def batch_dispatch_intent(intents: list[dict], meta: Optional[dict] = None) -> dict:
+    """Dispatch MULTIPLE intents in one MCP round-trip.
+
+    Use this when the player gives a compound order that cleanly decomposes
+    into independent intents — e.g. "north 群推总部, south 群守分矿":
+
+        batch_dispatch_intent([
+            {"intent":"attack", "force":{...}, "target":{...}},
+            {"intent":"defend", "force":{...}, "region":{...}}
+        ])
+
+    Each intent is interpreted independently and in order; we do NOT
+    serialize them as a single mission. If one parse fails, later intents
+    still run. Each entry's narrative + actions_taken come back in `results`.
+
+    Borrowed conceptually from OpenRA-RL's `batch(actions)` MCP tool but
+    adapted to our high-level intent DSL — saves a full LLM round-trip when
+    the player issues a compound order, while keeping each intent's
+    deterministic interpreter path.
+
+    Args:
+        intents: list of intent DSL dicts (same shape as dispatch_intent).
+        meta:    same as dispatch_intent. Applied to each sub-call.
+
+    Returns: {ok, count, results: [{ok, narrative, actions_taken, error?}, ...]}.
+    """
+    results = []
+    any_ok = False
+    for intent in intents:
+        r = _dispatch_logged(intent, meta, "batch_dispatch_intent")
+        results.append(r)
+        if r.get("ok"):
+            any_ok = True
+    return {"ok": any_ok, "count": len(results), "results": results}
 
 
 @mcp.tool()
@@ -711,30 +797,46 @@ def cancel_pending(pending_id: int) -> dict:
 def spawn_squad(squad_type: str,
                 unit_ids: Optional[list[int]] = None,
                 target_actor_id: Optional[int] = None,
-                target_pos: Optional[dict] = None) -> dict:
+                target_pos: Optional[dict] = None,
+                rally_point: Optional[dict] = None,
+                waypoints: Optional[list[dict]] = None,
+                escortee_actor_id: Optional[int] = None) -> dict:
     """Spawn a bot squad. LLM declares intent; engine FSM owns execution.
 
-    squad_type:      Assault | Protection | Air | Rush | Naval. Assault is the
-                     default for offensive intents; Protection defends a
-                     specific spot (squad engages threats nearby).
-    unit_ids:        OPTIONAL. Actor ids to add. Must be player-owned. Omit
-                     (or pass empty list) to let SquadManager auto-pick idle
-                     combat units that match squad_type — preferred path; the
-                     LLM should NOT hand-pick ids ("player owns information").
-    target_actor_id: OPTIONAL enemy actor to attack. Wins over target_pos.
-                     If both omitted, the squad's idle state picks the closest
-                     enemy itself.
-    target_pos:      OPTIONAL {"x": int, "y": int} cell to march/rally toward.
-                     Used when no specific enemy actor is known (e.g. fog) or
-                     when you want the squad to regroup at a forward staging
-                     point before engaging.
+    squad_type:
+        Assault     — push toward target_actor or target_pos; cohesion-gated.
+        Protection  — defend the target_pos cell; engage threats nearby.
+        Harass      — engage→withdraw→reengage loop against enemy economy
+                      structures (proc/silo/harv/...). Withdraws at avg HP
+                      < 55%, re-engages once back to ≥ 85%. Pair with
+                      rally_point so the squad has somewhere safe to retreat.
+        Patrol      — cycles through waypoints in order. Opportunistically
+                      attacks anything within 8 cells of the leader.
+        Escort      — shadows escortee_actor_id; auto-attacks hostiles within
+                      6 cells. Ends when escortee dies.
+        Explore     — 8-spoke spiral outward from target_pos to lift fog of
+                      war. Briefly engages contacts then keeps exploring.
+        Air         — air units, vanilla FSM.
+        Rush / Naval — legacy ground / naval FSM.
+    unit_ids:        OPTIONAL. Actor ids to add. Omit (preferred) to let
+                     SquadManager auto-pick idle combat-mobile units of the
+                     right type.
+    target_actor_id: OPTIONAL specific enemy actor. Wins over target_pos.
+    target_pos:      OPTIONAL {"x":int,"y":int} cell. Doubles as the seed
+                     for Explore and the march/rally point for Assault.
+    rally_point:     OPTIONAL {"x":int,"y":int} cell. For Harass: cell to
+                     withdraw to during the cooldown phase. If omitted,
+                     squad picks a random own building.
+    waypoints:       OPTIONAL list of {"x":int,"y":int} cells for Patrol.
+                     Squad walks them in order and loops.
+    escortee_actor_id: OPTIONAL actor id to shadow (Escort squads).
 
     The squad runs entirely inside the engine: leader-based regroup, fuzzy
     attack-or-flee, retarget on invalid target. Initial cohesion gate (Phase
-    D3) keeps fast units from sprinting ahead of slow ones. All units are set
-    to AttackAnything stance (Phase D4) so they autonomously hit nearby
-    buildings while marching. Use list_squads() to inspect, cancel_squad() to
-    disband.
+    D3) keeps fast units from sprinting ahead of slow ones. All units get
+    AttackAnything stance (Phase D4) so they autonomously hit nearby
+    buildings while marching. Use list_squads() to inspect, cancel_squad()
+    to disband.
 
     Returns: {ok, squad_index, squad_type, unit_count, auto_selected,
               target_actor?, target_pos?}.
@@ -752,6 +854,17 @@ def spawn_squad(squad_type: str,
             "x": int(target_pos["x"]),
             "y": int(target_pos["y"]),
         }
+    if rally_point is not None:
+        payload["rally_point"] = {
+            "x": int(rally_point["x"]),
+            "y": int(rally_point["y"]),
+        }
+    if waypoints:
+        payload["waypoints"] = [
+            {"x": int(w["x"]), "y": int(w["y"])} for w in waypoints
+        ]
+    if escortee_actor_id is not None:
+        payload["escortee_actor_id"] = int(escortee_actor_id)
     return transport.send_command(payload)
 
 

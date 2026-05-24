@@ -43,10 +43,31 @@
 `clarify` / `vocab`
 
 ### 编组层
-`assign_to_group` / `rebalance_groups` (`list_groups` 见情报层)
+`list_groups` (情报层) / `assign_to_group(group, unit_ids)` /
+`command_group(group, command, ...)` / `rebalance_groups(count, axis)`
+
+`command_group` 是 `dispatch_intent({intent, force:{kind:"group"}})` 的快捷.
+比如 `command_group("north", "attack", target_named="enemy_fact", approach="frontal")`.
+
+### Batch
+`batch_dispatch_intent(intents=[...])` — 一次 round-trip 发多 intent. 钳形/佯攻偷家用.
 
 ### Daemon 控制层
 `enable_auto_defense` (支持多周界) / `disable_auto_defense` / `cancel_assaults`
+
+### Bot Squad (Phase E: engine 内 FSM)
+- **`spawn_squad(squad_type, target_pos=?, rally_point=?, waypoints=?, escortee_actor_id=?)`** —
+  派 engine-side bot squad. **不传 unit_ids** → C# SquadManager 自动挑闲兵.
+  squad_type:
+  - `Assault` — 推 target_actor 或 target_pos, cohesion 闸门
+  - `Protection` — 守 target_pos 周边, 见敌反击, 否则原地
+  - `Harass` — 切敌经济 (proc/silo/harv/...), 血 < 55% 撤回 rally_point, 回 85% 再推
+  - `Patrol` — 走 waypoints 循环, leader 周围 8 cells 见敌即打
+  - `Escort` — 跟 escortee_actor_id, 6 cells 内有敌还击, escortee 死结束
+  - `Explore` — target_pos 为中心 8-spoke 螺旋扩散爆雾
+- `list_squads()` / `cancel_squad(squad_index?)` — 查 / 撤
+- **Squad 优势**: per-tick 循环 / retarget / 撤血在 engine 内, LLM **不必每 tick 重发**.
+  比 Python daemon mission 稳, 比 dispatch_intent 一次性 attack 长效.
 
 ### 生命周期
 `pause` / `resume` / `end_session` / `session_info`
