@@ -33,7 +33,7 @@ TACTICAL_SCENARIOS = {
         "name": "Massive push",
         "desc": "50+ unit assault toward enemy construction yard. Measures "
                 "command scalability and cohesion over distance.",
-        "expected_roster_min": 40,
+        "expected_roster_min": 15,
         "suggested_roster": ["2tnk×15", "3tnk×10", "e1×20", "e3×10"],
         "intent_daemon": {
             "intent": "attack",
