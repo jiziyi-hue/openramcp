@@ -30,6 +30,7 @@ from typing import Optional
 
 from mcp_server.transport import OpenRATransport
 from mcp_server.experiments.tactical_scenarios import TACTICAL_SCENARIOS
+from mcp_server import interpreter as I
 
 
 def _send(t: OpenRATransport, cmd: str, **kw) -> dict:
@@ -43,6 +44,10 @@ def _get_state(t: OpenRATransport) -> dict:
 
 
 def _self_units(state: dict) -> list:
+    # Accept either a full transport response {ok, state: {self_units: ...}}
+    # or a bare state dict {self_units: ...}.
+    if "self_units" in state:
+        return state.get("self_units", [])
     return state.get("state", {}).get("self_units", [])
 
 
@@ -106,18 +111,20 @@ def _resolve_intent(scenario: dict, t: OpenRATransport) -> dict:
 
 
 def _run_daemon_backend(t: OpenRATransport, scenario: dict, intent_id: str) -> dict:
-    """Single-intent path."""
+    """Single-intent path. Bypasses the MCP layer and calls the interpreter
+    directly, so we don't need the MCP server process running."""
     if "intent_daemon_batch" in scenario:
-        # Compound: send each through dispatch_intent.
         ok_any = False
         for sub in scenario["intent_daemon_batch"]:
-            resp = _send(t, "dispatch_intent", intent=sub)
+            sub = dict(sub)
+            sub["backend"] = "daemon"
+            resp = I.interpret(sub, t)
             ok_any = ok_any or resp.get("ok", False)
         return {"ok": ok_any, "compound": True}
 
     intent = _resolve_intent(scenario, t)
     intent["backend"] = "daemon"
-    return _send(t, "dispatch_intent", intent=intent)
+    return I.interpret(intent, t)
 
 
 def _run_squad_backend(t: OpenRATransport, scenario: dict, intent_id: str) -> dict:
@@ -165,7 +172,7 @@ def _measure(t: OpenRATransport, scenario: dict, initial: dict,
         target_pos = (0, 0)  # fallback; won't trigger early stop
 
     radius = scenario.get("verdict_arrival_radius", 8)
-    initial_combat = _alive_combat(_self_units(initial["state"]))
+    initial_combat = _alive_combat(_self_units(initial))
     initial_alive = len(initial_combat)
     initial_ids = {u["id"] for u in initial_combat}
     initial_dist = (sum(_dist(_pos(u), target_pos) for u in initial_combat)
@@ -229,7 +236,7 @@ def run_once(scenario_id: str, backend: str, run_id: int, duration_s: float,
     if not initial.get("ok"):
         return {"ok": False, "error": "initial get_state failed"}
 
-    initial_combat = _alive_combat(_self_units(initial["state"]))
+    initial_combat = _alive_combat(_self_units(initial))
     if len(initial_combat) < scenario["expected_roster_min"]:
         return {
             "ok": False,
@@ -242,6 +249,45 @@ def run_once(scenario_id: str, backend: str, run_id: int, duration_s: float,
     t.send_command({"type": "cancel_squad"})
     t.send_command({"type": "cancel_assaults"})
     time.sleep(0.5)
+
+    # Reset starting position: retreat all combat-mobile units to self_base
+    # and wait until they arrive. Without this, the daemon and squad runs
+    # don't start from the same baseline (the previous run leaves units
+    # mid-map and skews initial_mean_dist).
+    base_pos = _resolve_named_pos(t, "self_base")
+    if base_pos is not None:
+        unit_ids = [u["id"] for u in initial_combat]
+        t.send_command({
+            "type": "move",
+            "unit_ids": unit_ids,
+            "target": {"x": int(base_pos[0]), "y": int(base_pos[1])},
+            "attack_move": False,
+        })
+        # Poll until mean distance to base stabilizes (units arrived).
+        deadline = time.time() + 30
+        prev_dist = None
+        while time.time() < deadline:
+            time.sleep(2.0)
+            st = _get_state(t)
+            if not st.get("ok"):
+                continue
+            alive = _alive_combat(_self_units(st))
+            tracked = [u for u in alive if u["id"] in set(unit_ids)]
+            if not tracked:
+                break
+            dists = [_dist(_pos(u), base_pos) for u in tracked]
+            mean_d = sum(dists) / len(dists)
+            if mean_d < 6.0:
+                break  # close enough
+            if prev_dist is not None and abs(prev_dist - mean_d) < 0.5:
+                break  # stopped converging (likely blocked / max packed)
+            prev_dist = mean_d
+        time.sleep(0.5)
+
+    # Re-snapshot after reset so initial_combat reflects post-reset positions.
+    post_reset = _get_state(t)
+    if post_reset.get("ok"):
+        initial_combat = _alive_combat(_self_units(post_reset))
 
     # Issue command.
     intent_id = f"{scenario_id}-{backend}-r{run_id}"
