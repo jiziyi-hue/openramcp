@@ -708,30 +708,51 @@ def cancel_pending(pending_id: int) -> dict:
 
 
 @mcp.tool()
-def spawn_squad(squad_type: str, unit_ids: list[int],
-                target_actor_id: Optional[int] = None) -> dict:
-    """Spawn a bot squad with the given units + optional target.
+def spawn_squad(squad_type: str,
+                unit_ids: Optional[list[int]] = None,
+                target_actor_id: Optional[int] = None,
+                target_pos: Optional[dict] = None) -> dict:
+    """Spawn a bot squad. LLM declares intent; engine FSM owns execution.
 
-    squad_type: Assault | Protection | Air | Rush | Naval. Assault is the
-                default for offensive intents; Protection is for defending
-                a specific spot (the squad will engage threats nearby).
-    unit_ids:   actor ids to add to the squad. Must be player-owned.
-    target_actor_id: enemy actor to attack (optional). If omitted, the
-                squad's idle state will pick the closest enemy itself.
+    squad_type:      Assault | Protection | Air | Rush | Naval. Assault is the
+                     default for offensive intents; Protection defends a
+                     specific spot (squad engages threats nearby).
+    unit_ids:        OPTIONAL. Actor ids to add. Must be player-owned. Omit
+                     (or pass empty list) to let SquadManager auto-pick idle
+                     combat units that match squad_type — preferred path; the
+                     LLM should NOT hand-pick ids ("player owns information").
+    target_actor_id: OPTIONAL enemy actor to attack. Wins over target_pos.
+                     If both omitted, the squad's idle state picks the closest
+                     enemy itself.
+    target_pos:      OPTIONAL {"x": int, "y": int} cell to march/rally toward.
+                     Used when no specific enemy actor is known (e.g. fog) or
+                     when you want the squad to regroup at a forward staging
+                     point before engaging.
 
-    The squad runs entirely inside the engine — leader-based regroup,
-    fuzzy attack-or-flee, retarget on invalid target. Use list_squads()
-    to inspect, cancel_squad(squad_index) to disband.
+    The squad runs entirely inside the engine: leader-based regroup, fuzzy
+    attack-or-flee, retarget on invalid target. Initial cohesion gate (Phase
+    D3) keeps fast units from sprinting ahead of slow ones. All units are set
+    to AttackAnything stance (Phase D4) so they autonomously hit nearby
+    buildings while marching. Use list_squads() to inspect, cancel_squad() to
+    disband.
 
-    Returns: {ok, squad_index, squad_type, unit_count, target_actor?}.
+    Returns: {ok, squad_index, squad_type, unit_count, auto_selected,
+              target_actor?, target_pos?}.
     """
-    return transport.send_command({
+    payload: dict = {
         "type": "spawn_squad",
         "squad_type": squad_type,
-        "unit_ids": list(unit_ids),
-        **({"target_actor_id": int(target_actor_id)}
-           if target_actor_id is not None else {}),
-    })
+    }
+    if unit_ids is not None and len(unit_ids) > 0:
+        payload["unit_ids"] = [int(i) for i in unit_ids]
+    if target_actor_id is not None:
+        payload["target_actor_id"] = int(target_actor_id)
+    if target_pos is not None:
+        payload["target_pos"] = {
+            "x": int(target_pos["x"]),
+            "y": int(target_pos["y"]),
+        }
+    return transport.send_command(payload)
 
 
 @mcp.tool()
