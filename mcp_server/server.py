@@ -700,6 +700,65 @@ def cancel_pending(pending_id: int) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Bot squad tools (Phase B): drive engine-side SquadManagerBotModule@human
+# via spawn_squad / list_squads / cancel_squad. The bot's GroundStates FSM
+# owns leader-based regroup, AttackOrFleeFuzzy, retarget. LLM only declares
+# intent; we forward to the McpBridge handler.
+# ---------------------------------------------------------------------------
+
+
+@mcp.tool()
+def spawn_squad(squad_type: str, unit_ids: list[int],
+                target_actor_id: Optional[int] = None) -> dict:
+    """Spawn a bot squad with the given units + optional target.
+
+    squad_type: Assault | Protection | Air | Rush | Naval. Assault is the
+                default for offensive intents; Protection is for defending
+                a specific spot (the squad will engage threats nearby).
+    unit_ids:   actor ids to add to the squad. Must be player-owned.
+    target_actor_id: enemy actor to attack (optional). If omitted, the
+                squad's idle state will pick the closest enemy itself.
+
+    The squad runs entirely inside the engine — leader-based regroup,
+    fuzzy attack-or-flee, retarget on invalid target. Use list_squads()
+    to inspect, cancel_squad(squad_index) to disband.
+
+    Returns: {ok, squad_index, squad_type, unit_count, target_actor?}.
+    """
+    return transport.send_command({
+        "type": "spawn_squad",
+        "squad_type": squad_type,
+        "unit_ids": list(unit_ids),
+        **({"target_actor_id": int(target_actor_id)}
+           if target_actor_id is not None else {}),
+    })
+
+
+@mcp.tool()
+def list_squads() -> dict:
+    """List active bot squads (engine-side) owned by the local player.
+
+    Each entry: {squad_index, squad_type, is_valid, unit_count, unit_ids,
+                 target_actor?}.
+    """
+    return transport.send_command({"type": "list_squads"})
+
+
+@mcp.tool()
+def cancel_squad(squad_index: Optional[int] = None) -> dict:
+    """Cancel one bot squad (pass squad_index) or ALL (omit). Cancelled
+    squads release their units back to the player; units keep their last
+    orders until you issue a new intent.
+
+    Returns: {ok, cancelled_squads, ...}.
+    """
+    payload: dict = {"type": "cancel_squad"}
+    if squad_index is not None:
+        payload["squad_index"] = int(squad_index)
+    return transport.send_command(payload)
+
+
+# ---------------------------------------------------------------------------
 # Alert state + Mission objective tools
 # ---------------------------------------------------------------------------
 #
