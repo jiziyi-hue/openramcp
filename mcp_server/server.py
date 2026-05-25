@@ -131,7 +131,8 @@ def screenshot() -> dict:
 # assign_to_group(group, unit_ids) or rebalance_groups() to include them.
 # ---------------------------------------------------------------------------
 
-@mcp.tool()
+# Phase A ablation 2026-05-25: group system unused in E7 tests; tool hidden.
+# @mcp.tool()
 def list_groups() -> dict:
     """List current groups: name, count, composition by kind, avg HP, center pos.
 
@@ -151,7 +152,7 @@ def list_groups() -> dict:
 # appropriate intent (`attack` / `defend` / `pincer` / etc).
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def assign_to_group(group: str, unit_ids: list[int]) -> dict:
     """Move units into a named group (creates the group if missing).
 
@@ -160,7 +161,7 @@ def assign_to_group(group: str, unit_ids: list[int]) -> dict:
     return _send(S.CmdAssignToGroup(group=group, unit_ids=unit_ids))
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def command_group(group: str, command: str,
                   target_named: Optional[str] = None,
                   target_pos: Optional[dict] = None,
@@ -209,7 +210,7 @@ def command_group(group: str, command: str,
     return _dispatch_logged(intent, meta, "command_group")
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def rebalance_groups(count: int = 3, axis: str = "y") -> dict:
     """Re-partition all player units into N groups along the chosen axis.
 
@@ -471,7 +472,7 @@ def clarify(player_command: str,
 # Scout daemon integration — read events written by scout_daemon.py
 # ---------------------------------------------------------------------------
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def latest_scout_report(seconds_back: int = 120, max_events: int = 20,
                         min_severity: str = "info") -> dict:
     """Read recent events from the background scout daemon.
@@ -536,7 +537,7 @@ def latest_scout_report(seconds_back: int = 120, max_events: int = 20,
 # Watcher — long-poll until an event matches, or timeout.
 # ---------------------------------------------------------------------------
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def wait_for_event(condition: dict, timeout_s: int = 120,
                    poll_interval_s: int = 5) -> dict:
     """Block up to `timeout_s` seconds polling for an event matching `condition`.
@@ -670,7 +671,7 @@ def _resolve_named_cell(name: str) -> Optional[dict]:
     return None
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def tactical_status() -> dict:
     """Inspect the tactical daemon — active assaults, retargets, cohesion halts,
     perimeter defense state. Useful for verifying that offensive intents got
@@ -679,7 +680,7 @@ def tactical_status() -> dict:
     return {"ok": True, **engine.status()}
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def enable_auto_defense(center_x: Optional[int] = None,
                         center_y: Optional[int] = None,
                         center_named: Optional[str] = "self_base",
@@ -712,7 +713,7 @@ def enable_auto_defense(center_x: Optional[int] = None,
             "narrative": f"Auto-defense zone #{zone_id} armed at ({cx},{cy}) radius {radius}."}
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def disable_auto_defense(zone_id: Optional[int] = None) -> dict:
     """Disable one perimeter (pass `zone_id`) or ALL perimeters (omit it).
 
@@ -729,7 +730,7 @@ def disable_auto_defense(zone_id: Optional[int] = None) -> dict:
     return {"ok": True, "removed": removed, "narrative": msg}
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def list_defense_perimeters() -> dict:
     """List all active auto-defense perimeters with their zone_ids.
 
@@ -741,7 +742,7 @@ def list_defense_perimeters() -> dict:
     return {"ok": True, "perimeters": engine.list_perimeters()}
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def cancel_assaults(mission_id: Optional[int] = None) -> dict:
     """Cancel one or all daemon-tracked offensive missions. Pass mission_id
     to cancel one; omit to cancel all. The actors keep their last orders
@@ -757,7 +758,7 @@ def cancel_assaults(mission_id: Optional[int] = None) -> dict:
             "narrative": f"{'Cancelled' if ok else 'Not found'} assault {mission_id}."}
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def list_pending_missions() -> dict:
     """List missions whose force resolution returned empty and are waiting
     for matching units to appear (e.g. harass queued before any harass-
@@ -774,7 +775,7 @@ def list_pending_missions() -> dict:
     return {"ok": True, "pending": engine.list_pending()}
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def cancel_pending(pending_id: int) -> dict:
     """Remove a pending mission entry by pending_id. Returns
     {ok, removed, narrative}."""
@@ -1052,7 +1053,7 @@ def cancel_squad(squad_index: Optional[int] = None) -> dict:
 # ---------------------------------------------------------------------------
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def set_alert_state(level: str, meta: Optional[dict] = None) -> dict:
     """Set the army's global alert state.
 
@@ -1085,7 +1086,7 @@ def set_alert_state(level: str, meta: Optional[dict] = None) -> dict:
     return result
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def get_alert_state() -> dict:
     """Inspect the current alert state plus the auto-mission ids and
     perimeters the alert table installed. Returns:
@@ -1110,7 +1111,7 @@ def get_alert_state() -> dict:
     }
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def set_objective(name: str, tick: Optional[int] = None,
                   meta: Optional[dict] = None) -> dict:
     """Set the player-declared victory condition + dispatch objective-owned
@@ -1169,7 +1170,7 @@ def set_objective(name: str, tick: Optional[int] = None,
     return result
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def set_doctrine(
     alert_state: Optional[str] = None,
     objective: Optional[str] = None,
@@ -1240,7 +1241,7 @@ def set_doctrine(
     return out
 
 
-@mcp.tool()
+# @mcp.tool()  # Phase A ablation
 def get_objective() -> dict:
     """Inspect the current mission objective + its params. Returns
     {objective, params, suggested_alert_state}. `objective` is null when
