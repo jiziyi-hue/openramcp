@@ -869,6 +869,44 @@ def spawn_squad(squad_type: str,
 
 
 @mcp.tool()
+def spawn_squad_batch(squads: list[dict]) -> dict:
+    """Atomically spawn N bot squads in a single MCP round-trip.
+
+    Each entry in `squads` is the same payload that `spawn_squad` accepts
+    (squad_type, unit_ids, target_pos, target_actor_id, waypoints,
+    escortee_actor_id). The bridge processes all squads inside one
+    handler invocation so they appear to start simultaneously from the
+    player's perspective — no per-spawn TCP round-trip.
+
+    Use when dispatching multiple coordinated squads (4 prongs to 4 corners,
+    pincer left+right, simultaneous patrol + escort, etc.). For a single
+    squad, `spawn_squad` is fine.
+
+    Returns: {ok, results: [<spawn_squad result>, ...]}.
+    """
+    payloads = []
+    for s in squads:
+        p = {"type": "spawn_squad", "squad_type": s["squad_type"]}
+        if s.get("unit_ids"):
+            p["unit_ids"] = [int(i) for i in s["unit_ids"]]
+        if s.get("target_actor_id") is not None:
+            p["target_actor_id"] = int(s["target_actor_id"])
+        if s.get("target_pos") is not None:
+            p["target_pos"] = {
+                "x": int(s["target_pos"]["x"]),
+                "y": int(s["target_pos"]["y"]),
+            }
+        if s.get("waypoints"):
+            p["waypoints"] = [
+                {"x": int(w["x"]), "y": int(w["y"])} for w in s["waypoints"]
+            ]
+        if s.get("escortee_actor_id") is not None:
+            p["escortee_actor_id"] = int(s["escortee_actor_id"])
+        payloads.append(p)
+    return transport.send_command({"type": "spawn_squad_batch", "squads": payloads})
+
+
+@mcp.tool()
 def spawn_squad_cluster(squad_type: str,
                         unit_ids: list[int],
                         target_pos: dict,

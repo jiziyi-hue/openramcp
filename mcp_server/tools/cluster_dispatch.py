@@ -57,24 +57,27 @@ def _cluster_dispatch(t: OpenRATransport, ids: list[int], target: tuple[int, int
     chunks = [[p[0] for p in located[i * per:(i + 1) * per]] for i in range(k)]
     chunks = [c for c in chunks if c]
 
-    results = []
+    # Build batch payload — all sub-squads spawned in one bridge handler call.
     tx, ty = target
+    payloads = []
     for i, chunk in enumerate(chunks):
         angle = (2 * math.pi * i) / max(1, len(chunks))
         ox = int(round(target_jitter * math.cos(angle)))
         oy = int(round(target_jitter * math.sin(angle)))
         sub_target = {"x": tx + ox, "y": ty + oy}
-        resp = t.send_command({
+        payloads.append({
             "type": "spawn_squad",
             "squad_type": squad_type,
             "unit_ids": chunk,
             "target_pos": sub_target,
         })
-        print(f"[{tag}] sub {i+1}/{len(chunks)} → ({sub_target['x']},{sub_target['y']}) "
-              f"n={len(chunk)} ok={resp.get('ok')} sq#{resp.get('squad_index')}")
-        results.append(resp)
-        if i < len(chunks) - 1 and stagger_ms > 0:
-            time.sleep(stagger_ms / 1000.0)
+
+    resp = t.send_command({"type": "spawn_squad_batch", "squads": payloads})
+    results = resp.get("results", []) if resp.get("ok") else []
+    for i, r in enumerate(results):
+        tp = payloads[i]["target_pos"]
+        print(f"[{tag}] sub {i+1}/{len(payloads)} → ({tp['x']},{tp['y']}) "
+              f"n={len(payloads[i]['unit_ids'])} ok={r.get('ok')} sq#{r.get('squad_index')}")
     return results
 
 
