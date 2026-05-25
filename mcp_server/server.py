@@ -869,6 +869,115 @@ def spawn_squad(squad_type: str,
 
 
 @mcp.tool()
+def spawn_squad_cluster(squad_type: str,
+                        unit_ids: list[int],
+                        target_pos: dict,
+                        cluster_size: int = 20,
+                        target_jitter_cells: int = 4,
+                        stagger_ms: int = 250) -> dict:
+    """Spatially cluster unit_ids by current position, then spawn one
+    bot squad per cluster — each marching to a slightly jittered target.
+
+    Why: A single 40-unit squad with one target_pos pushes all units to the
+    same cell, causing path contention, leader rally-gate thrash, and the
+    AttackMove→Idle re-entry loop (T8 finding 2026-05-24). Splitting into
+    e.g. 2× 20-unit squads with 4-cell-jittered targets gives each squad
+    its own approach lane.
+
+    Algorithm:
+      1. get_state → look up (x, y) for each requested unit id.
+      2. K = ceil(len(unit_ids) / cluster_size).
+      3. Sort units along the longer axis (x range vs y range) and slice
+         into K contiguous chunks. Simple, deterministic, locale-aware:
+         neighbors stay together.
+      4. For chunk i, target = (target_pos.x + offset_i.x,
+                                target_pos.y + offset_i.y) where
+         offset_i orbits target_pos at `target_jitter_cells` distance.
+      5. spawn_squad each chunk with the jittered target, sleeping
+         stagger_ms between calls so the engine's SquadManager.CleanSquads
+         tick doesn't sweep newly-spawned squads before their FSM gets a
+         move order out.
+
+    Args:
+        squad_type: same as spawn_squad (Assault / Protection / Harass / ...).
+        unit_ids:   actor ids to partition. Must be player-owned.
+        target_pos: {"x": int, "y": int} — the shared rough target.
+        cluster_size: target units per squad. Final K = ceil(N / cluster_size).
+        target_jitter_cells: how far each sub-target sits from target_pos.
+        stagger_ms: delay between spawn calls (mitigates squad eviction).
+
+    Returns: {ok, spawned: [{squad_index, unit_count, target_pos}, ...],
+              cluster_count, total_units}.
+    """
+    import math
+    import time as _time
+
+    if not unit_ids:
+        return {"ok": False, "error": "empty unit_ids"}
+
+    # 1. Resolve current positions
+    state = transport.send_command({"type": "get_state", "include_enemies": False})
+    if not state.get("ok"):
+        return {"ok": False, "error": "get_state failed"}
+    pos_map = {u["id"]: (u["pos"]["x"], u["pos"]["y"])
+               for u in state["state"].get("self_units", [])}
+    located = [(uid, pos_map[uid]) for uid in unit_ids if uid in pos_map]
+    if not located:
+        return {"ok": False, "error": "none of unit_ids found in state"}
+
+    # 2. K clusters
+    n = len(located)
+    k = max(1, math.ceil(n / max(1, int(cluster_size))))
+
+    # 3. Sort along longer axis
+    xs = [p[1][0] for p in located]
+    ys = [p[1][1] for p in located]
+    if (max(xs) - min(xs)) >= (max(ys) - min(ys)):
+        located.sort(key=lambda p: p[1][0])  # along x
+    else:
+        located.sort(key=lambda p: p[1][1])  # along y
+
+    chunks: list[list[int]] = []
+    per = math.ceil(n / k)
+    for i in range(k):
+        chunk = [p[0] for p in located[i * per:(i + 1) * per]]
+        if chunk:
+            chunks.append(chunk)
+
+    # 4. Jittered targets — orbit target_pos
+    tx, ty = int(target_pos["x"]), int(target_pos["y"])
+    spawned = []
+    for i, chunk in enumerate(chunks):
+        angle = (2 * math.pi * i) / max(1, len(chunks))
+        ox = int(round(target_jitter_cells * math.cos(angle)))
+        oy = int(round(target_jitter_cells * math.sin(angle)))
+        sub_target = {"x": tx + ox, "y": ty + oy}
+        payload = {
+            "type": "spawn_squad",
+            "squad_type": squad_type,
+            "unit_ids": [int(u) for u in chunk],
+            "target_pos": sub_target,
+        }
+        resp = transport.send_command(payload)
+        spawned.append({
+            "squad_index": resp.get("squad_index"),
+            "unit_count": resp.get("unit_count"),
+            "target_pos": sub_target,
+            "ok": resp.get("ok"),
+            "error": resp.get("error"),
+        })
+        if i < len(chunks) - 1 and stagger_ms > 0:
+            _time.sleep(stagger_ms / 1000.0)
+
+    return {
+        "ok": all(s["ok"] for s in spawned),
+        "spawned": spawned,
+        "cluster_count": len(chunks),
+        "total_units": sum(s["unit_count"] or 0 for s in spawned),
+    }
+
+
+@mcp.tool()
 def list_squads() -> dict:
     """List active bot squads (engine-side) owned by the local player.
 
