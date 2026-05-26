@@ -74,8 +74,8 @@ client (Claude Code, Cursor, or any tool that speaks MCP stdio).
 
 ```bash
 # 1. clone this repo
-git clone https://github.com/<YOUR-USER>/openra_mcp.git
-cd openra_mcp
+git clone https://github.com/jiziyi-hue/openramcp.git
+cd openramcp
 
 # 2. clone the OpenRA engine (kept separate due to GPLv3 + size)
 git clone --depth=1 --branch release-20250330 https://github.com/OpenRA/OpenRA.git
