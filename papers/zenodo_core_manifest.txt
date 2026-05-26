@@ -1,0 +1,38 @@
+openra_mcp Zenodo core package
+
+Primary manuscript:
+- papers/openra_mcp_preprint.pdf
+- papers/openra_mcp_preprint.docx
+- papers/openra_mcp_preprint.md
+- papers/references.bib
+
+Metadata and release notes:
+- papers/ZENODO_METADATA.md
+- papers/SUPPLEMENTARY_MATERIALS.md
+- papers/RELEASE_CHECKLIST.md
+- docs/PROJECT_SUMMARY_FOR_REVIEW.md
+- docs/RELATED_MULTI_ENTITY_CONTROL_NOTES_2026_05_26.md
+
+Core code snapshot:
+- mcp_server/
+- trait_src/
+- AGENTS.md
+- README.md
+
+Evaluation data:
+- logs/v2_post_ablation.csv
+- logs/v2_retry_4fails.csv
+- logs/v2_t7_retry2.csv
+- logs/baseline_pre_ablation.md
+- logs/paper_metrics.json
+- logs/rl_compare/our_deepseek_results_runs_n30.csv
+- logs/rl_compare/our_deepseek_summary_n30.csv
+- logs/rl_compare/our_deepseek_results_runs_n100.csv
+- logs/rl_compare/our_deepseek_summary_n100.csv
+- logs/rl_compare/rl_full_game_n3_summary.csv
+- logs/rl_compare/rl_scripted_n3_summary.csv
+
+Supplementary videos are intentionally not included in the core package because
+they are large:
+- logs/live_llm_demo/demo_01.mp4
+- logs/v2_videos/*.mp4

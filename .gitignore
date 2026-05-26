@@ -31,3 +31,35 @@ Thumbs.db
 
 # Scout daemon output
 scout_events.jsonl
+
+# Local MCP config — contains user-specific Windows paths
+.mcp.json
+
+# Paper rewriting workflow internal review docs
+paper_rewriting_output/
+
+# LaTeX build artifacts
+papers/*.aux
+papers/*.log
+papers/*.out
+papers/*.toc
+papers/*.bbl
+papers/*.blg
+papers/*.fls
+papers/*.fdb_latexmk
+papers/*.synctex.gz
+
+# Third-party reference PDFs (copyright — readers should fetch from arXiv)
+# Keep references.bib + arXiv IDs in the manuscript instead.
+papers/HIMA_*.pdf
+papers/HIVE_*.pdf
+papers/SwarmBrain_*.pdf
+papers/TextStarCraftII_*.pdf
+papers/Voyager_*.pdf
+
+# Claude Code session artifacts (worktrees + project state)
+.claude/
+
+# Zenodo release zip (mirrored on Zenodo, not needed in git repo)
+papers/000_UPLOAD_TO_ZENODO_openra_mcp.zip
+papers/openra_mcp_zenodo_core.zip

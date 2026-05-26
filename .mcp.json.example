@@ -1,0 +1,14 @@
+{
+  "_comment": "Copy this file to .mcp.json and edit paths for your environment. The real .mcp.json is gitignored to avoid leaking user-specific paths.",
+  "mcpServers": {
+    "openra-bridge": {
+      "command": "python",
+      "args": ["-m", "mcp_server.server"],
+      "cwd": "PATH/TO/YOUR/openra_mcp",
+      "env": {
+        "OPENRA_BRIDGE_HOST": "127.0.0.1",
+        "OPENRA_BRIDGE_PORT": "7777"
+      }
+    }
+  }
+}
