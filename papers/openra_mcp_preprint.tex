@@ -2,11 +2,9 @@
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \documentclass[
-  journal,
-  onecolumn]{IEEEtran}
+  journal]{IEEEtran}
 \usepackage{xcolor}
 \usepackage{amsmath,amssymb}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -100,7 +98,6 @@
 \date{}
 
 \begin{document}
-\onecolumn
 
 \section{Natural Language as a Tactical Control Interface for Real-Time
 Strategy Games: An Engine-FSM Minimal MCP Approach Evaluated on
@@ -145,9 +142,9 @@ rather than MCP swarm control in general. We position
 \texttt{openra\_mcp} as the first engine-FSM-minimal MCP co-pilot for a
 production RTS --- distinct from per-unit atomic-API designs used by
 both autonomous-player systems and an earlier open-source co-pilot
-effort (HOPPINZQ, 2025) --- distinguish it from autonomous
-LLM-as-player systems, robotics swarm-control systems, and
-broad-surface co-pilots in turn-based or simulation games, and outline limitations (no formal user
+effort (HOPPINZQ, 2025) --- distinguish it from autonomous LLM-as-player
+systems, robotics swarm-control systems, and broad-surface co-pilots in
+turn-based or simulation games, and outline limitations (no formal user
 study) and a future-work path toward small local low-latency models
 distilled from LLM demonstrations.
 
@@ -466,8 +463,8 @@ LLM players via a 48-tool atomic action API (OpenRA-RL Contributors,
 2026); we use it as our direct cost-axis baseline in §6. An earlier
 open-source RTS effort, \texttt{hoppinai-mcp-red95} (HOPPINZQ, 2025),
 adopts the same per-unit atomic API style but in Paradigm B (co-pilot)
-mode --- illustrating that the atomic-vs-task-level architectural
-choice is orthogonal to the autonomy axis.
+mode --- illustrating that the atomic-vs-task-level architectural choice
+is orthogonal to the autonomy axis.
 
 HIVE deserves separate treatment because it is frequently miscategorized
 as a co-pilot system. HIVE enables a single human to coordinate swarms
@@ -579,8 +576,8 @@ EndWar (Ubisoft, 2008) & B (pre-LLM) & Commercial RTS & Owns strategy,
 voice commander & Rule-based ASR + grammar & Lineage precedent \\
 Hoppinai (HOPPINZQ, 2025) & B & OpenRA & Owns strategy, issues per-unit
 commands & Per-unit atomic API (move/attack by actor\_id) & Earlier
-open-source RTS co-pilot effort; atomic-API design choice (cf.\
-OpenRA-RL); no paper or controlled evaluation \\
+open-source RTS co-pilot effort; atomic-API design choice
+(cf.~OpenRA-RL); no paper or controlled evaluation \\
 \textbf{\texttt{openra\_mcp} (this work)} & \textbf{B} & \textbf{OpenRA,
 production RTS} & \textbf{Owns strategy/economy/judgment} &
 \textbf{Two-primitive squad FSM + LLM composition} & \textbf{First
@@ -1112,6 +1109,77 @@ or otherwise --- that has not been promoted to a task-level abstraction.
 
 Raw logs and summaries: \texttt{logs/rl\_compare/}.
 
+\subsubsection{6.7 Model robustness: smaller-LLM
+ablation}\label{model-robustness-smaller-llm-ablation}
+
+A natural concern with co-pilot systems built on large frontier models
+is whether the underlying paradigm collapses when the model is
+downgraded. To probe this, we re-ran the §6.5 N=5 protocol on the
+30-unit roster with \texttt{deepseek-v4-flash}, DeepSeek's smaller /
+cheaper thinking-mode variant, holding the system prompt, tool surface,
+scenarios, verify windows, and roster identical to the V4-Pro baseline.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Metric & V4-Pro (baseline) & V4-Flash \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+scen1 success & 4/5 & \textbf{5/5} \\
+scen2 success & 4/5 & 4/5 \\
+scen3 success & 2/5 & 0/5 \\
+\textbf{Overall} & \textbf{10/15 (67\%)} & \textbf{9/15 (60\%)} \\
+scen1 total tokens (mean ± std) & 7,136 ± 106 & 8,835 ± 2,897 \\
+scen2 total tokens (mean ± std) & 7,009 ± 3,360 & 7,908 ± 1,603 \\
+scen3 total tokens (mean ± std) & 20,502 ± 11,535 & 20,080 ± 8,479 \\
+scen1 wallclock (s, mean ± std) & 77.9 ± 4.8 & 131.6 ± 3.0 \\
+scen2 wallclock (s, mean ± std) & 108.4 ± 54.9 & 134.9 ± 66.4 \\
+scen3 wallclock (s, mean ± std) & 206.5 ± 102.7 & 228.0 ± 119.8 \\
+\end{longtable}
+
+Three observations from this ablation:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Single-step tactics survive a model downgrade}. On scen1 (one
+  \texttt{spawn\_squad}) and scen2 (one \texttt{spawn\_squad\_batch}),
+  V4-Flash matches or exceeds V4-Pro. This supports the paradigm-level
+  claim of the paper: when the engine-side FSM does the per-tick work,
+  the LLM-side call surface is small enough that even a smaller
+  thinking-mode model can drive it.
+\item
+  \textbf{Multi-stage tactics expose model capability gaps}. On scen3
+  (phase-1 split, then phase-2 convergence), V4-Flash drops from 2/5 to
+  0/5. The failure mode is uniform: V4-Flash issues the phase-2
+  \texttt{spawn\_squad\_batch} without first calling
+  \texttt{cancel\_squad} on the phase-1 squads, so the old squad
+  assignments continue to hold the units. V4-Pro hits the same trap
+  occasionally; V4-Flash hits it every time. This is a model-level
+  reasoning gap, not a paradigm failure: the tool surface offers
+  \texttt{cancel\_squad}, but the smaller model does not select it
+  without more explicit prompting.
+\item
+  \textbf{Token cost is not the savings axis}. V4-Flash uses roughly the
+  same number of tokens per scenario as V4-Pro because the prompt
+  schema, tool definitions, and conversation history are identical. The
+  savings from a smaller model come from per-token price and per-call
+  latency, not from a shorter dialog.
+\end{enumerate}
+
+This ablation is consistent with the broader thesis that the paradigm
+--- plain natural language plus an engine-side FSM --- is robust to
+model choice for the common one-shot tactical step, and that the
+residual fragility lives in multi-stage tactical sequencing rather than
+in single-step translation.
+
+Raw logs:
+\texttt{logs/rl\_compare/our\_deepseek\_results\_runs\_v4flash\_n30.csv},
+summary:
+\texttt{logs/rl\_compare/our\_deepseek\_summary\_v4flash\_n30.csv}.
+
 \subsection{7. Discussion}\label{discussion}
 
 The main lesson is that LLMs do not need to operate at the same level as
@@ -1223,11 +1291,11 @@ Availability}\label{data-and-code-availability}
 
 This preprint and its supporting artifacts are archived on Zenodo. The
 current version (v2) DOI is \texttt{10.5281/zenodo.20393182}
-(\url{https://zenodo.org/records/20393182}). The concept DOI
+(https://zenodo.org/records/20393182). The concept DOI
 \texttt{10.5281/zenodo.20377061} always resolves to the latest version.
 The release package (\texttt{000\_UPLOAD\_TO\_ZENODO\_openra\_mcp.zip})
-contains the manuscript (\texttt{.pdf} / \texttt{.tex} / \texttt{.docx} /
-\texttt{.md}), the BibTeX references, a source-code snapshot
+contains the manuscript (\texttt{.pdf} / \texttt{.tex} / \texttt{.docx}
+/ \texttt{.md}), the BibTeX references, a source-code snapshot
 (\texttt{mcp\_server/}, \texttt{trait\_src/}), per-run evaluation CSVs
 (\texttt{logs/v2\_post\_ablation.csv},
 \texttt{logs/v2\_retry\_4fails.csv}, \texttt{logs/v2\_t7\_retry2.csv},

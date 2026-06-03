@@ -681,6 +681,60 @@ or otherwise — that has not been promoted to a task-level abstraction.
 
 Raw logs and summaries: `logs/rl_compare/`.
 
+### 6.7 Model robustness: smaller-LLM ablation
+
+A natural concern with co-pilot systems built on large frontier models is
+whether the underlying paradigm collapses when the model is downgraded.
+To probe this, we re-ran the §6.5 N=5 protocol on the 30-unit roster with
+`deepseek-v4-flash`, DeepSeek's smaller / cheaper thinking-mode variant,
+holding the system prompt, tool surface, scenarios, verify windows, and
+roster identical to the V4-Pro baseline.
+
+| Metric | V4-Pro (baseline) | V4-Flash |
+|---|---|---|
+| scen1 success | 4/5 | **5/5** |
+| scen2 success | 4/5 | 4/5 |
+| scen3 success | 2/5 | 0/5 |
+| **Overall** | **10/15 (67%)** | **9/15 (60%)** |
+| scen1 total tokens (mean ± std) | 7,136 ± 106 | 8,835 ± 2,897 |
+| scen2 total tokens (mean ± std) | 7,009 ± 3,360 | 7,908 ± 1,603 |
+| scen3 total tokens (mean ± std) | 20,502 ± 11,535 | 20,080 ± 8,479 |
+| scen1 wallclock (s, mean ± std) | 77.9 ± 4.8 | 131.6 ± 3.0 |
+| scen2 wallclock (s, mean ± std) | 108.4 ± 54.9 | 134.9 ± 66.4 |
+| scen3 wallclock (s, mean ± std) | 206.5 ± 102.7 | 228.0 ± 119.8 |
+
+Three observations from this ablation:
+
+1. **Single-step tactics survive a model downgrade**. On scen1 (one
+   `spawn_squad`) and scen2 (one `spawn_squad_batch`), V4-Flash matches
+   or exceeds V4-Pro. This supports the paradigm-level claim of the
+   paper: when the engine-side FSM does the per-tick work, the LLM-side
+   call surface is small enough that even a smaller thinking-mode model
+   can drive it.
+2. **Multi-stage tactics expose model capability gaps**. On scen3
+   (phase-1 split, then phase-2 convergence), V4-Flash drops from 2/5
+   to 0/5. The failure mode is uniform: V4-Flash issues the phase-2
+   `spawn_squad_batch` without first calling `cancel_squad` on the
+   phase-1 squads, so the old squad assignments continue to hold the
+   units. V4-Pro hits the same trap occasionally; V4-Flash hits it
+   every time. This is a model-level reasoning gap, not a paradigm
+   failure: the tool surface offers `cancel_squad`, but the smaller
+   model does not select it without more explicit prompting.
+3. **Token cost is not the savings axis**. V4-Flash uses roughly the
+   same number of tokens per scenario as V4-Pro because the prompt
+   schema, tool definitions, and conversation history are identical.
+   The savings from a smaller model come from per-token price and
+   per-call latency, not from a shorter dialog.
+
+This ablation is consistent with the broader thesis that the paradigm —
+plain natural language plus an engine-side FSM — is robust to model
+choice for the common one-shot tactical step, and that the residual
+fragility lives in multi-stage tactical sequencing rather than in
+single-step translation.
+
+Raw logs: `logs/rl_compare/our_deepseek_results_runs_v4flash_n30.csv`,
+summary: `logs/rl_compare/our_deepseek_summary_v4flash_n30.csv`.
+
 ## 7. Discussion
 
 The main lesson is that LLMs do not need to operate at the same level as
