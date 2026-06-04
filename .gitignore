@@ -63,3 +63,8 @@ papers/Voyager_*.pdf
 # Zenodo release zip (mirrored on Zenodo, not needed in git repo)
 papers/000_UPLOAD_TO_ZENODO_openra_mcp.zip
 papers/openra_mcp_zenodo_core.zip
+
+# Trained model binaries (large; re-download from Colab or regenerate)
+outputs/**/*.safetensors
+outputs/**/tokenizer.json
+outputs/**/*.zip
