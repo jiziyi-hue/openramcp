@@ -85,10 +85,25 @@ def main() -> int:
     ap.add_argument("--out", default="outputs/qwen05b-lora/eval_report.json")
     ap.add_argument("--use-unsloth", action="store_true", default=True)
     ap.add_argument("--no-unsloth", dest="use_unsloth", action="store_false")
+    ap.add_argument("--cpu", action="store_true",
+                    help="Load fp32 base on CPU + adapter (no GPU/bnb/unsloth)")
+    ap.add_argument("--cpu-base", default="Qwen/Qwen2.5-0.5B-Instruct",
+                    help="Non-quantized base for CPU eval")
     args = ap.parse_args()
 
     # Load
-    if args.use_unsloth:
+    if args.cpu:
+        import torch
+        from transformers import AutoTokenizer, AutoModelForCausalLM
+        from peft import PeftModel
+        print(f"[load] CPU fp32: base={args.cpu_base} + adapter={args.adapter}")
+        tokenizer = AutoTokenizer.from_pretrained(args.adapter)
+        base = AutoModelForCausalLM.from_pretrained(
+            args.cpu_base, torch_dtype=torch.float32,
+        )
+        model = PeftModel.from_pretrained(base, args.adapter)
+        model.eval()
+    elif args.use_unsloth:
         from unsloth import FastLanguageModel
         model, tokenizer = FastLanguageModel.from_pretrained(
             model_name=args.adapter,

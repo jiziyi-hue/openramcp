@@ -25,6 +25,44 @@
 strong support for the paradigm claim that engine-side FSM offload shrinks the LLM-side
 burden into small-model range.
 
+## Quantitative eval (full 203 val set, CPU fp32, greedy)
+
+| Metric | Value |
+|---|---|
+| **parse_rate** | **100.00%** — every output was valid JSON, zero malformed |
+| **intent_accuracy** | **71.92%** — correct intent/_tool field |
+| **force_kind_accuracy** | 76.35% (of all 203; non-force intents can't contribute) |
+| **target_accuracy** | 32.02% (of all 203; only attack/feint/pincer carry a named target) |
+| **exact_match** | **43.35%** — entire JSON byte-identical to ground truth |
+
+### Per-intent accuracy (honest breakdown)
+
+Strong (high-freq, structurally clear):
+- `attack` **98%** (n=81, the dominant use case) · `report`/`scout`/`patrol`/`escort` **100%**
+  · `set_stance` 77% · `pincer` 71% · `feint` 75% · `regroup` 67%
+
+Weak (the `_tool` high-level calls + low-freq + semantically subtle):
+- `set_objective` 11% (n=9) · `set_alert_state` 20% · `set_doctrine` 25% ·
+  `cancel_assaults` 0% (n=2) · `retreat` 25% (confused with regroup) ·
+  `defend` 42% · `contain` 25%
+
+### Root cause of the weak classes
+
+The `_tool`-shaped high-level calls (set_objective / set_alert_state / set_doctrine /
+cancel_assaults) are **underrepresented** (5–9 synth examples each) AND structurally
+differ from the dominant `{"intent":...}` shape, so the 0.5B model defaults to emitting
+an `intent` even when a `_tool` is required. Examples:
+- "小心点" → predicted `{"intent":"alert","level":"watch"}` (invented intent) instead of
+  `{"_tool":"set_alert_state","level":"alert"}`
+- "全力龟缩撑到timeout" → `set_stance Defend` instead of
+  `{"_tool":"set_objective","name":"survive_until_tick"}`
+- "所有人回家" → `regroup` instead of `retreat` (genuinely close semantics)
+
+**Takeaway**: 100% valid JSON + 98% on the dominant `attack` path strongly supports the
+small-model-tractability claim. The fix for the weak classes is data, not capacity:
+rebalance synthesis toward `_tool` calls (raise from ~5 to ~30 templates each) and add
+retreat-vs-regroup contrast pairs, then retrain.
+
 ## Files
 
 - `adapter_model.safetensors` — LoRA weights (~35MB, gitignored)

@@ -1,0 +1,152 @@
+{
+  "n": 203,
+  "parse_rate": 1.0,
+  "intent_accuracy": 0.7192118226600985,
+  "force_kind_accuracy": 0.7635467980295566,
+  "target_accuracy": 0.32019704433497537,
+  "exact_match": 0.43349753694581283,
+  "intent_accuracy_by_type": {
+    "report": 1.0,
+    "retreat": 0.25,
+    "set_stance": 0.7692307692307693,
+    "attack": 0.9753086419753086,
+    "set_alert_state": 0.2,
+    "pincer": 0.7142857142857143,
+    "set_objective": 0.1111111111111111,
+    "defend": 0.42105263157894735,
+    "scout": 1.0,
+    "patrol": 1.0,
+    "spawn_squad": 0.42857142857142855,
+    "escort": 1.0,
+    "regroup": 0.6666666666666666,
+    "harass": 0.6,
+    "contain": 0.25,
+    "feint": 0.75,
+    "diversion": 0.3333333333333333,
+    "cancel_assaults": 0.0,
+    "set_doctrine": 0.25
+  },
+  "intent_total_by_type": {
+    "report": 10,
+    "retreat": 12,
+    "set_stance": 13,
+    "attack": 81,
+    "set_alert_state": 5,
+    "pincer": 7,
+    "set_objective": 9,
+    "defend": 19,
+    "scout": 9,
+    "patrol": 3,
+    "spawn_squad": 7,
+    "escort": 3,
+    "regroup": 3,
+    "harass": 5,
+    "contain": 4,
+    "feint": 4,
+    "diversion": 3,
+    "cancel_assaults": 2,
+    "set_doctrine": 4
+  },
+  "errors_sample": [
+    {
+      "nl": "所有人回家",
+      "gt": "{\"intent\":\"retreat\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"to\":{\"kind\":\"named\",\"name\":\"self_base\"}}",
+      "pred": "{\"intent\":\"regroup\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"to\":{\"kind\":\"named\",\"name\":\"self_center\"}}"
+    },
+    {
+      "nl": "中线左翼突袭，端了他",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"center\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy_structure\"},\"approach\":\"flank_left\"}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"center\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"},\"approach\":\"flank_left\"}"
+    },
+    {
+      "nl": "小心点",
+      "gt": "{\"_tool\":\"set_alert_state\",\"level\":\"alert\"}",
+      "pred": "{\"intent\":\"alert\",\"level\":\"watch\"}"
+    },
+    {
+      "nl": "中部队和南部队，双线夹击，8格内合围",
+      "gt": "{\"intent\":\"pincer\",\"left\":{\"kind\":\"group\",\"name\":\"center\"},\"right\":{\"kind\":\"group\",\"name\":\"south\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"},\"rendezvous_dist\":8}",
+      "pred": "{\"intent\":\"pincer\",\"left\":{\"kind\":\"group\",\"name\":\"center\"},\"right\":{\"kind\":\"group\",\"name\":\"south\"},\"target\":{\"kind\":\"pos\",\"pos\":\"8\"}}"
+    },
+    {
+      "nl": "全力龟缩，撑到timeout",
+      "gt": "{\"_tool\":\"set_objective\",\"name\":\"survive_until_tick\",\"tick\":18000}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"stance\":\"Defend\"}"
+    },
+    {
+      "nl": "南边的，守基地别浪",
+      "gt": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":12},\"stance\":\"Defend\"}",
+      "pred": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":6}}"
+    },
+    {
+      "nl": "左翼切入打掉他重工",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"center\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"},\"approach\":\"flank_left\"}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"},\"approach\":\"flank_left\"}"
+    },
+    {
+      "nl": "南边右路切他后排",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy\"},\"approach\":\"flank_right\"}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"},\"approach\":\"flank_right\"}"
+    },
+    {
+      "nl": "中路的全自动模式",
+      "gt": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"center\"},\"stance\":\"AttackAnything\"}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"center\"},\"stance\":\"Defend\"}"
+    },
+    {
+      "nl": "南边部队防住老家",
+      "gt": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":12},\"stance\":\"Defend\"}",
+      "pred": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":6}}"
+    },
+    {
+      "nl": "南边别推了，回来守",
+      "gt": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":8},\"stance\":\"Defend\"}",
+      "pred": "{\"intent\":\"regroup\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"to\":{\"kind\":\"named\",\"name\":\"self_center\"}}"
+    },
+    {
+      "nl": "北群和中路钳形攻",
+      "gt": "{\"intent\":\"pincer\",\"left\":{\"kind\":\"group\",\"name\":\"north\"},\"right\":{\"kind\":\"group\",\"name\":\"center\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"},\"rendezvous_dist\":8}",
+      "pred": "{\"intent\":\"pincer\",\"left\":{\"kind\":\"group\",\"name\":\"north\"},\"right\":{\"kind\":\"group\",\"name\":\"center\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"},\"approach\":\"cautious\"}"
+    },
+    {
+      "nl": "南边的出去溜达，发现敌人直接标。",
+      "gt": "{\"intent\":\"patrol\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"engage_on_contact\":\"scout\",\"cycle\":true}",
+      "pred": "{\"intent\":\"patrol\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"engage_on_contact\":false}"
+    },
+    {
+      "nl": "所有人缩家防守",
+      "gt": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"stance\":\"Defend\"}",
+      "pred": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":6}}"
+    },
+    {
+      "nl": "南边右翼干他丫的",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy\"},\"approach\":\"flank_right\"}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"},\"approach\":\"flank_right\"}"
+    },
+    {
+      "nl": "家周围守好等他们来送",
+      "gt": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":12},\"stance\":\"Defend\"}",
+      "pred": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":8},\"stance\":\"Defend\"}"
+    },
+    {
+      "nl": "南面小队贴上去护",
+      "gt": "{\"intent\":\"escort\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"engage_radius\":6}",
+      "pred": "{\"intent\":\"escort\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"engage_on_contact\":false,\"patrol_interval\":0.5}"
+    },
+    {
+      "nl": "守老家别让他们冲进来",
+      "gt": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":12},\"stance\":\"Defend\"}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"stance\":\"Defend\"}"
+    },
+    {
+      "nl": "抢中间点",
+      "gt": "{\"_tool\":\"set_objective\",\"name\":\"control_map_center\"}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"center\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy\"},\"approach\":\"frontal\"}"
+    },
+    {
+      "nl": "一部分回家",
+      "gt": "{\"intent\":\"regroup\",\"force\":{\"kind\":\"ids\",\"unit_ids\":[224,228,230,232,240,244,256,258,260,280,284,286,302,308,322,324,326,330,332,334,244,286,302,322,324,326,244,354,356]},\"at\":{\"kind\":\"named\",\"name\":\"self_base\"}}",
+      "pred": "{\"intent\":\"retreat\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"to\":{\"kind\":\"named\",\"name\":\"self_base\"}}"
+    }
+  ]
+}
