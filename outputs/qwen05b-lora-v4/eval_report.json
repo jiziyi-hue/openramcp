@@ -1,0 +1,118 @@
+{
+  "n": 100,
+  "parse_rate": 1.0,
+  "intent_accuracy": 0.99,
+  "force_kind_accuracy": 0.88,
+  "target_accuracy": 0.69,
+  "exact_match": 0.5,
+  "intent_accuracy_by_type": {
+    "attack": 1.0,
+    "report": 0.8571428571428571
+  },
+  "intent_total_by_type": {
+    "attack": 93,
+    "report": 7
+  },
+  "errors_sample": [
+    {
+      "nl": "去他家打游击",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"harass_capable\":true},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}"
+    },
+    {
+      "nl": "工厂给他掀了，兵上",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"e1\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"}}"
+    },
+    {
+      "nl": "全部战斗车，平推他家",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"enemy_center\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"v2rl\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}"
+    },
+    {
+      "nl": "报个点给我",
+      "gt": "{\"intent\":\"report\",\"what\":\"battlefield\"}",
+      "pred": "{\"intent\":\"report\",\"what\":\"threats\"}"
+    },
+    {
+      "nl": "大部队右上集合",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"map_corner_ne\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"map_corner_se\"}}"
+    },
+    {
+      "nl": "残血送死打主家",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"hp_below\":0.3},\"target\":{\"kind\":\"named\",\"name\":\"self_base\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"hp_below\":0.3},\"target\":{\"kind\":\"named\",\"name\":\"enemy_center\"}}"
+    },
+    {
+      "nl": "火箭仔给我上",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"e3\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"e3\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}"
+    },
+    {
+      "nl": "用那三坦推北线",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"3tnk\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"3tnk\"},\"target\":{\"kind\":\"named\",\"name\":\"map_corner_nw\"}}"
+    },
+    {
+      "nl": "工厂没了他们造不了兵",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"v2rl\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"}}"
+    },
+    {
+      "nl": "坦克压过去拆他家",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"2tnk\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"1tnk\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}"
+    },
+    {
+      "nl": "兄弟们跟我冲东北",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"map_corner_ne\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"map_corner_nw\"}}"
+    },
+    {
+      "nl": "兵海撕他工厂",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"e1\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"}}"
+    },
+    {
+      "nl": "先清理外围建筑",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy_structure\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"map_corner_nw\"}}"
+    },
+    {
+      "nl": "最近的那个交给你了坦克",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"2tnk\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"1tnk\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy\"}}"
+    },
+    {
+      "nl": "坦克先弄掉贴脸的",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"3tnk\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":\"combat_mobile\",\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy\"}}"
+    },
+    {
+      "nl": "用那些兵拆他家建筑",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"e3\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"}}"
+    },
+    {
+      "nl": "坦timing到了，推基地",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"1tnk\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}"
+    },
+    {
+      "nl": "残血冲基地送",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"hp_below\":0.3},\"target\":{\"kind\":\"named\",\"name\":\"self_base\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"hp_below\":0.3},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}"
+    },
+    {
+      "nl": "全拉上去，端他基地",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"enemy_center\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}"
+    },
+    {
+      "nl": "坦克去打最近的敌军",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"2tnk\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy\"}}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"1tnk\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy\"}}"
+    }
+  ]
+}
