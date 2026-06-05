@@ -1,0 +1,1170 @@
+{"nl": "北边部队守家别出去", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北群看好老家周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北线防守基地附近", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北组在家里蹲着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北边别冲守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北群守好老家8格范围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北组巡逻老家附近", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北线别浪看住家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北边部队围着基地守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北群防御姿态别进攻", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北组在家门口守着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北边看好老家别漏", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北线留守基地周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北群在老家附近布防", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北组蹲基地别动", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北边部队别出圈", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北群守家别乱跑", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北线防守老家周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北组看好自家人", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北边站好岗别让偷家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北群在基地附近猥琐", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北线别出门看住家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北组围老家转圈守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北边部队缩在家里", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北群守基地别开战", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北组在老家八格内巡逻", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北线蹲坑防守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北边部队不要突前", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北群看好自家人", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北组在基地旁边警戒", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "1c32eab2dd87"}
+{"nl": "北边那队守住老家别动", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北群给我守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "佬家北面防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北边部队蹲家里", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北线的别出去就在基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北群守基地别拉出去", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北面那波人看家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北佬守好自己家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北群防御姿态蹲基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北边别浪守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北队死守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北群给我龟缩家里", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北边部队基地防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北佬别出门守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北群蹲家里别动", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北面那组守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北边的人在家防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北群别送守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北队老家防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北边部队固守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北群守好自己家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北佬基地蹲着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北边那队别乱跑守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北群防御别出去", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北面部队基地蹲坑", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北队在家当乌龟", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北群守主基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北边守家别浪", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北佬家里防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北群基地防守模式", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "58eb97f946a2"}
+{"nl": "北边部队看老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北群守家别出去", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北队老家附近蹲着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "守住北边老家周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北面兵在家门口防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北群老家巡逻防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北部队别走守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北边蹲坑守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "老家北边那队守着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北群基地周围看住", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北部队防御老家外围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北边兵不要浪守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北群在老家附近防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北队看家护院", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北面部队守老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北群老家半径十五格守着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北边部队防御主基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北队别动守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北群守住老家周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北边兵在家附近别出去", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北队老家守好", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北群防御阵地设在老家边上", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北部队固守老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北边队伍老家周围戒严", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北群老家外围防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北队看住老家门口", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北边部队家附近警戒", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北群防守老家周边", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北部队呆在家周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "北边兵守家别乱跑", "intent": {"intent": "defend", "force": {"kind": "group", "name": "north"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "5070225da8e7"}
+{"nl": "中军守家附近", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中间部队看好老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中路的别出去，守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中心队防守老家周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军回防老家一圈", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中间那波守住家附近", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，在家周围巡逻防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "快回防啊，中军！", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "守住老家！", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中间的保护基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中路的别浪，守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军卫戍本阵", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中间队在家门口蹲着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中路的，看好自家周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中心部队防御基地周边", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军固守基地周边", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，基地圈内防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，不许出基地八格", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，围绕基地防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中间兵，保家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，守家方圆8格", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，家周围护着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，基地附近巡逻防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，家边上看住", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，老家一圈防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，自阵周围防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中间的兵，老家周围防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，家里附近守着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，基地周围别放过来", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "中军，守老家8格内", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "426a832927b2"}
+{"nl": "守好老家，别让对面偷了", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "中间部队集合守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "回防基地，周围一圈", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "基地周围12格都守住", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "别出去浪，守家保矿", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "中间部队别走，护家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "防御姿态，守住基地圈", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "龟一点，基地附近布防", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "守好基地，经济别断", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "基地周围站岗，别漏", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "中间兵拉到基地旁防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "全面防守，基地为核心", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "格半径内不许进人", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "家门口布阵，等对面来送", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "守家，别让对面绕后", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "中间部队负责基地安全", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "基地附近蹲坑防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "别推了，先守家稳住", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "防御圈缩小，守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "基地周边12格划为禁区", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "中间部队做保安大队", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "老家方圆12格接敌就干", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "守基地，对面可能rush", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "基地摆阵，中间部队看家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "防好自己家，别浪", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "缩家防守，等发育", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "基地周围12格布口袋", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "中间部队别出圈，守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "老家周围清场防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "守基地外围，别漏小兵", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "ea8d2ee4cedd"}
+{"nl": "部队守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "中心部队守住老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "家门口防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "基地周围守住", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "中心部队别出去", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "家里蹲好", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "守家别浪", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "老家附近的人留着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "中心部队在家防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "基地周围15格保护", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "部队别动守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "家里部队防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "中心部队蹲基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "守住老家周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "基地附近布防", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "家门口的部队防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "中心部队原地防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "基地周围警戒", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "家里蹲住", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "守好老家附近", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "部队在基地周围防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "中心兵力守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "家里的人别出圈", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "基地旁边防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "中心部队蹲家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "老家里部队防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "基地附近部队不许动", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "在家门口防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "中心部队守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "部队在老家周围防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "center"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c18001918757"}
+{"nl": "南队守家别出去", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南边那队看住老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南组在基地附近蹲着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南部队给我守好八格", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南佬别乱跑护基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南边人留在家里防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南组守住基地别浪", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南队就在老家附近待命", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南边弟兄别出门", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南部队原地防御基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南组蹲老家别动", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南边那波人守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南队护家别冲", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南组在家门口看家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南边队伍别进攻守好", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南佬守基地别走远", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南队待在八格内防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南组把老家围起来", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南边所有人守住家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南队别出圈守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南组在家附近防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南边部队驻守老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南队就窝在基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南组别浪守好老巢", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南边人给我护住家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南队蹲点防偷袭", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南组待在老家八格内", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南边那组守家就行", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南队别动看住老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南佬别出门死守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "c80141705a92"}
+{"nl": "南边那队守好老家附近", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南队别出去，守基地周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边部队在基地附近警戒", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边那波人看住家旁边", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边的蹲基地十二格圈内", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南群守家，别乱跑", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边给我守住老家周边", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南队在家附近防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边的别浪，守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南部队在家周围十二格防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边那组人看好基地周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边的守住基地一圈", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南群在老家附近龟缩", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南队家里蹲，守好", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边部队在家门口防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边的就围着基地转悠", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南群守基地十二格半径", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南队在家周围巡逻防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边的别过界，守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南部队把基地附近护住", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南群在家十二格内蹲着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边那组在家旁边警戒", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南队守基地周边，别出去", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边的在家附近布防", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南部队在老家十二格内待命", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南群守好自家那一亩三分地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南队在家周围打防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南边的别出圈，守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南部队十二格半径内防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南群在家附近死守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "4a29f5006bf4"}
+{"nl": "南队守住老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南边部队守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南群别出去，守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南线看好家门口", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南队防御，别浪", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南边的兄弟守好家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "South组守家，别动", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南部队15格内防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南队蹲基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南边守住，别让对面进来", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南群看家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南队防守姿态", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南边部队注意，守好老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南线防御，别出去浪", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南队留在基地周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南队原地防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南边部队，家周围看着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南群守好基地圈", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南边部队保护基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南队别推，守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南边守住家门口15格", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南部队在基地附近防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南群防守，别主动出击", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南线守家，别冒进", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南部队防御模式，守住基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南边兄弟守好家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南队看家，别乱跑", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南群在基地周围布防", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南队守住家里", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "南部队别出去，守好基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "south"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "0f3928d945c0"}
+{"nl": "全部回家防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "守住老家别出门", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "全军缩在基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "防御模式启动", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "别出去浪守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "基地周围戒备", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "家里别动等敌人", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "全体撤回八格内", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "缩成刺猬守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "你家被盯上了快回防", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "就守家别乱跑", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "家里待命别出击", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "守好基地周边", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "原地防御别追", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "全队龟缩老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "家里布防别浪", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "基地八格警戒", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "防守阵型拉好", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "给我守住老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "别让敌人进基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "全部收拢守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "在家周围蹲守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "守卫老家范围内", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "防御姿态别动", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "家里有情况全体回防", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "缩在基地别出去", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "专心守家别浪", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "守住自保", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "家里集合防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "八格内固守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 8}, "stance": "Defend"}, "fp": "8486dcdde5e9"}
+{"nl": "全军回防老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "所有人守住基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "家附近全拉回来防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "基地圈内全部防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "别出去守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "全部缩回基地防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "家门口布防", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "基地周围十二格全防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "全体龟缩守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "老家周围全部守好", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "守基地别浪", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "把部队拉回基地防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "基地附近全部设防", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "防守阵型基地圈内", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "全部回基地圈防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "家门口十二格全部防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "全军守家别冲", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "基地周边全部防御姿态", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "所有人回来守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "基地圈内所有人待命防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "家附近全部蹲坑防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "防御模式基地周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "把家守住别让敌人进来", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "全部回防基地周围", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "基地周围十二格全体防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "防守老家别出门", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "基地圈内全部警戒", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "全军守家别漏", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "基地周围全部拉回来守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "全部在家附近防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 12}, "stance": "Defend"}, "fp": "5bead77fe754"}
+{"nl": "全军守家，别出去浪", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "所有部队在老家附近蹲好", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "家里蹲，别主动打", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "守住基地周围十五格", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "保护老家，别让人摸进来", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "全部龟缩防御圈内", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "防守阵型，围住基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "别出圈，在家附近待命", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "全军回防老家周边", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "家周围布防，别漏", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "防御姿态，不要进攻", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "所有兵守好家门口", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "老家附近巡逻防守", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "守住底线，别浪", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "全部退守基地", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "基地旁边扎堆防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "别乱跑，守家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "乌龟流，守老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "在家周围十五格守着", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "所有单位防御老家区域", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "守住基地，别出门", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "家里设防，严阵以待", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "别让他们冲进老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "全军蹲坑防御", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "家周围警戒，别出圈", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "防御模式，固守老家", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "所有力量集中老家附近", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "守住门口，别放敌人进来", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "在老家附近原地待命", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "防御圈内别让敌人活", "intent": {"intent": "defend", "force": {"kind": "group", "name": "all"}, "region": {"kind": "around", "center": "self_base", "radius": 15}, "stance": "Defend"}, "fp": "c0ad032e1fb3"}
+{"nl": "残血回基地", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "快撤回家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "没血的都回老家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "低血量撤退", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "残兵退回基地", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "回血去", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "回家补血", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "残血部队拉回来", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "快溜回基地", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "掉血多的回家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "残血的全部回防", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "回基地补给", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "撤退到老家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "残血单位回城", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "受伤的回家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "没血的就别送了", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "残血赶紧跑回来", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "拉回基地", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "残血的回家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "先撤一波", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "撤退修整", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "低血回老家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "回基地苟一波", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "残血回家加血", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "受伤的回来", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "残兵撤退", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "快拉回来", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "把残血拉回基地", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "撤到安全区", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "残血部队回撤", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "to": {"kind": "named", "name": "self_base"}}, "fp": "27f945f9bf9b"}
+{"nl": "残血的都回老家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "半血以下撤退", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "受伤的兵拉回来", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "残血回家补血", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "快跑回基地", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "没血的别打了撤", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "收半血以下的", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "残血部队回防", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "血少的溜回老家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "掉血的赶紧撤回来", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "残兵回家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "没血的就别浪了", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "半血以下全部后撤", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "受伤单位回基地", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "撤回来加血", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "残血的给我滚回来", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "残兵撤退到基地", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "半血以下收兵", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "没血的回老家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "受伤的回家保命", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "血皮撤", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "残血跑路", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "半血以下拉走", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "受伤的别送了撤", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "残血回城", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "没血的全撤", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "半血后撤", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "残兵回撤", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "掉血单位撤回家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "残血赶紧回家", "intent": {"intent": "retreat", "force": {"kind": "filter", "owner": "self", "hp_below": 0.5}, "to": {"kind": "named", "name": "self_base"}}, "fp": "96f3d3b583af"}
+{"nl": "北群回老家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北边撤回来", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北线撤退", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群退守基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北边兄弟们回家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北部队撤到基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群快撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北边回防", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群收兵", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北边赶紧回来", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群退回总部", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北线撤到家里", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群撤到主基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北边部队收缩", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群后撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北边拉回来", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群退回老巢", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "撤北线", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群回家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北边部队回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群撤退到老家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北边撤，别打了", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群撤回来守家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北边收队", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群回防基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北线退回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群撤，家里需要", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北边撤到主城", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北群退回家里", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "北边部队全部撤回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "north"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "3d5e17edddda"}
+{"nl": "中间部队撤回来", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中路的赶紧回家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中群退守老家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间别打了快撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中路的回防基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间部队怂一波", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中群回撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间先退一下", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中路的回家补血", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间撤别送", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中群快跑回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中路别浪了撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间退回本家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中群赶紧回家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间的撤防", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中路的退到基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中群回守", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间别压了撤回来", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中退", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中群撤回大本营", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间部队怂家里", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中路的回撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间跑路", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中群退守", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间回家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中路的撤到老家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间别上了撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中群返回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "中间撤稳一波", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "center"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "c69245f13145"}
+{"nl": "南边撤回来", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南群回老家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南队快溜", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边别打了撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边部队撤回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边回来", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边收兵", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边躲回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边退回", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤退保命", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边别浪了撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤到基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南群回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤回来守家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤防", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤退补给", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边回防", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边跑路", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤了", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤退别送", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边赶紧撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤到家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤回家里", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边溜了", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤吧", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边全撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤完", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "南边撤守", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "south"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "9e0750678886"}
+{"nl": "全部撤回来", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "所有人回家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "撤到老家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "快收队回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "全体回防", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "别打了快撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "家里蹲", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "赶紧回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "集体撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "全部溜了", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "回家补血", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "收兵回营", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "全队撤退", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "撤！回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "别浪了，快撤", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "全体退回老家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "拉回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "撤家去", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "全部跑路", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "全军回老家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "回防保命", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "撤了撤了", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "所有人后撤到基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "收队回家", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "快回家守", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "撤回去补兵", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "全部回城", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "撤退保兵", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "别冲锋了，回来", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "全撤！回基地", "intent": {"intent": "retreat", "force": {"kind": "group", "name": "all"}, "to": {"kind": "named", "name": "self_base"}}, "fp": "2527e50ae6aa"}
+{"nl": "北边那组封住半径4，见谁打谁", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北群封锁那个圈，自动攻击", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北佬封4格范围，有敌就干", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北线部队围住那4格，见人开火", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北群设个封锁圈，半径4，主动打", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北边那队，封锁4格，攻击一切", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北组封住半径4，遇敌直接打", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北部队封锁区域4格，自动攻击", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北边那组封锁半径4，见谁灭谁", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北群给我封住那4格，看到就打", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北佬封锁圈半径4，见敌就射击", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北线封锁4格范围，攻击任何目标", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北群去封锁那一片，半径4，打", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北组封住半径4圈，敌人来了就打", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北边那队封锁半径4，主动攻击", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北群封锁半径4，见啥打啥", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北佬封4格，见人开枪", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北边部队封锁圈4，自动杀敌", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北组封锁区域半径4，遇敌自动", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北群封住那4格，见人就干", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北线部队围起来，半径4，攻击", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北边分队封锁半径4，开火所有", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北组封锁圈半径4，看见就打", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北佬封锁4格，有敌就开火", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北边那组封锁半径4，主动打一切", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北群封锁那区域，半径4，见谁打谁", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北部队封住半径4，自动攻击模式", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北边那队封4格，见敌就干", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北组封锁半径4圈，打任何东西", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "北群封锁半径4，看到敌人就揍", "intent": {"intent": "contain", "force": {"kind": "group", "name": "north"}, "radius": 4, "stance": "AttackAnything"}, "fp": "bac2a3e8bf6a"}
+{"nl": "中心部队原地警戒，半径4", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中间那队给我守住方圆4格", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中军游走，见啥打啥", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中心小队封锁该区域", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中圈巡逻，攻击所有敌人", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中部部队控制半径4范围", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "让中路的兵在这片巡逻", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中间兵力原地防守，范围4", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中心组：封锁圈内所有敌人", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中央小队，圈地自萌，见人灭人", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中军展开，半径4内清场", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中间部队打游击，别出圈", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "把中心部队设为守卫，范围4", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中部队伍控制住这个点", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中心兵力防御圈，半径4", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中路军原地待命，见敌就打", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中间那组，在圈里游走清兵", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中心部队圈地，见啥干啥", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中军封锁，半径4，主动攻击", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中央部队巡逻这个区域", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中间小队，守住这4格范围", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中心部队，在半径4内自由开火", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中路军，控制这片，别让敌人过", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中间部队，防御姿态，范围4", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中心组：游走清扫，半径4", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "让中间那队在这片游荡杀敌", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中部兵力：原地防守，主动攻击", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中军：半径4内见一个打一个", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中心部队：封锁该区域，遇敌即战", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "中间兵：巡逻半径4，打一切", "intent": {"intent": "contain", "force": {"kind": "group", "name": "center"}, "radius": 4, "stance": "AttackAnything"}, "fp": "5fd26070797a"}
+{"nl": "南边压一下，半径4圈里见啥打啥", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南群蹲在那片区域，开火清场", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南面部队以攻击姿态占住4格范围", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南队守住那块，啥都打", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边火力覆盖四格范围", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南面小组压住那片，见谁灭谁", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边保持攻击姿态，控制半径4", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南群4格内随便射", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边部队在那块扫荡", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南面4圈内开攻击姿态压制", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边人给我在那圈里全打掉", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南队蹲点，范围4，攻击一切", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边4格区域压制，见敌就打", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南群圈地攻击，半径4", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边火力封锁四格范围", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南面小组攻击状态占住那片", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边部队以攻击姿态钳制半径4", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南群4格内清场", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边压住那4格，别让敌人过", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南面攻击姿态控制圈内", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边小组在四格范围内放开了打", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南队蹲在那半径4的圈里打一切", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边四格内火力压制", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南群攻击姿态占四格", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南面部队守住那片，攻击任何目标", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边压圈，半径4，随便打", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南队停留在那四格区域内攻击", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南群展开攻击姿态封锁4格", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南边人员在那圈里火力覆盖", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "南面小组以攻击姿态控制半径4范围", "intent": {"intent": "contain", "force": {"kind": "group", "name": "south"}, "radius": 4, "stance": "AttackAnything"}, "fp": "89f73ccafa25"}
+{"nl": "和平模式走起", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "别开火，让他们浪", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "全体挂机不动", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "别打，我先发育", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "切和平别惹事", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "都老实点别还手", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "对方不打我们也不打", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "佛系发育别浪", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "先怂一波攒经济", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "和平挂机等机会", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "别打草惊蛇", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "全队降旗不攻击", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "现在别搞事", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "当咸鱼别动", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "都收手别反击", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "全员散步模式", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "别暴露，先苟住", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "和平状态别找打", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "挂机发育别打架", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "先装死再说", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "别动手，让他们过去", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "现在当缩头乌龟", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "全队静默别开火", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "别惹他们，先憋钱", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "和平共处，后期见", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "都停火，别手贱", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "现在不打架，等装备", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "全体和平，别浪投", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "先苟，别送人头", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "和平发育，稳住", "intent": {"_tool": "set_alert_state", "level": "peace"}, "fp": "a3c02837d377"}
+{"nl": "盯一下那一片", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "警戒北线", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "注意他家可能有埋伏", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "看着点地图", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "眼睛放亮点", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "小心偷袭", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "留意矿车路线", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "盯着路口", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "看好小地图", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "注意兵营动向", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "保持警惕", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "留神他家门口", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "别让偷矿的钻进来", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "警戒哨位", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "盯住高地", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "注意他出什么兵", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "保持watch状态", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "看着点，别浪", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "注意力集中", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "小心绕后", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "监视他家基地", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "挡住视野的地方留意", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "注意雷达", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "小心空降", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "看住中塔", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "提防速攻", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "注意他经济", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "盯紧主矿", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "警戒左翼", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "把注意力放那", "intent": {"_tool": "set_alert_state", "level": "watch"}, "fp": "81b9d5bdc579"}
+{"nl": "全体警戒，别漏了动静。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "都给我瞪大眼。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "开启自动攻击模式。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "注意周边，有情况就干。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "警戒状态，随时开火。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "给我盯着雷达。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "警觉点，别被偷。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "听到风声了，备战。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "进入战备状态。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "瞪大眼睛看小地图。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "自动攻击，省心。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "别愣着，发现敌人就打。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "预警拉满，防偷袭。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "注意听声音，有动静。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "警戒！小心绕后。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "时刻准备着。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "别让敌人摸过来。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "自动攻击打开，别关。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "周围有动静就报告。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "进入红色警戒。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "全员注意，随时接战。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "盯好路口，有情况就吼。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "警惕草丛，可能有人。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "开自动，别手动点。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "注意小地图红点。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "警戒，防止偷家。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "别松懈，敌人可能随时来。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "眼睛放亮点。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "听到枪声就支援。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "保持警惕，准备交火。", "intent": {"_tool": "set_alert_state", "level": "alert"}, "fp": "9045bcd9da08"}
+{"nl": "开战斗模式", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "全体进入战斗警戒", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "切战斗状态", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗警报拉满", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "准备开干", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "红警拉起来", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗姿态ON", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "转为作战模式", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗级警戒", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗alert", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "开战了各位", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗模式激活", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "拉战斗预警", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "进入战斗状态", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗就绪", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗信号全开", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "切到combat", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗准备就绪", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗警戒中", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗红警", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "开打模式", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗心态", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗控制已开", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗部署", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗指令", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗突发预警", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗提高警惕", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗就位", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗来了", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "战斗警报已设", "intent": {"_tool": "set_alert_state", "level": "combat"}, "fp": "c8bf3c4d4025"}
+{"nl": "龟缩别出门", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "全部蹲家里", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "锁家模式开启", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "防一手", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "拉警报了别浪", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "全员守基地", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "老家死守", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "收缩防线", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "关门打狗", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "别出去了", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "家里蹲好", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "防御阵型", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "稳住别送", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "全面警戒", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "别浪了回家", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "锁死基地", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "守家模式", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "别出去送了", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "家里有矿也得守", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "抱团守老家", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "龟一波", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "防守反击准备", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "别乱跑", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "警戒状态", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "都回来", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "别探路了", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "蹲坑别动", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "护家要紧", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "集体缩卵", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "守家等机会", "intent": {"_tool": "set_alert_state", "level": "lockdown"}, "fp": "e9113810f6a5"}
+{"nl": "拆他家工厂", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "打掉重工", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "先废了他生产", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "搞掉那个兵营", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "rush他工厂", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "拆厂", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "别让他出兵", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "重点砸他建筑", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "推了他重工", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "先把厂子拆了", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "废了他出兵点", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "打建筑啊", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "拆掉那个工厂", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "先别管别的，拆厂", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "让他没兵出", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "砸了他重工", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "搞掉他出兵建筑", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "推厂优先", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "赶紧拆他家工厂", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "别让他造兵", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "先废重工", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "拆建筑 尤其是工厂", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "把他工厂拔了", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "让我方拆他厂", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "打他老家旁边的厂", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "拆了工厂他就废了", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "rush 拆厂", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "重点打击他生产建筑", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "搞掉他工厂再打别的", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "拆了他重工就赢了", "intent": {"_tool": "set_objective", "name": "destroy_fact"}, "fp": "24041cacf132"}
+{"nl": "干他老家", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "推了他基地", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "拆家去", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "一波流端他", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "灭了丫的", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "冲他家", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "直接rush", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "搞死他", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "把他基地扬了", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "打他老家", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "推平他家", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "灭了这货", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "上啊拆家", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "集火他基地", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "出兵干他", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "端他老窝", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "给他家拆了", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "冲过去打", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "一波推了", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "把他老巢端了", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "揍他老家", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "踩平他家", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "弄死他", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "推家啦", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "干他丫的", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "往他家打", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "拆他建筑", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "一波带走", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "把他基地灭了", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "搞他老家", "intent": {"_tool": "set_objective", "name": "destroy_enemy"}, "fp": "4122921f4f17"}
+{"nl": "切经济，搞他矿车", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "去骚扰他家矿车", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "北线偷矿，打掉矿车", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "扰矿，别让他安心采", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "偷他农民去", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "炸他矿场", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "断他资源，快点", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "骚扰矿区，别停", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "搞经济，杀矿车", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "派点兵去切他经济", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "佬家矿车，干他", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "经济压制，上", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "去他矿点骚扰", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "切他后路，打矿", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "偷他矿，让他穷", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "杀光矿车", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "骚扰农民，别让他采", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "断他资源点", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "打经济，快", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "矿车来了，干", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "骚扰他老家矿", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "经济打击，重点", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "去偷他矿，别被发现", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "搞他经济，让他没钱出兵", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "扰矿队，上去", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "切经济，别正面硬刚", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "矿车是关键，搞掉", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "经济骚扰，持续", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "打他矿，让他断粮", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "矿区搞事，拖他节奏", "intent": {"_tool": "set_objective", "name": "harass_economy"}, "fp": "579bedd8cfa0"}
+{"nl": "抢中间", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "把中心占了", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "控住地图中心", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "快去拿中心", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中心不能丢", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中间点必须拿下", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "占中心点", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "地图中间给我占住", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中心要控制住", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "抢中啊", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中心是我的", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "别让他们占中心", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中间那块地占了", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中心点赶紧抢", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "守住中心", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中间必须我们控", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中心战略点占掉", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "地图中心拿下", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "快点占中间", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中心控制权拿到", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中间是我们家的", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "全力抢中", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中心不能给对面", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中间要站住", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中心点给我占", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "占中战术执行", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中间那个点重要", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中心必须我方控制", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "地图中间抢下来", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "中间是胜负手", "intent": {"_tool": "set_objective", "name": "control_map_center"}, "fp": "6f2854798414"}
+{"nl": "撑到5分钟", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "苟到18000", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "守住别炸", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "熬过时间", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "拖到胜利", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "别浪 等时间", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "撑住就行", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "时间到了就赢", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "坚持5分钟", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "保命到点", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "防御到18000", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "龟缩到结束", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "扛住 等tick", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "活到18000", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "别死 等时间到", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "保老家到点", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "拖到时间结束", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "缩家 等时间", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "稳住 5分钟后赢", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "只要不死就行", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "时间就是胜利", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "守到18000", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "别冲 等时间", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "熬到结束", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "守家到5分钟", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "拖延到胜利", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "苟住别送", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "等18000 tick", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "安分到时间结束", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "活得久就行", "intent": {"_tool": "set_objective", "name": "survive_until_tick", "tick": 18000}, "fp": "034d53e1054a"}
+{"nl": "干他丫的，开战模式！", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "怼老家，战斗姿态拉满。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "切战斗，推平对面。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "往前压，不要怂。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "打正面，一波带走。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "换红警，干他基地。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "战斗状态，rush他家。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "全力输出，拆建筑。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "别缩了，全军突击。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "开战，A过去。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "战斗教条，碾碎他们。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "进攻！别让他们发育。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "打豆豆，一波流。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "战斗模式，教做人。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "灭族时刻，上啊。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "搞快点，直接推家。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "别拖后期，干就完了。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "开战，先拆重工。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "战斗红警，打掉矿车。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "冲啊，平推北线。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "切经济转战斗，一波。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "把对面打回家。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "战斗指令，火力覆盖。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "别修了，来打架。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "rush到死，不留活口。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "全面开战，拆光。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "战斗姿态，先灭一家。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "直接打，别墨迹。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "拼刺刀，换家战术。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "战！让他们知道谁是大佬。", "intent": {"_tool": "set_doctrine", "alert_state": "combat", "objective": "destroy_enemy"}, "fp": "8a5abe633f34"}
+{"nl": "切经济骚扰，警戒拉满", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "去他家搞农民，警报", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "骚他经济，注意警戒", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "经济打击，全员警惕", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "骚扰流，警戒模式", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "断他矿，警报警报", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "搞经济，保持警戒", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "经济压制，开警报", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "骚扰为主，警戒为辅", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "削他经济，小心埋伏", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "切经济战术，警戒", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "打游击，骚扰经济", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "重点骚扰，警报", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "去老家搞经济，警惕", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "经济骚扰，全图警戒", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "骚他基地，拉警报", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "断经济，注意反打", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "搞经济，警戒别掉", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "经济打击，警报状态", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "骚扰模式，警戒优先", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "去切经济，小心回防", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "骚他农民，警戒", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "经济压制，保持警惕", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "骚扰走起，警报", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "经济骚，警戒满", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "搞经济，注意侦查", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "断他资源，警报", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "经济打击，警戒巡逻", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "骚扰他矿车，警报", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "切经济，警惕偷袭", "intent": {"_tool": "set_doctrine", "alert_state": "alert", "objective": "harass_economy"}, "fp": "e1d4a3087c12"}
+{"nl": "全员龟缩到18000帧", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "锁死防守撑到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "别出门苟到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "铁桶阵熬到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "死守老家等18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "现在开始当乌龟到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "拖到18000再反打", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "全体警戒活到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "收缩阵地硬扛18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "锁血挂开启到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "龟壳模式目标18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "别浪停战到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "撑住啊18000就赢了", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "转防守熬到18000翻身", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "关出兵键纯守18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "地面防空全锁到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "经济全蹲等到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "活到18000对面崩", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "按死lockdown到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "别送死拖到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "全员不动到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "乌龟流启动18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "死守高地等到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "撑过18000胜利", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "现在锁经济活命到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "硬拖到18000tick", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "别打出去憋到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "全体缩壳到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "等18000我们再出击", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "就一个字苟到18000", "intent": {"_tool": "set_doctrine", "alert_state": "lockdown", "objective": "survive_until_tick", "survive_tick": 18000}, "fp": "47c21102cc20"}
+{"nl": "盯住他们", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "保持观察", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "先别打看着", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "警戒调成监视", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "给我盯着", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "看好了别动手", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "先观望", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "注意警戒别开火", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "保持watch状态", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "切换到watch", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "盯着敌人动向", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "侦察模式", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "不要暴露观察", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "放哨模式", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "变成监视模式", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "注意观察别浪", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "先看他们要干嘛", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "保持警惕别攻击", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "设置成watch", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "改成watch", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "警戒等级调到观望", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "盯紧点", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "给我侦察", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "看着敌人基地", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "先别打侦查", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "保持低调观察", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "观察敌情", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "盯住路口", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "切换观察状态", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "开启监视", "intent": {"_tool": "set_doctrine", "alert_state": "watch"}, "fp": "80ed1b4517a9"}
+{"nl": "拆掉他家的工厂", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "把对面重工端了", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "先切他经济拆厂", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "干他兵营旁边的工厂", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "直接把他重工推了", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "赶紧拆工厂断他出兵", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "打掉他的主基地旁边的厂", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "去把他工厂扬了", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "他家工厂必须优先干掉", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "拆他重工让他出不了坦克", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "先把他的制造建筑全拔了", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "端掉他的生产设施", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "别管别的先拆厂", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "集中火力打他工厂", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "把他工厂轰成渣", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "拆他老家工厂让他断兵", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "快去砸他工厂", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "把他重工拆了再说", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "打掉他工厂压制他发展", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "要赢就先毁他工厂", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "干掉他工厂他就废了", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "死拆他工厂别停", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "把对面厂房推平", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "干他工厂经济就崩了", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "拆他重工断他高级兵", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "工厂一掉他就没后期了", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "别让他发展先拆厂", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "火力全开打他工厂", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "把他所有工厂都拆干净", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "工厂就是命根子快打掉", "intent": {"_tool": "set_doctrine", "objective": "destroy_fact"}, "fp": "3ef8e5933793"}
+{"nl": "保持和平状态", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "先别打，发育", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "切和平", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "和平发育别进攻", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "缩家里种田", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "别惹事，先搞经济", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "全图和平谁都别动手", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "先稳一波", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "别开战，龟缩", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "不打架，先发展", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "和平模式开启", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "先农后战", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "大家别浪，老实发育", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "警戒调成和平", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "别打人，先憋", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "先苟着不搞事", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "和平发育期", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "别主动进攻", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "都呆家里别出去", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "经济优先和平", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "先怂一下", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "别动，让他发展", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "先种田等后期", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "别搞事情和平", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "防守模式不进攻", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "先发育别打架", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "和平养兵先", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "别找茬", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "先别干架", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "和平等机会", "intent": {"_tool": "set_doctrine", "alert_state": "peace"}, "fp": "9e33fae3fe63"}
+{"nl": "别打了", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "撤退", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "收兵", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "停火", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "回来", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "取消进攻", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "别冲了", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "撤回来", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "先停手", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "别上了", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "取消突击", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "收队", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "全军后撤", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "停一下", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "别送", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "撤了", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "取消攻击", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "别打了快撤", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "先回来", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "别莽", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "停战", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "收手", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "撤兵", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "停火撤回", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "别推了", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "取消冲锋", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "撤退回防", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "先别打", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "收队回家", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "停火别浪", "intent": {"_tool": "cancel_assaults"}, "fp": "94fe42c55e97"}
+{"nl": "开自动防御", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动守家搞起", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "开自防别管", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "启动自动炮塔", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "让AI看家", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动防御拉上", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "开自动塔守", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "auto防御开启", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动防设好", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "开防御AI", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动防守模式", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "拉自动防御", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "开自动护家", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动反击启动", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "AI守家模式", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "开自动机枪塔", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动防御搞上", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "设自动防御", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "开启防御自动化", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动塔开起来", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "让基地自动防御", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动防拉满", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "开自动防", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动防御启动", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动防搞起", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "防御AI上线", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动防守走起", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自动炮塔开启", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "自防别停", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}
+{"nl": "开自动防护", "intent": {"_tool": "enable_auto_defense"}, "fp": "a25657a3fa23"}

@@ -77,6 +77,10 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--real", default="data/sft_v1.jsonl")
     ap.add_argument("--synth", default="data/sft_v1_synth.jsonl")
+    ap.add_argument("--boost", default=None,
+                    help="extra synth file for weak classes (optional)")
+    ap.add_argument("--cap-per-intent", type=int, default=None,
+                    help="cap each intent_type to N examples (rebalance)")
     ap.add_argument("--out-train", default="data/sft_train.jsonl")
     ap.add_argument("--out-val", default="data/sft_val.jsonl")
     ap.add_argument("--meta", default="data/sft_meta.json")
@@ -101,6 +105,14 @@ def main() -> int:
         intent = r.get("intent")
         if nl and intent:
             pairs.append((nl.strip(), intent, "synth"))
+    if args.boost:
+        boost = load_jsonl(Path(args.boost))
+        print(f"[load] boost: {len(boost)} pairs from {args.boost}")
+        for r in boost:
+            nl = r.get("nl")
+            intent = r.get("intent")
+            if nl and intent:
+                pairs.append((nl.strip(), intent, "boost"))
     print(f"[load] combined: {len(pairs)} pairs")
 
     # Dedup
@@ -114,9 +126,25 @@ def main() -> int:
         dedup.append((nl, intent, src))
     print(f"[dedup] {len(dedup)} unique pairs (dropped {len(pairs) - len(dedup)})")
 
-    # Shuffle + split
+    # Shuffle (before cap so the cap keeps a random subset)
     random.seed(args.seed)
     random.shuffle(dedup)
+
+    # Cap per intent_type to rebalance (e.g. attack dominance)
+    if args.cap_per_intent:
+        kept: list[tuple[str, dict, str]] = []
+        per: Counter[str] = Counter()
+        for nl, intent, src in dedup:
+            k = intent.get("intent") or intent.get("_tool") or "?"
+            if per[k] >= args.cap_per_intent:
+                continue
+            per[k] += 1
+            kept.append((nl, intent, src))
+        print(f"[cap] {len(dedup)} -> {len(kept)} after cap "
+              f"{args.cap_per_intent}/intent")
+        dedup = kept
+
+    # Split
     n_val = max(20, int(len(dedup) * args.val_frac))
     val_set = dedup[:n_val]
     train_set = dedup[n_val:]

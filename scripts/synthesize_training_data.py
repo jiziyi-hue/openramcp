@@ -367,6 +367,9 @@ def main() -> int:
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--resume", action="store_true",
                     help="skip templates already in output by fingerprint")
+    ap.add_argument("--only", default=None,
+                    help="comma-list of intent/_tool kinds to keep "
+                         "(e.g. set_objective,set_alert_state,retreat)")
     args = ap.parse_args()
 
     api_key = os.environ.get("DEEPSEEK_API_KEY")
@@ -375,6 +378,11 @@ def main() -> int:
         return 2
 
     templates = all_templates()
+    if args.only:
+        keep = {k.strip() for k in args.only.split(",") if k.strip()}
+        templates = [t for t in templates
+                     if (t.get("intent") or t.get("_tool")) in keep]
+        print(f"[INFO] --only {sorted(keep)} -> {len(templates)} templates")
     if args.max_templates:
         templates = templates[: args.max_templates]
     print(f"[INFO] {len(templates)} templates, "
