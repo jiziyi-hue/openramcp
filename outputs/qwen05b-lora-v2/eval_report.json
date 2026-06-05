@@ -1,0 +1,152 @@
+{
+  "n": 183,
+  "parse_rate": 0.994535519125683,
+  "intent_accuracy": 0.6338797814207651,
+  "force_kind_accuracy": 0.6612021857923497,
+  "target_accuracy": 0.22404371584699453,
+  "exact_match": 0.30601092896174864,
+  "intent_accuracy_by_type": {
+    "feint": 0.8333333333333334,
+    "set_objective": 0.5,
+    "retreat": 0.7777777777777778,
+    "attack": 0.7454545454545455,
+    "defend": 0.4583333333333333,
+    "escort": 0.6666666666666666,
+    "contain": 0.45454545454545453,
+    "spawn_squad": 0.0,
+    "set_alert_state": 0.3333333333333333,
+    "set_stance": 0.8666666666666667,
+    "diversion": 0.0,
+    "report": 1.0,
+    "set_doctrine": 0.625,
+    "cancel_assaults": 0.6666666666666666,
+    "regroup": 0.5,
+    "harass": 0.5714285714285714,
+    "patrol": 1.0,
+    "pincer": 1.0,
+    "scout": 0.6
+  },
+  "intent_total_by_type": {
+    "feint": 6,
+    "set_objective": 12,
+    "retreat": 9,
+    "attack": 55,
+    "defend": 24,
+    "escort": 6,
+    "contain": 11,
+    "spawn_squad": 3,
+    "set_alert_state": 9,
+    "set_stance": 15,
+    "diversion": 1,
+    "report": 2,
+    "set_doctrine": 8,
+    "cancel_assaults": 3,
+    "regroup": 4,
+    "harass": 7,
+    "patrol": 1,
+    "pincer": 2,
+    "scout": 5
+  },
+  "errors_sample": [
+    {
+      "nl": "推家先把兵营拆了",
+      "gt": "{\"_tool\":\"set_objective\",\"name\":\"destroy_fact\"}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"stance\":\"Destroy\"}"
+    },
+    {
+      "nl": "回基地补给",
+      "gt": "{\"intent\":\"retreat\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"hp_below\":0.3},\"to\":{\"kind\":\"named\",\"name\":\"self_base\"}}",
+      "pred": "{\"intent\":\"retreat\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"to\":{\"kind\":\"named\",\"name\":\"self_base\"}}"
+    },
+    {
+      "nl": "右翼包抄敌人工厂",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"},\"approach\":\"flank_right\"}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"flank_right\",\"target\":{\"kind\":\"enemy_structure\",\"name\":\"enemy_fact\"},\"engage_radius\":6},\"approach\":\"cautious\"}"
+    },
+    {
+      "nl": "北线蹲坑防守基地",
+      "gt": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":8},\"stance\":\"Defend\"}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"stance\":\"Defend\"}"
+    },
+    {
+      "nl": "北佬家前面挡着",
+      "gt": "{\"intent\":\"escort\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"engage_radius\":6}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"stance\":\"Defend\"}"
+    },
+    {
+      "nl": "北群正面推他老家",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy_structure\"},\"approach\":\"frontal\"}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"},\"approach\":\"frontal\"}"
+    },
+    {
+      "nl": "把家围起来，防御",
+      "gt": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":8},\"stance\":\"Defend\"}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"stance\":\"Defend\"}"
+    },
+    {
+      "nl": "北群设个封锁圈，半径4，主动打",
+      "gt": "{\"intent\":\"contain\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"radius\":4,\"stance\":\"AttackAnything\"}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"stance\":\"AttackAnything\"}"
+    },
+    {
+      "nl": "集中攻击，打进去",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"combat_mobile\":true},\"target\":{\"kind\":\"id\",\"actor_id\":185},\"approach\":\"charge\"}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"stance\":\"AttackAnything\"}"
+    },
+    {
+      "nl": "北面部队守老家",
+      "gt": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":15},\"stance\":\"Defend\"}",
+      "pred": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":8},\"stance\":\"Defend\"}"
+    },
+    {
+      "nl": "右边绕过去全压他家",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"},\"approach\":\"flank_right\"}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"},\"approach\":\"flank_right\"}"
+    },
+    {
+      "nl": "小股部队去他家逛逛。",
+      "gt": "{\"_tool\":\"spawn_squad\",\"squad_type\":\"Harass\"}",
+      "pred": "{\"intent\":\"harass\",\"force\":{\"kind\":\"filter\",\"owner\":\"self\",\"unit_kind\":\"2\"},\"region\":{\"kind\":\"around\",\"center\":\"enemy_base\",\"radius\":6},\"cycle\":true}"
+    },
+    {
+      "nl": "别松懈，敌人可能随时来。",
+      "gt": "{\"_tool\":\"set_alert_state\",\"level\":\"alert\"}",
+      "pred": "{\"intent\":\"threats\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"target\":{\"kind\":\"named\",\"name\":\"enemy_base\"}}"
+    },
+    {
+      "nl": "南队左翼包抄最近的敌人",
+      "gt": "{\"intent\":\"attack\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"target\":{\"kind\":\"named\",\"name\":\"nearest_enemy\"},\"approach\":\"flank_left\"}",
+      "pred": "{\"intent\":\"attack\",\"force\":{\"kind\":\"flank_left\",\"target\":{\"kind\":\"nearest\",\"unit_type\":4}}}"
+    },
+    {
+      "nl": "老家周围清场防守",
+      "gt": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"center\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":12},\"stance\":\"Defend\"}",
+      "pred": "{\"intent\":\"defend\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"region\":{\"kind\":\"around\",\"center\":\"self_base\",\"radius\":8},\"stance\":\"Defend\"}"
+    },
+    {
+      "nl": "全组戒严不许攻击",
+      "gt": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"stance\":\"HoldFire\"}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"all\"},\"stance\":\"Defend\"}"
+    },
+    {
+      "nl": "中间放个饵，左路偷他工厂",
+      "gt": "{\"intent\":\"diversion\",\"feint_force\":{\"kind\":\"group\",\"name\":\"center\"},\"feint_target\":{\"kind\":\"named\",\"name\":\"enemy_base\"},\"raid_force\":{\"kind\":\"filter\",\"harass_capable\":true},\"raid_target\":{\"kind\":\"named\",\"name\":\"enemy_fact\"},\"raid_approach\":\"flank_left\"}",
+      "pred": "{\"intent\":\"harass\",\"force\":{\"kind\":\"filter\",\"harass_capable\":true},\"region\":{\"kind\":\"around\",\"center\":\"enemy_base\",\"radius\":6},\"cycle\":false,\"withdraw_hp_threshold\":0.5}"
+    },
+    {
+      "nl": "南边部队给我压住这片区域",
+      "gt": "{\"intent\":\"contain\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"radius\":4,\"stance\":\"AttackAnything\"}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"stance\":\"Defend\"}"
+    },
+    {
+      "nl": "北佬封锁4格，有敌就开火",
+      "gt": "{\"intent\":\"contain\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"radius\":4,\"stance\":\"AttackAnything\"}",
+      "pred": "{\"intent\":\"set_stance\",\"force\":{\"kind\":\"group\",\"name\":\"north\"},\"stance\":\"AttackAnything\"}"
+    },
+    {
+      "nl": "南面小组以攻击姿态控制半径4范围",
+      "gt": "{\"intent\":\"contain\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"radius\":4,\"stance\":\"AttackAnything\"}",
+      "pred": "{\"intent\":\"contain\",\"force\":{\"kind\":\"group\",\"name\":\"south\"},\"radius\":4}"
+    }
+  ]
+}
