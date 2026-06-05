@@ -1,0 +1,1014 @@
+{"nl": "坦克全去拆他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "集火对面重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "主力打他老家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "快把敌人车厂灭了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "正面突破拆工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "所有战车A工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "用机动部队端他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "拆他丫的工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "战车群冲工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "集中兵力打他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "消灭敌人重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "打掉他工厂让他出不了车", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "坦克海推平他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "全部战斗车辆打工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "机动部队集火重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "别怂拆他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "敌人工厂就是目标", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "战车全上打工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "快上啊拆工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "坦克部队干掉他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "a289887d1955"}
+{"nl": "框住战斗单位A他家基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "所有坦克步兵冲他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "战斗部队全上，推基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "拉满兵力，拆他主城", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "主力压过去，端了基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "坦克群rush他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "能打的都拉过去，拆基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "一波流，直取敌基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "集中火力轰他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "战斗车全部去他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "冲他基地，别留手", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "A过去，干他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "全力进攻，推平基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "速推他家，别拖", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "所有战斗单位，打他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "坦克步兵混合，压老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "快，拉部队拆他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "主力出击，端了他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "框住部队，A他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "全军压上，拆基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "18cc00bb9b34"}
+{"nl": "所有能动的都给我冲他家中心", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "全军出击，推敌方老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "拉上全部战斗单位，淦他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "全单位进攻敌方主基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "一波推平他基地中心", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "所有部队，A他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "能打的全都上去，杀他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "总攻！全单位压他中心", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "全体战斗单位，rush他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "全拉上去，端他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "所有坦克兵都去推他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "全兵出击，拆他家中心", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "全单位扑他主基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "所有能动的，冲他家大本营", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "全队集合，干他基地中心", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "所有移动单位，揍他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "全部战斗车，平推他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "全上，把他基地打穿", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "所有兵车，A他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "全单位冲锋，灭他基地中心", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "enemy_center"}}, "fp": "51b0f3f1dea6"}
+{"nl": "上干最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "所有人给我冲最近那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "打他丫的最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "集火最近的狗", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "怼脸最近的兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "搞最近的那货", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "秒掉最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "兄弟们干最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "全梭哈最近那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "rush最近的基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "揍他最近的单位", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "先把最近的清掉", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "推掉眼前的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "一波带走最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "灭了最近的威胁", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "打最近的那家伙", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "给我锤最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "近点的先收拾掉", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "全压最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "先解决近处的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "f140c2fefaad"}
+{"nl": "打最近的兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "机动部队怼最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "干他，最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "冲最近的杂鱼", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "快上，打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "揍最近的单位", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "拉上能动部队打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "最近的狗，干死", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "攻击最近敌", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "上啊，最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "把能动的全拉去打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "揍最近的兵，别管远的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "切最近的单位", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "frontal推最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "先打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "就近消灭", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "最近的别放过", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "拉机动兵打近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "怼最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "最近的，全部上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_unit"}}, "fp": "f2ba9bc4f1f6"}
+{"nl": "打他最近的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "集火最近的房子", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "先拆最近的兵营", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "推他家最近的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "把最近的建筑干了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "去拆他家门口那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "冲过去打最近的矿厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "最近的建筑物给我端了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "坦克集火最近建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "步兵上，拆最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "集中火力干最近的高科", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "推掉他老家旁边的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "离得最近的那个，拆了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "先清理外围建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "直接A最近的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "打眼睛面前的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "最近的建筑先拔了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "别管兵，打建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "所有机动单位打最近建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "冲，打他家最近的房子", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "14413affd1b8"}
+{"nl": "所有兵打我老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "全军攻击自己基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "用主战兵打家里", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "自攻老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "所有战斗单位攻击本阵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "兵全部回基地开火", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "家里需要火力所有兵打老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "所有机动单位向基地开火", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "攻击自己基地快", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "你搞我让我兵打自己基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "全体冲锋目标是老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "基地内鬼用兵打自己家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "所有部队立即攻击老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "来把家里拆了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "自爆战术所有兵打基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "拉兵攻击基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "全部兵力打自己基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "让兵打自己家这是在干嘛", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "所有战斗单位集火老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "兵都给我打自己基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_base"}}, "fp": "73dfb83151b7"}
+{"nl": "基地中心集合上啊", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "所有兵去老家中心打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "机动单位集火中心", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "把战斗部队拉到基地中间", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "老家中心有情况，全上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "兵全部冲基地中心", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "中心点集火", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "所有能动的兵去老家中心打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "基地中心开火", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "快把兵拉到中心打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "中心位置，全部攻击", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "战斗单位回防中心", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "基地中心集结攻击", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "全拉到老家中心去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "中心打起来，兵全上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "机动部队中心输出", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "老家中心，给我炸", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "所有兵去中心清场", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "从周围往中心打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "基地中心，火力全开", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "self_center"}}, "fp": "c0ce86a17a19"}
+{"nl": "所有人推地图中心", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "中间干他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "主战去中路", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "全队压中", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "都给我冲中心点", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "中路一波", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "集火中间", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "拉到中路打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "主力攻中间", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "中门对狙", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "中间集合进攻", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "全部兵力压中", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "中路开干", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "中心团战", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "往中间推", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "中路一波流", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "中间怼他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "大部队去中路", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "中路rush", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "中间压过去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_center"}}, "fp": "786b48674130"}
+{"nl": "东北角推一波", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "右上角压过去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "把能动的兵全拉右上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "北线冲他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "兄弟们跟我冲东北", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "机动部队全压到右上角", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "NE点给我打掉", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "去东北角拆家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "大部队右上集合", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "北线推进，快", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "清场东北角", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "所有能打的右上角集合", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "东北角端他老巢", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "北线一波流", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "右上角给我平了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "拉兵去NE", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "北群推他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "机动部队怼东北", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "右上角，干他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "东北角开战", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_ne"}}, "fp": "81bee569b9d0"}
+{"nl": "所有能动的兵去左上角", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "西北角给我推过去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "主力冲西北", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "北线进攻快", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "左上角打他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "移动部队去西北角", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "全军出击西北", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "西北角干他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "我的机动部队压过去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "左上角一波流", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "北线推了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "派所有战斗单位去西北", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "西北角给我打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "佬家西北上啊", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "主力集结西北进攻", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "西北方向全上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "所有兵冲左上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "北线frontal推", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "左上角切经济", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "西北角推进", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_nw"}}, "fp": "aebe1f5f7369"}
+{"nl": "全部战斗单位给我压到右下角", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "南角集合，一波推过去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "东南角，兄弟们冲", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "所有能动的都往右下角怼", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "佬家东南，全力进攻", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "南端集合，一波带走", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "右下角，火力全开", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "东南角，给我碾过去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "全员压南边", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "南角决战，上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "地图右下，清场", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "东南方向，全军出击", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "能打的都去南角", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "右下角，拆家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "南端一波，别拖了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "全都往东南角拉", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "南角，干他丫的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "右下角，不留活口", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "东南角，集合冲锋", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "南边，全力输出", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_se"}}, "fp": "be9172043e27"}
+{"nl": "所有能动的兵去西南角干他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "西南角集合进攻", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "佬家，把兵拉到左下角推过去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "南西角打一波", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "主力压左下角", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "搞他左下基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "西南角推平他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "兄弟们冲西南角", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "把我所有坦克拉左下", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "南西角集合，一波带走", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "左下角开战", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "全兵压左下，别留家里", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "西南角给我炸了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "拉部队去左下角拆家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "南西角，冲冲冲", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "左下角集结，准备进攻", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "用所有战斗单位推西南", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "西南角，一波推平", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "全队左下，打他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "南西角，一起上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true}, "target": {"kind": "named", "name": "map_corner_sw"}}, "fp": "e52ecc7ead9d"}
+{"nl": "三坦去拆他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦克给我推掉对面重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "拉三坦去砸他老家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦冲了敌方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦切掉对面那个重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "把三坦拉去拆他兵工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦直接打他基地旁边的工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦过去把工厂端了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦集火敌方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦rush他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦去偷他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦干他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦拆了那个建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦推掉他那个兵营旁边那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦去打他工厂，快", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦去把工厂炸了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦砸他工厂，别让他出兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦冲他工厂，切经济", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦搞他重工，别犹豫", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦去拆他老家那个工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b0d6383b5d30"}
+{"nl": "三坦去冲他家基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "所有三坦给我压到对面老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "用那三坦推北线", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "tnk全拉去端他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "坦克群直接拍他门口", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "三坦往敌人基地走", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "把三坦调过去拆家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "三坦上去干他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "坦克队冲他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "三坦一波推他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "三坦去北面拆基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "用3tnk点掉他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "三坦前压给压力", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "坦克全拉去偷家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "三坦绕后打基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "三坦直接骑脸", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "三坦集结冲基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "把三坦克全送对面基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "三坦清他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "三坦rush他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3983dc696e41"}
+{"nl": "坦克集火最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "tnk给我冲上去打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "坦克先打脸前的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "所有3号坦克干最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "最近的敌人坦克全上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "坦克贴脸揍他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "tnk先切最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "坦克打最近的别怂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "三坦克怼他脸", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "坦克优先打冒头的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "最近的那个坦克猛抽", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "tnk找最近的打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "坦克集火最近的单位", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "最近的敌人3tnk轮他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "坦克别绕直接打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "tnk瞄准最近的全开火", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "坦克先弄掉贴脸的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "最近的敌人坦克一波带走", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "三坦招呼最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "坦克优先集火最近目标", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "3tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "b8224afaee77"}
+{"nl": "所有坦克去拆他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "用坦克推他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "坦克队冲对面基地车厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "拉所有2tnk打他老家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "主战坦克集火敌方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "坦克群拆他建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "让坦克全去砸他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "坦克别停，直接端他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "前线坦克优先打工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "推掉对面重工业区", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "坦克压过去拆他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "用主力坦克拆他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "坦克群rush他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "集中坦克打掉他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "坦克去拆生产建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "所有中坦冲他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "坦克绕后打他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "坦克怼他工厂别让他出兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "主力坦克秒他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "坦克全拉去拆对面重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "546edee63a12"}
+{"nl": "坦克给我去冲他家基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "tnk全拉去推对面老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "所有坦克压上去拆基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "坦克队干他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "tnk集火敌方基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "坦克群rush他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "派坦克拆他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "用坦克怼他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "坦克全部往敌方老家推", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "tnk一波冲基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "坦克去炸对面基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "坦克们推平他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "tnk主力打他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "坦克集合拆基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "所有2tnk去端他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "坦克一波流拆基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "tnk给我冲他老巢", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "坦克集中砸基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "坦克部队推他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "tnk去拆了他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "994543ff5add"}
+{"nl": "所有2tnk给我冲最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "坦克去打最近的敌军", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "tnk集火最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "挑最近的揍", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "最近的那个，坦克给我上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "tnk怼脸", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "坦克打最近的，别管别的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "最近的敌人，2tnk碾压过去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "tnk先干最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "最近的那个交给你了坦克", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "tnk直接干最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "坦克全拉去打最近", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "最近的就地解决", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "tnk，最近的给我打掉", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "坦克优先最近的目标", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "最近的，2tnk上去拍死", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "tnk贴脸输出", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "所有坦克扑最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "最近那个，2tnk集火", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "坦克先咬最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "2tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "69de69dae5f4"}
+{"nl": "坦克去偷他家重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "重坦怼兵工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "坦克冲他老家造兵的地方", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "一坦克队拆敌方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "坦克群推他基地车棚", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "直接拉坦克端他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "重坦打他门口兵营", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "坦克rush他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "用主战坦克砸那个工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "坦克去把他兵厂扬了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "重坦拆家先拆重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "坦克大队冲他家生产建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "坦克切他经济，打工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "坦克队冲他家重工口", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "重坦点掉那个工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "坦克去偷他兵营", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "重坦群直接推他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "坦克拆了他工厂断兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "重坦把他重工碾了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "坦克干他工厂别让他出兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "fd87e3da67e6"}
+{"nl": "一级坦克推他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦冲基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "用1坦拆老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "初始坦克rush他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦压上去拆主矿", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "北线1坦一波捅穿", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦快上，他家空虚", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "所有一级坦克集合推基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦绕后偷家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "直接1坦打基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦换掉他家建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦别蹲了，冲过去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦timing到了，推基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "正面1坦克强拆", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "派1坦去爆他家基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦跟他换家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦rush，别拖", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "用1坦捅他菊花", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦全上，一波带走", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦基地见", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "34ef1e78b698"}
+{"nl": "坦克去咬最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "中坦贴脸揍他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "最近的敌人怼死", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "坦克群找最近的干", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "上中坦打最近的目标", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "就近揍他娘的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "坦克切最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "先清身边的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "坦克别跑远打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "最近的敌人直接碾", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "中坦给最近的一炮", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "坦克抓最近的薄皮", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "就近点掉他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "坦克怼脸不解释", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "最近的先弄死", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "坦克摸近的打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "贴身的敌人优先干", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "中坦就近支援", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "坦克找最近的炸", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "最近的敌人坦克上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "1tnk"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "391fe698e45a"}
+{"nl": "动员兵去拆他家重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "小兵冲对面工厂拆掉", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "压他工厂，动员兵赶紧上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "兵海推他家重工去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "一波动员兵干工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "对面重工，小兵啃掉", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "动员兵rush他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "拆了对面工厂，用兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "集中动员兵打他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "兵群压工厂，快", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "把他家重工端了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "小兵上去拆工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "动员兵全拉去拆重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "冲他家工厂，动员兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "工厂给他掀了，兵上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "动员兵A过去拆重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "兵海撕他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "对面重工，小兵一波", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "拆工厂，动员兵别停", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "动员兵rush掉他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5a5204d5eaf1"}
+{"nl": "步兵全拉去拆他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "小兵冲他家基地，快", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "所有步兵A过去，干基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "步兵rush，推对面老巢", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "把步枪兵拉到敌军老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "动员兵一波，端了他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "步兵队，给我平了敌方基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "上啊，步兵强拆基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "步兵全部进攻敌基，别停", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "小兵拉去对面，打他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "步兵别怂，直接冲基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "所有小兵，rush他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "步兵推家，搞他经济", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "动员兵冲锋，目标老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "步兵去他家，一波带走", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "拉步兵拆基地，速战速决", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "小兵们，压对面基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "步兵队，干他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "所有步兵，进攻敌方base", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "冲啊，步兵打他家基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "04b108fe4f4e"}
+{"nl": "所有e1给我打最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "步兵怼脸最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "动员兵全去揍最近的家伙", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "最近的敌兵给我干他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "e1集火最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "最近的那个兵搞死他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "步兵群推最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "用e1点掉最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "最近的敌人步兵上去咬", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "e1冲最近的目标", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "步兵全去打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "最近的兵给我灭了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "e1赶紧清最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "步兵贴脸揍最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "最近的敌人让e1去收", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "动员兵找最近的干", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "e1咬住最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "步兵集火最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "最近的兵用e1吃掉", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "e1全去打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e1"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "0cbacccc560b"}
+{"nl": "火箭兵去拆他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "e3把对面工厂推了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵打掉他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "用火箭兵冲他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵炸了那个工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "e3去端他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵rush他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵切经济打工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵点掉他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵干他老家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "e3怼他工厂建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵拆他生产厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵去敲工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵抄他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵把工厂犁了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "e3去拆他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵全力攻击工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵推了他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵去扬他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "火箭兵打工厂，快上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f2d089d20815"}
+{"nl": "派辐射兵去冲他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "e3小队压上他家基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "用辐射兵端掉对面主基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "让火焰兵去烧他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "工程师偷他家基地（如果e3是工程师）", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "核弹兵直接推基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "用那些兵拆他家建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "辐射兵冲基地，别怂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "带e3去他家偷一波", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "拉上所有e3抄他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "用那些绿皮兵干他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "e3给我平了对面基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "辐射兵推过去，拆家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "叫工程师rush他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "拿那些兵换他家经济", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "上啊，e3点掉他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "派e3去把他家基地扬了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "所有e3集合，打他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "用工程师偷基地，快", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "辐射兵上去，拆光他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "76f3440bf9bc"}
+{"nl": "火箭兵打最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭仔给我上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵集火最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "RPG兵直接撸最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵先搞最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵打他丫的最近的目标", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵盯住最近的打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵进攻最近的敌", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵冲锋打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵清最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵追着最近的打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵秒最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵先干掉离得最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵优先揍最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵上去怼最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵就近打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵抓最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵给我轰最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵打离你最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "火箭兵把最近的灭了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "e3"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "671c796a825c"}
+{"nl": "炮兵打他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "所有火炮轰对面工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "炮厂切掉敌军重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "火炮队去拆他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "自走炮集火敌方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "远程炮打敌人工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "炮兵群砸掉他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "用炮兵推掉他老家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "炮车打工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "火箭炮车队打工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "他工厂没了，炮轰他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "火炮给我拆了那个建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "远程火力打他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "炮兵压他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "火炮集中打工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "炮兵去炸厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "炮兵干掉敌方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "火炮打他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "炮兵拆他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "炮击敌厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "70c282f46725"}
+{"nl": "火炮群推他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "榴弹炮砸老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "自走炮轰对面基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "炮群洗地打基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "用火炮拆对面老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "远程炮打他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "火炮炸基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "把炮拉过去轰老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "自走炮去推基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "炮火覆盖敌方老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "火炮部队进攻基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "榴弹炮群轰他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "炮击敌方主基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "远程炮砸他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "火炮齐射他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "自走炮推进打基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "炮群压过去拆老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "火炮洗他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "炮火犁地打基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "用大炮轰对方老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "cb93b1b36e2b"}
+{"nl": "炮车集火最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "所有炮给我打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "自走炮自动找最近敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "远程炮轰最近的兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "炮群打最近的单位", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "炮兵自动攻击最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "炮车瞄最近的点掉", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "自走炮就近炸", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "所有炮打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "炮兵集火最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "炮车快打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "远程炮自动找最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "炮队打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "自走炮瞄准最近敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "炮兵优先打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "炮群找最近的喷", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "所有炮自动攻击最近敌", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "远程炮集火最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "炮车打最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "炮兵就近轰", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "arty"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "5eb8dbaf4c68"}
+{"nl": "V2炸他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "火箭车轰他家兵工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "V2集火那个工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "用V2把对面工厂端了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "火箭弹洗他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "V2打掉敌方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "瞄准工厂，V2齐射", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "火箭车拆工厂，快！", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "V2轰他家主基旁边的厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "把敌人工厂炸飞", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "V2火箭车，目标工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "工厂是重点，V2全上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "火箭车给我敲掉那个厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "V2齐射他兵营旁边的工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "炸了那个工厂，V2上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "火箭车打工厂，别打兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "V2别停，轰工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "工厂没了他们造不了兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "V2把对面重工轰掉", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "火箭车优先炸工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "1ca2844aacbd"}
+{"nl": "V2火箭车去抄他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2们给我轰对面基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "用V2火箭车推他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2拉上去炸基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "火箭车打敌方老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2炮击对面老巢", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2一波推他家基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2火箭车集火基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "上V2拆对面老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2轰基地别停", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "火箭车去端了他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2火箭弹洗地基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "用V2犁他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2火箭车压上去炸", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2轰他基地快点", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "火箭车火力覆盖对面老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2打基地我掩护", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2火箭车拆家去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2齐射对面基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "火箭车瞄他家基地轰", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "c5f0d622d893"}
+{"nl": "V2给我轰最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "火箭车打脸最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "V2集火最近的单位", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "搞他最近的兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "火箭车怼他脸", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "V2打最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "最近的敌人给我炸了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "V2瞄准最近的目标", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "火箭车快点射最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "V2怼他最近的坦克", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "火箭车优先打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "V2糊他一脸最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "最近的敌人火箭车全打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "V2先清近点的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "火箭车不要打远的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "V2给我点最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "火箭车秒最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "V2搞最近的威胁", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "火箭车打最近的车", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "V2把脸贴上去打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "v2rl"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "001be0609c88"}
+{"nl": "吉普去拆他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "所有吉普冲对面重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "车集合打敌人兵工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "用吉普把他的重工掀了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "吉普队A掉对方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "把侦察车拉去敲他家建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "吉普rush他重工去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "前线吉普去拆了那个厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "快用吉普把他工厂扬了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "吉普一波推他家生产", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "车全部拉过去点掉重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "吉普偷袭他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "拉吉普去破他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "用吉普把对面工厂端了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "吉普集火他家的重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "车群去rush他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "吉普怼他重工赶紧的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "把吉普调到敌方工厂那", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "所有吉普攻击敌方重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "吉普过去把他厂子干了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "87125f5cb35c"}
+{"nl": "吉普去冲他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普偷老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "用吉普车搞他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普车队上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普骚扰对方老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "开吉普打他主基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普快去偷家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普冲他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "让吉普去搞事", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普车推他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普绕后偷基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普快上，打老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "开吉普直接怼他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普去他家门口搞", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普车小队，攻击主基", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普去掀他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普冲锋，目标老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普给我拆他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普车快冲，打基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普集体偷家去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "4798eb3a92f3"}
+{"nl": "吉普去咬最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "小吉普冲最近那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普车干他最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "用吉普点最近敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普摸一下最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普怼最近的试试", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普切最近的目标", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普上啊打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普偷最近的走", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普骚扰近点敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普撞最近那个去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "最近的敌人吉普上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普车咬最近位置", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普打最近的快", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "小吉普去挠最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普点最近偷一下", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普车干最近的先", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普切最近骚扰", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普摸近点走位", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "吉普冲最近的干", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "jeep"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "34d98eccba70"}
+{"nl": "APC冲他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "运兵车拆他家厂房", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "APC去端掉他兵工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "用APC偷他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "APC撸掉他重工啊", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "运兵车rush他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "快用APC推他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "APC摸他工厂去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "APC怼他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "运兵车砸他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "APC切他经济建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "运兵车上去拆他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "APC把他工厂扬了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "APC突袭敌人工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "运兵车偷他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "APC冲了他老家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "用APC拆他兵营", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "APC去搞他重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "运兵车推他厂房", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "APC莽他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "f0a7349964d3"}
+{"nl": "APC冲他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APC去拆基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "拉APC怼老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APC快上，推对面", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "步兵车端敌方老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APC集体rush他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "派APC抄家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APCar给我上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APC载兵捅基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "所有APC拆他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APC兵车冲基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "拉一队APC去捅", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APC去他家搞事", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APCar们，推敌基", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "用APC快攻他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APC直接冲老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APC rush他基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "派APC去老家拆", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APC部队，目标敌基", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "所有APC给我冲他老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "58f059a4dc96"}
+{"nl": "APC上，打最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "运兵车去怼最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "装甲车干最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "最近的敌人，APC给我揍他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "APC快上，打贴脸的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "用APC rush最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "APC frontal推最近的敌", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "最近的敌人，APC去收拾", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "运兵车直奔最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "最近那个，APC干他", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "APC去搞掉最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "附近那个敌，APC上", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "贴脸敌，APC狠狠打", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "APC给我莽最近的敌人", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "unit_kind": "apc"}, "target": {"kind": "named", "name": "nearest_enemy"}}, "fp": "cef5cb070159"}
+{"nl": "派骚扰部队去他老家搞事", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "拉一队快狗去对面基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "用骚扰兵偷他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "带几个快车去冲他家矿", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "派小分队到他家溜一圈", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "上骚套路，去他家转转", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "调几辆越野车去他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "让游击队去踩他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "快攻他家，用骚扰单位", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "去他家打游击", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "派狼群去撕他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "搞他基地，用快兵", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "拉一票骚扰兵去他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "偷他家，用机动部队", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "派小股部队去他家骚扰", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "快马加鞭冲他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "去他家搞生产", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "用骚扰流打他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "派快速部队去他家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "趁他发展，去他家闹", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_base"}}, "fp": "3fe85277a834"}
+{"nl": "用骚扰兵去冲他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "快车摸掉对面重工", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "小摩托偷他家基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "骚扰队给他工厂扬了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "轻坦去怼他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "飙车党干工厂去", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "派快腿拆他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "骚扰单位拉去他工厂骚一下", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "小车撞他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "快的那堆去拆对面工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "骚扰部队淦他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "快攻他家工厂别让他出车", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "飙车去偷他厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "把他家工厂炸了用骚扰", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "快船去他家工厂搞事", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "轻甲冲他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "骚扰组端他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "快速单位去他家工厂骚扰", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "遛狗去他家工厂咬一口", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "飙车摸他工厂门", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "5e6585086544"}
+{"nl": "用骚扰兵去摸他最近的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "快派小车拆他家最近的电厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "骚扰单位切最近的那个建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "狗去咬他老家最近的矿厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "摩托车速攻他最近的房子", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "轻装快速兵偷他最近的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "派骚扰兵打他老家最近的那个", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "用快速单位骚扰他最近的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "去炸他最近的建筑，用轻甲", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "小车快去摸他最近的矿场", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "骚扰队干他最近的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "派兵拆他最近的电厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "用狗偷他最近的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "切他经济，骚扰兵打最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "快速兵去摸他老家最近的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "用轻装去戳他最近的房子", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "骚扰兵上，目标最近建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "派摩托车去炸他最近的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "骚扰单位搞掉他最近的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "快用骚扰兵拆他最近的建筑", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "harass_capable": true}, "target": {"kind": "named", "name": "nearest_enemy_structure"}}, "fp": "adda4df14243"}
+{"nl": "飙车拆对面工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "快车冲他老家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "最快的兵去端他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "用高速单位掀他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "机动部队直取敌方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "速度快的去砍他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "快攻他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "派最快的车砸他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "快速单位 rush 他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "抢他工厂，用跑得快的", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "最快兵种偷他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "轻车快马拆对面工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "飙过去把工厂打了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "找最快的单位冲他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "速拆对面工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "用快车干他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "快车偷家拆厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "最快的上去把他工厂扬了", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "高速部队奔袭他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "快车 rush 敌方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "fastest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "b88b7e7de407"}
+{"nl": "拿血多的兵去拆他家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "用最好的兵冲对面老家工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "血最厚的单位去搞敌方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "带着满血部队推他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "把高血量战斗单位拉去砸厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "上！主力拆厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "血多的赶紧去端他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "咱家精锐去拆对面建筑厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "满血兵给我怼他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "用最硬的部队打他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "健康单位去拆了那破工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "挑血最多的兵去炸厂房", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "全部战斗单位集火敌方工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "血厚的先上，拆厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "主力战斗部队冲他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "满状态的兵去推他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "用血最满的狗去咬他家厂子", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "好兵去干他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "血多的单位去掀他老巢工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "拿健康战斗兵去拆他工厂", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "combat_mobile": true, "prefer": "healthiest"}, "target": {"kind": "named", "name": "enemy_fact"}}, "fp": "898b21dffee7"}
+{"nl": "残血部队给我A老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残兵自爆基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血送死打主家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血自残老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血拆家快", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血兵打自己基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残雪自爆流", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血送人头到老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血上啊，拆老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血自毁基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血A自己家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血爆老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血打主基地", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血自残，目标老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血兵自拆", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血冲基地送", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血拆家流", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血自爆战术", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血兵拆老家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "残血送家", "intent": {"intent": "attack", "force": {"kind": "filter", "owner": "self", "hp_below": 0.3}, "target": {"kind": "named", "name": "self_base"}}, "fp": "2c6f1857319f"}
+{"nl": "报下战场情况", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "现在什么局势", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "前线啥样了", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "看看地图上的动向", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "报告一下战况", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "对面有啥动静", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "给个战场简报", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "侦察一下现在", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "说说目前形势", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "查查战斗情况", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "战场咋样了", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "报个点给我", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "现在啥情况", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "看看敌人在哪", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "通报一下前线", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "来点战场情报", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "战况如何了", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "汇报当前局势", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "看看有什么变化", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "给我战场报告", "intent": {"intent": "report", "what": "battlefield"}, "fp": "fa42a0a43fe9"}
+{"nl": "敌人来了！", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "报一下敌方兵力", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "看到敌军了", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "对面啥兵啊？", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "敌人老家在哪？", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "侦测到敌方单位", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "敌人主力位置？", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "有敌人！小心", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "敌人数量多少？", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "敌人从哪边来的？", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "报一下敌人坦克", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "发现敌人建筑", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "敌方是什么阵容？", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "敌人正在扩张", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "敌人大部队移动", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "帮我看看敌人基地", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "敌人动向如何？", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "看到敌人分矿了", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "敌人切经济了？", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "报告敌人动向", "intent": {"intent": "report", "what": "enemy"}, "fp": "b491c737685f"}
+{"nl": "报一下威胁", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "敌人什么部队？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "哪里来兵了？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "有威胁没？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "看看敌人动向", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "对面在干嘛？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "报告敌人兵力", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "有危险吗？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "敌人主力在哪？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "侦查到什么？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "敌人进攻方向？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "有什么威胁？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "报敌人情况", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "敌情如何？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "来了多少兵？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "敌人基地有啥？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "快报告威胁", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "对面有什么？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "敌人动向如何？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "侦查报告呢？", "intent": {"intent": "report", "what": "threats"}, "fp": "3d0fed57070f"}
+{"nl": "看小地图", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图啥情况", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "瞅一眼小地图", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图有红点", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图动静大", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "开小地图看看", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图上有人", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "报下小地图", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图全是敌方", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图有亮点", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "看小地图血条", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图闪了", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图哪里飘红", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图有埋伏", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "注意小地图", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图空荡荡", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图不对劲", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图上黄点", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图圈一下", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "小地图报个点", "intent": {"intent": "report", "what": "minimap"}, "fp": "f8e7b4ea6508"}
+{"nl": "资源咋样", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "报下钱数", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "矿有多少", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "看看经济", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "说下资源", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "钱够不够", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "报资源情况", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "经济报告", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "矿场情况", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "资源多少了", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "数下钱", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "查查经济", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "报告矿量", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "快说资源", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "资金状况", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "看看存款", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "矿还够不", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "经济咋样", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "报个经济", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}
+{"nl": "资源点", "intent": {"intent": "report", "what": "resources"}, "fp": "d9b43beaf8f6"}

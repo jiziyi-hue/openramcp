@@ -1,34 +1,14 @@
 {
-  "total_pairs": 2431,
-  "train_size": 2188,
-  "val_size": 243,
+  "total_pairs": 1004,
+  "train_size": 904,
+  "val_size": 100,
   "by_source": {
-    "synth": 1356,
-    "boost": 1040,
-    "real": 35
+    "synth": 1004
   },
   "by_intent": {
-    "attack": 300,
-    "defend": 300,
-    "set_doctrine": 240,
-    "retreat": 238,
-    "set_objective": 202,
-    "set_alert_state": 201,
-    "set_stance": 161,
-    "contain": 121,
-    "report": 93,
-    "scout": 91,
-    "feint": 80,
-    "harass": 66,
-    "spawn_squad": 60,
-    "pincer": 60,
-    "regroup": 46,
-    "enable_auto_defense": 40,
-    "cancel_assaults": 38,
-    "patrol": 32,
-    "escort": 31,
-    "diversion": 31
+    "attack": 904,
+    "report": 100
   },
-  "system_prompt_chars": 612,
+  "system_prompt_chars": 715,
   "seed": 42
 }
