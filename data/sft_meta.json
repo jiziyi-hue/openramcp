@@ -1,20 +1,20 @@
 {
-  "total_pairs": 1839,
-  "train_size": 1656,
-  "val_size": 183,
+  "total_pairs": 2431,
+  "train_size": 2188,
+  "val_size": 243,
   "by_source": {
-    "synth": 1099,
-    "boost": 708,
-    "real": 32
+    "synth": 1356,
+    "boost": 1040,
+    "real": 35
   },
   "by_intent": {
-    "set_objective": 150,
-    "retreat": 150,
-    "attack": 150,
-    "defend": 150,
-    "set_alert_state": 150,
-    "set_stance": 150,
-    "set_doctrine": 150,
+    "attack": 300,
+    "defend": 300,
+    "set_doctrine": 240,
+    "retreat": 238,
+    "set_objective": 202,
+    "set_alert_state": 201,
+    "set_stance": 161,
     "contain": 121,
     "report": 93,
     "scout": 91,
