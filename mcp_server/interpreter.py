@@ -201,6 +201,60 @@ class WorldView:
         id_set = set(ids)
         return self._centroid([u for u in self.self_units if u["id"] in id_set])
 
+    # --- Route / escortee (for patrol / escort) ------------------------
+    def resolve_route(self, route: str) -> List[Tuple[int, int]]:
+        """Turn a named patrol route into a list of waypoints from map_size.
+        LLM gives a route name; interpreter computes the cells."""
+        w, h = self.map_size
+        if w <= 0 or h <= 0:
+            return []
+        mx, my = int(w * 0.15), int(h * 0.15)
+        cx, cy = w // 2, h // 2
+        if route == "base_perimeter":
+            base = self._resolve_named("self_base")[1] or (cx, cy)
+            bx, by = base
+            r = max(6, min(w, h) // 6)
+            return [(bx + r, by), (bx, by + r), (bx - r, by), (bx, by - r)]
+        if route == "front_line":
+            s = self._centroid(self.self_units) or (cx, cy)
+            e = self._centroid(self.enemy_units) or (cx, cy)
+            midx, midy = (s[0] + e[0]) // 2, (s[1] + e[1]) // 2
+            return [(midx, my), (midx, h - my)]
+        if route == "center_loop":
+            r = max(6, min(w, h) // 5)
+            return [(cx + r, cy), (cx, cy + r), (cx - r, cy), (cx, cy - r)]
+        if route == "east_lane":
+            return [(w - mx, my), (w - mx, h - my)]
+        if route == "west_lane":
+            return [(mx, my), (mx, h - my)]
+        if route == "north_lane":
+            return [(mx, my), (w - mx, my)]
+        if route == "south_lane":
+            return [(mx, h - my), (w - mx, h - my)]
+        return [(cx, cy)]
+
+    def resolve_escortee(self, name: str) -> Optional[int]:
+        """Resolve a named friendly unit to an actor id from live state."""
+        def first(kinds):
+            for u in self.self_units:
+                if (u.get("kind") or "").lower() in kinds:
+                    return u["id"]
+            return None
+        if name == "mcv":
+            return first({"mcv"})
+        if name == "harvester":
+            return first({"harv"})
+        if name == "nearest_vehicle":
+            for u in self.self_units:
+                k = (u.get("kind") or "").lower()
+                if k not in _BUILDING_KINDS and k not in (
+                        "e1", "e2", "e3", "e4", "e6", "medi", "mech"):
+                    return u["id"]
+            return None
+        if name == "nearest_infantry":
+            return first({"e1", "e2", "e3", "e4", "e6"})
+        return None
+
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -217,13 +271,22 @@ def _err(narrative: str, actions: list, error: str) -> dict:
 
 
 def _dispatch_squad(transport, squad_type: str, force_ids: List[int],
-                    target_pos: Optional[Tuple[int, int]] = None) -> dict:
+                    target_pos: Optional[Tuple[int, int]] = None,
+                    waypoints: Optional[List[Tuple[int, int]]] = None,
+                    escortee_actor_id: Optional[int] = None,
+                    rally_point: Optional[Tuple[int, int]] = None) -> dict:
     """Forward to engine spawn_squad via transport."""
     payload: dict = {"type": "spawn_squad", "squad_type": squad_type}
     if force_ids:
         payload["unit_ids"] = [int(i) for i in force_ids]
     if target_pos is not None:
         payload["target_pos"] = {"x": int(target_pos[0]), "y": int(target_pos[1])}
+    if waypoints:
+        payload["waypoints"] = [{"x": int(x), "y": int(y)} for x, y in waypoints]
+    if escortee_actor_id is not None:
+        payload["escortee_actor_id"] = int(escortee_actor_id)
+    if rally_point is not None:
+        payload["rally_point"] = {"x": int(rally_point[0]), "y": int(rally_point[1])}
     return transport.send_command(payload)
 
 
@@ -246,6 +309,16 @@ def interpret(intent_payload: dict, transport) -> dict:
         return _do_report(intent, wv, transport)
     if intent.intent == "raw":
         return _do_raw(intent, wv, transport)
+    if intent.intent == "defend":
+        return _do_defend(intent, wv, transport)
+    if intent.intent == "harass":
+        return _do_harass(intent, wv, transport)
+    if intent.intent == "scout":
+        return _do_scout(intent, wv, transport)
+    if intent.intent == "patrol":
+        return _do_patrol(intent, wv, transport)
+    if intent.intent == "escort":
+        return _do_escort(intent, wv, transport)
     return {"ok": False, "error": f"unhandled intent: {intent.intent}",
             "actions_taken": [], "narrative": ""}
 
@@ -294,6 +367,61 @@ def _do_attack(intent: D.IntentAttack, wv: WorldView, transport) -> dict:
         f"[squad #{resp.get('squad_index')}]",
         actions, squad_index=resp.get("squad_index"),
     )
+
+
+def _squad_intent(squad_type: str, intent, wv: WorldView, transport,
+                  target_pos=None, waypoints=None, escortee=None) -> dict:
+    """Shared body for the coordless squad intents."""
+    actions: List[dict] = []
+    ids = wv.resolve_force(intent.force)
+    if not ids:
+        return _err("force empty", actions, "force_resolution_empty")
+    resp = _dispatch_squad(transport, squad_type, ids, target_pos=target_pos,
+                           waypoints=waypoints, escortee_actor_id=escortee)
+    actions.append({"cmd": {"type": "spawn_squad", "squad_type": squad_type},
+                    "resp": resp})
+    if not resp.get("ok"):
+        return _err(f"squad spawn failed: {resp.get('error')}", actions,
+                    "squad_register_failed")
+    dest = target_pos or (waypoints[0] if waypoints else escortee)
+    return _ok(
+        f"{intent.intent} {resp.get('unit_count')} unit(s) → {dest} "
+        f"[{squad_type} squad #{resp.get('squad_index')}]",
+        actions, squad_index=resp.get("squad_index"),
+    )
+
+
+def _do_defend(intent: D.IntentDefend, wv: WorldView, transport) -> dict:
+    _tid, tpos = wv.resolve_target(intent.where)
+    if tpos is None:
+        return _err("place unresolved", [], "target_resolution_failed")
+    return _squad_intent("Protection", intent, wv, transport, target_pos=tpos)
+
+
+def _do_harass(intent: D.IntentHarass, wv: WorldView, transport) -> dict:
+    _tid, tpos = wv.resolve_target(intent.target)
+    return _squad_intent("Harass", intent, wv, transport, target_pos=tpos)
+
+
+def _do_scout(intent: D.IntentScout, wv: WorldView, transport) -> dict:
+    _tid, tpos = wv.resolve_target(intent.where)
+    if tpos is None:
+        return _err("place unresolved", [], "target_resolution_failed")
+    return _squad_intent("Explore", intent, wv, transport, target_pos=tpos)
+
+
+def _do_patrol(intent: D.IntentPatrol, wv: WorldView, transport) -> dict:
+    wps = wv.resolve_route(intent.route)
+    if not wps:
+        return _err("route unresolved", [], "route_resolution_failed")
+    return _squad_intent("Patrol", intent, wv, transport, waypoints=wps)
+
+
+def _do_escort(intent: D.IntentEscort, wv: WorldView, transport) -> dict:
+    aid = wv.resolve_escortee(intent.escortee)
+    if aid is None:
+        return _err(f"no {intent.escortee} to escort", [], "escortee_not_found")
+    return _squad_intent("Escort", intent, wv, transport, escortee=aid)
 
 
 def _do_report(intent: D.IntentReport, wv: WorldView, transport) -> dict:

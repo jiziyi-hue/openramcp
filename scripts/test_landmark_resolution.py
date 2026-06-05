@@ -29,6 +29,7 @@ FAKE_STATE = {
             {"id": 188, "kind": "3tnk", "pos": {"x": 32, "y": 72}, "hp_pct": 0.9},
             {"id": 189, "kind": "harv", "pos": {"x": 28, "y": 68}, "hp_pct": 1.0},
             {"id": 190, "kind": "fact", "pos": {"x": 25, "y": 75}, "hp_pct": 1.0},
+            {"id": 191, "kind": "mcv",  "pos": {"x": 26, "y": 74}, "hp_pct": 1.0},
         ],
         "enemy_units": [
             {"id": 500, "kind": "fact", "pos": {"x": 62, "y": 20}, "hp_pct": 1.0},
@@ -120,6 +121,55 @@ def main() -> int:
     all_ok = all_ok and filter_ok
     print(f"  [{'PASS' if filter_ok else 'FAIL'}] combat_mobile filter      "
           f"expect [188,187] got {ids} (harv/fact excluded)")
+
+    # --- coordless squad intents (defend/harass/scout/patrol/escort) ---
+    print("-" * 64)
+    print("Coordless squad intents -> spawn_squad (interpreter resolves):")
+
+    def run_squad(payload, squad_type, check):
+        mock = MockTransport()
+        resp = I.interpret(payload, mock)
+        if not resp.get("ok") or not mock.spawned:
+            return False, f"failed: {resp.get('error')}"
+        sq = mock.spawned[0]
+        if sq.get("squad_type") != squad_type:
+            return False, f"squad_type {sq.get('squad_type')} != {squad_type}"
+        return check(sq), str({k: sq.get(k) for k in
+                               ("target_pos", "waypoints", "escortee_actor_id")
+                               if sq.get(k) is not None})
+
+    F = {"kind": "filter", "owner": "self", "combat_mobile": True}
+    squad_cases = [
+        ("defend self_base", {"intent": "defend", "force": F,
+            "where": {"kind": "named", "name": "self_base"}}, "Protection",
+            lambda s: s.get("target_pos") == {"x": 25, "y": 75}),
+        ("defend map_center", {"intent": "defend", "force": F,
+            "where": {"kind": "named", "name": "map_center"}}, "Protection",
+            lambda s: s.get("target_pos") == {"x": 42, "y": 46}),
+        ("harass enemy_base", {"intent": "harass", "force": F,
+            "target": {"kind": "named", "name": "enemy_base"}}, "Harass",
+            lambda s: s.get("target_pos") == {"x": 64, "y": 22}),
+        ("scout enemy_base", {"intent": "scout", "force": F,
+            "where": {"kind": "named", "name": "enemy_base"}}, "Explore",
+            lambda s: s.get("target_pos") == {"x": 64, "y": 22}),
+        ("patrol east_lane", {"intent": "patrol", "force": F,
+            "route": "east_lane"}, "Patrol",
+            lambda s: bool(s.get("waypoints")) and s["waypoints"][0]["x"] > 60),
+        ("patrol base_perimeter", {"intent": "patrol", "force": F,
+            "route": "base_perimeter"}, "Patrol",
+            lambda s: len(s.get("waypoints", [])) == 4),
+        ("escort mcv", {"intent": "escort", "force": F,
+            "escortee": "mcv"}, "Escort",
+            lambda s: s.get("escortee_actor_id") == 191),
+        ("escort harvester", {"intent": "escort", "force": F,
+            "escortee": "harvester"}, "Escort",
+            lambda s: s.get("escortee_actor_id") == 189),
+    ]
+    for name, payload, st, check in squad_cases:
+        ok, detail = run_squad(payload, st, check)
+        if not ok:
+            all_ok = False
+        print(f"  [{'PASS' if ok else 'FAIL'}] {name:22s} {detail}")
 
     print("=" * 64)
     print("RESULT:", "ALL PASS" if all_ok else "SOME FAILED")

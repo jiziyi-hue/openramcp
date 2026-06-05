@@ -122,7 +122,64 @@ class IntentRaw(BaseModel):
     atomic_calls: list[dict]
 
 
-Intent = Union[IntentAttack, IntentReport, IntentRaw]
+# --- Coordless squad intents -------------------------------------------------
+# Each routes to a spawn_squad squad_type; the interpreter resolves the named
+# field into the coordinates / waypoints / escortee actor that spawn_squad
+# needs. The LLM never produces a coordinate.
+
+PatrolRoute = Literal[
+    "base_perimeter",   # loop around own base
+    "front_line",       # loop between own and enemy centre
+    "east_lane", "west_lane", "north_lane", "south_lane",  # edge lanes
+    "center_loop",      # loop around map centre
+]
+
+Escortee = Literal[
+    "mcv",              # the MCV
+    "harvester",        # nearest own harvester
+    "nearest_vehicle",  # nearest own vehicle
+    "nearest_infantry", # nearest own infantry
+]
+
+
+class IntentDefend(BaseModel):
+    """Spawn a Protection squad holding a named place."""
+    intent: Literal["defend"] = "defend"
+    force: Force
+    where: TargetByName = TargetByName(name="self_base")
+
+
+class IntentHarass(BaseModel):
+    """Spawn a Harass squad against the enemy economy area."""
+    intent: Literal["harass"] = "harass"
+    force: Force
+    target: TargetByName = TargetByName(name="enemy_base")
+
+
+class IntentScout(BaseModel):
+    """Spawn an Explore squad seeded at a named place."""
+    intent: Literal["scout"] = "scout"
+    force: Force
+    where: TargetByName = TargetByName(name="enemy_base")
+
+
+class IntentPatrol(BaseModel):
+    """Spawn a Patrol squad over a named route (interpreter makes waypoints)."""
+    intent: Literal["patrol"] = "patrol"
+    force: Force
+    route: PatrolRoute = "base_perimeter"
+
+
+class IntentEscort(BaseModel):
+    """Spawn an Escort squad shadowing a named friendly unit."""
+    intent: Literal["escort"] = "escort"
+    force: Force
+    escortee: Escortee = "mcv"
+
+
+Intent = Union[IntentAttack, IntentReport, IntentRaw,
+               IntentDefend, IntentHarass, IntentScout,
+               IntentPatrol, IntentEscort]
 IntentUnion = Intent
 
 
@@ -133,6 +190,11 @@ def parse_intent(payload: dict) -> Intent:
         "attack": IntentAttack,
         "report": IntentReport,
         "raw": IntentRaw,
+        "defend": IntentDefend,
+        "harass": IntentHarass,
+        "scout": IntentScout,
+        "patrol": IntentPatrol,
+        "escort": IntentEscort,
     }
     if typ not in mapping:
         raise ValueError(f"unknown intent type: {typ!r}. valid: {sorted(mapping.keys())}")
