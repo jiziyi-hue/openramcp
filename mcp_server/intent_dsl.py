@@ -44,6 +44,13 @@ NamedTarget = Literal[
     "nearest_enemy",
     "nearest_enemy_unit",
     "nearest_enemy_structure",
+    # Map landmarks — resolved from map_size so the LLM can say "go to the
+    # centre / a corner" without ever computing coordinates.
+    "map_center",
+    "map_corner_ne",
+    "map_corner_nw",
+    "map_corner_se",
+    "map_corner_sw",
 ]
 
 

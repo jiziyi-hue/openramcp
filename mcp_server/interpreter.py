@@ -166,7 +166,27 @@ class WorldView:
             return (None, self._centroid(self.enemy_units))
         if name in ("nearest_enemy", "nearest_enemy_unit", "nearest_enemy_structure"):
             return (None, None)
+        if name.startswith("map_"):
+            return (None, self._resolve_landmark(name))
         raise ValueError(f"unknown named target: {name!r}")
+
+    def _resolve_landmark(self, name: str) -> Optional[Tuple[int, int]]:
+        """Resolve a map landmark to a cell using map_size + a 15% inset so
+        squads march toward a reachable cell, not the literal map edge."""
+        w, h = self.map_size
+        if w <= 0 or h <= 0:
+            return None
+        mx, my = w * 0.15, h * 0.15  # inset from the edges
+        # OpenRA: origin top-left, x grows east (right), y grows south (down).
+        coords = {
+            "map_center":    (w // 2,       h // 2),
+            "map_corner_nw": (mx,           my),
+            "map_corner_ne": (w - mx,       my),
+            "map_corner_sw": (mx,           h - my),
+            "map_corner_se": (w - mx,       h - my),
+        }
+        c = coords.get(name)
+        return (int(c[0]), int(c[1])) if c else None
 
     def _centroid(self, units: list) -> Optional[Tuple[int, int]]:
         if not units:
