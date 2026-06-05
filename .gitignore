@@ -68,3 +68,5 @@ papers/openra_mcp_zenodo_core.zip
 outputs/**/*.safetensors
 outputs/**/tokenizer.json
 outputs/**/*.zip
+outputs/**/adapter_model.safetensors
+outputs/**/tokenizer.json
