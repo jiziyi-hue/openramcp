@@ -319,6 +319,77 @@ def _dispatch_squad(transport, squad_type: str, force_ids: List[int],
     return transport.send_command(payload)
 
 
+# Cluster threshold: forces larger than this fan out into sub-squads with
+# jittered targets so they walk in parallel lanes (not single file).
+_CLUSTER_MIN = 10
+_CLUSTER_SIZE = 15           # ~15 units per sub-squad
+_CLUSTER_JITTER = 4          # cells around the named target
+_CLUSTER_STAGGER_MS = 250    # delay between sub-spawns
+
+
+def _dispatch_squad_clustered(transport, squad_type: str,
+                               force_ids: List[int],
+                               target_pos: Tuple[int, int],
+                               wv: "WorldView",
+                               cluster_size: int = _CLUSTER_SIZE,
+                               jitter: int = _CLUSTER_JITTER,
+                               stagger_ms: int = _CLUSTER_STAGGER_MS) -> dict:
+    """Spawn N sub-squads with positionally-clustered units and jittered
+    targets on an orbit around target_pos. Avoids the single-file pathing
+    that happens when many units share one target cell. Mirrors
+    server.spawn_squad_cluster, but inlined so the interpreter doesn't have
+    to call back into the @mcp.tool layer."""
+    import math
+    import time as _time
+
+    pos_map = {u["id"]: (u["pos"]["x"], u["pos"]["y"])
+               for u in wv.self_units}
+    located = [(uid, pos_map[uid]) for uid in force_ids if uid in pos_map]
+    if not located:
+        return {"ok": False, "error": "none of force_ids located"}
+
+    n = len(located)
+    k = max(1, math.ceil(n / max(1, int(cluster_size))))
+
+    xs = [p[1][0] for p in located]
+    ys = [p[1][1] for p in located]
+    if (max(xs) - min(xs)) >= (max(ys) - min(ys)):
+        located.sort(key=lambda p: p[1][0])
+    else:
+        located.sort(key=lambda p: p[1][1])
+
+    per = math.ceil(n / k)
+    chunks = [[p[0] for p in located[i * per:(i + 1) * per]]
+              for i in range(k)]
+    chunks = [c for c in chunks if c]
+
+    tx, ty = int(target_pos[0]), int(target_pos[1])
+    spawned: List[dict] = []
+    for i, chunk in enumerate(chunks):
+        angle = (2 * math.pi * i) / max(1, len(chunks))
+        ox = int(round(jitter * math.cos(angle)))
+        oy = int(round(jitter * math.sin(angle)))
+        sub_target = (tx + ox, ty + oy)
+        resp = _dispatch_squad(transport, squad_type, chunk,
+                               target_pos=sub_target)
+        spawned.append({
+            "squad_index": resp.get("squad_index"),
+            "unit_count": resp.get("unit_count"),
+            "target_pos": {"x": sub_target[0], "y": sub_target[1]},
+            "ok": resp.get("ok"),
+        })
+        if i < len(chunks) - 1 and stagger_ms > 0:
+            _time.sleep(stagger_ms / 1000.0)
+
+    return {
+        "ok": all(s["ok"] for s in spawned),
+        "squad_index": spawned[0]["squad_index"] if spawned else None,
+        "unit_count": sum(s["unit_count"] or 0 for s in spawned),
+        "cluster_count": len(chunks),
+        "spawned": spawned,
+    }
+
+
 def _cancel_squads_containing(ids: List[int], transport) -> List[int]:
     """Cancel every existing squad that contains ANY of these unit ids.
 
@@ -427,8 +498,15 @@ def _do_attack(intent: D.IntentAttack, wv: WorldView, transport) -> dict:
     cancelled = _cancel_squads_containing(ids, transport)
     if cancelled:
         actions.append({"cmd": {"type": "auto_cancel"}, "resp": {"ok": True, "cancelled": cancelled}})
-    resp = _dispatch_squad(transport, squad_type, ids, target_pos=tpos)
-    actions.append({"cmd": {"type": "spawn_squad", "squad_type": squad_type}, "resp": resp})
+    # Big forces fan out into sub-squads with jittered targets so they walk
+    # in parallel lanes (avoids single-file pathing).
+    if tpos is not None and len(ids) > _CLUSTER_MIN and squad_type == "Assault":
+        resp = _dispatch_squad_clustered(transport, squad_type, ids, tpos, wv)
+        actions.append({"cmd": {"type": "spawn_squad_cluster",
+                                 "squad_type": squad_type}, "resp": resp})
+    else:
+        resp = _dispatch_squad(transport, squad_type, ids, target_pos=tpos)
+        actions.append({"cmd": {"type": "spawn_squad", "squad_type": squad_type}, "resp": resp})
     if not resp.get("ok"):
         return _err(f"squad spawn failed: {resp.get('error')}", actions,
                     "squad_register_failed")
@@ -450,8 +528,15 @@ def _squad_intent(squad_type: str, intent, wv: WorldView, transport,
     cancelled = _cancel_squads_containing(ids, transport)
     if cancelled:
         actions.append({"cmd": {"type": "auto_cancel"}, "resp": {"ok": True, "cancelled": cancelled}})
-    resp = _dispatch_squad(transport, squad_type, ids, target_pos=target_pos,
-                           waypoints=waypoints, escortee_actor_id=escortee)
+    # Cluster for big positional pushes (defend/harass/scout) — same single-
+    # file fix. Skip for Patrol/Escort which use waypoints/escortee.
+    if (target_pos is not None and waypoints is None and escortee is None
+            and len(ids) > _CLUSTER_MIN):
+        resp = _dispatch_squad_clustered(transport, squad_type, ids,
+                                          target_pos, wv)
+    else:
+        resp = _dispatch_squad(transport, squad_type, ids, target_pos=target_pos,
+                               waypoints=waypoints, escortee_actor_id=escortee)
     actions.append({"cmd": {"type": "spawn_squad", "squad_type": squad_type},
                     "resp": resp})
     if not resp.get("ok"):
@@ -518,9 +603,15 @@ def _do_pincer(intent: D.IntentPincer, wv: WorldView, transport) -> dict:
     cancelled = _cancel_squads_containing(ids, transport)
     if cancelled:
         actions.append({"cmd": {"type": "auto_cancel"}, "resp": {"ok": True, "cancelled": cancelled}})
-    r1 = _dispatch_squad(transport, "Assault", left_ids, target_pos=lpos)
+    # Each prong: cluster if big enough (parallel-lane walk, not single file)
+    def _send(squad_ids, pos):
+        if len(squad_ids) > _CLUSTER_MIN:
+            return _dispatch_squad_clustered(transport, "Assault",
+                                              squad_ids, pos, wv)
+        return _dispatch_squad(transport, "Assault", squad_ids, target_pos=pos)
+    r1 = _send(left_ids, lpos)
     actions.append({"cmd": {"squad": "Assault", "prong": "left"}, "resp": r1})
-    r2 = _dispatch_squad(transport, "Assault", right_ids, target_pos=rpos)
+    r2 = _send(right_ids, rpos)
     actions.append({"cmd": {"squad": "Assault", "prong": "right"}, "resp": r2})
     if not (r1.get("ok") and r2.get("ok")):
         return _err("pincer squad spawn failed", actions, "squad_register_failed")
