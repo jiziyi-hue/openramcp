@@ -319,6 +319,38 @@ def _dispatch_squad(transport, squad_type: str, force_ids: List[int],
     return transport.send_command(payload)
 
 
+def _cancel_squads_containing(ids: List[int], transport) -> List[int]:
+    """Cancel every existing squad that contains ANY of these unit ids.
+
+    Why: lets the player chain "send force to A" -> "send force to B".
+    Without this, the old squad's FSM keeps issuing 'move to A' orders that
+    fight the new 'move to B' — units jitter. Cancel old squads first so the
+    new spawn has a clean slate.
+
+    Cancels from highest squad_index down so the indices below don't shift
+    mid-loop (engine's RemoveAt re-indexes).
+    """
+    if not ids:
+        return []
+    resp = transport.send_command({"type": "list_squads"})
+    if not resp.get("ok"):
+        return []
+    needle = set(ids)
+    matched = []
+    for sq in resp.get("squads", []) or []:
+        sq_ids = set(sq.get("unit_ids") or [])
+        if sq_ids & needle:
+            matched.append(int(sq.get("squad_index", -1)))
+    cancelled = []
+    for idx in sorted(matched, reverse=True):
+        if idx < 0:
+            continue
+        r = transport.send_command({"type": "cancel_squad", "squad_index": idx})
+        if r.get("ok"):
+            cancelled.append(idx)
+    return cancelled
+
+
 # ---------------------------------------------------------------------------
 # Dispatch
 # ---------------------------------------------------------------------------
@@ -390,6 +422,11 @@ def _do_attack(intent: D.IntentAttack, wv: WorldView, transport) -> dict:
 
     # aircraft -> Air squad FSM (airfield/rearm), ground -> Assault
     squad_type = "Air" if _force_is_air(intent.force) else "Assault"
+    # Re-direct support: cancel any old squad still holding these units so
+    # the new order isn't fought by leftover FSM. Enables "去 A → 去 B".
+    cancelled = _cancel_squads_containing(ids, transport)
+    if cancelled:
+        actions.append({"cmd": {"type": "auto_cancel"}, "resp": {"ok": True, "cancelled": cancelled}})
     resp = _dispatch_squad(transport, squad_type, ids, target_pos=tpos)
     actions.append({"cmd": {"type": "spawn_squad", "squad_type": squad_type}, "resp": resp})
     if not resp.get("ok"):
@@ -409,6 +446,10 @@ def _squad_intent(squad_type: str, intent, wv: WorldView, transport,
     ids = wv.resolve_force(intent.force)
     if not ids:
         return _err("force empty", actions, "force_resolution_empty")
+    # Re-direct support — see _do_attack for rationale.
+    cancelled = _cancel_squads_containing(ids, transport)
+    if cancelled:
+        actions.append({"cmd": {"type": "auto_cancel"}, "resp": {"ok": True, "cancelled": cancelled}})
     resp = _dispatch_squad(transport, squad_type, ids, target_pos=target_pos,
                            waypoints=waypoints, escortee_actor_id=escortee)
     actions.append({"cmd": {"type": "spawn_squad", "squad_type": squad_type},
@@ -473,6 +514,10 @@ def _do_pincer(intent: D.IntentPincer, wv: WorldView, transport) -> dict:
     _r, rpos = wv.resolve_target(intent.right)
     if lpos is None or rpos is None:
         return _err("pincer target unresolved", actions, "target_resolution_failed")
+    # Re-direct support — cancel any old squad holding these units first.
+    cancelled = _cancel_squads_containing(ids, transport)
+    if cancelled:
+        actions.append({"cmd": {"type": "auto_cancel"}, "resp": {"ok": True, "cancelled": cancelled}})
     r1 = _dispatch_squad(transport, "Assault", left_ids, target_pos=lpos)
     actions.append({"cmd": {"squad": "Assault", "prong": "left"}, "resp": r1})
     r2 = _dispatch_squad(transport, "Assault", right_ids, target_pos=rpos)

@@ -41,10 +41,15 @@ FAKE_STATE = {
 
 
 class MockTransport:
-    """Stands in for the TCP bridge — no game required."""
+    """Stands in for the TCP bridge — no game required.
+
+    Tracks squads so we can verify list_squads / cancel_squad / auto-cancel.
+    """
 
     def __init__(self):
-        self.spawned: list[dict] = []
+        self.spawned: list[dict] = []   # legacy: every spawn_squad payload
+        self.live_squads: list[dict] = []  # currently-alive squads
+        self.cancelled: list[int] = []
 
     def send_command(self, payload: dict) -> dict:
         t = payload.get("type")
@@ -52,10 +57,29 @@ class MockTransport:
             return FAKE_STATE
         if t == "spawn_squad":
             self.spawned.append(payload)
-            ids = payload.get("unit_ids", [])
-            return {"ok": True, "squad_index": len(self.spawned) - 1,
+            ids = list(payload.get("unit_ids", []))
+            idx = len(self.live_squads)
+            self.live_squads.append({"squad_index": idx,
+                                     "squad_type": payload.get("squad_type"),
+                                     "unit_ids": ids,
+                                     "unit_count": len(ids)})
+            return {"ok": True, "squad_index": idx,
                     "squad_type": payload.get("squad_type"),
                     "unit_count": len(ids), "auto_selected": not ids}
+        if t == "list_squads":
+            # Engine returns them with current indices.
+            squads = [{"squad_index": i, "squad_type": sq["squad_type"],
+                       "unit_ids": list(sq["unit_ids"]),
+                       "unit_count": len(sq["unit_ids"]), "is_valid": True}
+                      for i, sq in enumerate(self.live_squads)]
+            return {"ok": True, "squads": squads}
+        if t == "cancel_squad":
+            idx = payload.get("squad_index")
+            if 0 <= idx < len(self.live_squads):
+                self.cancelled.append(idx)
+                self.live_squads.pop(idx)
+                return {"ok": True, "cancelled_squads": 1}
+            return {"ok": False, "error": "squad_index out of range"}
         return {"ok": True}
 
 
@@ -170,6 +194,24 @@ def main() -> int:
         if not ok:
             all_ok = False
         print(f"  [{'PASS' if ok else 'FAIL'}] {name:22s} {detail}")
+
+    # --- re-direct: "send force to A" then "send force to B" cleans up old squad ---
+    mock = MockTransport()
+    r1 = I.interpret({"intent": "attack", "force": F,
+                      "target": {"kind": "named", "name": "map_corner_nw"}}, mock)
+    r2 = I.interpret({"intent": "attack", "force": F,
+                      "target": {"kind": "named", "name": "enemy_fact"}}, mock)
+    redirect_ok = (
+        r1.get("ok") and r2.get("ok")
+        and len(mock.cancelled) >= 1            # old squad got cancelled
+        and len(mock.live_squads) == 1          # only the new one alive
+    )
+    print("-" * 64)
+    print(f"  [{'PASS' if redirect_ok else 'FAIL'}] redirect A -> B        "
+          f"cancelled={mock.cancelled}, live={len(mock.live_squads)} "
+          f"(want: cancelled>=1, live=1)")
+    if not redirect_ok:
+        all_ok = False
 
     # --- pincer: split force into two prongs ---
     mock = MockTransport()
