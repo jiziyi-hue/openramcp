@@ -319,6 +319,8 @@ def interpret(intent_payload: dict, transport) -> dict:
         return _do_patrol(intent, wv, transport)
     if intent.intent == "escort":
         return _do_escort(intent, wv, transport)
+    if intent.intent == "pincer":
+        return _do_pincer(intent, wv, transport)
     return {"ok": False, "error": f"unhandled intent: {intent.intent}",
             "actions_taken": [], "narrative": ""}
 
@@ -422,6 +424,35 @@ def _do_escort(intent: D.IntentEscort, wv: WorldView, transport) -> dict:
     if aid is None:
         return _err(f"no {intent.escortee} to escort", [], "escortee_not_found")
     return _squad_intent("Escort", intent, wv, transport, escortee=aid)
+
+
+def _do_pincer(intent: D.IntentPincer, wv: WorldView, transport) -> dict:
+    """Split the force by position into two prongs → two Assault squads."""
+    actions: List[dict] = []
+    ids = wv.resolve_force(intent.force)
+    if not ids:
+        return _err("force empty", actions, "force_resolution_empty")
+    pos = {u["id"]: (u["pos"]["x"], u["pos"]["y"])
+           for u in wv.self_units if u["id"] in set(ids)}
+    ordered = sorted(ids, key=lambda i: pos.get(i, (0, 0))[0])  # west→east
+    half = max(1, len(ordered) // 2)
+    left_ids = ordered[:half]
+    right_ids = ordered[half:] or ordered[:half]
+    _l, lpos = wv.resolve_target(intent.left)
+    _r, rpos = wv.resolve_target(intent.right)
+    if lpos is None or rpos is None:
+        return _err("pincer target unresolved", actions, "target_resolution_failed")
+    r1 = _dispatch_squad(transport, "Assault", left_ids, target_pos=lpos)
+    actions.append({"cmd": {"squad": "Assault", "prong": "left"}, "resp": r1})
+    r2 = _dispatch_squad(transport, "Assault", right_ids, target_pos=rpos)
+    actions.append({"cmd": {"squad": "Assault", "prong": "right"}, "resp": r2})
+    if not (r1.get("ok") and r2.get("ok")):
+        return _err("pincer squad spawn failed", actions, "squad_register_failed")
+    return _ok(
+        f"pincer: {len(left_ids)} → {lpos} / {len(right_ids)} → {rpos} "
+        f"[squads #{r1.get('squad_index')}, #{r2.get('squad_index')}]",
+        actions, squad_indices=[r1.get("squad_index"), r2.get("squad_index")],
+    )
 
 
 def _do_report(intent: D.IntentReport, wv: WorldView, transport) -> dict:

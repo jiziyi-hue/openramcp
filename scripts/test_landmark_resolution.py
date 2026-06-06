@@ -171,6 +171,23 @@ def main() -> int:
             all_ok = False
         print(f"  [{'PASS' if ok else 'FAIL'}] {name:22s} {detail}")
 
+    # --- pincer: split force into two prongs ---
+    mock = MockTransport()
+    presp = I.interpret({"intent": "pincer", "force": F,
+                         "left": {"kind": "named", "name": "map_corner_nw"},
+                         "right": {"kind": "named", "name": "enemy_fact"}}, mock)
+    # two Assault squads, one toward nw (12,13), one toward fact (62,20)
+    pos_set = {(s["target_pos"]["x"], s["target_pos"]["y"])
+               for s in mock.spawned if s.get("target_pos")}
+    pincer_ok = (presp.get("ok") and len(mock.spawned) == 2
+                 and (12, 13) in pos_set and (62, 20) in pos_set
+                 and all(s["squad_type"] == "Assault" for s in mock.spawned))
+    if not pincer_ok:
+        all_ok = False
+    print("-" * 64)
+    print(f"  [{'PASS' if pincer_ok else 'FAIL'}] pincer split          "
+          f"{len(mock.spawned)} squads → {sorted(pos_set)}")
+
     print("=" * 64)
     print("RESULT:", "ALL PASS" if all_ok else "SOME FAILED")
     return 0 if all_ok else 1

@@ -177,9 +177,20 @@ class IntentEscort(BaseModel):
     escortee: Escortee = "mcv"
 
 
+class IntentPincer(BaseModel):
+    """Split one force into two prongs heading to two named targets.
+    The interpreter partitions the resolved units by position and spawns
+    two Assault squads — coordless. left/right can be the same target for a
+    classic two-sided pincer, or different for a two-way split."""
+    intent: Literal["pincer"] = "pincer"
+    force: Force
+    left: TargetByName
+    right: TargetByName
+
+
 Intent = Union[IntentAttack, IntentReport, IntentRaw,
                IntentDefend, IntentHarass, IntentScout,
-               IntentPatrol, IntentEscort]
+               IntentPatrol, IntentEscort, IntentPincer]
 IntentUnion = Intent
 
 
@@ -195,6 +206,7 @@ def parse_intent(payload: dict) -> Intent:
         "scout": IntentScout,
         "patrol": IntentPatrol,
         "escort": IntentEscort,
+        "pincer": IntentPincer,
     }
     if typ not in mapping:
         raise ValueError(f"unknown intent type: {typ!r}. valid: {sorted(mapping.keys())}")
