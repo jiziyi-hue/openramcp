@@ -321,9 +321,9 @@ def _dispatch_squad(transport, squad_type: str, force_ids: List[int],
 
 # Cluster threshold: forces larger than this fan out into sub-squads with
 # jittered targets so they walk in parallel lanes (not single file).
-_CLUSTER_MIN = 10
-_CLUSTER_SIZE = 15           # ~15 units per sub-squad
-_CLUSTER_JITTER = 4          # cells around the named target
+_CLUSTER_MIN = 8
+_CLUSTER_SIZE = 6            # ~6 units per sub-squad (smaller = shorter columns)
+_CLUSTER_JITTER = 10         # cells around the named target (wider lanes)
 _CLUSTER_STAGGER_MS = 250    # delay between sub-spawns
 
 
