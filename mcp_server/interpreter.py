@@ -50,6 +50,11 @@ _NON_COMBAT_MOBILE_KINDS = frozenset({
 _HARASS_CAPABLE = frozenset({"jeep", "ftrk", "dog", "e3", "apc", "1tnk"})
 _HARASS_BAD = frozenset({"2tnk", "3tnk", "4tnk", "arty", "v2rl", "mcv", "harv"})
 _FAST_KINDS = frozenset({"jeep", "dog", "e3", "e1", "ftrk", "spy", "thf"})
+# Aircraft — a separate control category. Excluded from ground combat_mobile;
+# commanded via air=true / unit_kind and routed to the Air squad FSM.
+_AIR_KINDS = frozenset({"mig", "yak", "hind", "heli", "badr", "u2",
+                        "tran", "mh60"})
+_AIR_COMBAT = frozenset({"mig", "yak", "hind", "heli"})  # attack-capable
 
 # Inlined unit-strength table (was tactical_doctrine.unit_strength).
 _UNIT_STRENGTH = {
@@ -67,7 +72,18 @@ def _is_building(kind: str) -> bool:
 
 def _is_combat_mobile(kind: str) -> bool:
     k = (kind or "").lower()
-    return (k not in _BUILDING_KINDS) and (k not in _NON_COMBAT_MOBILE_KINDS)
+    return (k not in _BUILDING_KINDS) and (k not in _NON_COMBAT_MOBILE_KINDS) \
+        and (k not in _AIR_KINDS)
+
+
+def _force_is_air(force) -> bool:
+    """True if this force explicitly selects aircraft (air=true or an air
+    unit_kind) — routes the attack to the Air squad FSM instead of Assault."""
+    f = getattr(force, "air", None)
+    if f is True:
+        return True
+    uk = (getattr(force, "unit_kind", None) or "").lower()
+    return uk in _AIR_KINDS
 
 
 # ---------------------------------------------------------------------------
@@ -125,8 +141,12 @@ class WorldView:
                 if kind_lower in _HARASS_BAD:
                     continue
             if f.combat_mobile is True:
-                if kind_lower in _NON_COMBAT_MOBILE_KINDS or kind_lower in _BUILDING_KINDS:
+                if (kind_lower in _NON_COMBAT_MOBILE_KINDS
+                        or kind_lower in _BUILDING_KINDS
+                        or kind_lower in _AIR_KINDS):  # ground only — no aircraft
                     continue
+            if f.air is True and kind_lower not in _AIR_COMBAT:
+                continue
             matched.append(u)
 
         prefer = getattr(f, "prefer", "strongest")
@@ -368,8 +388,10 @@ def _do_attack(intent: D.IntentAttack, wv: WorldView, transport) -> dict:
     if tpos is None and tid is None:
         return _err("target unresolved", actions, "target_resolution_failed")
 
-    resp = _dispatch_squad(transport, "Assault", ids, target_pos=tpos)
-    actions.append({"cmd": {"type": "spawn_squad", "squad_type": "Assault"}, "resp": resp})
+    # aircraft -> Air squad FSM (airfield/rearm), ground -> Assault
+    squad_type = "Air" if _force_is_air(intent.force) else "Assault"
+    resp = _dispatch_squad(transport, squad_type, ids, target_pos=tpos)
+    actions.append({"cmd": {"type": "spawn_squad", "squad_type": squad_type}, "resp": resp})
     if not resp.get("ok"):
         return _err(f"squad spawn failed: {resp.get('error')}", actions,
                     "squad_register_failed")

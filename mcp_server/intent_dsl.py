@@ -71,6 +71,7 @@ class ForceByFilter(BaseModel):
     hp_above: Optional[float] = None
     harass_capable: Optional[bool] = None
     combat_mobile: Optional[bool] = None
+    air: Optional[bool] = None  # true = combat aircraft (空军/飞机)
     prefer: Literal["strongest", "fastest", "healthiest", "any"] = "strongest"
 
 
