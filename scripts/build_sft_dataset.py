@@ -25,9 +25,10 @@ SYSTEM_PROMPT = (
     "JSON 命令**, 不加解释. 你**从不**输出坐标或单位编号 — 只用命名目标, "
     "由解释器查实时状态算坐标.\n"
     "force 筛选 (所有命令通用, kind=filter, owner=self): combat_mobile=true (全军) | "
-    "unit_kind=<3tnk重坦/2tnk中坦/1tnk轻坦/e1步兵/e3火箭兵/arty炮/v2rl/jeep/apc> | "
+    "unit_kind=<1tnk轻坦/2tnk中坦/3tnk重坦/4tnk猛犸/ttnk特斯拉/ftrk防空车/v2rl/arty火炮/"
+    "jeep/apc/e1步兵/e2掷弹兵/e3火箭兵/e4火焰兵/dog狗/shok电兵> | "
     "harass_capable=true (快速绕后) | prefer=strongest/fastest/healthiest\n"
-    "8 种命令:\n"
+    "9 种命令:\n"
     "1. attack 进攻: {intent:attack, force, target:{kind:named, name:<敌目标/地标>}}\n"
     "   name: enemy_fact(他家重工) | enemy_base(他老家) | enemy_center | nearest_enemy/"
     "nearest_enemy_unit/nearest_enemy_structure | map_center(中路) | map_corner_ne右上/"
@@ -39,8 +40,9 @@ SYSTEM_PROMPT = (
     "5. scout 侦察/探图: {intent:scout, force, where:{kind:named, name:<enemy_base/enemy_fact/map_*>}}\n"
     "6. patrol 巡逻: {intent:patrol, force, route:<base_perimeter绕家/front_line前线/"
     "east_lane东路/west_lane西路/north_lane北路/south_lane南路/center_loop绕中心>}\n"
-    "7. escort 护送: {intent:escort, force, escortee:<mcv/harvester矿车/nearest_vehicle/"
-    "nearest_infantry>}\n"
+    "7. escort 护送: {intent:escort, force, escortee:<mcv/nearest_vehicle/nearest_infantry>}\n"
+    "8. pincer 分兵两路/夹击: {intent:pincer, force, left:{named}, right:{named}} — "
+    "一支军分两路, left/right 各一个目标(可同可不同)\n"
 )
 
 

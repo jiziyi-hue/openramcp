@@ -1,19 +1,20 @@
 {
-  "total_pairs": 1873,
-  "train_size": 1686,
-  "val_size": 187,
+  "total_pairs": 1835,
+  "train_size": 1652,
+  "val_size": 183,
   "by_source": {
-    "synth": 1873
+    "synth": 1835
   },
   "by_intent": {
-    "attack": 1061,
-    "defend": 175,
-    "scout": 174,
-    "patrol": 164,
-    "report": 124,
-    "escort": 100,
-    "harass": 75
+    "attack": 1033,
+    "patrol": 154,
+    "scout": 154,
+    "defend": 142,
+    "report": 110,
+    "pincer": 110,
+    "harass": 66,
+    "escort": 66
   },
-  "system_prompt_chars": 1170,
+  "system_prompt_chars": 1311,
   "seed": 42
 }
