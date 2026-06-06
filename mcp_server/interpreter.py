@@ -39,7 +39,14 @@ _BUILDING_KINDS = frozenset({
     "sbag", "brik", "barb", "cycl", "fenc",
     "oilb",
 })
-_NON_COMBAT_MOBILE_KINDS = frozenset({"harv", "mcv"})
+_NON_COMBAT_MOBILE_KINDS = frozenset({
+    # economy / utility vehicles
+    "harv", "mcv", "truk", "mnly", "mgg", "mrj",
+    # support / infiltrator infantry (don't send these in an assault)
+    "e6", "medi", "mech", "spy", "thf",
+    # campaign VIPs (non-combat)
+    "einstein", "delphi", "chan", "gnrl",
+})
 _HARASS_CAPABLE = frozenset({"jeep", "ftrk", "dog", "e3", "apc", "1tnk"})
 _HARASS_BAD = frozenset({"2tnk", "3tnk", "4tnk", "arty", "v2rl", "mcv", "harv"})
 _FAST_KINDS = frozenset({"jeep", "dog", "e3", "e1", "ftrk", "spy", "thf"})
@@ -48,7 +55,9 @@ _FAST_KINDS = frozenset({"jeep", "dog", "e3", "e1", "ftrk", "spy", "thf"})
 _UNIT_STRENGTH = {
     "4tnk": 9, "3tnk": 8, "2tnk": 7, "1tnk": 6,
     "ttnk": 8, "v2rl": 7, "arty": 6, "ftrk": 5,
-    "apc": 4, "jeep": 3, "e3": 2, "e1": 1,
+    "apc": 4, "jeep": 3,
+    # infantry
+    "shok": 4, "e4": 3, "e2": 2, "e3": 2, "e1": 1, "dog": 1,
 }
 
 
